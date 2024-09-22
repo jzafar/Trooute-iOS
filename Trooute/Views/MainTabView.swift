@@ -10,9 +10,8 @@ import CustomTabView
 
 struct MainTabView: View {
     @State private var selectedTab: Tab = .home
-    @State private var hide: Bool = false
-    private var tabBarView: SampleTabBarView {
-        SampleTabBarView(selection: $selectedTab, hide: $hide) { _ in
+    private var tabBarView: TabBarView {
+        TabBarView(selection: $selectedTab) { _ in
             print("Enjoying a custom TabView")
         }
     }
@@ -21,22 +20,34 @@ struct MainTabView: View {
         CustomTabView(tabBarView: tabBarView, tabs: Tab.allCases, selection: selectedTab) {
             NavigationStack {
                 TripsView()
+                    .onAppear {
+                        Tabbar.shared.hide = false
+                    }
                     .navigationBarTitle("Ongoing Trips")
             }
 
             NavigationView {
                 InboxView()
+                    .onAppear {
+                        Tabbar.shared.hide = false
+                    }
                     .navigationBarTitle("Inbox")
             }
 
             NavigationView {
                 BookingsView()
+                    .onAppear {
+                        Tabbar.shared.hide = false
+                    }
                     .navigationBarTitle("Bookings")
             }
 
             NavigationStack {
                 SettingsView()
                     .navigationBarTitle("Settings")
+                    .onAppear {
+                        Tabbar.shared.hide = false
+                    }
             }
         }
 //        .edgesIgnoringSafeArea(.top) // <--- Here

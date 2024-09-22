@@ -5,33 +5,34 @@
 //  Created by Muhammad Zafar on 2024-09-22.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 struct UpdateProfileView: View {
     @ObservedObject var viewModel = UpdateProfileViewModel()
     @FocusState var keyIsFocused: Bool
     var body: some View {
-            VStack {
-                ProfilePictureView(width: 100, height: 100) {
-                    
-                }.padding(30)
-                
-                fullName()
-                
-                phoneNumber()
-                
-                signInButton()
-                    .padding(.top, 50)
-                scendoryGrayButton()
-                Spacer()
-            }
+        VStack {
+            ProfilePictureView(width: 100, height: 100) {
+            }.padding(30)
+
+            fullName()
+
+            phoneNumber()
+
+            signInButton()
+                .padding(.top, 50)
+            scendoryGrayButton()
+            Spacer()
+        }.onAppear {
+            Tabbar.shared.hide = true
+        }
         .navigationTitle("Update Profile")
         .navigationDestination(isPresented: $viewModel.updatePassword) {
-                UpdatePasswordView()
-                            }
+            UpdatePasswordView()
+        }
     }
-    
+
     @ViewBuilder
     func fullName() -> some View {
         VStack(alignment: .leading) {
@@ -41,7 +42,7 @@ struct UpdateProfileView: View {
         }
         .padding(.horizontal, 30)
     }
-    
+
     @ViewBuilder
     func phoneNumber() -> some View {
         VStack(alignment: .leading) {
@@ -53,15 +54,14 @@ struct UpdateProfileView: View {
     }
 
     @ViewBuilder
-    func signInButton()-> some View {
+    func signInButton() -> some View {
         PrimaryGreenButton(title: "Update") {
-            
         }
         .padding(.horizontal, 30)
     }
-    
+
     @ViewBuilder
-    func scendoryGrayButton()-> some View {
+    func scendoryGrayButton() -> some View {
         ScendoryGrayButton(title: "Update Password") {
             viewModel.updatePassword = true
         }
@@ -84,7 +84,6 @@ struct UpdateProfileView: View {
 //        }
         .padding(.horizontal, 30)
     }
-    
 }
 
 #Preview {

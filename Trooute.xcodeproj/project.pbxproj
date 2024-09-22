@@ -20,11 +20,12 @@
 		CE51504C2C9FD8A800B10107 /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51504B2C9FD8A100B10107 /* UpdateProfileViewModel.swift */; };
 		CE51504E2C9FDC8400B10107 /* UpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51504D2C9FDC8400B10107 /* UpdatePasswordView.swift */; };
 		CE5150502C9FE01300B10107 /* UpdatePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51504F2C9FE00E00B10107 /* UpdatePasswordViewModel.swift */; };
-		CE5150552CA0153300B10107 /* SampleTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150542CA0152B00B10107 /* SampleTabBarView.swift */; };
+		CE5150552CA0153300B10107 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150542CA0152B00B10107 /* TabBarView.swift */; };
 		CE5150682CA035A800B10107 /* UITabBarControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150612CA035A800B10107 /* UITabBarControllerRepresentable.swift */; };
 		CE5150692CA035A800B10107 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150652CA035A800B10107 /* CustomTabView.swift */; };
 		CE51506E2CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150662CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift */; };
 		CE51506F2CA035A800B10107 /* KeyboardReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150602CA035A800B10107 /* KeyboardReadable.swift */; };
+		CE5150752CA093CB00B10107 /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150742CA093CB00B10107 /* OnboardView.swift */; };
 		CE57013A2C9E0BCA003BD7CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5701392C9E0BCA003BD7CA /* LaunchScreen.storyboard */; };
 		CE57013C2C9E0DBE003BD7CA /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57013B2C9E0DBE003BD7CA /* SigninView.swift */; };
 		CE5701402C9E0DF6003BD7CA /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57013F2C9E0DEB003BD7CA /* SigninViewModel.swift */; };
@@ -79,11 +80,12 @@
 		CE51504B2C9FD8A100B10107 /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
 		CE51504D2C9FDC8400B10107 /* UpdatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordView.swift; sourceTree = "<group>"; };
 		CE51504F2C9FE00E00B10107 /* UpdatePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordViewModel.swift; sourceTree = "<group>"; };
-		CE5150542CA0152B00B10107 /* SampleTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTabBarView.swift; sourceTree = "<group>"; };
+		CE5150542CA0152B00B10107 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		CE5150602CA035A800B10107 /* KeyboardReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardReadable.swift; sourceTree = "<group>"; };
 		CE5150612CA035A800B10107 /* UITabBarControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarControllerRepresentable.swift; sourceTree = "<group>"; };
 		CE5150652CA035A800B10107 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		CE5150662CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+TabBarPosition.swift"; sourceTree = "<group>"; };
+		CE5150742CA093CB00B10107 /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
 		CE5701382C9E098B003BD7CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE5701392C9E0BCA003BD7CA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE57013B2C9E0DBE003BD7CA /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninView.swift; sourceTree = "<group>"; };
@@ -143,7 +145,7 @@
 				CE5150612CA035A800B10107 /* UITabBarControllerRepresentable.swift */,
 				CE5150652CA035A800B10107 /* CustomTabView.swift */,
 				CE5150662CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift */,
-				CE5150542CA0152B00B10107 /* SampleTabBarView.swift */,
+				CE5150542CA0152B00B10107 /* TabBarView.swift */,
 			);
 			path = CustomTabView;
 			sourceTree = "<group>";
@@ -163,6 +165,7 @@
 				CE5150432C9F512700B10107 /* CarInfoView.swift */,
 				CE5150472C9FD5AD00B10107 /* UpdateProfileView.swift */,
 				CE51504D2C9FDC8400B10107 /* UpdatePasswordView.swift */,
+				CE5150742CA093CB00B10107 /* OnboardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -435,8 +438,9 @@
 				CE5701432C9E0E0D003BD7CA /* User.swift in Sources */,
 				CE57014A2C9E1A54003BD7CA /* CustomViews.swift in Sources */,
 				CE5150352C9F258100B10107 /* SettingsView.swift in Sources */,
+				CE5150752CA093CB00B10107 /* OnboardView.swift in Sources */,
 				CE57013C2C9E0DBE003BD7CA /* SigninView.swift in Sources */,
-				CE5150552CA0153300B10107 /* SampleTabBarView.swift in Sources */,
+				CE5150552CA0153300B10107 /* TabBarView.swift in Sources */,
 				CE5150462C9F57D300B10107 /* Color.swift in Sources */,
 				CE5150392C9F25B400B10107 /* BookingsView.swift in Sources */,
 				CE57014C2C9E1CC7003BD7CA /* SignUpView.swift in Sources */,

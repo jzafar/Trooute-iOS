@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    private let isFirstLaunch: Bool = UserDefaults.standard.bool(forKey: "isFirstLaunch")
     var body: some View {
-        SigninView()
+        if !isFirstLaunch {
+            OnboardView()
+        } else {
+            SigninView()
+        }
     }
 }
 

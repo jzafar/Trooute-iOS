@@ -26,14 +26,16 @@ enum Tab: String, Hashable, CaseIterable {
             rawValue.capitalized
         }
 }
-
-struct SampleTabBarView: View {
+class Tabbar: ObservableObject {
+    @Published var hide: Bool = false
+    static let shared = Tabbar()
+}
+struct TabBarView: View {
     @Binding var selection: Tab
-    @Binding var hide: Bool
+    @StateObject private var tabbar = Tabbar.shared
     let onTabSelection: (Tab) -> Void
-
     var body: some View {
-        if hide {
+        if tabbar.hide {
             EmptyView()
         } else {
             HStack {
