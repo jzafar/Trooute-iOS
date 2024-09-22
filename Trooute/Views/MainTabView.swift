@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CustomTabView
 
 struct MainTabView: View {
     @State private var selectedTab: Tab = .home
@@ -20,44 +21,25 @@ struct MainTabView: View {
         CustomTabView(tabBarView: tabBarView, tabs: Tab.allCases, selection: selectedTab) {
             NavigationStack {
                 TripsView()
-                    .onDisappear {
-                        hide = true
-                    }.onAppear {
-                        hide = false
-                    }
                     .navigationBarTitle("Ongoing Trips")
             }
 
             NavigationView {
                 InboxView()
-                    .onDisappear {
-                        hide = true
-                    }.onAppear {
-                        hide = false
-                    }
                     .navigationBarTitle("Inbox")
             }
 
             NavigationView {
                 BookingsView()
-                    .onDisappear {
-                        hide = true
-                    }.onAppear {
-                        hide = false
-                    }
                     .navigationBarTitle("Bookings")
             }
 
             NavigationStack {
                 SettingsView()
                     .navigationBarTitle("Settings")
-                    .onDisappear {
-                        hide = true
-                    }.onAppear {
-                        hide = false
-                    }
             }
         }
+//        .edgesIgnoringSafeArea(.top) // <--- Here
 //        .edgesIgnoringSafeArea(.top)
     }
 }

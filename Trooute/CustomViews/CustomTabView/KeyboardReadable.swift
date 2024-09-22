@@ -1,6 +1,6 @@
 //
 //  KeyboardReadable.swift
-//  
+//
 //
 //  Created by Niccolò Fontana on 19/01/23.
 //
@@ -31,3 +31,4 @@ extension KeyboardReadable {
     }
 }
 #endif
+

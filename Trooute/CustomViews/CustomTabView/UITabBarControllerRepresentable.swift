@@ -1,6 +1,6 @@
 //
 //  UITabBarControllerRepresentable.swift
-//  
+//
 //
 //  Created by Niccolò Fontana on 19/01/23.
 //
@@ -13,10 +13,12 @@ import UIKit
 struct UITabBarControllerRepresentable: UIViewControllerRepresentable {
     let selectedTabIndex: Int
     let controlledViews: [UIViewController]
+    
     func makeUIViewController(context: Context) -> UITabBarController {
         let tabBarController = UITabBarController()
         tabBarController.setViewControllers(controlledViews, animated: false)
         tabBarController.selectedIndex = selectedTabIndex
+        tabBarController.tabBar.isHidden = true
         return tabBarController
     }
     
@@ -32,3 +34,4 @@ struct TabBarController_Previews: PreviewProvider {
     }
 }
 #endif
+

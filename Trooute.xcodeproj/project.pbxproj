@@ -151,10 +151,10 @@
 		CE57013D2C9E0DCB003BD7CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE57017B2C9F24C1003BD7CA /* MainTabView.swift */,
 				CE57013B2C9E0DBE003BD7CA /* SigninView.swift */,
 				CE5701442C9E16DD003BD7CA /* ResetPasswordView.swift */,
 				CE57014B2C9E1CC7003BD7CA /* SignUpView.swift */,
-				CE57017B2C9F24C1003BD7CA /* MainTabView.swift */,
 				CE5150342C9F258100B10107 /* SettingsView.swift */,
 				CE5150362C9F259200B10107 /* InboxView.swift */,
 				CE5150382C9F25B400B10107 /* BookingsView.swift */,

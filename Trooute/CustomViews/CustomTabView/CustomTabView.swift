@@ -1,6 +1,6 @@
 //
 //  CustomTabView.swift
-//  
+//
 //
 //  Created by Niccolò Fontana on 19/01/23.
 //
@@ -27,7 +27,7 @@ import SwiftUI
 ///    Text("Content for Tab3")
 /// }
 /// ```
-/// 
+///
 /// - Parameters:
 ///   - tabBarView: The custom view that will serve as the tab bar.
 ///   - tabs: An array of values conforming to `Hashable` that represent the tabs. The order of tabs in this array **must** be reflected in the TabBar view provided.
@@ -76,11 +76,19 @@ private struct _CustomTabViewLayout<TabBarView: View, SelectionValue: Hashable>:
     
     let tabBarView: TabBarView
     let selectedTabIndex: Int
+    
     private func contentView(children: _VariadicView.Children) -> some View {
+        #if canImport(UIKit)
         return UITabBarControllerRepresentable(
             selectedTabIndex: selectedTabIndex,
             controlledViews: children.map { UIHostingController(rootView: $0) }
         )
+        #elseif canImport(AppKit)
+        return NSTabViewControllerRepresentable(
+            selectedTabIndex: selectedTabIndex,
+            controlledViews: children.map { NSHostingController(rootView: $0) }
+        )
+        #endif
     }
     
     private func topBarView(children: _VariadicView.Children) -> some View {
@@ -199,3 +207,4 @@ private struct _CustomTabViewLayout<TabBarView: View, SelectionValue: Hashable>:
 #if canImport(UIKit)
 extension _CustomTabViewLayout: KeyboardReadable {}
 #endif
+
