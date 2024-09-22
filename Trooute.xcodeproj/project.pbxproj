@@ -7,6 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE5150352C9F258100B10107 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150342C9F258100B10107 /* SettingsView.swift */; };
+		CE5150372C9F259200B10107 /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150362C9F259200B10107 /* InboxView.swift */; };
+		CE5150392C9F25B400B10107 /* BookingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150382C9F25B400B10107 /* BookingsView.swift */; };
+		CE51503B2C9F25C400B10107 /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51503A2C9F25C400B10107 /* TripsView.swift */; };
+		CE5150402C9F3B2700B10107 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51503F2C9F3B2000B10107 /* SettingsViewModel.swift */; };
+		CE5150422C9F3BD900B10107 /* UserInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150412C9F3BD900B10107 /* UserInfoCardView.swift */; };
+		CE5150442C9F512700B10107 /* CarInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150432C9F512700B10107 /* CarInfoView.swift */; };
+		CE5150462C9F57D300B10107 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150452C9F57CE00B10107 /* Color.swift */; };
+		CE5150482C9FD5AD00B10107 /* UpdateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150472C9FD5AD00B10107 /* UpdateProfileView.swift */; };
+		CE51504A2C9FD63B00B10107 /* SharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150492C9FD63300B10107 /* SharedViews.swift */; };
+		CE51504C2C9FD8A800B10107 /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51504B2C9FD8A100B10107 /* UpdateProfileViewModel.swift */; };
+		CE51504E2C9FDC8400B10107 /* UpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51504D2C9FDC8400B10107 /* UpdatePasswordView.swift */; };
+		CE5150502C9FE01300B10107 /* UpdatePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51504F2C9FE00E00B10107 /* UpdatePasswordViewModel.swift */; };
+		CE5150552CA0153300B10107 /* SampleTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150542CA0152B00B10107 /* SampleTabBarView.swift */; };
+		CE5150682CA035A800B10107 /* UITabBarControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150612CA035A800B10107 /* UITabBarControllerRepresentable.swift */; };
+		CE5150692CA035A800B10107 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150652CA035A800B10107 /* CustomTabView.swift */; };
+		CE51506E2CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150662CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift */; };
+		CE51506F2CA035A800B10107 /* KeyboardReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150602CA035A800B10107 /* KeyboardReadable.swift */; };
+		CE57013A2C9E0BCA003BD7CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5701392C9E0BCA003BD7CA /* LaunchScreen.storyboard */; };
+		CE57013C2C9E0DBE003BD7CA /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57013B2C9E0DBE003BD7CA /* SigninView.swift */; };
+		CE5701402C9E0DF6003BD7CA /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57013F2C9E0DEB003BD7CA /* SigninViewModel.swift */; };
+		CE5701432C9E0E0D003BD7CA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5701422C9E0E05003BD7CA /* User.swift */; };
+		CE5701452C9E16DD003BD7CA /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5701442C9E16DD003BD7CA /* ResetPasswordView.swift */; };
+		CE5701472C9E16EA003BD7CA /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5701462C9E16E4003BD7CA /* ResetPasswordViewModel.swift */; };
+		CE57014A2C9E1A54003BD7CA /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5701492C9E1A4C003BD7CA /* CustomViews.swift */; };
+		CE57014C2C9E1CC7003BD7CA /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57014B2C9E1CC7003BD7CA /* SignUpView.swift */; };
+		CE57014E2C9E1DC0003BD7CA /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57014D2C9E1DBB003BD7CA /* SignUpViewModel.swift */; };
+		CE5701712C9E8BD4003BD7CA /* CountryNumbers.json in Resources */ = {isa = PBXBuildFile; fileRef = CE5701702C9E8BD4003BD7CA /* CountryNumbers.json */; };
+		CE5701752C9E8FC0003BD7CA /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5701742C9E8FB3003BD7CA /* CountryCode.swift */; };
+		CE5701782C9E96B9003BD7CA /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5701772C9E96B8003BD7CA /* Bundle.swift */; };
+		CE57017A2C9E9F2C003BD7CA /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5701792C9E9F29003BD7CA /* View.swift */; };
+		CE57017C2C9F24C1003BD7CA /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57017B2C9F24C1003BD7CA /* MainTabView.swift */; };
 		CED05F022C95AF7000E51158 /* TroouteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED05F012C95AF7000E51158 /* TroouteApp.swift */; };
 		CED05F042C95AF7000E51158 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED05F032C95AF7000E51158 /* ContentView.swift */; };
 		CED05F062C95AF7100E51158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CED05F052C95AF7100E51158 /* Assets.xcassets */; };
@@ -34,6 +66,39 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE5150342C9F258100B10107 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CE5150362C9F259200B10107 /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
+		CE5150382C9F25B400B10107 /* BookingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsView.swift; sourceTree = "<group>"; };
+		CE51503A2C9F25C400B10107 /* TripsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
+		CE51503F2C9F3B2000B10107 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		CE5150412C9F3BD900B10107 /* UserInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCardView.swift; sourceTree = "<group>"; };
+		CE5150432C9F512700B10107 /* CarInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoView.swift; sourceTree = "<group>"; };
+		CE5150452C9F57CE00B10107 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		CE5150472C9FD5AD00B10107 /* UpdateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileView.swift; sourceTree = "<group>"; };
+		CE5150492C9FD63300B10107 /* SharedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedViews.swift; sourceTree = "<group>"; };
+		CE51504B2C9FD8A100B10107 /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
+		CE51504D2C9FDC8400B10107 /* UpdatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordView.swift; sourceTree = "<group>"; };
+		CE51504F2C9FE00E00B10107 /* UpdatePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordViewModel.swift; sourceTree = "<group>"; };
+		CE5150542CA0152B00B10107 /* SampleTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTabBarView.swift; sourceTree = "<group>"; };
+		CE5150602CA035A800B10107 /* KeyboardReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardReadable.swift; sourceTree = "<group>"; };
+		CE5150612CA035A800B10107 /* UITabBarControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarControllerRepresentable.swift; sourceTree = "<group>"; };
+		CE5150652CA035A800B10107 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
+		CE5150662CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+TabBarPosition.swift"; sourceTree = "<group>"; };
+		CE5701382C9E098B003BD7CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CE5701392C9E0BCA003BD7CA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE57013B2C9E0DBE003BD7CA /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninView.swift; sourceTree = "<group>"; };
+		CE57013F2C9E0DEB003BD7CA /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
+		CE5701422C9E0E05003BD7CA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CE5701442C9E16DD003BD7CA /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		CE5701462C9E16E4003BD7CA /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
+		CE5701492C9E1A4C003BD7CA /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
+		CE57014B2C9E1CC7003BD7CA /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		CE57014D2C9E1DBB003BD7CA /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		CE5701702C9E8BD4003BD7CA /* CountryNumbers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CountryNumbers.json; sourceTree = "<group>"; };
+		CE5701742C9E8FB3003BD7CA /* CountryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
+		CE5701772C9E96B8003BD7CA /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		CE5701792C9E9F29003BD7CA /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		CE57017B2C9F24C1003BD7CA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		CED05EFE2C95AF7000E51158 /* Trooute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trooute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED05F012C95AF7000E51158 /* TroouteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TroouteApp.swift; sourceTree = "<group>"; };
 		CED05F032C95AF7000E51158 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +136,87 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE5150672CA035A800B10107 /* CustomTabView */ = {
+			isa = PBXGroup;
+			children = (
+				CE5150602CA035A800B10107 /* KeyboardReadable.swift */,
+				CE5150612CA035A800B10107 /* UITabBarControllerRepresentable.swift */,
+				CE5150652CA035A800B10107 /* CustomTabView.swift */,
+				CE5150662CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift */,
+				CE5150542CA0152B00B10107 /* SampleTabBarView.swift */,
+			);
+			path = CustomTabView;
+			sourceTree = "<group>";
+		};
+		CE57013D2C9E0DCB003BD7CA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE57013B2C9E0DBE003BD7CA /* SigninView.swift */,
+				CE5701442C9E16DD003BD7CA /* ResetPasswordView.swift */,
+				CE57014B2C9E1CC7003BD7CA /* SignUpView.swift */,
+				CE57017B2C9F24C1003BD7CA /* MainTabView.swift */,
+				CE5150342C9F258100B10107 /* SettingsView.swift */,
+				CE5150362C9F259200B10107 /* InboxView.swift */,
+				CE5150382C9F25B400B10107 /* BookingsView.swift */,
+				CE51503A2C9F25C400B10107 /* TripsView.swift */,
+				CE5150412C9F3BD900B10107 /* UserInfoCardView.swift */,
+				CE5150432C9F512700B10107 /* CarInfoView.swift */,
+				CE5150472C9FD5AD00B10107 /* UpdateProfileView.swift */,
+				CE51504D2C9FDC8400B10107 /* UpdatePasswordView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE57013E2C9E0DDE003BD7CA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE51504F2C9FE00E00B10107 /* UpdatePasswordViewModel.swift */,
+				CE51504B2C9FD8A100B10107 /* UpdateProfileViewModel.swift */,
+				CE51503F2C9F3B2000B10107 /* SettingsViewModel.swift */,
+				CE57014D2C9E1DBB003BD7CA /* SignUpViewModel.swift */,
+				CE5701462C9E16E4003BD7CA /* ResetPasswordViewModel.swift */,
+				CE57013F2C9E0DEB003BD7CA /* SigninViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE5701412C9E0DFD003BD7CA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE5701742C9E8FB3003BD7CA /* CountryCode.swift */,
+				CE5701422C9E0E05003BD7CA /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE5701482C9E1A36003BD7CA /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				CE5150672CA035A800B10107 /* CustomTabView */,
+				CE5150492C9FD63300B10107 /* SharedViews.swift */,
+				CE5701492C9E1A4C003BD7CA /* CustomViews.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		CE57016F2C9E8BBF003BD7CA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE5701702C9E8BD4003BD7CA /* CountryNumbers.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CE5701762C9E96AF003BD7CA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE5150452C9F57CE00B10107 /* Color.swift */,
+				CE5701792C9E9F29003BD7CA /* View.swift */,
+				CE5701772C9E96B8003BD7CA /* Bundle.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		CED05EF52C95AF6F00E51158 = {
 			isa = PBXGroup;
 			children = (
@@ -94,10 +240,18 @@
 		CED05F002C95AF7000E51158 /* Trooute */ = {
 			isa = PBXGroup;
 			children = (
+				CE5701762C9E96AF003BD7CA /* Extensions */,
+				CE57016F2C9E8BBF003BD7CA /* Resources */,
+				CE5701482C9E1A36003BD7CA /* CustomViews */,
+				CE5701412C9E0DFD003BD7CA /* Model */,
+				CE57013E2C9E0DDE003BD7CA /* ViewModel */,
+				CE57013D2C9E0DCB003BD7CA /* Views */,
+				CE5701382C9E098B003BD7CA /* Info.plist */,
 				CED05F012C95AF7000E51158 /* TroouteApp.swift */,
 				CED05F032C95AF7000E51158 /* ContentView.swift */,
 				CED05F052C95AF7100E51158 /* Assets.xcassets */,
 				CED05F072C95AF7100E51158 /* Preview Content */,
+				CE5701392C9E0BCA003BD7CA /* LaunchScreen.storyboard */,
 			);
 			path = Trooute;
 			sourceTree = "<group>";
@@ -215,6 +369,8 @@
 				Base,
 			);
 			mainGroup = CED05EF52C95AF6F00E51158;
+			packageReferences = (
+			);
 			productRefGroup = CED05EFF2C95AF7000E51158 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -231,8 +387,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE57013A2C9E0BCA003BD7CA /* LaunchScreen.storyboard in Resources */,
 				CED05F092C95AF7100E51158 /* Preview Assets.xcassets in Resources */,
 				CED05F062C95AF7100E51158 /* Assets.xcassets in Resources */,
+				CE5701712C9E8BD4003BD7CA /* CountryNumbers.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +415,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE51504E2C9FDC8400B10107 /* UpdatePasswordView.swift in Sources */,
+				CE5150442C9F512700B10107 /* CarInfoView.swift in Sources */,
+				CE5701402C9E0DF6003BD7CA /* SigninViewModel.swift in Sources */,
+				CE5150372C9F259200B10107 /* InboxView.swift in Sources */,
+				CE5150682CA035A800B10107 /* UITabBarControllerRepresentable.swift in Sources */,
+				CE5150692CA035A800B10107 /* CustomTabView.swift in Sources */,
+				CE51506E2CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift in Sources */,
+				CE51506F2CA035A800B10107 /* KeyboardReadable.swift in Sources */,
+				CE51504C2C9FD8A800B10107 /* UpdateProfileViewModel.swift in Sources */,
+				CE5701782C9E96B9003BD7CA /* Bundle.swift in Sources */,
 				CED05F042C95AF7000E51158 /* ContentView.swift in Sources */,
+				CE57014E2C9E1DC0003BD7CA /* SignUpViewModel.swift in Sources */,
+				CE51503B2C9F25C400B10107 /* TripsView.swift in Sources */,
 				CED05F022C95AF7000E51158 /* TroouteApp.swift in Sources */,
+				CE5150502C9FE01300B10107 /* UpdatePasswordViewModel.swift in Sources */,
+				CE5701452C9E16DD003BD7CA /* ResetPasswordView.swift in Sources */,
+				CE51504A2C9FD63B00B10107 /* SharedViews.swift in Sources */,
+				CE5701432C9E0E0D003BD7CA /* User.swift in Sources */,
+				CE57014A2C9E1A54003BD7CA /* CustomViews.swift in Sources */,
+				CE5150352C9F258100B10107 /* SettingsView.swift in Sources */,
+				CE57013C2C9E0DBE003BD7CA /* SigninView.swift in Sources */,
+				CE5150552CA0153300B10107 /* SampleTabBarView.swift in Sources */,
+				CE5150462C9F57D300B10107 /* Color.swift in Sources */,
+				CE5150392C9F25B400B10107 /* BookingsView.swift in Sources */,
+				CE57014C2C9E1CC7003BD7CA /* SignUpView.swift in Sources */,
+				CE5150402C9F3B2700B10107 /* SettingsViewModel.swift in Sources */,
+				CE5701472C9E16EA003BD7CA /* ResetPasswordViewModel.swift in Sources */,
+				CE57017A2C9E9F2C003BD7CA /* View.swift in Sources */,
+				CE5701752C9E8FC0003BD7CA /* CountryCode.swift in Sources */,
+				CE57017C2C9F24C1003BD7CA /* MainTabView.swift in Sources */,
+				CE5150482C9FD5AD00B10107 /* UpdateProfileView.swift in Sources */,
+				CE5150422C9F3BD900B10107 /* UserInfoCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,11 +613,12 @@
 				DEVELOPMENT_TEAM = ZCRH48Q4SG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Trooute/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -454,11 +643,12 @@
 				DEVELOPMENT_TEAM = ZCRH48Q4SG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Trooute/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
