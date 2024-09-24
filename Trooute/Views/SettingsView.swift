@@ -121,7 +121,7 @@ struct SettingsView: View {
 
     @ViewBuilder
     func supportSection() -> some View {
-        NavigationLink(destination: EmptyView(), label: {
+        NavigationLink(destination: FAQView(), label: {
             HStack {
                 Image("ic_faq")
                     .resizable()

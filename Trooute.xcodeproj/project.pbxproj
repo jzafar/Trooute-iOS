@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		CE0081A42CA1DF3A00D84ACB /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0081A32CA1DF3700D84ACB /* Test.swift */; };
 		CE0081D72CA3455B00D84ACB /* CurrencyField in Frameworks */ = {isa = PBXBuildFile; productRef = CE0081D62CA3455B00D84ACB /* CurrencyField */; };
+		CE4E3D752CA356CD005C3CEE /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D742CA356CD005C3CEE /* FAQView.swift */; };
+		CE4E3D772CA35794005C3CEE /* FAQViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */; };
+		CE4E3D792CA357C8005C3CEE /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D782CA357B5005C3CEE /* FAQ.swift */; };
 		CE5150352C9F258100B10107 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150342C9F258100B10107 /* SettingsView.swift */; };
 		CE5150372C9F259200B10107 /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150362C9F259200B10107 /* InboxView.swift */; };
 		CE5150392C9F25B400B10107 /* BookingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150382C9F25B400B10107 /* BookingsView.swift */; };
@@ -74,6 +77,9 @@
 
 /* Begin PBXFileReference section */
 		CE0081A32CA1DF3700D84ACB /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		CE4E3D742CA356CD005C3CEE /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
+		CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewModel.swift; sourceTree = "<group>"; };
+		CE4E3D782CA357B5005C3CEE /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ.swift; sourceTree = "<group>"; };
 		CE5150342C9F258100B10107 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CE5150362C9F259200B10107 /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
 		CE5150382C9F25B400B10107 /* BookingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsView.swift; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 				CE51504D2C9FDC8400B10107 /* UpdatePasswordView.swift */,
 				CE5150742CA093CB00B10107 /* OnboardView.swift */,
 				CE5150762CA0AFA600B10107 /* CreateTripView.swift */,
+				CE4E3D742CA356CD005C3CEE /* FAQView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,6 +193,7 @@
 		CE57013E2C9E0DDE003BD7CA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */,
 				CE51504F2C9FE00E00B10107 /* UpdatePasswordViewModel.swift */,
 				CE51504B2C9FD8A100B10107 /* UpdateProfileViewModel.swift */,
 				CE51503F2C9F3B2000B10107 /* SettingsViewModel.swift */,
@@ -200,6 +208,7 @@
 		CE5701412C9E0DFD003BD7CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE4E3D782CA357B5005C3CEE /* FAQ.swift */,
 				CE5701742C9E8FB3003BD7CA /* CountryCode.swift */,
 				CE5701422C9E0E05003BD7CA /* User.swift */,
 			);
@@ -441,11 +450,14 @@
 				CE5701402C9E0DF6003BD7CA /* SigninViewModel.swift in Sources */,
 				CE5150372C9F259200B10107 /* InboxView.swift in Sources */,
 				CE51507B2CA0B21800B10107 /* DashedLine.swift in Sources */,
+				CE4E3D792CA357C8005C3CEE /* FAQ.swift in Sources */,
 				CE5150792CA0AFAE00B10107 /* CreateTripViewModel.swift in Sources */,
 				CE5150682CA035A800B10107 /* UITabBarControllerRepresentable.swift in Sources */,
 				CE5150692CA035A800B10107 /* CustomTabView.swift in Sources */,
 				CE51506E2CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift in Sources */,
+				CE4E3D772CA35794005C3CEE /* FAQViewModel.swift in Sources */,
 				CE51506F2CA035A800B10107 /* KeyboardReadable.swift in Sources */,
+				CE4E3D752CA356CD005C3CEE /* FAQView.swift in Sources */,
 				CE51504C2C9FD8A800B10107 /* UpdateProfileViewModel.swift in Sources */,
 				CE5701782C9E96B9003BD7CA /* Bundle.swift in Sources */,
 				CED05F042C95AF7000E51158 /* ContentView.swift in Sources */,

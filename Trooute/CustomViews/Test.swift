@@ -239,152 +239,49 @@
 
 
 import SwiftUI
-import Combine
-
-struct TripSettingsView: View {
-    @State private var seatsAvailable: Int = 1
-    @State private var pricePerPerson: String = "" // Price will be taken as a string initially
-    @State private var handCarryWeight: String = ""
-    @State private var suitcaseWeight: String = ""
-    @State private var isSmokingAllowed: Bool = false
-    @State private var arePetsAllowed: Bool = false
-    @State private var isLanguageRequired: Bool = false
-    @State private var languagePreference: String = ""
-
-    // Number formatter for currency
-    private var currencyFormatter: NumberFormatter {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.locale = Locale.current
-        return formatter
-    }
+struct ExpandableCellView: View {
+    @State private var expandedCells: Set<Int> = []
 
     var body: some View {
-        Form {
-            // Seats Available
-            Section(header: Text("Seats available for passengers")) {
+        List(0..<5) { index in
+            VStack(alignment: .leading) {
                 HStack {
+                    Text("Cell Title \(index + 1)")  // Replace with your actual cell title
+                        .font(.headline)
+                    Spacer()
                     Button(action: {
-                        if seatsAvailable > 1 {
-                            seatsAvailable -= 1
+                        // Toggle expand/collapse state
+                        if expandedCells.contains(index) {
+                            expandedCells.remove(index)
+                        } else {
+                            expandedCells.insert(index)
                         }
                     }) {
-                        Image(systemName: "minus.circle.fill")
-                            .foregroundColor(.blue)
-                            .font(.title2)
-                            .frame(width: 44, height: 44) // Explicit frame to avoid hit area issues
-                    }
-                    .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to avoid unwanted padding
-
-                    Text("\(seatsAvailable)")
-                        .font(.title2)
-                        .frame(width: 50, alignment: .center)
-
-                    Button(action: {
-                        seatsAvailable += 1  // Increment without limit
-                    }) {
-                        Image(systemName: "plus.circle.fill")
-                            .foregroundColor(.blue)
-                            .font(.title2)
-                            .frame(width: 44, height: 44) // Explicit frame to avoid hit area issues
-                    }
-                    .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to avoid unwanted padding
-                }
-                .padding(.horizontal, 10)
-            }
-
-            // Price for the Trip
-            Section(header: Text("Set a price for the trip (Per person)")) {
-                HStack {
-                    TextField("Price", text: $pricePerPerson)
-                        .keyboardType(.decimalPad)
-                        .onReceive(Just(pricePerPerson)) { newValue in
-                            // Allow only digits and decimal point in the price field
-                            let filtered = newValue.filter { "0123456789.".contains($0) }
-                            if filtered != newValue {
-                                self.pricePerPerson = filtered
-                            }
-                        }
-
-                    // Display formatted currency if user has input any value
-                    if !pricePerPerson.isEmpty, let priceValue = Double(pricePerPerson) {
-                        Text(currencyFormatter.string(from: NSNumber(value: priceValue)) ?? "")
+                        Image(systemName: expandedCells.contains(index) ? "chevron.up" : "chevron.down")
+                            .foregroundColor(.gray)
                     }
                 }
-            }
+                .padding()
 
-            // Luggage Restrictions
-            Section(header: Text("Restrictions on luggage type and weight")) {
-                VStack(alignment: .leading) {
-                    Text("Please provide luggage size or weight restrictions for passengers.")
+                if expandedCells.contains(index) {
+                    // Expanded content goes here (replace with your actual content)
+                    Text("This is the expanded content for Cell \(index + 1). Replace this with your dummy text.")
+                        .padding([.leading, .bottom, .trailing])
                         .font(.subheadline)
-                        .foregroundColor(.gray)
-
-                    HStack {
-                        Text("Hand carry")
-                        Spacer()
-                        TextField("weight (kg)", text: $handCarryWeight)
-                            .keyboardType(.numberPad)
-                            .onReceive(Just(handCarryWeight)) { newValue in
-                                // Ensure only digits are entered for hand carry weight
-                                let filtered = newValue.filter { "0123456789".contains($0) }
-                                if filtered != newValue {
-                                    self.handCarryWeight = filtered
-                                }
-                            }
-                            .frame(width: 100)
-                            .padding()
-                            .background(Color(.systemGray6))
-                            .cornerRadius(8)
-                    }
-
-                    HStack {
-                        Text("Suitcase")
-                        Spacer()
-                        TextField("weight (kg)", text: $suitcaseWeight)
-                            .keyboardType(.numberPad)
-                            .onReceive(Just(suitcaseWeight)) { newValue in
-                                // Ensure only digits are entered for suitcase weight
-                                let filtered = newValue.filter { "0123456789".contains($0) }
-                                if filtered != newValue {
-                                    self.suitcaseWeight = filtered
-                                }
-                            }
-                            .frame(width: 100)
-                            .padding()
-                            .background(Color(.systemGray6))
-                            .cornerRadius(8)
-                    }
+                        .foregroundColor(.secondary)
                 }
             }
-
-            // Preferences
-            Section {
-                Toggle(isOn: $isSmokingAllowed) {
-                    Text("Smoking")
-                }
-
-                Toggle(isOn: $arePetsAllowed) {
-                    Text("Pets")
-                }
-
-                Toggle(isOn: $isLanguageRequired) {
-                    Text("Language")
-                }
-
-                if isLanguageRequired {
-                    TextField("E.g German", text: $languagePreference)
-                        .padding()
-                }
-            }
+            .background(Color.white)  // Optional: add background color for the cell
+            .cornerRadius(8)
+            .shadow(color: .gray.opacity(0.2), radius: 5, x: 0, y: 5)  // Optional: add shadow for better UI
+            .padding(.vertical, 5)
         }
-        .navigationTitle("Trip Settings")
-        .padding()
+        .listStyle(PlainListStyle())  // Use plain list style to make it look cleaner
     }
 }
 
-struct TripSettingsView_Previews: PreviewProvider {
+struct ExpandableCellView_Previews: PreviewProvider {
     static var previews: some View {
-        TripSettingsView()
+        ExpandableCellView()
     }
 }
