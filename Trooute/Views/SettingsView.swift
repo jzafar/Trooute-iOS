@@ -82,7 +82,7 @@ struct SettingsView: View {
                 ListRowText(text: "Bookmark")
             }
         })
-        NavigationLink(destination: EmptyView(), label: {
+        NavigationLink(destination: CreateTripView(), label: {
             HStack {
                 Image("ic_createtrip")
                     .resizable()

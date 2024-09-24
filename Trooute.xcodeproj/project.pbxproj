@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE0081A42CA1DF3A00D84ACB /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0081A32CA1DF3700D84ACB /* Test.swift */; };
+		CE0081D72CA3455B00D84ACB /* CurrencyField in Frameworks */ = {isa = PBXBuildFile; productRef = CE0081D62CA3455B00D84ACB /* CurrencyField */; };
 		CE5150352C9F258100B10107 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150342C9F258100B10107 /* SettingsView.swift */; };
 		CE5150372C9F259200B10107 /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150362C9F259200B10107 /* InboxView.swift */; };
 		CE5150392C9F25B400B10107 /* BookingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150382C9F25B400B10107 /* BookingsView.swift */; };
@@ -26,6 +28,10 @@
 		CE51506E2CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150662CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift */; };
 		CE51506F2CA035A800B10107 /* KeyboardReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150602CA035A800B10107 /* KeyboardReadable.swift */; };
 		CE5150752CA093CB00B10107 /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150742CA093CB00B10107 /* OnboardView.swift */; };
+		CE5150772CA0AFA600B10107 /* CreateTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150762CA0AFA600B10107 /* CreateTripView.swift */; };
+		CE5150792CA0AFAE00B10107 /* CreateTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150782CA0AFAB00B10107 /* CreateTripViewModel.swift */; };
+		CE51507B2CA0B21800B10107 /* DashedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51507A2CA0B21600B10107 /* DashedLine.swift */; };
+		CE51507D2CA0B25700B10107 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51507C2CA0B25500B10107 /* CustomCalendarView.swift */; };
 		CE57013A2C9E0BCA003BD7CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5701392C9E0BCA003BD7CA /* LaunchScreen.storyboard */; };
 		CE57013C2C9E0DBE003BD7CA /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57013B2C9E0DBE003BD7CA /* SigninView.swift */; };
 		CE5701402C9E0DF6003BD7CA /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57013F2C9E0DEB003BD7CA /* SigninViewModel.swift */; };
@@ -67,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE0081A32CA1DF3700D84ACB /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		CE5150342C9F258100B10107 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CE5150362C9F259200B10107 /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
 		CE5150382C9F25B400B10107 /* BookingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsView.swift; sourceTree = "<group>"; };
@@ -86,6 +93,10 @@
 		CE5150652CA035A800B10107 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		CE5150662CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+TabBarPosition.swift"; sourceTree = "<group>"; };
 		CE5150742CA093CB00B10107 /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
+		CE5150762CA0AFA600B10107 /* CreateTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripView.swift; sourceTree = "<group>"; };
+		CE5150782CA0AFAB00B10107 /* CreateTripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripViewModel.swift; sourceTree = "<group>"; };
+		CE51507A2CA0B21600B10107 /* DashedLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLine.swift; sourceTree = "<group>"; };
+		CE51507C2CA0B25500B10107 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		CE5701382C9E098B003BD7CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE5701392C9E0BCA003BD7CA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE57013B2C9E0DBE003BD7CA /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninView.swift; sourceTree = "<group>"; };
@@ -118,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE0081D72CA3455B00D84ACB /* CurrencyField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +178,7 @@
 				CE5150472C9FD5AD00B10107 /* UpdateProfileView.swift */,
 				CE51504D2C9FDC8400B10107 /* UpdatePasswordView.swift */,
 				CE5150742CA093CB00B10107 /* OnboardView.swift */,
+				CE5150762CA0AFA600B10107 /* CreateTripView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -179,6 +192,7 @@
 				CE57014D2C9E1DBB003BD7CA /* SignUpViewModel.swift */,
 				CE5701462C9E16E4003BD7CA /* ResetPasswordViewModel.swift */,
 				CE57013F2C9E0DEB003BD7CA /* SigninViewModel.swift */,
+				CE5150782CA0AFAB00B10107 /* CreateTripViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -195,6 +209,9 @@
 		CE5701482C9E1A36003BD7CA /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				CE0081A32CA1DF3700D84ACB /* Test.swift */,
+				CE51507C2CA0B25500B10107 /* CustomCalendarView.swift */,
+				CE51507A2CA0B21600B10107 /* DashedLine.swift */,
 				CE5150672CA035A800B10107 /* CustomTabView */,
 				CE5150492C9FD63300B10107 /* SharedViews.swift */,
 				CE5701492C9E1A4C003BD7CA /* CustomViews.swift */,
@@ -373,6 +390,7 @@
 			);
 			mainGroup = CED05EF52C95AF6F00E51158;
 			packageReferences = (
+				CE0081D52CA3455B00D84ACB /* XCRemoteSwiftPackageReference "swiftui-currency-field" */,
 			);
 			productRefGroup = CED05EFF2C95AF7000E51158 /* Products */;
 			projectDirPath = "";
@@ -422,6 +440,8 @@
 				CE5150442C9F512700B10107 /* CarInfoView.swift in Sources */,
 				CE5701402C9E0DF6003BD7CA /* SigninViewModel.swift in Sources */,
 				CE5150372C9F259200B10107 /* InboxView.swift in Sources */,
+				CE51507B2CA0B21800B10107 /* DashedLine.swift in Sources */,
+				CE5150792CA0AFAE00B10107 /* CreateTripViewModel.swift in Sources */,
 				CE5150682CA035A800B10107 /* UITabBarControllerRepresentable.swift in Sources */,
 				CE5150692CA035A800B10107 /* CustomTabView.swift in Sources */,
 				CE51506E2CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift in Sources */,
@@ -436,8 +456,10 @@
 				CE5701452C9E16DD003BD7CA /* ResetPasswordView.swift in Sources */,
 				CE51504A2C9FD63B00B10107 /* SharedViews.swift in Sources */,
 				CE5701432C9E0E0D003BD7CA /* User.swift in Sources */,
+				CE51507D2CA0B25700B10107 /* CustomCalendarView.swift in Sources */,
 				CE57014A2C9E1A54003BD7CA /* CustomViews.swift in Sources */,
 				CE5150352C9F258100B10107 /* SettingsView.swift in Sources */,
+				CE0081A42CA1DF3A00D84ACB /* Test.swift in Sources */,
 				CE5150752CA093CB00B10107 /* OnboardView.swift in Sources */,
 				CE57013C2C9E0DBE003BD7CA /* SigninView.swift in Sources */,
 				CE5150552CA0153300B10107 /* TabBarView.swift in Sources */,
@@ -447,6 +469,7 @@
 				CE5150402C9F3B2700B10107 /* SettingsViewModel.swift in Sources */,
 				CE5701472C9E16EA003BD7CA /* ResetPasswordViewModel.swift in Sources */,
 				CE57017A2C9E9F2C003BD7CA /* View.swift in Sources */,
+				CE5150772CA0AFA600B10107 /* CreateTripView.swift in Sources */,
 				CE5701752C9E8FC0003BD7CA /* CountryCode.swift in Sources */,
 				CE57017C2C9F24C1003BD7CA /* MainTabView.swift in Sources */,
 				CE5150482C9FD5AD00B10107 /* UpdateProfileView.swift in Sources */,
@@ -782,6 +805,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE0081D52CA3455B00D84ACB /* XCRemoteSwiftPackageReference "swiftui-currency-field" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jtrinc/swiftui-currency-field.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE0081D62CA3455B00D84ACB /* CurrencyField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE0081D52CA3455B00D84ACB /* XCRemoteSwiftPackageReference "swiftui-currency-field" */;
+			productName = CurrencyField;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CED05EF62C95AF6F00E51158 /* Project object */;
 }
