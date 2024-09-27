@@ -13,7 +13,10 @@ struct ContentView: View {
         if !isFirstLaunch {
             OnboardView()
         } else {
-            SigninView()
+            
+            SigninView().onAppear(){
+//                _ = MockDate.getTripsResponse()
+            }
         }
     }
 }

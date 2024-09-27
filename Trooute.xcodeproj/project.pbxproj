@@ -12,6 +12,33 @@
 		CE4E3D752CA356CD005C3CEE /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D742CA356CD005C3CEE /* FAQView.swift */; };
 		CE4E3D772CA35794005C3CEE /* FAQViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */; };
 		CE4E3D792CA357C8005C3CEE /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D782CA357B5005C3CEE /* FAQ.swift */; };
+		CE4E3D7F2CA49A85005C3CEE /* InvertedTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D7E2CA49A82005C3CEE /* InvertedTriangle.swift */; };
+		CE4E3D812CA49AC4005C3CEE /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D802CA49ABE005C3CEE /* Date.swift */; };
+		CE4E3D832CA49C76005C3CEE /* TripsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D822CA49C71005C3CEE /* TripsViewModel.swift */; };
+		CE4E3D862CA4A3AD005C3CEE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D852CA4A3AA005C3CEE /* Utils.swift */; };
+		CE4E3DF32CA5A54A005C3CEE /* TripsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3DF22CA5A548005C3CEE /* TripsData.swift */; };
+		CE4E3DF52CA5A6C1005C3CEE /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3DF42CA5A6BD005C3CEE /* Trip.swift */; };
+		CE4E3DF72CA5A715005C3CEE /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3DF62CA5A70E005C3CEE /* Driver.swift */; };
+		CE4E3DF92CA5A741005C3CEE /* CarDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3DF82CA5A73D005C3CEE /* CarDetails.swift */; };
+		CE4E3DFB2CA5A787005C3CEE /* ReviewsStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3DFA2CA5A785005C3CEE /* ReviewsStats.swift */; };
+		CE4E3DFD2CA5B184005C3CEE /* LuggageRestrictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3DFC2CA5B182005C3CEE /* LuggageRestrictions.swift */; };
+		CE4E3DFF2CA5B2C1005C3CEE /* Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3DFE2CA5B2BB005C3CEE /* Passenger.swift */; };
+		CE4E3E012CA5B353005C3CEE /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3E002CA5B351005C3CEE /* Booking.swift */; };
+		CE4E3E032CA5B557005C3CEE /* ReviewsGiven.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3E022CA5B556005C3CEE /* ReviewsGiven.swift */; };
+		CE4E3E062CA5C1FA005C3CEE /* GetTripsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3E052CA5C1F6005C3CEE /* GetTripsResponse.swift */; };
+		CE4E3E082CA5C21A005C3CEE /* GetTripDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3E072CA5C219005C3CEE /* GetTripDetailsResponse.swift */; };
+		CE4E3E0A2CA5C2D5005C3CEE /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3E092CA5C2D5005C3CEE /* SearchResults.swift */; };
+		CE4E3E0C2CA5C533005C3CEE /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3E0B2CA5C52F005C3CEE /* SearchResultsViewModel.swift */; };
+		CE4E3E0E2CA5C558005C3CEE /* TripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3E0D2CA5C556005C3CEE /* TripCardView.swift */; };
+		CE4E3E102CA5C5C5005C3CEE /* TripCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3E0F2CA5C5C1005C3CEE /* TripCardViewModel.swift */; };
+		CE4E3E122CA5C97F005C3CEE /* MockDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3E112CA5C979005C3CEE /* MockDate.swift */; };
+		CE4E3E142CA5D948005C3CEE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3E132CA5D93D005C3CEE /* Constants.swift */; };
+		CE4E3E172CA5E728005C3CEE /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CE4E3E162CA5E728005C3CEE /* SDWebImageSwiftUI */; };
+		CE4E3E192CA5ED1A005C3CEE /* DriverCarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3E182CA5ED1A005C3CEE /* DriverCarView.swift */; };
+		CE4E3E1B2CA5F6B8005C3CEE /* TripRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3E1A2CA5F6B8005C3CEE /* TripRouteView.swift */; };
+		CE4E3E882CA73656005C3CEE /* DriverCarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3E872CA73652005C3CEE /* DriverCarViewModel.swift */; };
+		CE4E3E8E2CA74945005C3CEE /* TripRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3E8D2CA7492F005C3CEE /* TripRouteModel.swift */; };
+		CE4E3E902CA753C4005C3CEE /* CheckboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3E8F2CA753B3005C3CEE /* CheckboxStyle.swift */; };
 		CE5150352C9F258100B10107 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150342C9F258100B10107 /* SettingsView.swift */; };
 		CE5150372C9F259200B10107 /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150362C9F259200B10107 /* InboxView.swift */; };
 		CE5150392C9F25B400B10107 /* BookingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150382C9F25B400B10107 /* BookingsView.swift */; };
@@ -80,6 +107,32 @@
 		CE4E3D742CA356CD005C3CEE /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
 		CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewModel.swift; sourceTree = "<group>"; };
 		CE4E3D782CA357B5005C3CEE /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ.swift; sourceTree = "<group>"; };
+		CE4E3D7E2CA49A82005C3CEE /* InvertedTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedTriangle.swift; sourceTree = "<group>"; };
+		CE4E3D802CA49ABE005C3CEE /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		CE4E3D822CA49C71005C3CEE /* TripsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsViewModel.swift; sourceTree = "<group>"; };
+		CE4E3D852CA4A3AA005C3CEE /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		CE4E3DF22CA5A548005C3CEE /* TripsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsData.swift; sourceTree = "<group>"; };
+		CE4E3DF42CA5A6BD005C3CEE /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		CE4E3DF62CA5A70E005C3CEE /* Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
+		CE4E3DF82CA5A73D005C3CEE /* CarDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetails.swift; sourceTree = "<group>"; };
+		CE4E3DFA2CA5A785005C3CEE /* ReviewsStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsStats.swift; sourceTree = "<group>"; };
+		CE4E3DFC2CA5B182005C3CEE /* LuggageRestrictions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuggageRestrictions.swift; sourceTree = "<group>"; };
+		CE4E3DFE2CA5B2BB005C3CEE /* Passenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Passenger.swift; sourceTree = "<group>"; };
+		CE4E3E002CA5B351005C3CEE /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
+		CE4E3E022CA5B556005C3CEE /* ReviewsGiven.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsGiven.swift; sourceTree = "<group>"; };
+		CE4E3E052CA5C1F6005C3CEE /* GetTripsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTripsResponse.swift; sourceTree = "<group>"; };
+		CE4E3E072CA5C219005C3CEE /* GetTripDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTripDetailsResponse.swift; sourceTree = "<group>"; };
+		CE4E3E092CA5C2D5005C3CEE /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
+		CE4E3E0B2CA5C52F005C3CEE /* SearchResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewModel.swift; sourceTree = "<group>"; };
+		CE4E3E0D2CA5C556005C3CEE /* TripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardView.swift; sourceTree = "<group>"; };
+		CE4E3E0F2CA5C5C1005C3CEE /* TripCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardViewModel.swift; sourceTree = "<group>"; };
+		CE4E3E112CA5C979005C3CEE /* MockDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDate.swift; sourceTree = "<group>"; };
+		CE4E3E132CA5D93D005C3CEE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CE4E3E182CA5ED1A005C3CEE /* DriverCarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverCarView.swift; sourceTree = "<group>"; };
+		CE4E3E1A2CA5F6B8005C3CEE /* TripRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRouteView.swift; sourceTree = "<group>"; };
+		CE4E3E872CA73652005C3CEE /* DriverCarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverCarViewModel.swift; sourceTree = "<group>"; };
+		CE4E3E8D2CA7492F005C3CEE /* TripRouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRouteModel.swift; sourceTree = "<group>"; };
+		CE4E3E8F2CA753B3005C3CEE /* CheckboxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxStyle.swift; sourceTree = "<group>"; };
 		CE5150342C9F258100B10107 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CE5150362C9F259200B10107 /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
 		CE5150382C9F25B400B10107 /* BookingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsView.swift; sourceTree = "<group>"; };
@@ -135,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4E3E172CA5E728005C3CEE /* SDWebImageSwiftUI in Frameworks */,
 				CE0081D72CA3455B00D84ACB /* CurrencyField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,6 +210,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE4E3D842CA4A3A1005C3CEE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CE4E3E132CA5D93D005C3CEE /* Constants.swift */,
+				CE4E3E112CA5C979005C3CEE /* MockDate.swift */,
+				CE4E3D852CA4A3AA005C3CEE /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CE4E3E042CA5C1EC005C3CEE /* ResponseObjects */ = {
+			isa = PBXGroup;
+			children = (
+				CE4E3E072CA5C219005C3CEE /* GetTripDetailsResponse.swift */,
+				CE4E3E052CA5C1F6005C3CEE /* GetTripsResponse.swift */,
+			);
+			path = ResponseObjects;
+			sourceTree = "<group>";
+		};
+		CE4E3E8C2CA748F4005C3CEE /* App Custom Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE4E3E8D2CA7492F005C3CEE /* TripRouteModel.swift */,
+			);
+			path = "App Custom Model";
+			sourceTree = "<group>";
+		};
 		CE5150672CA035A800B10107 /* CustomTabView */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +252,7 @@
 		CE57013D2C9E0DCB003BD7CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE4E3E0D2CA5C556005C3CEE /* TripCardView.swift */,
 				CE57017B2C9F24C1003BD7CA /* MainTabView.swift */,
 				CE57013B2C9E0DBE003BD7CA /* SigninView.swift */,
 				CE5701442C9E16DD003BD7CA /* ResetPasswordView.swift */,
@@ -186,6 +268,7 @@
 				CE5150742CA093CB00B10107 /* OnboardView.swift */,
 				CE5150762CA0AFA600B10107 /* CreateTripView.swift */,
 				CE4E3D742CA356CD005C3CEE /* FAQView.swift */,
+				CE4E3E092CA5C2D5005C3CEE /* SearchResults.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,6 +276,10 @@
 		CE57013E2C9E0DDE003BD7CA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CE4E3E872CA73652005C3CEE /* DriverCarViewModel.swift */,
+				CE4E3E0F2CA5C5C1005C3CEE /* TripCardViewModel.swift */,
+				CE4E3E0B2CA5C52F005C3CEE /* SearchResultsViewModel.swift */,
+				CE4E3D822CA49C71005C3CEE /* TripsViewModel.swift */,
 				CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */,
 				CE51504F2C9FE00E00B10107 /* UpdatePasswordViewModel.swift */,
 				CE51504B2C9FD8A100B10107 /* UpdateProfileViewModel.swift */,
@@ -208,6 +295,17 @@
 		CE5701412C9E0DFD003BD7CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE4E3E8C2CA748F4005C3CEE /* App Custom Model */,
+				CE4E3E042CA5C1EC005C3CEE /* ResponseObjects */,
+				CE4E3E022CA5B556005C3CEE /* ReviewsGiven.swift */,
+				CE4E3E002CA5B351005C3CEE /* Booking.swift */,
+				CE4E3DFE2CA5B2BB005C3CEE /* Passenger.swift */,
+				CE4E3DFC2CA5B182005C3CEE /* LuggageRestrictions.swift */,
+				CE4E3DFA2CA5A785005C3CEE /* ReviewsStats.swift */,
+				CE4E3DF82CA5A73D005C3CEE /* CarDetails.swift */,
+				CE4E3DF62CA5A70E005C3CEE /* Driver.swift */,
+				CE4E3DF42CA5A6BD005C3CEE /* Trip.swift */,
+				CE4E3DF22CA5A548005C3CEE /* TripsData.swift */,
 				CE4E3D782CA357B5005C3CEE /* FAQ.swift */,
 				CE5701742C9E8FB3003BD7CA /* CountryCode.swift */,
 				CE5701422C9E0E05003BD7CA /* User.swift */,
@@ -218,12 +316,16 @@
 		CE5701482C9E1A36003BD7CA /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				CE4E3E8F2CA753B3005C3CEE /* CheckboxStyle.swift */,
+				CE4E3D7E2CA49A82005C3CEE /* InvertedTriangle.swift */,
 				CE0081A32CA1DF3700D84ACB /* Test.swift */,
 				CE51507C2CA0B25500B10107 /* CustomCalendarView.swift */,
 				CE51507A2CA0B21600B10107 /* DashedLine.swift */,
 				CE5150672CA035A800B10107 /* CustomTabView */,
 				CE5150492C9FD63300B10107 /* SharedViews.swift */,
 				CE5701492C9E1A4C003BD7CA /* CustomViews.swift */,
+				CE4E3E182CA5ED1A005C3CEE /* DriverCarView.swift */,
+				CE4E3E1A2CA5F6B8005C3CEE /* TripRouteView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -239,6 +341,7 @@
 		CE5701762C9E96AF003BD7CA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CE4E3D802CA49ABE005C3CEE /* Date.swift */,
 				CE5150452C9F57CE00B10107 /* Color.swift */,
 				CE5701792C9E9F29003BD7CA /* View.swift */,
 				CE5701772C9E96B8003BD7CA /* Bundle.swift */,
@@ -269,6 +372,7 @@
 		CED05F002C95AF7000E51158 /* Trooute */ = {
 			isa = PBXGroup;
 			children = (
+				CE4E3D842CA4A3A1005C3CEE /* Utils */,
 				CE5701762C9E96AF003BD7CA /* Extensions */,
 				CE57016F2C9E8BBF003BD7CA /* Resources */,
 				CE5701482C9E1A36003BD7CA /* CustomViews */,
@@ -400,6 +504,7 @@
 			mainGroup = CED05EF52C95AF6F00E51158;
 			packageReferences = (
 				CE0081D52CA3455B00D84ACB /* XCRemoteSwiftPackageReference "swiftui-currency-field" */,
+				CE4E3E152CA5E728005C3CEE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = CED05EFF2C95AF7000E51158 /* Products */;
 			projectDirPath = "";
@@ -447,42 +552,68 @@
 			files = (
 				CE51504E2C9FDC8400B10107 /* UpdatePasswordView.swift in Sources */,
 				CE5150442C9F512700B10107 /* CarInfoView.swift in Sources */,
+				CE4E3D812CA49AC4005C3CEE /* Date.swift in Sources */,
+				CE4E3DF72CA5A715005C3CEE /* Driver.swift in Sources */,
+				CE4E3D7F2CA49A85005C3CEE /* InvertedTriangle.swift in Sources */,
 				CE5701402C9E0DF6003BD7CA /* SigninViewModel.swift in Sources */,
+				CE4E3E0C2CA5C533005C3CEE /* SearchResultsViewModel.swift in Sources */,
 				CE5150372C9F259200B10107 /* InboxView.swift in Sources */,
+				CE4E3E902CA753C4005C3CEE /* CheckboxStyle.swift in Sources */,
+				CE4E3E192CA5ED1A005C3CEE /* DriverCarView.swift in Sources */,
 				CE51507B2CA0B21800B10107 /* DashedLine.swift in Sources */,
+				CE4E3E142CA5D948005C3CEE /* Constants.swift in Sources */,
 				CE4E3D792CA357C8005C3CEE /* FAQ.swift in Sources */,
 				CE5150792CA0AFAE00B10107 /* CreateTripViewModel.swift in Sources */,
 				CE5150682CA035A800B10107 /* UITabBarControllerRepresentable.swift in Sources */,
 				CE5150692CA035A800B10107 /* CustomTabView.swift in Sources */,
 				CE51506E2CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift in Sources */,
+				CE4E3DFB2CA5A787005C3CEE /* ReviewsStats.swift in Sources */,
 				CE4E3D772CA35794005C3CEE /* FAQViewModel.swift in Sources */,
 				CE51506F2CA035A800B10107 /* KeyboardReadable.swift in Sources */,
 				CE4E3D752CA356CD005C3CEE /* FAQView.swift in Sources */,
 				CE51504C2C9FD8A800B10107 /* UpdateProfileViewModel.swift in Sources */,
 				CE5701782C9E96B9003BD7CA /* Bundle.swift in Sources */,
+				CE4E3DF92CA5A741005C3CEE /* CarDetails.swift in Sources */,
 				CED05F042C95AF7000E51158 /* ContentView.swift in Sources */,
 				CE57014E2C9E1DC0003BD7CA /* SignUpViewModel.swift in Sources */,
 				CE51503B2C9F25C400B10107 /* TripsView.swift in Sources */,
+				CE4E3E0E2CA5C558005C3CEE /* TripCardView.swift in Sources */,
+				CE4E3E032CA5B557005C3CEE /* ReviewsGiven.swift in Sources */,
+				CE4E3D862CA4A3AD005C3CEE /* Utils.swift in Sources */,
+				CE4E3E062CA5C1FA005C3CEE /* GetTripsResponse.swift in Sources */,
 				CED05F022C95AF7000E51158 /* TroouteApp.swift in Sources */,
+				CE4E3E082CA5C21A005C3CEE /* GetTripDetailsResponse.swift in Sources */,
+				CE4E3DFD2CA5B184005C3CEE /* LuggageRestrictions.swift in Sources */,
 				CE5150502C9FE01300B10107 /* UpdatePasswordViewModel.swift in Sources */,
 				CE5701452C9E16DD003BD7CA /* ResetPasswordView.swift in Sources */,
+				CE4E3E0A2CA5C2D5005C3CEE /* SearchResults.swift in Sources */,
 				CE51504A2C9FD63B00B10107 /* SharedViews.swift in Sources */,
 				CE5701432C9E0E0D003BD7CA /* User.swift in Sources */,
 				CE51507D2CA0B25700B10107 /* CustomCalendarView.swift in Sources */,
 				CE57014A2C9E1A54003BD7CA /* CustomViews.swift in Sources */,
+				CE4E3DF32CA5A54A005C3CEE /* TripsData.swift in Sources */,
 				CE5150352C9F258100B10107 /* SettingsView.swift in Sources */,
+				CE4E3DF52CA5A6C1005C3CEE /* Trip.swift in Sources */,
 				CE0081A42CA1DF3A00D84ACB /* Test.swift in Sources */,
+				CE4E3D832CA49C76005C3CEE /* TripsViewModel.swift in Sources */,
 				CE5150752CA093CB00B10107 /* OnboardView.swift in Sources */,
+				CE4E3DFF2CA5B2C1005C3CEE /* Passenger.swift in Sources */,
 				CE57013C2C9E0DBE003BD7CA /* SigninView.swift in Sources */,
+				CE4E3E122CA5C97F005C3CEE /* MockDate.swift in Sources */,
+				CE4E3E882CA73656005C3CEE /* DriverCarViewModel.swift in Sources */,
 				CE5150552CA0153300B10107 /* TabBarView.swift in Sources */,
 				CE5150462C9F57D300B10107 /* Color.swift in Sources */,
 				CE5150392C9F25B400B10107 /* BookingsView.swift in Sources */,
 				CE57014C2C9E1CC7003BD7CA /* SignUpView.swift in Sources */,
 				CE5150402C9F3B2700B10107 /* SettingsViewModel.swift in Sources */,
+				CE4E3E102CA5C5C5005C3CEE /* TripCardViewModel.swift in Sources */,
+				CE4E3E1B2CA5F6B8005C3CEE /* TripRouteView.swift in Sources */,
 				CE5701472C9E16EA003BD7CA /* ResetPasswordViewModel.swift in Sources */,
+				CE4E3E8E2CA74945005C3CEE /* TripRouteModel.swift in Sources */,
 				CE57017A2C9E9F2C003BD7CA /* View.swift in Sources */,
 				CE5150772CA0AFA600B10107 /* CreateTripView.swift in Sources */,
 				CE5701752C9E8FC0003BD7CA /* CountryCode.swift in Sources */,
+				CE4E3E012CA5B353005C3CEE /* Booking.swift in Sources */,
 				CE57017C2C9F24C1003BD7CA /* MainTabView.swift in Sources */,
 				CE5150482C9FD5AD00B10107 /* UpdateProfileView.swift in Sources */,
 				CE5150422C9F3BD900B10107 /* UserInfoCardView.swift in Sources */,
@@ -827,6 +958,14 @@
 				minimumVersion = 1.0.2;
 			};
 		};
+		CE4E3E152CA5E728005C3CEE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 3.1.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -834,6 +973,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE0081D52CA3455B00D84ACB /* XCRemoteSwiftPackageReference "swiftui-currency-field" */;
 			productName = CurrencyField;
+		};
+		CE4E3E162CA5E728005C3CEE /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE4E3E152CA5E728005C3CEE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
