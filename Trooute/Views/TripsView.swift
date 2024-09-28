@@ -29,11 +29,18 @@ struct TripsView: View {
                         .listRowSeparator(.hidden)
                 } else {
                     ForEach(viewModel.nearByTrips) { trip in
-                        Section {
-                            TripCardView(viewModel: TripCardViewModel(trip: trip))
-                                .listRowSeparator(.hidden)
-                                .listRowBackground(Color.clear)
-                        }
+                            ZStack {
+                                NavigationLink(destination: TripDetailsView(viewModel: TripDetailsViewModel(trip: trip))) {
+                                    EmptyView()
+                                    }.opacity(0)
+                                TripCardView(viewModel: TripCardViewModel(trip: trip))
+                                    .listRowSeparator(.hidden)
+                                    .listRowBackground(Color.clear)
+                            }.background(.clear)
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
+                           
+                        
                     }
                 }
             }
@@ -210,7 +217,7 @@ struct TripsView: View {
         }) {
             HStack {
                 if let selectedDate = viewModel.date {
-                    Text(selectedDate.formatDate())
+                    Text(selectedDate.mediumFormatDate())
                 } else {
                     Text("Choose Date")
                 }

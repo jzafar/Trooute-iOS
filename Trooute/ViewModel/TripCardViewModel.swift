@@ -18,6 +18,7 @@ class TripCardViewModel: ObservableObject {
     }
     
     func getTripRouteModel() -> TripRouteModel {
-        return TripRouteModel(fromAddress: self.trip.fromAddress, whereToAddress: self.trip.whereToAddress, date: self.trip.departureDate)
+        let date = self.trip.departureDate.fullFormate()
+        return TripRouteModel(fromAddress: self.trip.fromAddress, whereToAddress: self.trip.whereToAddress, date: date)
     }
 }

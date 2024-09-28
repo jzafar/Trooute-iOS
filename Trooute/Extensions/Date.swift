@@ -8,9 +8,16 @@
 import Foundation
 
 extension Date {
-    func formatDate() -> String {
+    func mediumFormatDate() -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
+        return formatter.string(from: self)
+    }
+    
+    func fullFormatDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .short
         return formatter.string(from: self)
     }
 }
