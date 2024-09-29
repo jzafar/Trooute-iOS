@@ -39,8 +39,6 @@ struct TripsView: View {
                             }.background(.clear)
                             .listRowSeparator(.hidden)
                             .listRowBackground(Color.clear)
-                           
-                        
                     }
                 }
             }
@@ -190,28 +188,6 @@ struct TripsView: View {
     func chooseTripDate() -> some View {
         // Date section
         TextViewLableText(text: "Choose the date of the trip", textFont: .headline)
-//            Rectangle()
-//                .frame(height: 40)
-//                .cornerRadius(10)
-//                .overlay {
-//                    HStack {
-//                        if let selectedDate = viewModel.date {
-//                            Text(selectedDate.formatDate())
-//                                .foregroundStyle(.blue)
-//                        } else {
-//                            Text("Choose Date")
-//                                .foregroundStyle(.blue)
-//                        }
-//                        Spacer()
-//                        Image(systemName: "calendar")
-//                            .foregroundStyle(.blue)
-//                    }.onTapGesture {
-//                        viewModel.isDatePickerPresented.toggle()
-//                    }
-//                    .padding()
-//                    .background(Color(UIColor.systemGray6))
-//                    .cornerRadius(10)
-//                }
         Button(action: {
             viewModel.isDatePickerPresented.toggle()
         }) {

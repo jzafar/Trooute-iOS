@@ -229,7 +229,7 @@ struct SignUpView: View {
     func tandCView() -> some View {
         HStack {
             Toggle("", isOn: $viewModel.agreeToTerms)
-                .toggleStyle(CheckboxToggleStyle())
+                .toggleStyle(CheckboxStyle())
                 .tint(Color("PrimaryGreen"))
             Text("Agree to")
                 .foregroundColor(.primary)

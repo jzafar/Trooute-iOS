@@ -10,4 +10,8 @@ struct TripRouteModel {
     let fromAddress: String
     let whereToAddress: String
     let date: String
+    
+    var formattedDate: String {
+        return date.fullFormate()
+    }
 }

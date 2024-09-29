@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct TroouteApp: App {
+    @StateObject var userViewModel = SigninViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(userViewModel)
         }
     }
 }

@@ -7,18 +7,23 @@
 import Foundation
 extension String {
     func fullFormate() -> String {
-        print(self)
-        
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         if let date = dateFormatter.date(from: self) {
             return date.fullFormatDate()
         }
-       
-//        if let date = dateFormatter.date(from: self) {
-//            return date.fullFormatDate()
-//        }
         return "Unknown date"
     }
+    
+    func emptyOrNil() -> String {
+        if self.count == 0 {
+            return "Not Provided"
+        }
+        return self
+    }
+    
+    func firstTenCharacters() -> String {
+        return String(self.prefix(10)).uppercased()
+   }
 }

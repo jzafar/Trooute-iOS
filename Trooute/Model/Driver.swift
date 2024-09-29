@@ -6,15 +6,15 @@
 //
 import Foundation
 
-struct Driver: Codable {
-    let id: String
+struct Driver: UserProfile, Codable {
+    var id: String
+    var name: String
+    var photo: String?
+    var gender: String? = "Not provided"
     let carDetails: CarDetails?
     let driverMode: Bool?
     let email: String?
     let isApprovedDriver: Bool?
-    let name: String
-    let photo: String?
-    var gender: String? = "male"
     let reviewsStats: ReviewsStats?
     enum CodingKeys: String, CodingKey {
         case id = "_id"

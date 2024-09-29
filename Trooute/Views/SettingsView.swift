@@ -8,19 +8,23 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var isDriverModeOn = true
-    @State private var isNotificationOn = true
+    
+    @StateObject var viewModel = SettingsViewModel()
     var body: some View {
         List {
             // Section 1: Driver's Profile
             Section {
-                UserInfoCardView()
+                UserInfoCardView(viewModel: UserInfoCardViewModel(user: viewModel.user))
             }
 
-            // Section 2: Vehicle Information
-            Section {
-                CarInfoView()
+            if (viewModel.isDriverModeOn) {
+                if let carDetails = viewModel.carDetails {
+                    Section {
+                        CarInfoView(viewModel: CarInfoViewModel(carDetails: carDetails))
+                    }
+                }
             }
+            
 
             // Section 3: Driver Mode Toggle
             Section {
@@ -47,12 +51,15 @@ struct SettingsView: View {
                 logoutSection()
             }
         }
+        .onAppear {
+            
+        }
         .listStyle(InsetGroupedListStyle())
     }
 
     @ViewBuilder
     func driverModeView() -> some View {
-        Toggle(isOn: $isDriverModeOn) {
+        Toggle(isOn: $viewModel.isDriverModeOn) {
             HStack {
                 Image("ic_become_driver")
                     .resizable()
@@ -60,6 +67,8 @@ struct SettingsView: View {
 
                 ListRowText(text: "Driver Mode")
             }
+        }.onChange(of: viewModel.isDriverModeOn) { newValue in
+            viewModel.toggleDriverMode(newValue) 
         }
     }
 
@@ -99,7 +108,7 @@ struct SettingsView: View {
             }
         })
         HStack {
-            Toggle(isOn: $isNotificationOn) {
+            Toggle(isOn: $viewModel.isNotificationOn) {
                 HStack {
                     Image("ic_noti")
                         .resizable()

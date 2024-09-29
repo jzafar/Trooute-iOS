@@ -8,9 +8,10 @@
 import Foundation
 class TripCardViewModel: ObservableObject {
     @Published var trip: TripsData
-    
-    init(trip: TripsData) {
+    var bookingSeats: Int?
+    init(trip: TripsData, bookingSeats: Int? = nil) {
         self.trip = trip
+        self.bookingSeats = bookingSeats
     }
     
     var driverImageUrl: String {
@@ -18,7 +19,20 @@ class TripCardViewModel: ObservableObject {
     }
     
     func getTripRouteModel() -> TripRouteModel {
-        let date = self.trip.departureDate.fullFormate()
-        return TripRouteModel(fromAddress: self.trip.fromAddress, whereToAddress: self.trip.whereToAddress, date: date)
+        return TripRouteModel(fromAddress: self.trip.fromAddress, whereToAddress: self.trip.whereToAddress, date: self.trip.departureDate)
+    }
+    
+    var bookPrice: String {
+        if let seats = self.bookingSeats {
+            return "€\(String(format: "%.1f", Double(seats) * trip.pricePerPerson))"
+        }
+        return "€0.0"
+    }
+    
+    var finalPrice: Double {
+        if let seats = self.bookingSeats {
+            return  Double(seats) * trip.pricePerPerson
+        }
+        return self.trip.pricePerPerson
     }
 }

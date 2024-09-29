@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SigninView: View {
-    @ObservedObject var viewModel = SigninViewModel()
+    @EnvironmentObject var viewModel: SigninViewModel
     var body: some View {
         VStack(spacing: 20) {
             signInText()
@@ -104,7 +104,7 @@ struct SigninView: View {
     @ViewBuilder
     func signInButton() -> some View {
         PrimaryGreenButton(title: "Sign in") {
-            viewModel.showMainView = true
+            viewModel.loginButtonPress()
         }
         .padding(.horizontal, 30)
     }

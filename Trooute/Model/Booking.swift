@@ -8,18 +8,18 @@
 import Foundation
 
 struct Booking: Codable {
-    let v: Int? // This replaces __v in a Swift-friendly way
+    let v: Int?
     let id: String
     var amount: Double = 0.0
     var note: String = ""
     var driverId: String = ""
-    var numberOfSeats: Int64 = 0
+    var numberOfSeats: Int = 0
     var pricePerPerson: Double = 0.0
     var pickupLocation: PickupLocation?
-    var reviewsGivenToCar: ReviewsGiven?
-    var reviewsGivenToDriver: ReviewsGiven?
-    var reviewsGivenToUser: ReviewsGiven?
-    var reviewsGivenToUsersByUser: [ReviewsGiven] = []
+    var reviewsGivenToCar: Review?
+    var reviewsGivenToDriver: Review?
+    var reviewsGivenToUser: Review?
+    var reviewsGivenToUsersByUser: [Review] = []
     var status: String = ""
     var createdAt: String = ""
     var updatedAt: String = ""

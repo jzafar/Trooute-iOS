@@ -12,14 +12,14 @@ struct TripDetailsView: View {
     var body: some View {
         List {
             Section {
-                UserInfoCardView()
+                UserInfoCardView(viewModel: viewModel.getDriverModel())
             }
 
             Section {
-                CarInfoView()
+                CarInfoView(viewModel: viewModel.getCarDetailsModel())
             }
 
-            Section(header: CustomHeaderView(seats: "4"), content: {
+            Section(header: CustomHeaderView(seats: viewModel.availableSeats), content: {
                 passengersView()
             })
 
@@ -35,14 +35,16 @@ struct TripDetailsView: View {
                     .listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets())
             }
-        }.safeAreaInset(edge: .bottom) {
+        }
+        .safeAreaInset(edge: .bottom) {
             bookNowView()
-                .cornerRadius(25)
         }
         .onAppear {
             Tabbar.shared.hide = true
         }
         .ignoresSafeArea(edges: .bottom)
+        .navigationTitle("Trip Details")
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     @ViewBuilder
@@ -54,14 +56,17 @@ struct TripDetailsView: View {
                     .frame(width: 30, height: 30)
                     .padding(.horizontal)
                     .foregroundStyle(.white)
-                PrimaryGreenButton(title: "Book Now") {
-                }.padding()
+                NavigationLink(destination: BookTripView(viewModel: BookTripViewModel(trip: viewModel.trip))) {
+                    PrimaryGreenText(title: "Book now")
+                        .padding(.horizontal)
+                }
+
             }.padding(.horizontal)
-            .cornerRadius(25)
-            .background(Color("TitleColor"))
-                
-        }.background(.regularMaterial)
-        .frame(height: 150)
+                .background(Color("TitleColor"))
+                .frame(height: 100)
+
+        }.background(Color("TitleColor"))
+            .frame(height: 130)
     }
 
     @ViewBuilder
@@ -72,20 +77,21 @@ struct TripDetailsView: View {
                 .padding(.top, 10)
                 .padding(.horizontal)
             MasterDetailsView(master: "Type", details: "Hand carry")
-            MasterDetailsView(master: "weight", details: "20Kg")
+            MasterDetailsView(master: "weight", details: viewModel.handCarryWeight)
             MasterDetailsView(master: "Type", details: "Suitcase")
-            MasterDetailsView(master: "weight", details: "40kg")
+            MasterDetailsView(master: "weight", details: viewModel.suitcaseWeight)
             Divider()
                 .padding(.horizontal)
-            MasterDetailsView(master: "Smoking Allowed", details: "Yes")
-            MasterDetailsView(master: "Pets Allowed", details: "Yes")
-            MasterDetailsView(master: "Language", details: "Swedish")
+            MasterDetailsView(master: "Smoking Allowed", details: viewModel.smokingPreference)
+            MasterDetailsView(master: "Pets Allowed", details: viewModel.petPreference)
+            MasterDetailsView(master: "Language", details: viewModel.languagePreference)
             Divider()
                 .padding(.horizontal)
             Text("Other relevent details")
                 .foregroundStyle(.gray)
                 .padding(.horizontal)
-            Text("Other relevent datisl goes here")
+            Text(viewModel.otherReliventDetails)
+                .multilineTextAlignment(.leading)
                 .foregroundStyle(.black)
                 .padding(.horizontal)
                 .padding(.bottom)
@@ -97,22 +103,12 @@ struct TripDetailsView: View {
     func destinationView() -> some View {
         VStack(alignment: .leading, spacing: 5) {
             VStack(alignment: .leading, spacing: 10) {
-                TripRouteView(info: TripRouteModel(fromAddress: "stock", whereToAddress: "ber", date: "12 10"))
+                TripRouteView(info: viewModel.getDestinationModel())
                     .padding(.top)
             }
             .background(Color.white)
             .cornerRadius(10)
-            HStack {
-                Text("€\(String(format: "%.1f", "123.0"))")
-                    .font(.title3).bold()
-                    .foregroundColor(.white)
-                Text("/Person")
-                    .font(.footnote)
-                    .foregroundColor(.white)
-                    .padding(.top, 5)
-                    .padding(.leading, -3)
-
-            }.padding()
+            PriceView(price: viewModel.trip.pricePerPerson, bookingSeats: nil, showPersonText: true)
         }
         .background(Color("TitleColor"))
         .shadow(radius: 10)

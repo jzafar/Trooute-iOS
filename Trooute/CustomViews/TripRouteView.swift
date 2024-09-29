@@ -25,7 +25,7 @@ struct TripRouteView: View {
                         .foregroundColor(Color.gray)
                     TextViewLableText(text: info.fromAddress, textFont: .headline)
 
-                    Text(info.date)
+                    Text(info.formattedDate)
                         .font(.subheadline)
                         .foregroundColor(Color.darkBlue)
                         .padding(.bottom)

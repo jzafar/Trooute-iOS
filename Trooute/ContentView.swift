@@ -9,13 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     private let isFirstLaunch: Bool = UserDefaults.standard.bool(forKey: "isFirstLaunch")
+    @EnvironmentObject var userViewModel: SigninViewModel
     var body: some View {
         if !isFirstLaunch {
             OnboardView()
         } else {
-            
-            SigninView().onAppear(){
-//                _ = MockDate.getTripsResponse()
+            if userViewModel.token != nil {
+                MainTabView()
+            } else {
+                SigninView()
             }
         }
     }

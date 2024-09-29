@@ -8,7 +8,7 @@
 import Foundation
 
 struct TripsData: Codable, Identifiable {
-    let v: Int? // This replaces __v in a Swift-friendly way
+    let v: Int?
     let id: String
     var isAddedInWishList: Bool
     let availableSeats: Int

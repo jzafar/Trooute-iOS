@@ -8,8 +8,40 @@
 import SwiftUI
 
 struct BookingsView: View {
+    @StateObject var viewModel = BookingsViewModel()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            if viewModel.bookings.count == 0 {
+                HStack {
+                    Spacer()
+                    Text("You don't have any bookings")
+                        .font(.subheadline)
+                        .foregroundStyle(.gray)
+                        .padding(.vertical)
+                    Spacer()
+                }.listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+            } else {
+                List {
+                    ForEach(viewModel.bookings) { booking in
+                            ZStack {
+                                NavigationLink(destination: EmptyView()) {
+                                    EmptyView()
+                                    }.opacity(0)
+                                BookingCardView(viewModel: BookingCardViewModel(booking: booking))
+                                    .listRowSeparator(.hidden)
+                                    .listRowBackground(Color.clear)
+                            }.background(.clear)
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
+                    }
+                }.listStyle(GroupedListStyle())
+            }
+            
+        }
+        .onAppear {
+            viewModel.getBookings()
+        }
     }
 }
 

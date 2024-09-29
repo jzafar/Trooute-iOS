@@ -63,7 +63,7 @@ struct DriverCarView: View {
             }
             
             // Gender
-            TextViewLableText(text: viewModel.driver.gender ?? "male", textFont: .body)
+            TextViewLableText(text: viewModel.driver.gender ?? "Not provided", textFont: .body)
             
             // Rating and Reviews Section
             HStack {
@@ -120,5 +120,6 @@ struct DriverCarView: View {
 }
 
 #Preview {
-    DriverCarView(viewModel: DriverCarViewModel(driver: Driver(id: "123", carDetails: CarDetails(color: "green", driverLicense: "", make: "Peugout", model: "2021", photo: "carphoto-1707596900138-16302-img_20240210_212807.jpg", registrationNumber: "NLG11d", reviews: [], reviewsStats: nil, year: nil), driverMode: true, email: "", isApprovedDriver: true, name: "Muhammad Jahngir Zafar", photo: "cover-image-1707597881040.jpg", gender: "male", reviewsStats: ReviewsStats(avgRating: 4.5, ratings: Ratings(oneStar: 4.0, twoStars: 4.0, threeStars: 4.0, fourStars: 4.0, fiveStars: 4.0), totalReviews: 10))))
+    let data = MockDate.getTripsResponse()?.data?.first?.driver
+    DriverCarView(viewModel: DriverCarViewModel(driver: data!))
 }

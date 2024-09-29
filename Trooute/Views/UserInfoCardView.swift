@@ -9,31 +9,25 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct UserInfoCardView: View {
+    @ObservedObject var viewModel: UserInfoCardViewModel
     var body: some View {
         HStack {
-            Circle().stroke(Color.black, lineWidth: 1)
-                .frame(width: 80, height: 80)
-                .overlay(
-                    Image(systemName: "camera")
-                        .font(.largeTitle)
-                        .foregroundColor(.black)
-                )
-                .foregroundColor(Color(UIColor.systemGray5))
-                .padding(5)
-                .padding(.trailing,0)
+            userImage()
             VStack (alignment: .leading){
                 HStack {
-                    TextViewLableText(text: "Jahangir", textFont: .headline)
+                    TextViewLableText(text: viewModel.name, textFont: .headline)
                     Image(systemName: "checkmark.seal.fill")
                         .foregroundColor(.green)
                 }
                 
-                Text("male")
+                Text(viewModel.gender)
                 HStack {
                     Image(systemName: "star.fill")
                         .foregroundStyle(Color.yellow)
-                    TextViewLableText(text: "5.0", textFont: .headline)
-                    Text("(100)")
+                    Text(viewModel.avgRating.formatted(.number.precision(.fractionLength(1))))
+                        .font(.headline)
+                    
+                    Text(viewModel.totalReviews)
                         .font(.subheadline)
                         .foregroundStyle(Color.gray)
                 }
@@ -45,8 +39,30 @@ struct UserInfoCardView: View {
         }
         .cornerRadius(25)
     }
+    
+    @ViewBuilder
+    func userImage() -> some View {
+        WebImage(url: URL(string: viewModel.photo)) { image in
+                image.resizable()
+            } placeholder: {
+                Image("profile_place_holder")
+                    .resizable()
+            }
+            .onSuccess { image, data, cacheType in
+               
+            }
+            .indicator(.activity)
+            .transition(.fade(duration: 0.5))
+            .scaledToFit()
+            .frame(width: 80, height: 80)
+            .clipShape(Circle())
+            .overlay(Circle().stroke(Color.black, lineWidth: 1))
+            .padding(5)
+            .padding(.trailing,0)
+    }
 }
 
 #Preview {
-    UserInfoCardView()
+    let data = MockDate.getTripsResponse()?.data?.first?.driver
+    UserInfoCardView(viewModel: UserInfoCardViewModel(user: data!))
 }

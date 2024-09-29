@@ -17,17 +17,42 @@ struct TripCardView: View {
             }
             .background(Color.white)
             .cornerRadius(10)
-            HStack {
-                Text( "€\(String(format: "%.1f", viewModel.trip.pricePerPerson))")
-                    .font(.title3).bold()
-                    .foregroundColor(.white)
-                Text("/Person")
-                    .font(.footnote)
-                    .foregroundColor(.white)
-                    .padding(.top, 5)
-                    .padding(.leading, -3)
-                
-            }.padding()
+            VStack(alignment: .leading) {
+                if let seats = viewModel.bookingSeats {
+                    HStack {
+                        Text("\(seats) x Seats")
+                            .foregroundStyle(.white)
+                        Spacer()
+                        Text(viewModel.bookPrice)
+                            .foregroundStyle(.white)
+                        
+                    }.padding(.horizontal)
+                        .padding(.vertical,5)
+                    
+                    HStack {
+                        Text("Platform fee")
+                            .foregroundStyle(.white)
+                        Spacer()
+                        Text("€\(seats).0")
+                            .foregroundStyle(.white)
+                        
+                        
+                    }.padding(.horizontal)
+                        .padding(.vertical,5)
+                    
+                    HStack {
+                    }.frame(height: 1)
+                    .padding(.horizontal)
+                        .frame(maxWidth: .infinity)
+                        .background(.white)
+                        .padding(.horizontal)
+                   
+                    
+                    
+                }
+                PriceView(price: viewModel.finalPrice, bookingSeats: viewModel.bookingSeats, showPersonText: false)
+            }
+           
             
         }
         .background(Color("TitleColor"))
@@ -87,5 +112,5 @@ struct TripCardView: View {
 }
 #Preview {
     let tripResponse = MockDate.getTripsResponse()!
-    TripCardView(viewModel: TripCardViewModel(trip: tripResponse.data!.first!))
+    TripCardView(viewModel: TripCardViewModel(trip: tripResponse.data!.first!, bookingSeats: 2))
 }

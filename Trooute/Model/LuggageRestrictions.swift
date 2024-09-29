@@ -14,5 +14,5 @@ enum LuggageType: String, Codable {
 
 struct LuggageRestrictions: Codable {
     var type: LuggageType = .handCarry
-    let weight: Int64?
+    let weight: Int?
 }

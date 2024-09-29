@@ -6,44 +6,38 @@
 //
 
 struct Trip: Codable {
-    let v: Int? // Replaces __v in Swift-friendly way
+    let v: Int?
     let id: String
-    let availableSeats: Int?
-    let departureDate: String
-    let driver: Driver?
-    let fromAddress: String
-    let fromLocation: Location?
-    let languagePreference: String
-    let note: String
-    let pricePerPerson: Double
-    let smokingPreference: Bool
-    let petPreference: Bool
-    let status: String
-    let totalAmount: Double
-    let totalSeats: Int
-    let whereToAddress: String
-    let whereToLocation: Location?
-    let luggageRestrictions: [LuggageRestrictions?]
-    let roundTrip: Bool
-
+    var departureDate: String
+    var driver: Driver?
+    var passengers: [Passenger]?
+    var fromAddress: String
+    var whereToAddress: String
+    var pricePerPerson: Double?
+    var luggageRestrictions: [LuggageRestrictions]?
+    var roundTrip: Bool? = false
+    var smokingPreference: Bool? = false
+    var languagePreference: String? = "Not provided"
+    var note: String? = "Not provided"
+    var availableSeats: Double?
+    var status: String? = "Scheduled"
+    var refunded: Bool?
+    var createdAt: String?
+    var updatedAt: String?
+    
     enum CodingKeys: String, CodingKey {
         case v = "__v"
         case id = "_id"
-        case availableSeats
         case departureDate
         case driver
+        case passengers
         case fromAddress = "from_address"
-        case fromLocation = "from_location"
+        case whereToAddress = "whereTo_address"
         case languagePreference
         case note
         case pricePerPerson
         case smokingPreference
-        case petPreference
         case status
-        case totalAmount
-        case totalSeats
-        case whereToAddress = "whereTo_address"
-        case whereToLocation = "whereTo_location"
         case luggageRestrictions
         case roundTrip
     }

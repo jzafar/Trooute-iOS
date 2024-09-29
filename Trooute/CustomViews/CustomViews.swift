@@ -23,6 +23,22 @@ struct PrimaryGreenButton: View {
     }
 }
 
+struct PrimaryGreenText: View {
+    var title: String
+    var body: some View {
+            Text(title)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity)
+                .font(.headline)
+                .fontWeight(.bold)
+                .padding()
+                .background(.primaryGreen)
+                .cornerRadius(8)
+        }
+    
+}
+
+
 struct ScendoryGrayButton: View {
     var title: String
     var action: () -> Void
@@ -36,6 +52,23 @@ struct ScendoryGrayButton: View {
                 .padding()
                 .background(.white)
                 .cornerRadius(8)
+        }
+    }
+}
+
+struct PersonButton: View {
+    let text: String
+    var action: () -> Void
+    var body: some View {
+        Button(action: action) {
+            Text(text)
+                .font(.largeTitle)
+                .foregroundColor(Color("TitleColor"))
+                .frame(width: 40, height: 50)
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .foregroundColor(.lightBlue)
+                )
         }
     }
 }
@@ -87,18 +120,39 @@ struct RadioButtonField: View {
     }
 }
 
-struct CheckboxToggleStyle: ToggleStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        Button(action: {
-            configuration.isOn.toggle()
-        }) {
-            HStack {
-                Image(systemName: configuration.isOn ? "checkmark.square" : "square")
-                    .foregroundColor(.green)
+//struct CheckboxToggleStyle: ToggleStyle {
+//    func makeBody(configuration: Configuration) -> some View {
+//        Button(action: {
+//            configuration.isOn.toggle()
+//        }) {
+//            HStack {
+//                Image(systemName: configuration.isOn ? "checkmark.square.fill" : "square")
+//                    .foregroundColor(.green)
+//            }
+//        }
+//    }
+//}
+
+struct PriceView: View {
+    let price: Double
+    let bookingSeats: Int?
+    let showPersonText: Bool
+    var body: some View {
+        HStack {
+            Text( "€\(String(format: "%.1f", (price + Double(bookingSeats ?? 0))))")
+                .font(.title3).bold()
+                .foregroundColor(.white)
+            if showPersonText {
+                Text("/Person")
+                    .font(.footnote)
+                    .foregroundColor(.white)
+                    .padding(.top, 5)
+                    .padding(.leading, -3)
             }
-        }
+        }.padding()
     }
 }
+
 
 
 struct XMarkButton: View {
