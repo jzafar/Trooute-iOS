@@ -12,7 +12,7 @@ struct BookingData: Codable, Identifiable {
     var note: String?
     var numberOfSeats: Int?
     var pickupLocation: PickupLocation?
-    var status: String?
+    let status: BookingStatus?
     var trip: Trip
     var user: User?
     var driverToUserReview: Review?
@@ -32,4 +32,12 @@ struct BookingData: Codable, Identifiable {
         case userToCarReview
         case userToDriverReview
     }
+}
+
+enum BookingStatus: String, Codable {
+    case waiting = "Waiting"
+    case cancled = "Cancled"
+    case approved = "Approved"
+    case confirmed = "Confirmed"
+    case completed = "Completed"
 }

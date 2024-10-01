@@ -46,6 +46,45 @@ class MockDate {
         }
     }
     
+    class func getDriverBookingsResponse() -> GetBookingsResponse? {
+        let jsonData = Data(MockDate.driverBookingsResponse.utf8)
+        let decoder = JSONDecoder()
+
+        do {
+            let booking = try decoder.decode(GetBookingsResponse.self, from: jsonData)
+            return booking
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
+    class func getUserBookingDetailsResponse() -> GetBookingDetailsResponse? {
+        let jsonData = Data(MockDate.userBookingDetails.utf8)
+        let decoder = JSONDecoder()
+
+        do {
+            let booking = try decoder.decode(GetBookingDetailsResponse.self, from: jsonData)
+            return booking
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
+    class func getDriverBookingDetailsResponse() -> GetBookingDetailsResponse? {
+        let jsonData = Data(MockDate.driverBookingDetails.utf8)
+        let decoder = JSONDecoder()
+
+        do {
+            let booking = try decoder.decode(GetBookingDetailsResponse.self, from: jsonData)
+            return booking
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
     
     
     static let SearchTripsResponse = """
@@ -381,19 +420,37 @@ class MockDate {
     "success": true,
     "data": [
         {
+            "pickupLocation": {
+                "location": {
+                    "coordinates": [
+                        48.7758459,
+                        9.1829321
+                    ],
+                    "type": "Point"
+                },
+                "address": "70 Stuttgart, Germany"
+            },
             "_id": "66f8606f403a8f619a700d13",
             "user": {
                 "_id": "6591a55d32c2449434ce2e7a",
                 "name": "Jahangir",
                 "photo": "cover-image-1707597881040.jpg",
-                "phoneNumber": "+46 76 696 60 66"
+                "phoneNumber": "+46 76 696 60 66",
+                "reviewsStats": {
+                    "totalReviews": 5,
+                    "avgRating": 3.72,
+                    "ratings": {
+                        "4": 1,
+                        "2.9": 1,
+                        "3.6": 1,
+                        "4.4": 1,
+                        "3.7": 1
+                    }
+                }
             },
             "trip": {
                 "_id": "66f7adcd6c3d7ba2736392c8",
                 "driver": {
-                    "_id": "6591a55d32c2449434ce2e7a",
-                    "name": "Jahangir",
-                    "photo": "cover-image-1707597881040.jpg",
                     "carDetails": {
                         "make": "Honda",
                         "model": "City",
@@ -417,34 +474,17 @@ class MockDate {
                         },
                         "driverLicense": "driverlicense-1704640237381-87445-image_2022_11_22t12_20_57_979z.png"
                     },
-                    "reviewsStats": {
-                        "totalReviews": 5,
-                        "avgRating": 3.72,
-                        "ratings": {
-                            "4": 1,
-                            "2.9": 1,
-                            "3.6": 1,
-                            "4.4": 1,
-                            "3.7": 1
-                        }
-                    }
+                    "_id": "6591a55d32c2449434ce2e7a",
+                    "name": "Jahangir"
                 },
                 "from_address": "Upplands Väsby, Sweden",
                 "whereTo_address": "Uppsala, Sweden",
+                "pricePerPerson": 50,
                 "status": "Scheduled",
-                "departureDate": "2024-11-30T17:00:00.000Z"
+                "departureDate": "2024-11-30T17:00:00.000Z",
+                "availableSeats": 10
             },
             "numberOfSeats": 1,
-            "pickupLocation": {
-                "address": "70 Stuttgart, Germany",
-                "location": {
-                    "coordinates": [
-                        48.7758459,
-                        9.1829321
-                    ],
-                    "type": "Point"
-                }
-            },
             "note": "Jju",
             "amount": 51,
             "plateFormFee": 1,
@@ -455,7 +495,7 @@ class MockDate {
             "__v": 0
         }
     ],
-    "message": "User Bookings fetched successfully"
+    "message": "Bookings retrieved successfully"
 }
 """
     
@@ -539,6 +579,218 @@ class MockDate {
         }
     ],
     "message": "User Bookings fetched successfully"
+}
+"""
+    
+    static let driverBookingDetails = """
+{
+    "success": true,
+    "data": {
+        "_id": "66f8606f403a8f619a700d13",
+        "user": {
+            "_id": "6591a55d32c2449434ce2e7a",
+            "name": "Jahangir",
+            "photo": "cover-image-1707597881040.jpg",
+            "phoneNumber": "+46 76 696 60 66",
+            "gender": "male",
+            "reviewsStats": {
+                "totalReviews": 5,
+                "avgRating": 3.72,
+                "ratings": {
+                    "4": 1,
+                    "2.9": 1,
+                    "3.6": 1,
+                    "4.4": 1,
+                    "3.7": 1
+                }
+            }
+        },
+        "trip": {
+            "_id": "66f7adcd6c3d7ba2736392c8",
+            "driver": {
+                "_id": "6591a55d32c2449434ce2e7a",
+                "name": "Jahangir",
+                "photo": "cover-image-1707597881040.jpg",
+                "isApprovedDriver": "approved",
+                "carDetails": {
+                    "make": "Honda",
+                    "model": "City",
+                    "registrationNumber": "ABD300",
+                    "year": 2023,
+                    "color": "Green",
+                    "photo": "carphoto-1707596900138-16302-img_20240210_212807.jpg",
+                    "reviews": [
+                        "65c7ace1175d0619a4c609a7",
+                        "6626630dd5dac51d3a520ab4"
+                    ],
+                    "reviewsStats": {
+                        "totalReviews": 4,
+                        "avgRating": 2.975,
+                        "ratings": {
+                            "4": 1,
+                            "1.7": 1,
+                            "4.7": 1,
+                            "1.5": 1
+                        }
+                    },
+                    "driverLicense": "driverlicense-1704640237381-87445-image_2022_11_22t12_20_57_979z.png"
+                },
+                "stripeConnectedAccountId": "acct_1P4yjZL5q4rA7qOb",
+                "gender": "male",
+                "reviewsStats": {
+                    "totalReviews": 5,
+                    "avgRating": 3.72,
+                    "ratings": {
+                        "4": 1,
+                        "2.9": 1,
+                        "3.6": 1,
+                        "4.4": 1,
+                        "3.7": 1
+                    }
+                }
+            },
+            "from_address": "Upplands Väsby, Sweden",
+            "whereTo_address": "Uppsala, Sweden",
+            "pricePerPerson": 50,
+            "departureDate": "2024-11-30T17:00:00.000Z",
+            "availableSeats": 10
+        },
+        "numberOfSeats": 1,
+        "pickupLocation": {
+            "address": "70 Stuttgart, Germany",
+            "location": {
+                "coordinates": [
+                    48.7758459,
+                    9.1829321
+                ],
+                "type": "Point"
+            }
+        },
+        "note": "Jju",
+        "amount": 51,
+        "plateFormFee": 1,
+        "status": "Waiting",
+        "refunded": false,
+        "createdAt": "2024-09-28T20:00:47.077Z",
+        "updatedAt": "2024-09-28T20:00:47.077Z",
+        "__v": 0,
+        "driverToUserReview": null,
+        "userToDriverReview": null,
+        "userToCarReview": null
+    },
+    "message": "Booking details fetched"
+}
+"""
+    
+    static let userBookingDetails = """
+{
+    "success": true,
+    "data": {
+        "_id": "66f8606f403a8f619a700d13",
+        "user": {
+            "_id": "6591a55d32c2449434ce2e7a",
+            "name": "Jahangir",
+            "photo": "cover-image-1707597881040.jpg",
+            "phoneNumber": "+46 76 696 60 66",
+            "gender": "male",
+            "reviewsStats": {
+                "totalReviews": 5,
+                "avgRating": 3.72,
+                "ratings": {
+                    "4": 1,
+                    "2.9": 1,
+                    "3.6": 1,
+                    "4.4": 1,
+                    "3.7": 1
+                }
+            }
+        },
+        "trip": {
+            "_id": "66f7adcd6c3d7ba2736392c8",
+            "driver": {
+                "_id": "6591a55d32c2449434ce2e7a",
+                "name": "Jahangir",
+                "photo": "cover-image-1707597881040.jpg",
+                "carDetails": {
+                    "make": "Honda",
+                    "model": "City",
+                    "registrationNumber": "ABD300",
+                    "year": 2023,
+                    "color": "Green",
+                    "photo": "carphoto-1707596900138-16302-img_20240210_212807.jpg",
+                    "reviews": [
+                        "65c7ace1175d0619a4c609a7",
+                        "6626630dd5dac51d3a520ab4"
+                    ],
+                    "reviewsStats": {
+                        "totalReviews": 4,
+                        "avgRating": 2.975,
+                        "ratings": {
+                            "4": 1,
+                            "1.7": 1,
+                            "4.7": 1,
+                            "1.5": 1
+                        }
+                    },
+                    "driverLicense": "driverlicense-1704640237381-87445-image_2022_11_22t12_20_57_979z.png"
+                },
+                "gender": "male",
+                "reviewsStats": {
+                    "totalReviews": 5,
+                    "avgRating": 3.72,
+                    "ratings": {
+                        "4": 1,
+                        "2.9": 1,
+                        "3.6": 1,
+                        "4.4": 1,
+                        "3.7": 1
+                    }
+                }
+            },
+            "from_address": "Upplands Väsby, Sweden",
+            "whereTo_address": "Uppsala, Sweden",
+            "pricePerPerson": 50,
+            "luggageRestrictions": [
+                {
+                    "type": "HandCarry",
+                    "_id": "66f7adcd6c3d7ba2736392c9"
+                },
+                {
+                    "type": "SuitCase",
+                    "_id": "66f7adcd6c3d7ba2736392ca"
+                }
+            ],
+            "roundTrip": false,
+            "smokingPreference": false,
+            "note": "",
+            "status": "Scheduled",
+            "passengers": [],
+            "departureDate": "2024-11-30T17:00:00.000Z"
+        },
+        "numberOfSeats": 1,
+        "pickupLocation": {
+            "address": "70 Stuttgart, Germany",
+            "location": {
+                "coordinates": [
+                    48.7758459,
+                    9.1829321
+                ],
+                "type": "Point"
+            }
+        },
+        "note": "Jju",
+        "amount": 51,
+        "plateFormFee": 1,
+        "status": "Approved",
+        "refunded": false,
+        "createdAt": "2024-09-28T20:00:47.077Z",
+        "updatedAt": "2024-09-28T20:00:47.077Z",
+        "__v": 0,
+        "driverToUserReview": null,
+        "userToDriverReview": null,
+        "userToCarReview": null
+    },
+    "message": "Booking details fetched"
 }
 """
 }

@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct SettingsView: View {
-    
+    @EnvironmentObject var userViewModel: SigninViewModel
     @StateObject var viewModel = SettingsViewModel()
     var body: some View {
         List {
             // Section 1: Driver's Profile
             Section {
-                UserInfoCardView(viewModel: UserInfoCardViewModel(user: viewModel.user))
+                if let user = userViewModel.user {
+                    UserInfoCardView(viewModel: UserInfoCardViewModel(user: user))
+                }
             }
 
             if (viewModel.isDriverModeOn) {
-                if let carDetails = viewModel.carDetails {
+                if let carDetails = userViewModel.user?.carDetails {
                     Section {
                         CarInfoView(viewModel: CarInfoViewModel(carDetails: carDetails))
                     }
@@ -68,7 +70,8 @@ struct SettingsView: View {
                 ListRowText(text: "Driver Mode")
             }
         }.onChange(of: viewModel.isDriverModeOn) { newValue in
-            viewModel.toggleDriverMode(newValue) 
+//            viewModel.toggleDriverMode(newValue, userViewModel: userViewModel)
+            userViewModel.user?.driverMode = newValue
         }
     }
 
@@ -189,4 +192,5 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
+        .environmentObject(SigninViewModel())
 }

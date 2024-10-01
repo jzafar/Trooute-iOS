@@ -19,19 +19,24 @@ struct TripDetailsView: View {
                 CarInfoView(viewModel: viewModel.getCarDetailsModel())
             }
 
-            Section(header: CustomHeaderView(seats: viewModel.availableSeats), content: {
-                passengersView()
+            Section(header: PassengersSectionHeader(seats: viewModel.availableSeats), content: {
+                TripDetailsViewComponents.passengersView()
             })
 
             Section(header: TextViewLableText(text: "Destination and schedule", textFont: .headline))
                 {
-                    destinationView()
+                    DestinationView(destination: viewModel.getDestinationModel(), price: viewModel.trip.pricePerPerson)
                         .listRowBackground(Color.clear)
                         .listRowInsets(EdgeInsets())
                 }
 
             Section(header: TextViewLableText(text: "Trip Details", textFont: .headline)) {
-                tripDetails()
+                TripPrefView(handCarryWeight: viewModel.handCarryWeight,
+                             suitcaseWeight: viewModel.suitcaseWeight,
+                             smokingPreference: viewModel.smokingPreference,
+                             petPreference: viewModel.petPreference,
+                             languagePreference: viewModel.languagePreference,
+                             otherReliventDetails: viewModel.otherReliventDetails)
                     .listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets())
             }
@@ -68,68 +73,6 @@ struct TripDetailsView: View {
         }.background(Color("TitleColor"))
             .frame(height: 130)
     }
-
-    @ViewBuilder
-    func tripDetails() -> some View {
-        VStack(alignment: .leading, spacing: 15) {
-            Text("Restrictions on luggage type and weight")
-                .foregroundStyle(.gray)
-                .padding(.top, 10)
-                .padding(.horizontal)
-            MasterDetailsView(master: "Type", details: "Hand carry")
-            MasterDetailsView(master: "weight", details: viewModel.handCarryWeight)
-            MasterDetailsView(master: "Type", details: "Suitcase")
-            MasterDetailsView(master: "weight", details: viewModel.suitcaseWeight)
-            Divider()
-                .padding(.horizontal)
-            MasterDetailsView(master: "Smoking Allowed", details: viewModel.smokingPreference)
-            MasterDetailsView(master: "Pets Allowed", details: viewModel.petPreference)
-            MasterDetailsView(master: "Language", details: viewModel.languagePreference)
-            Divider()
-                .padding(.horizontal)
-            Text("Other relevent details")
-                .foregroundStyle(.gray)
-                .padding(.horizontal)
-            Text(viewModel.otherReliventDetails)
-                .multilineTextAlignment(.leading)
-                .foregroundStyle(.black)
-                .padding(.horizontal)
-                .padding(.bottom)
-        }.background(.white)
-            .cornerRadius(25)
-    }
-
-    @ViewBuilder
-    func destinationView() -> some View {
-        VStack(alignment: .leading, spacing: 5) {
-            VStack(alignment: .leading, spacing: 10) {
-                TripRouteView(info: viewModel.getDestinationModel())
-                    .padding(.top)
-            }
-            .background(Color.white)
-            .cornerRadius(10)
-            PriceView(price: viewModel.trip.pricePerPerson, bookingSeats: nil, showPersonText: true)
-        }
-        .background(Color("TitleColor"))
-        .shadow(radius: 10)
-        .cornerRadius(15)
-    }
-
-    @ViewBuilder
-    func passengersView() -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text("Passengers not available")
-                    .foregroundStyle(.gray)
-            }
-            Divider()
-
-            HStack {
-                Text("You might share the ride with fellow passengers heading the same way")
-                    .foregroundStyle(.gray)
-            }
-        }
-    }
 }
 
 #Preview {
@@ -137,7 +80,7 @@ struct TripDetailsView: View {
     TripDetailsView(viewModel: TripDetailsViewModel(trip: data!))
 }
 
-struct CustomHeaderView: View {
+struct PassengersSectionHeader: View {
     let title: String = "Passengers"
     let seats: String
 

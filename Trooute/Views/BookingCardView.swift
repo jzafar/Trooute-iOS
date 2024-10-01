@@ -13,38 +13,24 @@ struct BookingCardView: View {
     var body: some View {
         VStack (alignment: .leading, spacing: 5){
             VStack(alignment: .leading, spacing: 10) {
-                if let driverMode = userModel.user?.driverMode,
-                   driverMode {
-                    
+                userBookingInfo()
+                if (viewModel.getDriverMode(userModel)) {
+                    userInfoView()
                 } else {
-                    userBookingInfo()
+                    driverCarView()
                 }
-                driverCarView()
                 tripRouteView()
             }
             .background(Color.white)
             .cornerRadius(10)
             VStack(alignment: .leading) {
-                if let user = userModel.user,
-                    let driverMode = user.driverMode,
-                   driverMode == true {
+                if (viewModel.getDriverMode(userModel)) {
                     HStack {
                         Text("\(viewModel.booking.numberOfSeats ?? 10000) x Seats")
                             .foregroundStyle(.white)
                         Spacer()
-                        Text(viewModel.bookPrice(driverMode: driverMode))
+                        Text(viewModel.bookPrice(viewModel.getDriverMode(userModel)))
                             .foregroundStyle(.white)
-                        
-                    }.padding(.horizontal)
-                        .padding(.vertical,5)
-                    
-                    HStack {
-                        Text("Platform fee")
-                            .foregroundStyle(.white)
-                        Spacer()
-                        Text("€\(viewModel.booking.numberOfSeats ?? 1000).0")
-                            .foregroundStyle(.white)
-                        
                         
                     }.padding(.horizontal)
                         .padding(.vertical,5)
@@ -59,7 +45,7 @@ struct BookingCardView: View {
                     
                     
                 }
-                PriceView(price:  viewModel.finalPrice(userModel.user?.driverMode ?? false), bookingSeats: nil, showPersonText: false)
+                PriceView(price:  viewModel.finalPrice(viewModel.getDriverMode(userModel)), bookingSeats: nil, showPersonText: false)
             }
            
             
@@ -68,7 +54,14 @@ struct BookingCardView: View {
         .shadow(radius: 10)
         .cornerRadius(15)
         .onAppear{
-            
+            viewModel.onAppear(userModel)
+        }
+    }
+    
+    @ViewBuilder
+    func userInfoView() -> some View {
+        if let user = viewModel.booking.user {
+            UserInfoCardView(viewModel: UserInfoCardViewModel(user: user))
         }
     }
     
@@ -77,7 +70,7 @@ struct BookingCardView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 let driverStatus = userModel.user?.driverMode ?? false
-                let (image, status) = viewModel.getStatu(driverMode: driverStatus)
+                let (image, status) = viewModel.getStatu(driverStatus)
                 image
                 Text(status)
             }
@@ -128,7 +121,8 @@ struct BookingCardView: View {
     }
 }
 #Preview {
-    let tripResponse = MockDate.getUserBookingsResponse()!
+//    let tripResponse = MockDate.getUserBookingsResponse()!
+    let tripResponse = MockDate.getDriverBookingsResponse()!
     BookingCardView(viewModel: BookingCardViewModel(booking: tripResponse.data!.first!))
         .environmentObject(SigninViewModel())
 }

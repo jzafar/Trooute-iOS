@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CustomTabView
 
 struct MainTabView: View {
     @State private var selectedTab: Tab = .home

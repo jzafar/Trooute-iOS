@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BookingsView: View {
+    @EnvironmentObject var userViewModel: SigninViewModel
     @StateObject var viewModel = BookingsViewModel()
     var body: some View {
         VStack {
@@ -25,7 +26,7 @@ struct BookingsView: View {
                 List {
                     ForEach(viewModel.bookings) { booking in
                             ZStack {
-                                NavigationLink(destination: EmptyView()) {
+                                NavigationLink(destination: BookingDetailsView(viewModel: BookingDetailsViewModel(bookingId: booking.id))) {
                                     EmptyView()
                                     }.opacity(0)
                                 BookingCardView(viewModel: BookingCardViewModel(booking: booking))
@@ -40,11 +41,12 @@ struct BookingsView: View {
             
         }
         .onAppear {
-            viewModel.getBookings()
+            viewModel.getBookings(userViewModel)
         }
     }
 }
 
 #Preview {
     BookingsView()
+        .environmentObject(SigninViewModel())
 }

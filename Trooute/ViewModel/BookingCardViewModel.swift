@@ -10,16 +10,25 @@ import SwiftUI
 
 class BookingCardViewModel: ObservableObject {
     @Published var booking: BookingData
+    private var userModel: SigninViewModel? = nil
     init(booking: BookingData) {
         self.booking = booking
     }
     
-//    var driverImageUrl: String {
-//        return "\(Constants.baseImageUrl)/\(self.trip.driver?.photo ?? "")"
-//    }
+    func onAppear(_ userModel: SigninViewModel) {
+        self.userModel = userModel
+    }
     
-    var status: String {
-        return booking.status ?? "waiting"
+    func getDriverMode(_ userModel: SigninViewModel) -> Bool {
+        if let user = userModel.user,
+            let driverMode = user.driverMode{
+            return driverMode
+        }
+        return false
+    }
+    
+    var status: BookingStatus {
+        return booking.status ?? .waiting
     }
     
     var bookingId: String {
@@ -35,7 +44,7 @@ class BookingCardViewModel: ObservableObject {
         return TripRouteModel(fromAddress: self.booking.trip.fromAddress, whereToAddress: self.booking.trip.whereToAddress, date: self.booking.trip.departureDate)
     }
     
-    func bookPrice(driverMode: Bool) -> String {
+    func bookPrice(_ driverMode: Bool) -> String {
         if driverMode {
             return "€\(String(format: "%.1f", self.booking.trip.pricePerPerson ?? 0.0))"
         } else {
@@ -45,13 +54,13 @@ class BookingCardViewModel: ObservableObject {
     
     func finalPrice(_ driverMode: Bool) -> Double {
         if driverMode {
-            return 0.0
+            return self.booking.trip.pricePerPerson ?? 0.0
         } else {
             return self.booking.amount ?? 0.0
         }
     }
     
-    func getStatu(driverMode: Bool) -> (Image, String) {
+    func getStatu(_ driverMode: Bool) -> (Image, String) {
        return Utils.checkStatus(isDriverApproved: driverMode, status: status)
     }
 }

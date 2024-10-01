@@ -17,6 +17,7 @@ struct Trip: Codable {
     var luggageRestrictions: [LuggageRestrictions]?
     var roundTrip: Bool? = false
     var smokingPreference: Bool? = false
+    var petPreference: Bool? = false
     var languagePreference: String? = "Not provided"
     var note: String? = "Not provided"
     var availableSeats: Double?
@@ -40,6 +41,7 @@ struct Trip: Codable {
         case status
         case luggageRestrictions
         case roundTrip
+        case petPreference
     }
 }
 

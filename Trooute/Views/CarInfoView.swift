@@ -46,18 +46,10 @@ struct CarInfoView: View {
                 TextViewLableText(text: viewModel.carMakeModel, textFont: .headline)
                 Spacer()
                 HStack {
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .frame(height: 40)
-                        .frame(minWidth: 70)
-                        .foregroundColor(Color("LightBlue"))
-                        .overlay {
-                            Text(viewModel.carDetails.registrationNumber)
-                                .foregroundStyle(Color("DarkBlue"))
-                    }
-                    if viewModel.isEditable {
+                    if !viewModel.isEditable {
                         Button(action: {}) {
                             Image(systemName: "pencil")
-                                .font(.largeTitle)
+                                .font(.title).bold()
                                 .foregroundStyle(Color("DarkBlue"))
                         }
                     }
@@ -65,10 +57,23 @@ struct CarInfoView: View {
                 
                 
             }
+            HStack {
+                Text(viewModel.year)
+                    .font(.subheadline)
+                    .foregroundStyle(Color.gray)
+                
+                Spacer()
             
-            Text(viewModel.year)
-                .font(.subheadline)
-                .foregroundStyle(Color.gray)
+                Text(viewModel.carDetails.registrationNumber)
+                    .padding(.horizontal, 30)
+                    .padding(.vertical, 10)
+                    .foregroundStyle(Color("DarkBlue"))
+                    .background(Color("LightBlue"))
+                    .frame(height: 40)
+                    .cornerRadius(20)
+                    
+            }
+            
             HStack(spacing: 2) {
                 Circle()
                     .fill(Color.green)

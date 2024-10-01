@@ -11,22 +11,14 @@ class SettingsViewModel: ObservableObject {
     @Published var isDriverModeOn = true
     @Published var isNotificationOn = true
     
-    var user: User
-    init() {
-        let loginResponse = MockDate.getLoginResponse()
-        self.user = loginResponse!.data!
-        self.isDriverModeOn = self.user.driverMode ?? false
+    private var user: User?
+    
+    func onAppear(userViewModel: SigninViewModel) {
+        self.user = userViewModel.user!
+        self.isDriverModeOn = userViewModel.user!.driverMode ?? false
     }
     
-    var driverModeOn: Bool {
-        return user.driverMode ?? false
-    }
-    
-    var carDetails: CarDetails? {
-        return user.carDetails
-    }
-    
-    func toggleDriverMode(_ mode: Bool) {
-        self.user.driverMode = mode
+    func toggleDriverMode(_ mode: Bool, userViewModel: SigninViewModel) {
+        userViewModel.user?.driverMode = mode
     }
 }

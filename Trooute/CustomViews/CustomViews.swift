@@ -39,7 +39,7 @@ struct PrimaryGreenText: View {
 }
 
 
-struct ScendoryGrayButton: View {
+struct SecondaryGrayButton: View {
     var title: String
     var action: () -> Void
     var body: some View {
@@ -51,6 +51,23 @@ struct ScendoryGrayButton: View {
                 .fontWeight(.bold)
                 .padding()
                 .background(.white)
+                .cornerRadius(8)
+        }
+    }
+}
+
+struct SecondaryBookingButton: View {
+    var title: String
+    var action: () -> Void
+    var body: some View {
+        Button(action: action) {
+            Text(title)
+                .foregroundColor(.gray)
+                .frame(maxWidth: .infinity)
+                .font(.headline)
+                .fontWeight(.semibold)
+                .padding()
+                .background(Color(UIColor.systemGray6))
                 .cornerRadius(8)
         }
     }

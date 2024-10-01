@@ -62,7 +62,7 @@ struct UpdateProfileView: View {
 
     @ViewBuilder
     func scendoryGrayButton() -> some View {
-        ScendoryGrayButton(title: "Update Password") {
+        SecondaryGrayButton(title: "Update Password") {
             viewModel.updatePassword = true
         }
 //        NavigationLink(destination: UpdatePasswordView()) {

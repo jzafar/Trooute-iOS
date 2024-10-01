@@ -91,7 +91,7 @@ struct OnboardView: View {
 
     @ViewBuilder
     func secondPageView() -> some View {
-        ScendoryGrayButton(title: "Previous") {
+        SecondaryGrayButton(title: "Previous") {
             if currentPage > 0 {
                 currentPage -= 1
             }
