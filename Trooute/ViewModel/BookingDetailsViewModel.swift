@@ -16,6 +16,7 @@ class BookingDetailsViewModel: ObservableObject {
     @Published var handCarryWeight: String = ""
     @Published var suitcaseWeight: String = ""
     @Published var bookingID: String? = ""
+    @Published var showPaymentsScreen = false
     init(bookingId: String) {
         self.bookingId = bookingId
         
@@ -135,5 +136,13 @@ class BookingDetailsViewModel: ObservableObject {
             }
         }
         return ""
+    }
+    
+    func makePayments() {
+        self.showPaymentsScreen = true
+    }
+    
+    func getWebViewModel() -> WebViewModel {
+        return WebViewModel(url: "https://checkout.stripe.com/c/pay/cs_live_b1M0w5BBV1IhVnr5dKz1tvQATxAiBwMn34VT2ZxGq6LDtVWuOKuSQq03dQ#fidkdWxOYHwnPyd1blppbHNgWjA0S31jUE9BNDRjXV1Pa3xza1RHYHJnVUFiU0FvcTRPU0FvX2YyT0lVPXdHV0BLa2pPVGFuQWdKM01JPHNTcDBEXzNzanFJPX9xXG1BM1BTcG9WdWxCY1RDNTVwV3JEMDR3XycpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl")
     }
 }

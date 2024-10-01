@@ -7,64 +7,69 @@
 
 import Foundation
 
-class TripDetailsViewModel {
-    let trip: TripsData
-    @Published var bookTrip: TripsData? = nil
-    init(trip: TripsData) {
-        self.trip = trip
+class TripDetailsViewModel: ObservableObject {
+    private var tripId: String
+    @Published var trip: TripsData? = nil
+    init(tripId: String) {
+        self.tripId = tripId
     }
-    
+
+    func onApplear() {
+        if let bookingResponse = MockDate.getTripDetailsResponse() {
+            if bookingResponse.success {
+                trip = bookingResponse.data!
+            }
+        }
+    }
+
     var availableSeats: String {
-        return "\(trip.availableSeats)"
+        return "\(trip?.availableSeats ?? 100)"
     }
-    
+
     var handCarryWeight: String {
-        if let handCarryLuggage = trip.luggageRestrictions.compactMap({ $0 }).filter({ $0.type == .handCarry }).first,
-        let weight = handCarryLuggage.weight {
+        if let handCarryLuggage = trip?.luggageRestrictions.compactMap({ $0 }).filter({ $0.type == .handCarry }).first,
+           let weight = handCarryLuggage.weight {
             return "\(weight) KG"
         }
 
         return "Not Provided"
     }
-    
+
     var suitcaseWeight: String {
-        if let handCarryLuggage = trip.luggageRestrictions.compactMap({ $0 }).filter({ $0.type == .suitCase }).first,
-        let weight = handCarryLuggage.weight {
+        if let handCarryLuggage = trip?.luggageRestrictions.compactMap({ $0 }).filter({ $0.type == .suitCase }).first,
+           let weight = handCarryLuggage.weight {
             return "\(weight) KG"
         }
 
         return "Not Provided"
     }
-    
+
     var smokingPreference: String {
-        return trip.smokingPreference ? "Yes" : "No"
+        return trip?.smokingPreference ?? false ? "Yes" : "No"
     }
-    
+
     var petPreference: String {
-        return trip.petPreference ? "Yes" : "No"
+        return trip?.petPreference ?? false ? "Yes" : "No"
     }
-    
+
     var languagePreference: String {
-        return trip.languagePreference ?? "Not Provided"
+        return trip?.languagePreference ?? "Not Provided"
     }
-    
+
     var otherReliventDetails: String {
-        return trip.note?.emptyOrNil() ?? "Not Provided"
+        return trip?.note?.emptyOrNil() ?? "Not Provided"
     }
-    
-    func getDriverModel() -> UserInfoCardViewModel {
-        return UserInfoCardViewModel(user: self.trip.driver!) 
+
+    func getDriverModel(driver: Driver) -> UserInfoCardViewModel {
+        return UserInfoCardViewModel(user: driver)
     }
-    
-    func getCarDetailsModel() -> CarInfoViewModel {
-        return CarInfoViewModel(carDetails: trip.driver!.carDetails!)
+
+    func getCarDetailsModel(carDetails: CarDetails) -> CarInfoViewModel {
+        return CarInfoViewModel(carDetails: carDetails)
     }
-    
-    func getDestinationModel() -> TripRouteModel {
-        return TripRouteModel(fromAddress: self.trip.fromAddress, whereToAddress:  self.trip.whereToAddress, date: self.trip.departureDate)
+
+    func getDestinationModel(trip: TripsData) -> TripRouteModel {
+        return TripRouteModel(fromAddress: trip.fromAddress, whereToAddress: trip.whereToAddress, date: trip.departureDate)
     }
-    
-    func goToBookingView() {
-        self.bookTrip = self.trip
-    }
+
 }

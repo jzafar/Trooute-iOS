@@ -8,27 +8,33 @@
 import SwiftUI
 
 struct TripDetailsView: View {
-    var viewModel: TripDetailsViewModel
+    @ObservedObject var viewModel: TripDetailsViewModel
     var body: some View {
         List {
-            Section {
-                UserInfoCardView(viewModel: viewModel.getDriverModel())
+            if let driver = viewModel.trip?.driver {
+                Section {
+                    UserInfoCardView(viewModel: viewModel.getDriverModel(driver: driver))
+                }
             }
-
-            Section {
-                CarInfoView(viewModel: viewModel.getCarDetailsModel())
+            if let carDetails = viewModel.trip?.driver?.carDetails {
+                Section {
+                    CarInfoView(viewModel: viewModel.getCarDetailsModel(carDetails: carDetails))
+                }
             }
 
             Section(header: PassengersSectionHeader(seats: viewModel.availableSeats), content: {
                 TripDetailsViewComponents.passengersView()
             })
 
-            Section(header: TextViewLableText(text: "Destination and schedule", textFont: .headline))
-                {
-                    DestinationView(destination: viewModel.getDestinationModel(), price: viewModel.trip.pricePerPerson)
-                        .listRowBackground(Color.clear)
-                        .listRowInsets(EdgeInsets())
-                }
+            if let trip = viewModel.trip {
+                Section(header: TextViewLableText(text: "Destination and schedule", textFont: .headline))
+                    {
+                        DestinationView(destination: viewModel.getDestinationModel(trip: trip), price: trip.pricePerPerson)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(EdgeInsets())
+                    }
+            }
+            
 
             Section(header: TextViewLableText(text: "Trip Details", textFont: .headline)) {
                 TripPrefView(handCarryWeight: viewModel.handCarryWeight,
@@ -42,10 +48,13 @@ struct TripDetailsView: View {
             }
         }
         .safeAreaInset(edge: .bottom) {
-            bookNowView()
+            if let trip = viewModel.trip {
+                bookNowView(trip)
+            }
         }
         .onAppear {
             Tabbar.shared.hide = true
+            viewModel.onApplear()
         }
         .ignoresSafeArea(edges: .bottom)
         .navigationTitle("Trip Details")
@@ -53,7 +62,7 @@ struct TripDetailsView: View {
     }
 
     @ViewBuilder
-    func bookNowView() -> some View {
+    func bookNowView(_ trip: TripsData) -> some View {
         VStack {
             HStack {
                 Image("ic_heart")
@@ -61,7 +70,7 @@ struct TripDetailsView: View {
                     .frame(width: 30, height: 30)
                     .padding(.horizontal)
                     .foregroundStyle(.white)
-                NavigationLink(destination: BookTripView(viewModel: BookTripViewModel(trip: viewModel.trip))) {
+                NavigationLink(destination: BookTripView(viewModel: BookTripViewModel(trip: trip))) {
                     PrimaryGreenText(title: "Book now")
                         .padding(.horizontal)
                 }
@@ -77,7 +86,7 @@ struct TripDetailsView: View {
 
 #Preview {
     let data = MockDate.getTripsResponse()?.data?.first
-    TripDetailsView(viewModel: TripDetailsViewModel(trip: data!))
+    TripDetailsView(viewModel: TripDetailsViewModel(tripId: data!.id))
 }
 
 struct PassengersSectionHeader: View {

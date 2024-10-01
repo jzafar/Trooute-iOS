@@ -20,6 +20,19 @@ class MockDate {
         }
     }
     
+    class func getTripDetailsResponse() -> GetTripDetailsResponse? {
+        let jsonData = Data(MockDate.tripDetailsDate.utf8)
+        let decoder = JSONDecoder()
+
+        do {
+            let tripsResponse = try decoder.decode(GetTripDetailsResponse.self, from: jsonData)
+            return tripsResponse
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
     class func getLoginResponse() -> GetLoginResponse? {
         let jsonData = Data(MockDate.LoginResponse.utf8)
         let decoder = JSONDecoder()
@@ -85,6 +98,32 @@ class MockDate {
         }
     }
     
+    
+    class func getWishList() -> GetTripListResponse? {
+        let jsonData = Data(MockDate.wishListData.utf8)
+        let decoder = JSONDecoder()
+
+        do {
+            let booking = try decoder.decode(GetTripListResponse.self, from: jsonData)
+            return booking
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
+    class func getDriverTripsList() -> GetTripListResponse? {
+        let jsonData = Data(MockDate.driverTripsList.utf8)
+        let decoder = JSONDecoder()
+
+        do {
+            let booking = try decoder.decode(GetTripListResponse.self, from: jsonData)
+            return booking
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
     
     
     static let SearchTripsResponse = """
@@ -352,6 +391,114 @@ class MockDate {
 }
 """
     
+    static let tripDetailsDate = """
+    {
+      "success": true,
+      "data": {
+        "_id": "66f7adcd6c3d7ba2736392c8",
+        "driver": {
+          "_id": "6591a55d32c2449434ce2e7a",
+          "name": "Jahangir",
+          "photo": "cover-image-1707597881040.jpg",
+          "carDetails": {
+            "make": "Honda",
+            "model": "City",
+            "registrationNumber": "ABD300",
+            "year": 2023,
+            "color": "Green",
+            "photo": "carphoto-1707596900138-16302-img_20240210_212807.jpg",
+            "reviews": [
+              "65c7ace1175d0619a4c609a7",
+              "6626630dd5dac51d3a520ab4"
+            ],
+            "reviewsStats": {
+              "totalReviews": 4,
+              "avgRating": 2.975,
+              "ratings": {
+                "4": 1,
+                "1.7": 1,
+                "4.7": 1,
+                "1.5": 1
+              }
+            },
+            "driverLicense": "driverlicense-1704640237381-87445-image_2022_11_22t12_20_57_979z.png"
+          },
+          "gender": "male",
+          "reviewsStats": {
+            "totalReviews": 5,
+            "avgRating": 3.72,
+            "ratings": {
+              "4": 1,
+              "2.9": 1,
+              "3.6": 1,
+              "4.4": 1,
+              "3.7": 1
+            }
+          }
+        },
+        "from_address": "Upplands Väsby, Sweden",
+        "from_location": {
+          "type": "Point",
+          "coordinates": [
+            17.92834,
+            59.51961
+          ]
+        },
+        "whereTo_address": "Uppsala, Sweden",
+        "whereTo_location": {
+          "type": "Point",
+          "coordinates": [
+            17.6389267,
+            59.85856380000001
+          ]
+        },
+        "totalSeats": 10,
+        "pricePerPerson": 50,
+        "luggageRestrictions": [
+          {
+            "type": "HandCarry",
+            "_id": "66f7adcd6c3d7ba2736392c9"
+          },
+          {
+            "type": "SuitCase",
+            "_id": "66f7adcd6c3d7ba2736392ca"
+          }
+        ],
+        "roundTrip": false,
+        "smokingPreference": false,
+        "petPreference": false,
+        "isAddedInWishList": false,
+        "note": "",
+        "status": "Scheduled",
+        "passengers": [
+          {
+            "_id": "6591a55d32c2449434ce2e7a",
+            "name": "Jahangir",
+            "photo": "cover-image-1707597881040.jpg",
+            "gender": "male",
+            "reviewsStats": {
+              "totalReviews": 5,
+              "avgRating": 3.72,
+              "ratings": {
+                "4": 1,
+                "2.9": 1,
+                "3.6": 1,
+                "4.4": 1,
+                "3.7": 1
+              }
+            }
+          }
+        ],
+        "departureDate": "2024-11-30T17:00:00.000Z",
+        "totalAmount": 0,
+        "availableSeats": 9,
+        "createdAt": "2024-09-28T07:18:37.551Z",
+        "updatedAt": "2024-09-30T20:38:21.263Z",
+        "__v": 0
+      },
+      "message": "User Trip details fetched successfully"
+    }
+    """
     
     static let LoginResponse = """
 {
@@ -791,6 +938,103 @@ class MockDate {
         "userToCarReview": null
     },
     "message": "Booking details fetched"
+}
+"""
+    
+    static let makePayments = """
+{"success":true,"message":"Payment Session created.","url":"https://checkout.stripe.com/c/pay/cs_live_b1M0w5BBV1IhVnr5dKz1tvQATxAiBwMn34VT2ZxGq6LDtVWuOKuSQq03dQ#fidkdWxOYHwnPyd1blppbHNgWjA0S31jUE9BNDRjXV1Pa3xza1RHYHJnVUFiU0FvcTRPU0FvX2YyT0lVPXdHV0BLa2pPVGFuQWdKM01JPHNTcDBEXzNzanFJPX9xXG1BM1BTcG9WdWxCY1RDNTVwV3JEMDR3XycpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl"}
+"""
+    
+    static let wishListData = """
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "66422f9d233ef9ddbf6b2dde",
+      "driver": "6591a55d32c2449434ce2e7a",
+      "from_address": "Berlin, Germany",
+      "from_location": {
+        "type": "Point",
+        "coordinates": [
+          13.404954,
+          52.52000659999999
+        ]
+      },
+      "whereTo_address": "Hamburg, Germany",
+      "whereTo_location": {
+        "type": "Point",
+        "coordinates": [
+          9.987170299999999,
+          53.5488282
+        ]
+      },
+      "totalSeats": 4,
+      "pricePerPerson": 160,
+      "luggageRestrictions": [
+        {
+          "type": "HandCarry",
+          "weight": 10,
+          "_id": "66422f9d233ef9ddbf6b2ddf"
+        },
+        {
+          "type": "SuitCase",
+          "_id": "66422f9d233ef9ddbf6b2de0"
+        }
+      ],
+      "roundTrip": false,
+      "smokingPreference": false,
+      "petPreference": true,
+      "isAddedInWishList": true,
+      "note": "",
+      "status": "Scheduled",
+      "passengers": [
+        
+      ],
+      "departureDate": "2024-06-08T14:00:00.000Z",
+      "totalAmount": 0,
+      "availableSeats": 4,
+      "createdAt": "2024-05-13T15:19:58.000Z",
+      "updatedAt": "2024-09-28T16:05:18.216Z",
+      "__v": 0
+    }
+  ],
+  "message": "User wishlist fetched Successfully"
+}
+"""
+    
+    static let driverTripsList = """
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "66f478441e29b8cbda04a133",
+      "from_address": "Stockholm, Sweden",
+      "whereTo_address": "Berlin, Germany",
+      "pricePerPerson": 500,
+      "passengers": [
+        
+      ],
+      "departureDate": "2025-01-01T03:51:00.000Z",
+      "totalAmount": 0,
+      "availableSeats": 4
+    },
+    {
+      "_id": "66f7adcd6c3d7ba2736392c8",
+      "from_address": "Upplands Väsby, Sweden",
+      "whereTo_address": "Uppsala, Sweden",
+      "pricePerPerson": 50,
+      "passengers": [
+        {
+          "_id": "6591a55d32c2449434ce2e7a",
+          "photo": "cover-image-1707597881040.jpg"
+        }
+      ],
+      "departureDate": "2024-11-30T17:00:00.000Z",
+      "totalAmount": 0,
+      "availableSeats": 9
+    }
+  ],
+  "message": "Trips retrevied"
 }
 """
 }

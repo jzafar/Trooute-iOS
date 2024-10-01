@@ -22,7 +22,6 @@ struct MainTabView: View {
                     .onAppear {
                         Tabbar.shared.hide = false
                     }
-                    .navigationBarTitle("Ongoing Trips")
             }
 
             NavigationView {

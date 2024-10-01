@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		CE0081A42CA1DF3A00D84ACB /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0081A32CA1DF3700D84ACB /* Test.swift */; };
 		CE0081D72CA3455B00D84ACB /* CurrencyField in Frameworks */ = {isa = PBXBuildFile; productRef = CE0081D62CA3455B00D84ACB /* CurrencyField */; };
+		CE179D4C2CAC3AB900FFC206 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE179D4B2CAC3AB700FFC206 /* WebViewModel.swift */; };
+		CE179D4E2CAC3B0900FFC206 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE179D4D2CAC3B0900FFC206 /* WebView.swift */; };
+		CE179D502CAC40C400FFC206 /* TripInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE179D4F2CAC40B900FFC206 /* TripInfo.swift */; };
+		CE179D522CAC439400FFC206 /* WishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE179D512CAC438C00FFC206 /* WishViewModel.swift */; };
+		CE179D542CAC43C200FFC206 /* WishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE179D532CAC43C200FFC206 /* WishView.swift */; };
+		CE179D562CAC443C00FFC206 /* GetTripListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE179D552CAC442D00FFC206 /* GetTripListResponse.swift */; };
+		CE179D582CAC8C1700FFC206 /* DriverTripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE179D572CAC8C1700FFC206 /* DriverTripCell.swift */; };
 		CE1D67DE2CA800DA0070970D /* CarInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D67DD2CA800DA0070970D /* CarInfoViewModel.swift */; };
 		CE1D67E02CA8624D0070970D /* BookTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D67DF2CA8624D0070970D /* BookTripView.swift */; };
 		CE1D67F62CA86ED50070970D /* BookTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D67F52CA86ED30070970D /* BookTripViewModel.swift */; };
@@ -125,6 +132,13 @@
 
 /* Begin PBXFileReference section */
 		CE0081A32CA1DF3700D84ACB /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		CE179D4B2CAC3AB700FFC206 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
+		CE179D4D2CAC3B0900FFC206 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		CE179D4F2CAC40B900FFC206 /* TripInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInfo.swift; sourceTree = "<group>"; };
+		CE179D512CAC438C00FFC206 /* WishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishViewModel.swift; sourceTree = "<group>"; };
+		CE179D532CAC43C200FFC206 /* WishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishView.swift; sourceTree = "<group>"; };
+		CE179D552CAC442D00FFC206 /* GetTripListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTripListResponse.swift; sourceTree = "<group>"; };
+		CE179D572CAC8C1700FFC206 /* DriverTripCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverTripCell.swift; sourceTree = "<group>"; };
 		CE1D67DD2CA800DA0070970D /* CarInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoViewModel.swift; sourceTree = "<group>"; };
 		CE1D67DF2CA8624D0070970D /* BookTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTripView.swift; sourceTree = "<group>"; };
 		CE1D67F52CA86ED30070970D /* BookTripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTripViewModel.swift; sourceTree = "<group>"; };
@@ -265,6 +279,7 @@
 		CE4E3E042CA5C1EC005C3CEE /* ResponseObjects */ = {
 			isa = PBXGroup;
 			children = (
+				CE179D552CAC442D00FFC206 /* GetTripListResponse.swift */,
 				CE1D67FD2CA93E730070970D /* GetBookingsResponse.swift */,
 				CE1D680D2CA9C3B10070970D /* GetBookingDetailsResponse.swift */,
 				CE4E3EA72CA7F123005C3CEE /* GetLoginResponse.swift */,
@@ -303,6 +318,7 @@
 				CE1D67DF2CA8624D0070970D /* BookTripView.swift */,
 				CE5150432C9F512700B10107 /* CarInfoView.swift */,
 				CE5150762CA0AFA600B10107 /* CreateTripView.swift */,
+				CE179D572CAC8C1700FFC206 /* DriverTripCell.swift */,
 				CE4E3D742CA356CD005C3CEE /* FAQView.swift */,
 				CE5150362C9F259200B10107 /* InboxView.swift */,
 				CE57017B2C9F24C1003BD7CA /* MainTabView.swift */,
@@ -319,6 +335,8 @@
 				CE5150412C9F3BD900B10107 /* UserInfoCardView.swift */,
 				CE5150472C9FD5AD00B10107 /* UpdateProfileView.swift */,
 				CE51504D2C9FDC8400B10107 /* UpdatePasswordView.swift */,
+				CE179D4D2CAC3B0900FFC206 /* WebView.swift */,
+				CE179D532CAC43C200FFC206 /* WishView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,6 +364,8 @@
 				CE4E3EA32CA7E7A3005C3CEE /* UserInfoCardViewModel.swift */,
 				CE51504F2C9FE00E00B10107 /* UpdatePasswordViewModel.swift */,
 				CE51504B2C9FD8A100B10107 /* UpdateProfileViewModel.swift */,
+				CE179D4B2CAC3AB700FFC206 /* WebViewModel.swift */,
+				CE179D512CAC438C00FFC206 /* WishViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -367,6 +387,7 @@
 				CE4E3DF22CA5A548005C3CEE /* TripsData.swift */,
 				CE5701422C9E0E05003BD7CA /* User.swift */,
 				CE4E3EA52CA7EC15005C3CEE /* UserProfile.swift */,
+				CE179D4F2CAC40B900FFC206 /* TripInfo.swift */,
 				CE4E3E8C2CA748F4005C3CEE /* App Custom Model */,
 				CE4E3E042CA5C1EC005C3CEE /* ResponseObjects */,
 			);
@@ -629,9 +650,12 @@
 				CE4E3EA62CA7EC1C005C3CEE /* UserProfile.swift in Sources */,
 				CE4E3E142CA5D948005C3CEE /* Constants.swift in Sources */,
 				CE4E3E922CA758A1005C3CEE /* TripDetailsView.swift in Sources */,
+				CE179D562CAC443C00FFC206 /* GetTripListResponse.swift in Sources */,
 				CE1D67DE2CA800DA0070970D /* CarInfoViewModel.swift in Sources */,
 				CE4E3D792CA357C8005C3CEE /* FAQ.swift in Sources */,
+				CE179D4C2CAC3AB900FFC206 /* WebViewModel.swift in Sources */,
 				CE5150792CA0AFAE00B10107 /* CreateTripViewModel.swift in Sources */,
+				CE179D502CAC40C400FFC206 /* TripInfo.swift in Sources */,
 				CE1D68102CA9C4BA0070970D /* BookingDetailsView.swift in Sources */,
 				CE5150682CA035A800B10107 /* UITabBarControllerRepresentable.swift in Sources */,
 				CE5150692CA035A800B10107 /* CustomTabView.swift in Sources */,
@@ -651,6 +675,7 @@
 				CE57014E2C9E1DC0003BD7CA /* SignUpViewModel.swift in Sources */,
 				CE51503B2C9F25C400B10107 /* TripsView.swift in Sources */,
 				CE4E3E0E2CA5C558005C3CEE /* TripCardView.swift in Sources */,
+				CE179D582CAC8C1700FFC206 /* DriverTripCell.swift in Sources */,
 				CE4E3D862CA4A3AD005C3CEE /* Utils.swift in Sources */,
 				CE4E3E942CA7636D005C3CEE /* MasterDetailsView.swift in Sources */,
 				CE4E3E062CA5C1FA005C3CEE /* GetTripsResponse.swift in Sources */,
@@ -663,9 +688,11 @@
 				CE4E3E0A2CA5C2D5005C3CEE /* SearchResults.swift in Sources */,
 				CE1D68142CAB1AD80070970D /* TripDetailsViewComponents.swift in Sources */,
 				CE51504A2C9FD63B00B10107 /* SharedViews.swift in Sources */,
+				CE179D4E2CAC3B0900FFC206 /* WebView.swift in Sources */,
 				CE4E3EA22CA7DE1A005C3CEE /* String.swift in Sources */,
 				CE5701432C9E0E0D003BD7CA /* User.swift in Sources */,
 				CE51507D2CA0B25700B10107 /* CustomCalendarView.swift in Sources */,
+				CE179D542CAC43C200FFC206 /* WishView.swift in Sources */,
 				CE57014A2C9E1A54003BD7CA /* CustomViews.swift in Sources */,
 				CE4E3DF32CA5A54A005C3CEE /* TripsData.swift in Sources */,
 				CE5150352C9F258100B10107 /* SettingsView.swift in Sources */,
@@ -687,6 +714,7 @@
 				CE5150402C9F3B2700B10107 /* SettingsViewModel.swift in Sources */,
 				CE1D680A2CA9470D0070970D /* BookingCardView.swift in Sources */,
 				CE4E3E102CA5C5C5005C3CEE /* TripCardViewModel.swift in Sources */,
+				CE179D522CAC439400FFC206 /* WishViewModel.swift in Sources */,
 				CE4E3E1B2CA5F6B8005C3CEE /* TripRouteView.swift in Sources */,
 				CE1D68042CA940100070970D /* Review.swift in Sources */,
 				CE5701472C9E16EA003BD7CA /* ResetPasswordViewModel.swift in Sources */,

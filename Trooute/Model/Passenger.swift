@@ -5,7 +5,7 @@
 //  Created by Muhammad Zafar on 2024-09-26.
 //
 
-struct Passenger: Codable {
+struct Passenger: Codable, Identifiable {
     let id: String
     let photo: String?
     enum CodingKeys: String, CodingKey {

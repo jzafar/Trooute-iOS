@@ -86,7 +86,7 @@ struct SettingsView: View {
                     
             }
         })
-        NavigationLink(destination: EmptyView(), label: {
+        NavigationLink(destination: WishView(), label: {
             HStack {
                 Image("ic_heart")
                     .resizable()

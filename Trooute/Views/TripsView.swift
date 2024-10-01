@@ -5,47 +5,91 @@
 //  Created by Muhammad Zafar on 2024-09-21.
 //
 
+import SDWebImageSwiftUI
 import SwiftUI
 
 struct TripsView: View {
     @ObservedObject var viewModel = TripsViewModel()
+    @EnvironmentObject var userViewModel: SigninViewModel
     var body: some View {
         List {
-            Section {
-                searchTripView()
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-            }
-            Section(header: Text("Trips around you")) {
-                if viewModel.nearByTrips.count == 0 {
-                    HStack {
-                        Spacer()
-                        Text("No trip around you")
-                            .font(.subheadline)
-                            .foregroundStyle(.gray)
-                            .padding(.vertical)
-                        Spacer()
+            if userViewModel.user?.driverMode == true {
+                ForEach(viewModel.driverTrips) { trip in
+                    ZStack {
+                        NavigationLink(destination: EmptyView()) {
+                            EmptyView()
+                        }.opacity(0)
+                        Section {
+                            DriverTripCell(trip: trip)
+                        }.listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
                     }.listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)
-                } else {
-                    ForEach(viewModel.nearByTrips) { trip in
+                }
+
+            } else {
+                Section {
+                    searchTripView()
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                }
+
+                Section(header: Text("Trips around you")) {
+                    if viewModel.nearByTrips.count == 0 {
+                        HStack {
+                            Spacer()
+                            Text("No trip around you")
+                                .font(.subheadline)
+                                .foregroundStyle(.gray)
+                                .padding(.vertical)
+                            Spacer()
+                        }.listRowBackground(Color.clear)
+                            .listRowSeparator(.hidden)
+                    } else {
+                        ForEach(viewModel.nearByTrips) { trip in
                             ZStack {
-                                NavigationLink(destination: TripDetailsView(viewModel: TripDetailsViewModel(trip: trip))) {
+                                NavigationLink(destination: TripDetailsView(viewModel: TripDetailsViewModel(tripId: trip.id))) {
                                     EmptyView()
-                                    }.opacity(0)
+                                }.opacity(0)
                                 TripCardView(viewModel: TripCardViewModel(trip: trip))
                                     .listRowSeparator(.hidden)
                                     .listRowBackground(Color.clear)
                             }.background(.clear)
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(Color.clear)
+                        }
                     }
                 }
             }
 
         }.listStyle(GroupedListStyle())
+            .navigationBarTitle(userViewModel.user?.driverMode == true ? "Ongoing Trips" : "")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    HStack {
+                        WebImage(url: URL(string: viewModel.getUserImage(userViewModel.user?.photo))) { image in
+                            image.resizable()
+                        } placeholder: {
+                            Image(systemName: "person.circle")
+                        }
+                        .onSuccess { _, _, _ in
+                        }
+                        .indicator(.activity)
+                        .transition(.fade(duration: 0.5))
+                        .scaledToFit()
+                        .frame(width: 30, height: 30)
+                        .cornerRadius(15)
+                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
+                        .padding(1)
+
+                        TextViewLableText(text: "\(userViewModel.user?.name ?? "")", textFont: .title3)
+                    }
+                }
+            }
             .onAppear {
-                viewModel.fetchTrips()
+                if let user = userViewModel.user {
+                    viewModel.fetchTrips(user)
+                }
             }
     }
 
@@ -272,4 +316,5 @@ struct TripsView: View {
 
 #Preview {
     TripsView()
+        .environmentObject(SigninViewModel())
 }

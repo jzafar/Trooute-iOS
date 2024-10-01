@@ -86,23 +86,23 @@ struct TripCardView: View {
         }
     }
     
-    @ViewBuilder
-    func circleWithDottedLines() -> some View {
-        VStack {
-            Image("ic_location_from")
-                .frame(width: 12, height: 12)
-                .padding(.top, 5)
-
-            // Dotted Line
-            DashedLine()
-                .stroke(style: StrokeStyle(lineWidth: 1, dash: [3]))
-                .frame(height: 65)
-
-            Image("ic_location_where_to")
-                .frame(width: 12, height: 12)
-        }.frame(width: 30)
-        
-    }
+//    @ViewBuilder
+//    func circleWithDottedLines() -> some View {
+//        VStack {
+//            Image("ic_location_from")
+//                .frame(width: 12, height: 12)
+//                .padding(.top, 5)
+//
+//            // Dotted Line
+//            DashedLine()
+//                .stroke(style: StrokeStyle(lineWidth: 1, dash: [3]))
+//                .frame(height: 65)
+//
+//            Image("ic_location_where_to")
+//                .frame(width: 12, height: 12)
+//        }.frame(width: 30)
+//        
+//    }
     
     @ViewBuilder
     func tripRouteView() -> some View {

@@ -80,6 +80,9 @@ struct BookingDetailsView: View {
             }
         }.navigationTitle("Booking Details")
             .navigationBarTitleDisplayMode(.inline)
+            .sheet(isPresented: $viewModel.showPaymentsScreen) {
+                WebView(webViewModel: viewModel.getWebViewModel())
+            }
     }
     
     @ViewBuilder
@@ -173,12 +176,19 @@ struct BookingDetailsView: View {
             
             HStack {
                 if driverStatus {
-                    SecondaryBookingButton(title: "Cancel booking") {
+                    if (viewModel.bookingData?.status == .waiting) {
+                        SecondaryBookingButton(title: "Cancel booking") {
+                            
+                        }
                         
-                    }
-                    
-                    PrimaryGreenButton(title: "Accept") {
-                        
+                        PrimaryGreenButton(title: "Accept") {
+                            
+                        }
+                    } else if viewModel.bookingData?.status == .approved {
+                        Spacer()
+                        SecondaryBookingButton(title: "Cancel booking") {
+                            
+                        }
                     }
                 } else {
                     if (viewModel.bookingData?.status == .waiting) {
@@ -191,7 +201,7 @@ struct BookingDetailsView: View {
                             
                         }
                         PrimaryGreenButton(title: "Make Payment") {
-                            
+                            viewModel.makePayments()
                         }
                     }
                     

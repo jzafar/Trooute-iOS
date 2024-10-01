@@ -21,14 +21,30 @@ class TripsViewModel: ObservableObject {
     @Published var showFloatingDistanceForTo: Bool = false
     @Published var sheetHeight: CGFloat = .zero
 
-    
+    @Published var driverTrips: [TripInfo] = []
     @Published var nearByTrips: [TripsData] = []
     
-    func fetchTrips() {
-        let tripResponse = MockDate.getTripsResponse()!
-        if tripResponse.success == true,
-        let trips = tripResponse.data{
-            self.nearByTrips = trips
+    func fetchTrips(_ user: User) {
+        if user.driverMode == true {
+            if let tripResponse = MockDate.getDriverTripsList(){
+                if tripResponse.success == true,
+                   let trips = tripResponse.data{
+                    self.driverTrips = trips
+                    self.nearByTrips = []
+                }
+            }
+        } else {
+            let tripResponse = MockDate.getTripsResponse()!
+            if tripResponse.success == true,
+            let trips = tripResponse.data{
+                self.nearByTrips = trips
+                self.driverTrips = []
+            }
         }
+        
+    }
+    
+    func getUserImage(_ photo: String?) -> String {
+        return "\(Constants.baseImageUrl)/\(photo ?? "")"
     }
 }
