@@ -80,6 +80,7 @@ struct BookingDetailsView: View {
             }
         }.navigationTitle("Booking Details")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbarRole(.editor)
             .sheet(isPresented: $viewModel.showPaymentsScreen) {
                 WebView(webViewModel: viewModel.getWebViewModel())
             }

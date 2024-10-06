@@ -59,6 +59,7 @@ struct TripDetailsView: View {
         .ignoresSafeArea(edges: .bottom)
         .navigationTitle("Trip Details")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarRole(.editor)
     }
 
     @ViewBuilder

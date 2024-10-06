@@ -21,20 +21,19 @@ struct ProceedView: View {
                     bookNowView()
                 }
         }
-        
-            .ignoresSafeArea(edges: .bottom)
-            
+        .toolbarRole(.editor)
+        .ignoresSafeArea(edges: .bottom)
     }
-    
+
     @ViewBuilder
     func bookNowView() -> some View {
         VStack {
             HStack {
-                Text( "€\(String(format: "%.1f", viewModel.totalPrice))")
+                Text("€\(String(format: "%.1f", viewModel.totalPrice))")
                     .font(.title3).bold()
                     .foregroundColor(.white)
                     .padding(.horizontal)
-                NavigationLink(destination: EmptyView()) {
+                NavigationLink(destination: BookingConfirmedView(trip: viewModel.trip)) {
                     PrimaryGreenText(title: "Book now")
                         .padding(.horizontal)
                 }

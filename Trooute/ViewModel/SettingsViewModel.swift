@@ -10,7 +10,7 @@ import Foundation
 class SettingsViewModel: ObservableObject {
     @Published var isDriverModeOn = true
     @Published var isNotificationOn = true
-    
+    @Published var editCarInfo = false
     private var user: User?
     
     func onAppear(userViewModel: SigninViewModel) {

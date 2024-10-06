@@ -21,6 +21,7 @@ struct UpdatePasswordView: View {
                 Spacer()
             }
         }.navigationTitle("Update Password")
+            .navigationBarTitleDisplayMode(.inline)
     }
     
     @ViewBuilder

@@ -31,4 +31,8 @@ extension View {
             self
         }
     }
+    
+//    func navigationBarBackButtonTitleHidden() -> some View {
+//        self.modifier(NavigationBarBackButtonTitleHiddenModifier())
+//      }
 }

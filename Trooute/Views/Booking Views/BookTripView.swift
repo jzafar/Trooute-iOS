@@ -32,6 +32,7 @@ struct BookTripView: View {
         }.navigationTitle("Booking")
         .navigationBarTitleDisplayMode(.inline)
         .ignoresSafeArea(edges: .bottom)
+        .toolbarRole(.editor)
     }
 
     @ViewBuilder

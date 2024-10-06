@@ -105,9 +105,7 @@ struct SignUpView: View {
 
     
     func cameraButton() -> some View {
-        ProfilePictureView(width: 100, height: 100) {
-            
-        }
+        RoundProfilePictureView(width: 100) 
     }
 
     @ViewBuilder

@@ -36,5 +36,18 @@ struct Utils {
         }
         return (image, string)
     }
+    
+    
+    static func downloadImage(url: String) async throws -> Image? {
+        guard let url = URL(string: url) else {
+            throw URLError(.badURL)
+        }
+
+        let (data, _) = try await URLSession.shared.data(from: url)
+        if let iamgeData = UIImage(data: data) {
+            return Image(uiImage: iamgeData)
+        }
+        return nil
+    }
 }
 

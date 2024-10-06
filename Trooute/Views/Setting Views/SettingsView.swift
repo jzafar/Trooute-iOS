@@ -12,21 +12,27 @@ struct SettingsView: View {
     @StateObject var viewModel = SettingsViewModel()
     var body: some View {
         List {
-            // Section 1: Driver's Profile
-            Section {
-                if let user = userViewModel.user {
-                    UserInfoCardView(viewModel: UserInfoCardViewModel(user: user))
-                }
+            if let user = userViewModel.user {
+                ZStack {
+                    NavigationLink(destination: UpdateProfileView()) {
+                        EmptyView()
+                    }.opacity(0)
+                    Section {
+                        UserInfoCardView(viewModel: UserInfoCardViewModel(user: user))
+                    }
+
+                }.listRowBackground(Color.white)
             }
 
-            if (viewModel.isDriverModeOn) {
+            if viewModel.isDriverModeOn {
                 if let carDetails = userViewModel.user?.carDetails {
                     Section {
-                        CarInfoView(viewModel: CarInfoViewModel(carDetails: carDetails))
-                    }
+                        CarInfoView(viewModel: CarInfoViewModel(carDetails: carDetails)) { editCar in
+                            viewModel.editCarInfo = editCar
+                        }
+                    }.listRowBackground(Color.white)
                 }
             }
-            
 
             // Section 3: Driver Mode Toggle
             Section {
@@ -54,9 +60,13 @@ struct SettingsView: View {
             }
         }
         .onAppear {
-            
         }
         .listStyle(InsetGroupedListStyle())
+        .fullScreenCover(isPresented: $viewModel.editCarInfo, onDismiss: {
+            // Reload
+        }, content: {
+            BecomeDriverView(viewModel: BecomeDriverViewModel(carDetails: userViewModel.user?.carDetails))
+        })
     }
 
     @ViewBuilder
@@ -83,7 +93,6 @@ struct SettingsView: View {
                     .resizable()
                     .frame(width: 25, height: 25)
                 ListRowText(text: "Profile")
-                    
             }
         })
         NavigationLink(destination: WishView(), label: {

@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 
 struct CarInfoView: View {
     var viewModel: CarInfoViewModel
+    var action: ((Bool) -> Void)? = nil
     var body: some View {
         HStack {
             carImageView()
@@ -47,7 +48,7 @@ struct CarInfoView: View {
                 Spacer()
                 HStack {
                     if !viewModel.isEditable {
-                        Button(action: {}) {
+                        Button(action: {action?(true)}) {
                             Image(systemName: "pencil")
                                 .font(.title).bold()
                                 .foregroundStyle(Color("DarkBlue"))

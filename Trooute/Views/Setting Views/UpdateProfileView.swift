@@ -11,10 +11,12 @@ import SwiftUI
 struct UpdateProfileView: View {
     @ObservedObject var viewModel = UpdateProfileViewModel()
     @FocusState var keyIsFocused: Bool
+    @EnvironmentObject var userViewModel: SigninViewModel
     var body: some View {
         VStack {
-            ProfilePictureView(width: 100, height: 100) {
-            }.padding(30)
+
+            RoundProfilePictureView(width: 100)
+                .padding(30)
 
             fullName()
 
@@ -26,8 +28,12 @@ struct UpdateProfileView: View {
             Spacer()
         }.onAppear {
             Tabbar.shared.hide = true
+            viewModel.fullName = userViewModel.user?.name ?? ""
+            viewModel.phoneNumber = userViewModel.user?.phoneNumber ?? ""
+            
         }
         .navigationTitle("Update Profile")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationDestination(isPresented: $viewModel.updatePassword) {
             UpdatePasswordView()
         }
@@ -47,7 +53,7 @@ struct UpdateProfileView: View {
     func phoneNumber() -> some View {
         VStack(alignment: .leading) {
             TextViewLableText(text: "Phone Number")
-            TextField("+46766966066", text: $viewModel.phoneNumber)
+            TextField("+49XXXXXXXXX", text: $viewModel.phoneNumber)
                 .textFieldStyle(AppTextFieldStyle())
         }
         .padding(.horizontal, 30)
@@ -65,27 +71,11 @@ struct UpdateProfileView: View {
         SecondaryGrayButton(title: "Update Password") {
             viewModel.updatePassword = true
         }
-//        NavigationLink(destination: UpdatePasswordView()) {
-//            Text("Update Password")
-//                .padding()
-//                .foregroundColor(.gray)
-//                .font(.title2)
-//                .fontWeight(.bold)
-//           }
-//        NavigationLink {
-//            UpdatePasswordView()
-//        } label: {
-//            Text("Update Password")
-//                .padding()
-//                .foregroundColor(.gray)
-//                .font(.title2)
-//                .fontWeight(.bold)
-//                .background(.white)
-//        }
         .padding(.horizontal, 30)
     }
 }
 
 #Preview {
     UpdateProfileView()
+        .environmentObject(SigninViewModel())
 }
