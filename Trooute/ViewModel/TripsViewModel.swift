@@ -23,7 +23,7 @@ class TripsViewModel: ObservableObject {
 
     @Published var driverTrips: [TripInfo] = []
     @Published var nearByTrips: [TripsData] = []
-    
+        
     func fetchTrips(_ user: User) {
         if user.driverMode == true {
             if let tripResponse = MockDate.getDriverTripsList(){

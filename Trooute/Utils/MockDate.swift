@@ -533,7 +533,7 @@ class MockDate {
         "email": "imcreativedeveloper@gmail.com",
         "role": "user",
         "photo": "cover-image-1707597881040.jpg",
-        "driverMode": false,
+        "driverMode": true,
         "isApprovedDriver": "approved",
         "phoneNumber": "+46 76 696 60 66",
         "isEmailVerified": true,

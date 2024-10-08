@@ -91,6 +91,7 @@ struct TripsView: View {
                     viewModel.fetchTrips(user)
                 }
             }
+             
     }
 
     @ViewBuilder
@@ -134,9 +135,11 @@ struct TripsView: View {
             VStack(alignment: .leading, spacing: 4) {
                 TextViewLableText(text: "From", textFont: .headline)
                 TextField("Enter starting location", text: $viewModel.fromLocation)
+                    .googlePlacesAutocomplete($viewModel.fromLocation)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(8)
+                    
             }
 
             VStack(alignment: .leading, spacing: 4) {
@@ -177,6 +180,7 @@ struct TripsView: View {
             VStack(alignment: .leading, spacing: 4) {
                 TextViewLableText(text: "Where to", textFont: .headline)
                 TextField("Enter destination location", text: $viewModel.toLocation)
+                    .googlePlacesAutocomplete($viewModel.toLocation)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(8)

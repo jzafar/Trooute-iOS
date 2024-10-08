@@ -1,67 +1,88 @@
 import SwiftUI
+import Combine
+import GooglePlaces
 
-struct PriceView1: View {
-    let finalPrice: Double
-    let bookingSeats: Int?
-    let bookingSeatsPrice: Double?
-    let showPersonText: Bool
-    let showSeatsRow: Bool
-    let showPlateformFee: Bool
+struct PlacesSearchView: View {
+    @StateObject private var viewModel = PlacesViewModel()
+    
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                if showSeatsRow {
-                    HStack {
-                        Text("\(bookingSeats ?? 10000) x Seats")
-                            .foregroundStyle(.white)
-                        Spacer()
-                        Text(self.bookPrice(bookingSeatsPrice))
-                            .foregroundStyle(.white)
-
-                    }.padding(.bottom, 1)
-
-                    if showPlateformFee {
-                        HStack {
-                            Text("Platform fee")
-                                .foregroundStyle(.white)
-                            Spacer()
-                            Text("€1.0")
-                                .foregroundStyle(.white)
-
-                        }.padding(.bottom, 1)
-                    }
+        VStack {
+            TextField("Search for places", text: $viewModel.query)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            
+            List(viewModel.searchResults) { place in
+                VStack(alignment: .leading) {
+                    Text(place.name)
+                        .font(.headline)
+                    Text(place.formatted_address)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
                 }
-                
-                if (showSeatsRow || showPlateformFee) {
-                    HStack {
-                    }.frame(height: 1)
-                        .frame(maxWidth: .infinity)
-                        .background(.white)
-                        .padding(.vertical, 4)
-                }
-                HStack {
-                    Text("€\(String(format: "%.1f", finalPrice))")
-                        .font(.title3).bold()
-                        .foregroundColor(.white)
-                    if showPersonText {
-                        Text("/Person")
-                            .font(.footnote)
-                            .foregroundColor(.white)
-                            .padding(.top, 5)
-                            .padding(.leading, -3)
-                    }
-                }
-                
-            }.padding()
-        }.background(Color("TitleColor"))
-    }
-    func bookPrice(_ price: Double?) -> String {
-        return "€\(String(format: "%.1f", price ?? 0.0))"
+            }
+        }
+        .navigationTitle("Search Places")
     }
 }
 
-struct UserCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        PriceView1(finalPrice: 52.0, bookingSeats: 2, bookingSeatsPrice: 50.0, showPersonText: true, showSeatsRow: true, showPlateformFee: true)
+#Preview {
+    PlacesSearchView()
+}
+
+class PlacesViewModel: ObservableObject {
+    @Published var searchResults: [Place] = []
+    @Published var query: String = ""
+    private var cancellable: AnyCancellable?
+    
+    private let apiKey = Constants.google_map_api_key
+    
+    init() {
+        cancellable = $query
+            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+            .removeDuplicates()
+            .sink { [weak self] query in
+                if !query.isEmpty {
+                    self?.searchPlaces(query: query)
+                } else {
+                    self?.searchResults = []
+                }
+            }
+    }
+    
+    func searchPlaces(query: String) {
+        let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let urlString = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=\(encodedQuery)&key=\(apiKey)"
+        
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data {
+                DispatchQueue.main.async {
+                    self.searchResults = self.parsePlaces(data: data)
+                }
+            }
+        }.resume()
+    }
+    
+    private func parsePlaces(data: Data) -> [Place] {
+        let decoder = JSONDecoder()
+        do {
+            let response = try decoder.decode(GooglePlacesResponse.self, from: data)
+            return response.results
+        } catch {
+            print("Error decoding JSON: \(error)")
+            return []
+        }
     }
 }
+
+struct GooglePlacesResponse: Codable {
+    let results: [Place]
+}
+
+struct Place: Codable, Identifiable {
+    let id = UUID()
+    let name: String
+    let formatted_address: String
+}
+
