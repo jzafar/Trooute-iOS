@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 class CreateTripViewModel: ObservableObject {
     @Published var fromLocation: String = ""
     @Published var toLocation: String = ""

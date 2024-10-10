@@ -90,8 +90,23 @@ struct TripsView: View {
                 if let user = userViewModel.user {
                     viewModel.fetchTrips(user)
                 }
+                viewModel.checkLocationAuthorization()
+            }.onChange(of: viewModel.fromAddressInfo) { fromInfo in
+                if fromInfo == nil {
+                    viewModel.showErrorAlert()
+                }
             }
-             
+            .onChange(of: viewModel.whereToAddressInfo) { whereInfo in
+                if whereInfo == nil {
+                    viewModel.showErrorAlert()
+                }
+            }.alert(viewModel.errorTitle,
+                    isPresented: $viewModel.addressInfoErrorAlert) {
+                    Button("Ok", role: .cancel) {}
+             } message: {
+                    Text(viewModel.errorMessage)
+             }
+        
     }
 
     @ViewBuilder
@@ -135,7 +150,7 @@ struct TripsView: View {
             VStack(alignment: .leading, spacing: 4) {
                 TextViewLableText(text: "From", textFont: .headline)
                 TextField("Enter starting location", text: $viewModel.fromLocation)
-                    .googlePlacesAutocomplete($viewModel.fromLocation)
+                    .googlePlacesAutocomplete($viewModel.fromLocation, placeInfo: $viewModel.fromAddressInfo)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(8)
@@ -180,7 +195,7 @@ struct TripsView: View {
             VStack(alignment: .leading, spacing: 4) {
                 TextViewLableText(text: "Where to", textFont: .headline)
                 TextField("Enter destination location", text: $viewModel.toLocation)
-                    .googlePlacesAutocomplete($viewModel.toLocation)
+                    .googlePlacesAutocomplete($viewModel.toLocation, placeInfo: $viewModel.whereToAddressInfo)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(8)

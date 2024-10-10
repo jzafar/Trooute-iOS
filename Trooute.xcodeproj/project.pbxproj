@@ -13,7 +13,6 @@
 		CE08540E2CB29B8000A3E422 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08540D2CB29B7800A3E422 /* CameraView.swift */; };
 		CE0854102CB29BD600A3E422 /* CustomDropdownField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08540F2CB29BD500A3E422 /* CustomDropdownField.swift */; };
 		CE0854142CB3176800A3E422 /* BluePriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0854132CB3175C00A3E422 /* BluePriceView.swift */; };
-		CE0854172CB318B500A3E422 /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = CE0854162CB318B500A3E422 /* GooglePlaces */; };
 		CE08541A2CB31D3600A3E422 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE0854192CB31D3600A3E422 /* FirebaseAnalytics */; };
 		CE08541C2CB31D3600A3E422 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = CE08541B2CB31D3600A3E422 /* FirebaseCore */; };
 		CE08541E2CB31D3600A3E422 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE08541D2CB31D3600A3E422 /* FirebaseCrashlytics */; };
@@ -48,6 +47,8 @@
 		CE270B972CB0765000B9CFDC /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE270B962CB0764E00B9CFDC /* NavigationUtil.swift */; };
 		CE270B992CB07C5600B9CFDC /* BecomeDriverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE270B982CB07C5600B9CFDC /* BecomeDriverView.swift */; };
 		CE270B9B2CB0864D00B9CFDC /* BecomeDriverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE270B9A2CB0864900B9CFDC /* BecomeDriverViewModel.swift */; };
+		CE28F12A2CB71F1F001CF2A1 /* GoogleAutocompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28F1292CB71F1B001CF2A1 /* GoogleAutocompleteViewModel.swift */; };
+		CE28F12C2CB72325001CF2A1 /* SearchedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28F12B2CB7231E001CF2A1 /* SearchedLocation.swift */; };
 		CE4E3D752CA356CD005C3CEE /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D742CA356CD005C3CEE /* FAQView.swift */; };
 		CE4E3D772CA35794005C3CEE /* FAQViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */; };
 		CE4E3D792CA357C8005C3CEE /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D782CA357B5005C3CEE /* FAQ.swift */; };
@@ -182,6 +183,8 @@
 		CE270B962CB0764E00B9CFDC /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 		CE270B982CB07C5600B9CFDC /* BecomeDriverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BecomeDriverView.swift; sourceTree = "<group>"; };
 		CE270B9A2CB0864900B9CFDC /* BecomeDriverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BecomeDriverViewModel.swift; sourceTree = "<group>"; };
+		CE28F1292CB71F1B001CF2A1 /* GoogleAutocompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAutocompleteViewModel.swift; sourceTree = "<group>"; };
+		CE28F12B2CB7231E001CF2A1 /* SearchedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedLocation.swift; sourceTree = "<group>"; };
 		CE4E3D742CA356CD005C3CEE /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
 		CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewModel.swift; sourceTree = "<group>"; };
 		CE4E3D782CA357B5005C3CEE /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ.swift; sourceTree = "<group>"; };
@@ -273,7 +276,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE0854222CB31D3600A3E422 /* FirebaseMessaging in Frameworks */,
-				CE0854172CB318B500A3E422 /* GooglePlaces in Frameworks */,
 				CE0854202CB31D3600A3E422 /* FirebaseInAppMessaging-Beta in Frameworks */,
 				CE08541C2CB31D3600A3E422 /* FirebaseCore in Frameworks */,
 				CE4E3E172CA5E728005C3CEE /* SDWebImageSwiftUI in Frameworks */,
@@ -379,6 +381,7 @@
 		CE4E3E8C2CA748F4005C3CEE /* App Custom Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE28F12B2CB7231E001CF2A1 /* SearchedLocation.swift */,
 				CE4E3E8D2CA7492F005C3CEE /* TripRouteModel.swift */,
 			);
 			path = "App Custom Model";
@@ -412,6 +415,7 @@
 		CE57013E2C9E0DDE003BD7CA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CE28F1292CB71F1B001CF2A1 /* GoogleAutocompleteViewModel.swift */,
 				CE270B9A2CB0864900B9CFDC /* BecomeDriverViewModel.swift */,
 				CE1D68072CA944C20070970D /* BookingsViewModel.swift */,
 				CE1D680B2CA9474F0070970D /* BookingCardViewModel.swift */,
@@ -639,7 +643,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					CED05EFD2C95AF6F00E51158 = {
 						CreatedOnToolsVersion = 15.4;
@@ -666,7 +670,6 @@
 			packageReferences = (
 				CE0081D52CA3455B00D84ACB /* XCRemoteSwiftPackageReference "swiftui-currency-field" */,
 				CE4E3E152CA5E728005C3CEE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
-				CE0854152CB318B500A3E422 /* XCRemoteSwiftPackageReference "ios-places-sdk" */,
 				CE0854182CB31D3600A3E422 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = CED05EFF2C95AF7000E51158 /* Products */;
@@ -729,6 +732,7 @@
 				CE270B972CB0765000B9CFDC /* NavigationUtil.swift in Sources */,
 				CE4E3E902CA753C4005C3CEE /* CheckboxStyle.swift in Sources */,
 				CE4E3E192CA5ED1A005C3CEE /* DriverCarView.swift in Sources */,
+				CE28F12C2CB72325001CF2A1 /* SearchedLocation.swift in Sources */,
 				CE51507B2CA0B21800B10107 /* DashedLine.swift in Sources */,
 				CE4E3EA62CA7EC1C005C3CEE /* UserProfile.swift in Sources */,
 				CE08540C2CB29B4100A3E422 /* PictureView.swift in Sources */,
@@ -775,6 +779,7 @@
 				CE1D68142CAB1AD80070970D /* TripDetailsViewComponents.swift in Sources */,
 				CE51504A2C9FD63B00B10107 /* RoundProfilePictureView.swift in Sources */,
 				CE179D4E2CAC3B0900FFC206 /* WebView.swift in Sources */,
+				CE28F12A2CB71F1F001CF2A1 /* GoogleAutocompleteViewModel.swift in Sources */,
 				CE4E3EA22CA7DE1A005C3CEE /* String.swift in Sources */,
 				CE5701432C9E0E0D003BD7CA /* User.swift in Sources */,
 				CE51507D2CA0B25700B10107 /* CustomCalendarView.swift in Sources */,
@@ -986,12 +991,15 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Trooute/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) wants to access camera to take picture.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME) wants to access photo libray for pictures.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Trooute wants to access camera to take picture.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Trooute wants to access your location to show trips around you.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Trooute wants to access your location to show trips around you.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Trooute wants to access photo libray for pictures.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1018,12 +1026,15 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Trooute/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) wants to access camera to take picture.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME) wants to access photo libray for pictures.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Trooute wants to access camera to take picture.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Trooute wants to access your location to show trips around you.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Trooute wants to access your location to show trips around you.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Trooute wants to access photo libray for pictures.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1041,7 +1052,6 @@
 		CED05F262C95AF7200E51158 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1061,7 +1071,6 @@
 		CED05F272C95AF7200E51158 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1081,7 +1090,6 @@
 		CED05F292C95AF7200E51158 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZCRH48Q4SG;
@@ -1099,7 +1107,6 @@
 		CED05F2A2C95AF7200E51158 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZCRH48Q4SG;
@@ -1164,14 +1171,6 @@
 				minimumVersion = 1.0.2;
 			};
 		};
-		CE0854152CB318B500A3E422 /* XCRemoteSwiftPackageReference "ios-places-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/googlemaps/ios-places-sdk";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 9.1.0;
-			};
-		};
 		CE0854182CB31D3600A3E422 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1195,11 +1194,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE0081D52CA3455B00D84ACB /* XCRemoteSwiftPackageReference "swiftui-currency-field" */;
 			productName = CurrencyField;
-		};
-		CE0854162CB318B500A3E422 /* GooglePlaces */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE0854152CB318B500A3E422 /* XCRemoteSwiftPackageReference "ios-places-sdk" */;
-			productName = GooglePlaces;
 		};
 		CE0854192CB31D3600A3E422 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

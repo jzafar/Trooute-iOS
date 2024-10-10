@@ -135,7 +135,7 @@ class BookingDetailsViewModel: ObservableObject {
                 str = "Your booking is now confirmed! Anticipate the upcoming trip day."
             }
         }
-        return ""
+        return str
     }
     
     func makePayments() {

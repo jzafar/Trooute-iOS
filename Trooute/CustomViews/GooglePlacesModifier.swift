@@ -6,35 +6,43 @@
 //
 
 import SwiftUI
-import GooglePlaces
 
 struct GooglePlacesModifier: ViewModifier {
     @Binding var text: String
+    @Binding var placeInfo: SearchedLocation?
     @State private var showAutocomplete = false
     @FocusState private var isFocused: Bool
-    private let apiKey = Constants.google_map_api_key
-    
-    init(text: Binding<String>) {
+
+    init(text: Binding<String>, placeInfo: Binding<SearchedLocation?>) {
         _text = text
-        GMSPlacesClient.provideAPIKey(apiKey)
+        _placeInfo = placeInfo
     }
 
     func body(content: Content) -> some View {
         content
             .focused($isFocused)
-                        .onChange(of: isFocused) { focused in
-                            if focused {
-                                showAutocomplete = true
-                            }
-                        }
-            .sheet(isPresented: $showAutocomplete) {
-                GoogleAutocompleteView(selectedAddress: $text)
+            .onChange(of: isFocused) { focused in
+                if focused {
+                    isFocused = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                           showAutocomplete = true
+                                       }
+                }
+            }
+            .fullScreenCover(isPresented: $showAutocomplete, onDismiss: {
+                isFocused = false
+
+            }) {
+                GoogleAutocompleteView(selectedAddress: $text, placeInfo: $placeInfo)
+                    .onDisappear {
+                        isFocused = false
+                    }
             }
     }
 }
 
 extension View {
-    func googlePlacesAutocomplete(_ text: Binding<String>) -> some View {
-        self.modifier(GooglePlacesModifier(text: text))
+    func googlePlacesAutocomplete(_ text: Binding<String>, placeInfo: Binding<SearchedLocation?>) -> some View {
+        modifier(GooglePlacesModifier(text: text, placeInfo: placeInfo))
     }
 }

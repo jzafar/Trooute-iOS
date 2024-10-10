@@ -5,44 +5,48 @@
 //  Created by Muhammad Zafar on 2024-10-07.
 //
 
+import MapKit
 import SwiftUI
-import GooglePlaces
 
-struct GoogleAutocompleteView: UIViewControllerRepresentable {
+struct GoogleAutocompleteView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var selectedAddress: String
-    
-    func makeUIViewController(context: Context) -> GMSAutocompleteViewController {
-        let autocompleteController = GMSAutocompleteViewController()
-        autocompleteController.delegate = context.coordinator
-        return autocompleteController
-    }
-
-    func updateUIViewController(_ uiViewController: GMSAutocompleteViewController, context: Context) {}
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    class Coordinator: NSObject, GMSAutocompleteViewControllerDelegate {
-        var parent: GoogleAutocompleteView
-        
-        init(_ parent: GoogleAutocompleteView) {
-            self.parent = parent
+    @Binding var placeInfo: SearchedLocation?
+    @StateObject private var viewModel = GoogleAutocompleteViewModel()
+    var body: some View {
+        NavigationView {
+            Form {
+                Section {
+                    TextField("Type address here ...", text: $viewModel.searchTerm)
+                }
+                Section {
+                    ForEach(viewModel.locationResults, id: \.self) { location in
+                        VStack(alignment: .leading) {
+                            Text(location.title)
+                            Text(location.subtitle)
+                                .font(.system(.caption))
+                        }.onTapGesture {
+                            viewModel.reconcileLocation(location: location) { finalPlace in
+                                self.selectedAddress = location.title + " " + location.subtitle
+                                self.placeInfo = finalPlace
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
+                        }
+                    }
+                }
+            }.navigationTitle("Search Address")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: "xmark")
+                                .foregroundColor(.black) // Customize color as needed
+                        }
+                    }
+                }
         }
         
-        func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-            parent.selectedAddress = place.formattedAddress ?? ""
-            parent.presentationMode.wrappedValue.dismiss()
-        }
-        
-        func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-            print("Error: ", error.localizedDescription)
-            parent.presentationMode.wrappedValue.dismiss()
-        }
-        
-        func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-            parent.presentationMode.wrappedValue.dismiss()
-        }
     }
 }
