@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct User: UserProfile, Codable, Identifiable {
-    var id: String
+public struct User: Codable, UserProfile, Identifiable {
+    public var id: String
     var name: String
     var photo: String?
     var gender: String?
@@ -30,12 +30,130 @@ struct User: UserProfile, Codable, Identifiable {
     let passwordChangedAt: String?
     let stripeConnectedAccountId: String?
     let stripeToken: String?
-    
+
     enum CodingKeys: String, CodingKey {
-            case carDetails
-            case id = "_id"
-            case name, email, role, photo, driverMode, isApprovedDriver, phoneNumber, isEmailVerified, status, createdAt, updatedAt
-            case v = "__v"
-            case emailverifyOTP, passwordChangedAt, stripeConnectedAccountId, stripeToken, gender, reviewsStats
-        }
+        case carDetails
+        case id = "_id"
+        case name, email, role, photo, driverMode, isApprovedDriver, phoneNumber, isEmailVerified, status, createdAt, updatedAt, rating
+        case v = "__v"
+        case emailverifyOTP, passwordChangedAt, stripeConnectedAccountId, stripeToken, gender, reviewsStats, totlaReview
+    }
+
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decodeIfPresent(String.self, forKey: .id) ?? ""
+        name = try values.decodeIfPresent(String.self, forKey: .name) ?? ""
+        email = try? values.decodeIfPresent(String.self, forKey: .email)
+        photo = try? values.decodeIfPresent(String.self, forKey: .photo)
+        gender = try? values.decodeIfPresent(String.self, forKey: .gender)
+        rating = try? values.decodeIfPresent(String.self, forKey: .rating)
+        totlaReview = try? values.decodeIfPresent(String.self, forKey: .totlaReview)
+        phoneNumber  = try? values.decodeIfPresent(String.self, forKey: .phoneNumber)
+        reviewsStats = try? values.decodeIfPresent(ReviewsStats.self, forKey: .reviewsStats)
+        carDetails = try? values.decodeIfPresent(CarDetails.self, forKey: .carDetails) 
+        role = try? values.decodeIfPresent(String.self, forKey: .role)
+        driverMode = try values.decodeIfPresent(Bool.self, forKey: .driverMode) ?? false
+        isApprovedDriver = try? values.decodeIfPresent(String.self, forKey: .isApprovedDriver)
+        isEmailVerified = try? values.decodeIfPresent(Bool.self, forKey: .isEmailVerified)
+        status = try? values.decodeIfPresent(String.self, forKey: .status)
+        createdAt = try? values.decodeIfPresent(String.self, forKey: .createdAt)
+        updatedAt = try? values.decodeIfPresent(String.self, forKey: .updatedAt)
+        v = try? values.decodeIfPresent(Int.self, forKey: .v)
+        emailverifyOTP = try? values.decodeIfPresent(String.self, forKey: .emailverifyOTP)
+        passwordChangedAt = try? values.decodeIfPresent(String.self, forKey: .passwordChangedAt)
+        stripeConnectedAccountId = try? values.decodeIfPresent(String.self, forKey: .stripeConnectedAccountId)
+        stripeToken = try? values.decodeIfPresent(String.self, forKey: .stripeToken)
+    }
 }
+
+//extension Optional: @retroactive RawRepresentable where Wrapped == User {
+//    public init?(rawValue: String) {
+//        guard let data = rawValue.data(using: .utf8),
+//              let result = try? JSONDecoder().decode(User.self, from: data)
+//        else {
+//            return nil
+//        }
+//        self = result
+//    }
+//
+//    public var rawValue: String {
+//        guard let data = try? JSONEncoder().encode(self),
+//              let result = String(data: data, encoding: .utf8)
+//        else {
+//            return "[]"
+//        }
+//        return result
+//    }
+//
+//    func encode(to encoder: Encoder) throws {
+//        var container = encoder.container(keyedBy: User.CodingKeys.self)
+//        try container.encode(self?.id, forKey: .id)
+//        try container.encode(self?.name, forKey: .name)
+//        try container.encode(self?.email, forKey: .email)
+//        try container.encode(self?.photo, forKey: .photo)
+//        try container.encode(self?.gender, forKey: .gender)
+//        try container.encode(self?.rating, forKey: .rating)
+//        try container.encode(self?.totlaReview, forKey: .totlaReview)
+//        try container.encode(self?.phoneNumber, forKey: .phoneNumber)
+//        try container.encode(self?.reviewsStats, forKey: .reviewsStats)
+//        try container.encode(self?.carDetails, forKey: .carDetails)
+//        try container.encode(self?.role, forKey: .role)
+//        try container.encode(self?.driverMode, forKey: .driverMode)
+//        try container.encode(self?.isApprovedDriver, forKey: .isApprovedDriver)
+//        try container.encode(self?.isEmailVerified, forKey: .isEmailVerified)
+//        try container.encode(self?.status, forKey: .status)
+//        try container.encode(self?.createdAt, forKey: .createdAt)
+//        try container.encode(self?.updatedAt, forKey: .updatedAt)
+//        try container.encode(self?.v, forKey: .v)
+//        try container.encode(self?.emailverifyOTP, forKey: .emailverifyOTP)
+//        try container.encode(self?.passwordChangedAt, forKey: .passwordChangedAt)
+//        try container.encode(self?.stripeConnectedAccountId, forKey: .stripeConnectedAccountId)
+//        try container.encode(self?.stripeToken, forKey: .stripeToken)
+//    }
+//}
+
+ extension User: RawRepresentable {
+    public init?(rawValue: String) {
+        guard let data = rawValue.data(using: .utf8),
+              let result = try? JSONDecoder().decode(User.self, from: data)
+        else {
+            return nil
+        }
+        self = result
+    }
+
+    public var rawValue: String {
+        guard let data = try? JSONEncoder().encode(self),
+              let result = String(data: data, encoding: .utf8)
+        else {
+            return "[]"
+        }
+        return result
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try? container.encodeIfPresent(photo, forKey: .photo)
+        try? container.encodeIfPresent(gender, forKey: .gender)
+        try? container.encodeIfPresent(rating, forKey: .rating)
+        try? container.encodeIfPresent(totlaReview, forKey: .totlaReview)
+        try? container.encodeIfPresent(phoneNumber, forKey: .phoneNumber)
+        try? container.encodeIfPresent(reviewsStats, forKey: .reviewsStats)
+        try? container.encodeIfPresent(carDetails, forKey: .carDetails)
+        try? container.encodeIfPresent(email, forKey: .email)
+        try? container.encodeIfPresent(role, forKey: .role)
+        try? container.encodeIfPresent(driverMode, forKey: .driverMode)
+        try? container.encodeIfPresent(isApprovedDriver, forKey: .isApprovedDriver)
+        try? container.encodeIfPresent(isEmailVerified, forKey: .isEmailVerified)
+        try? container.encodeIfPresent(status, forKey: .status)
+        try? container.encodeIfPresent(createdAt, forKey: .createdAt)
+        try? container.encodeIfPresent(updatedAt, forKey: .updatedAt)
+        try? container.encodeIfPresent(v, forKey: .v)
+        try? container.encodeIfPresent(emailverifyOTP, forKey: .emailverifyOTP)
+        try? container.encodeIfPresent(passwordChangedAt, forKey: .passwordChangedAt)
+        try? container.encodeIfPresent(stripeConnectedAccountId, forKey: .stripeConnectedAccountId)
+        try? container.encodeIfPresent(stripeToken, forKey: .stripeToken)
+    }
+ }

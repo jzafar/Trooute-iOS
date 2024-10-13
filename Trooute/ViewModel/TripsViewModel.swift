@@ -7,7 +7,7 @@
 
 import CoreLocation
 import Foundation
-
+import SwiftUI
 class TripsViewModel: NSObject, ObservableObject {
     @Published var fromLocation: String = ""
     @Published var toLocation: String = ""
@@ -27,15 +27,15 @@ class TripsViewModel: NSObject, ObservableObject {
     @Published var fromAddressInfo: SearchedLocation? = nil
     @Published var whereToAddressInfo: SearchedLocation? = nil
     @Published var addressInfoErrorAlert = false
-
+    @AppStorage(UserDefaultsKey.user.key) var user: User?
     private let locationManager = CLLocationManager()
     @Published var authorisationStatus: CLAuthorizationStatus = .notDetermined
     private var lastKnownLocation: CLLocationCoordinate2D?
     var errorTitle = ""
     var errorMessage = ""
 
-    func fetchTrips(_ user: User) {
-        if user.driverMode == true {
+    func fetchTrips() {
+        if user?.driverMode == true {
             if let tripResponse = MockDate.getDriverTripsList() {
                 if tripResponse.success == true,
                    let trips = tripResponse.data {

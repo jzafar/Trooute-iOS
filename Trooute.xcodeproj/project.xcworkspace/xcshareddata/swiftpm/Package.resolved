@@ -1,5 +1,5 @@
 {
-  "originHash" : "ad056a1d4e205ffd6d37321cd6f5911b2d85bd22067b91166dc7e503ab2d2015",
+  "originHash" : "0cb58830c38be07494d526c99720ea0d27f8130486c7af3af5491327bc545e6c",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -15,8 +15,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/app-check.git",
       "state" : {
-        "revision" : "21fe1af9be463a359aaf8d96789ef73fc3760d09",
-        "version" : "11.0.1"
+        "revision" : "87dd288fc792bf9751e522e171a47df5b783b0b8",
+        "version" : "11.1.0"
+      }
+    },
+    {
+      "identity" : "bryxbanner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/bryx-inc/BRYXBanner.git",
+      "state" : {
+        "revision" : "1d00ffc19c379253712a5792a7f5121fa0d66243",
+        "version" : "0.8.5"
       }
     },
     {
@@ -134,6 +143,15 @@
       "state" : {
         "revision" : "ebc7251dd5b37f627c93698e4374084d98409633",
         "version" : "1.28.2"
+      }
+    },
+    {
+      "identity" : "swiftloader",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/leoru/SwiftLoader",
+      "state" : {
+        "revision" : "3d03ac07764075bfab4c9ce9d5ba4556d6af350e",
+        "version" : "1.1.0"
       }
     },
     {

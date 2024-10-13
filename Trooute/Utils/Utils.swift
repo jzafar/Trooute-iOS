@@ -7,10 +7,21 @@
 import SwiftUI
 
 struct Utils {
+    static func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "(?:[a-zA-Z0-9._%+-]+)@(?:[a-zA-Z0-9.-]+)\\.[a-zA-Z]{2,}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailPredicate.evaluate(with: email)
+    }
+
+    static func convertImageToData(_ image: Image?) -> Data? {
+        guard let uiImage = image?.asUIImage() else { return nil }
+        return uiImage.jpegData(compressionQuality: 1.0)
+    }
+
     static func checkStatus(isDriverApproved: Bool, status: BookingStatus?) -> (Image, String) {
         var image: Image
         var string: String
-        switch (status) {
+        switch status {
         case .waiting:
             image = Image("ic_status_waiting")
             string = isDriverApproved ? "Waiting for approval" : "Waiting"
@@ -19,7 +30,7 @@ struct Utils {
             string = "Canceled"
         case .approved:
             image = Image("ic_approved_check")
-            if (isDriverApproved) {
+            if isDriverApproved {
                 string = "Waiting for payment"
             } else {
                 string = "Approved"
@@ -36,8 +47,7 @@ struct Utils {
         }
         return (image, string)
     }
-    
-    
+
     static func downloadImage(url: String) async throws -> Image? {
         guard let url = URL(string: url) else {
             throw URLError(.badURL)
@@ -50,4 +60,3 @@ struct Utils {
         return nil
     }
 }
-

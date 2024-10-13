@@ -18,7 +18,7 @@ class CarInfoViewModel {
     }
     
     var carMakeModel: String {
-        return carDetails.make + " " + carDetails.model
+        return carDetails.make.emptyOrNil + " " + carDetails.model.emptyOrNil
     }
     
     var year: String {

@@ -8,16 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		CE0081A42CA1DF3A00D84ACB /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0081A32CA1DF3700D84ACB /* Test.swift */; };
-		CE0081D72CA3455B00D84ACB /* CurrencyField in Frameworks */ = {isa = PBXBuildFile; productRef = CE0081D62CA3455B00D84ACB /* CurrencyField */; };
 		CE08540C2CB29B4100A3E422 /* PictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08540B2CB29AE800A3E422 /* PictureView.swift */; };
 		CE08540E2CB29B8000A3E422 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08540D2CB29B7800A3E422 /* CameraView.swift */; };
 		CE0854102CB29BD600A3E422 /* CustomDropdownField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08540F2CB29BD500A3E422 /* CustomDropdownField.swift */; };
 		CE0854142CB3176800A3E422 /* BluePriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0854132CB3175C00A3E422 /* BluePriceView.swift */; };
-		CE08541A2CB31D3600A3E422 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE0854192CB31D3600A3E422 /* FirebaseAnalytics */; };
-		CE08541C2CB31D3600A3E422 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = CE08541B2CB31D3600A3E422 /* FirebaseCore */; };
-		CE08541E2CB31D3600A3E422 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE08541D2CB31D3600A3E422 /* FirebaseCrashlytics */; };
-		CE0854202CB31D3600A3E422 /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = CE08541F2CB31D3600A3E422 /* FirebaseInAppMessaging-Beta */; };
-		CE0854222CB31D3600A3E422 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = CE0854212CB31D3600A3E422 /* FirebaseMessaging */; };
 		CE0854242CB31E1C00A3E422 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE0854232CB31E1C00A3E422 /* GoogleService-Info.plist */; };
 		CE0854262CB3AC6C00A3E422 /* GoogleAutocompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0854252CB3AC6900A3E422 /* GoogleAutocompleteView.swift */; };
 		CE0854282CB3B03100A3E422 /* GooglePlacesModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0854272CB3B02F00A3E422 /* GooglePlacesModifier.swift */; };
@@ -84,7 +78,7 @@
 		CE4E3EA22CA7DE1A005C3CEE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3EA12CA7DE10005C3CEE /* String.swift */; };
 		CE4E3EA42CA7E7A9005C3CEE /* UserInfoCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3EA32CA7E7A3005C3CEE /* UserInfoCardViewModel.swift */; };
 		CE4E3EA62CA7EC1C005C3CEE /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3EA52CA7EC15005C3CEE /* UserProfile.swift */; };
-		CE4E3EA82CA7F12E005C3CEE /* GetLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3EA72CA7F123005C3CEE /* GetLoginResponse.swift */; };
+		CE4E3EA82CA7F12E005C3CEE /* SigninResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3EA72CA7F123005C3CEE /* SigninResponse.swift */; };
 		CE5150352C9F258100B10107 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150342C9F258100B10107 /* SettingsView.swift */; };
 		CE5150372C9F259200B10107 /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150362C9F259200B10107 /* InboxView.swift */; };
 		CE5150392C9F25B400B10107 /* BookingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150382C9F25B400B10107 /* BookingsView.swift */; };
@@ -108,6 +102,21 @@
 		CE5150792CA0AFAE00B10107 /* CreateTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150782CA0AFAB00B10107 /* CreateTripViewModel.swift */; };
 		CE51507B2CA0B21800B10107 /* DashedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51507A2CA0B21600B10107 /* DashedLine.swift */; };
 		CE51507D2CA0B25700B10107 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51507C2CA0B25500B10107 /* CustomCalendarView.swift */; };
+		CE5227CD2CBAAD84005C1175 /* SwiftLoader in Frameworks */ = {isa = PBXBuildFile; productRef = CE5227CC2CBAAD84005C1175 /* SwiftLoader */; };
+		CE5227D02CBABA6B005C1175 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = CE5227CF2CBABA6B005C1175 /* FirebaseCore */; };
+		CE5227D32CBABAC3005C1175 /* CurrencyField in Frameworks */ = {isa = PBXBuildFile; productRef = CE5227D22CBABAC3005C1175 /* CurrencyField */; };
+		CE5227DF2CBADE3F005C1175 /* LoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5227DE2CBADE31005C1175 /* LoggedInUser.swift */; };
+		CE5227E22CBAE2A5005C1175 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5227E12CBAE2A5005C1175 /* VerificationView.swift */; };
+		CE5227E42CBAE2E7005C1175 /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5227E32CBAE2D7005C1175 /* VerificationViewModel.swift */; };
+		CE5227E72CBAF7AE005C1175 /* SignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5227E62CBAF7A2005C1175 /* SignupRequest.swift */; };
+		CE5227E92CBAF7B6005C1175 /* SignupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5227E82CBAF7B1005C1175 /* SignupResponse.swift */; };
+		CE5227EF2CBAFE0A005C1175 /* SignupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5227EE2CBAFE0A005C1175 /* SignupRepository.swift */; };
+		CE5227F12CBB1DA1005C1175 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5227F02CBB1D9D005C1175 /* Image.swift */; };
+		CE5227F62CBB9228005C1175 /* VerificationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5227F52CBB921A005C1175 /* VerificationRepository.swift */; };
+		CE5227F92CBB975D005C1175 /* OTPVerificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5227F82CBB974B005C1175 /* OTPVerificationRequest.swift */; };
+		CE5227FB2CBB9E9F005C1175 /* ResendOTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5227FA2CBB9E9F005C1175 /* ResendOTPRequest.swift */; };
+		CE5227FE2CBBAB00005C1175 /* ReestPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5227FD2CBBAAFB005C1175 /* ReestPasswordRequest.swift */; };
+		CE5228012CBBABD1005C1175 /* ResetPasswordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5228002CBBABD1005C1175 /* ResetPasswordRepository.swift */; };
 		CE57013A2C9E0BCA003BD7CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5701392C9E0BCA003BD7CA /* LaunchScreen.storyboard */; };
 		CE57013C2C9E0DBE003BD7CA /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57013B2C9E0DBE003BD7CA /* SigninView.swift */; };
 		CE5701402C9E0DF6003BD7CA /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57013F2C9E0DEB003BD7CA /* SigninViewModel.swift */; };
@@ -122,6 +131,10 @@
 		CE5701782C9E96B9003BD7CA /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5701772C9E96B8003BD7CA /* Bundle.swift */; };
 		CE57017A2C9E9F2C003BD7CA /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5701792C9E9F29003BD7CA /* View.swift */; };
 		CE57017C2C9F24C1003BD7CA /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57017B2C9F24C1003BD7CA /* MainTabView.swift */; };
+		CEA18AC02CBBB6820096545F /* BasicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18ABF2CBBB6750096545F /* BasicResponse.swift */; };
+		CEA18AC42CBBCDB10096545F /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18AC32CBBCDAC0096545F /* MainTabViewModel.swift */; };
+		CEA18AC62CBBCDEA0096545F /* MainTabViewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18AC52CBBCDDE0096545F /* MainTabViewRepository.swift */; };
+		CEA18AC82CBBE8340096545F /* StorageCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18AC72CBBE82D0096545F /* StorageCodable.swift */; };
 		CED05F022C95AF7000E51158 /* TroouteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED05F012C95AF7000E51158 /* TroouteApp.swift */; };
 		CED05F042C95AF7000E51158 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED05F032C95AF7000E51158 /* ContentView.swift */; };
 		CED05F062C95AF7100E51158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CED05F052C95AF7100E51158 /* Assets.xcassets */; };
@@ -129,6 +142,16 @@
 		CED05F132C95AF7200E51158 /* TroouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED05F122C95AF7200E51158 /* TroouteTests.swift */; };
 		CED05F1D2C95AF7200E51158 /* TroouteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED05F1C2C95AF7200E51158 /* TroouteUITests.swift */; };
 		CED05F1F2C95AF7200E51158 /* TroouteUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED05F1E2C95AF7200E51158 /* TroouteUITestsLaunchTests.swift */; };
+		CEEEA2892CBA5DE9006B8ECE /* SigninRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEA2882CBA5DDF006B8ECE /* SigninRequest.swift */; };
+		CEEEA28B2CBA8F33006B8ECE /* SigninRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEA28A2CBA8F32006B8ECE /* SigninRepository.swift */; };
+		CEEEA2912CBA960D006B8ECE /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEA2902CBA95FC006B8ECE /* BaseResponse.swift */; };
+		CEEEA2952CBA982F006B8ECE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEA2942CBA982E006B8ECE /* NetworkService.swift */; };
+		CEEEA2982CBA9BE3006B8ECE /* BRYXBanner in Frameworks */ = {isa = PBXBuildFile; productRef = CEEEA2972CBA9BE3006B8ECE /* BRYXBanner */; };
+		CEEEA29A2CBA9BF6006B8ECE /* BannerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEA2992CBA9BF2006B8ECE /* BannerHelper.swift */; };
+		CEEEA2AA2CBA9D7D006B8ECE /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEA2A82CBA9D7D006B8ECE /* Logs.swift */; };
+		CEEEA2AB2CBA9D7D006B8ECE /* BaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEA2A52CBA9D7D006B8ECE /* BaseDestination.swift */; };
+		CEEEA2AC2CBA9D7D006B8ECE /* FileDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEA2A72CBA9D7D006B8ECE /* FileDestination.swift */; };
+		CEEEA2AD2CBA9D7D006B8ECE /* ConsoleDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEA2A62CBA9D7D006B8ECE /* ConsoleDestination.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,7 +242,7 @@
 		CE4E3EA12CA7DE10005C3CEE /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		CE4E3EA32CA7E7A3005C3CEE /* UserInfoCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCardViewModel.swift; sourceTree = "<group>"; };
 		CE4E3EA52CA7EC15005C3CEE /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		CE4E3EA72CA7F123005C3CEE /* GetLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLoginResponse.swift; sourceTree = "<group>"; };
+		CE4E3EA72CA7F123005C3CEE /* SigninResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninResponse.swift; sourceTree = "<group>"; };
 		CE5150342C9F258100B10107 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CE5150362C9F259200B10107 /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
 		CE5150382C9F25B400B10107 /* BookingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsView.swift; sourceTree = "<group>"; };
@@ -243,6 +266,18 @@
 		CE5150782CA0AFAB00B10107 /* CreateTripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripViewModel.swift; sourceTree = "<group>"; };
 		CE51507A2CA0B21600B10107 /* DashedLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLine.swift; sourceTree = "<group>"; };
 		CE51507C2CA0B25500B10107 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
+		CE5227DE2CBADE31005C1175 /* LoggedInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInUser.swift; sourceTree = "<group>"; };
+		CE5227E12CBAE2A5005C1175 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
+		CE5227E32CBAE2D7005C1175 /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
+		CE5227E62CBAF7A2005C1175 /* SignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequest.swift; sourceTree = "<group>"; };
+		CE5227E82CBAF7B1005C1175 /* SignupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupResponse.swift; sourceTree = "<group>"; };
+		CE5227EE2CBAFE0A005C1175 /* SignupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRepository.swift; sourceTree = "<group>"; };
+		CE5227F02CBB1D9D005C1175 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		CE5227F52CBB921A005C1175 /* VerificationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationRepository.swift; sourceTree = "<group>"; };
+		CE5227F82CBB974B005C1175 /* OTPVerificationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerificationRequest.swift; sourceTree = "<group>"; };
+		CE5227FA2CBB9E9F005C1175 /* ResendOTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendOTPRequest.swift; sourceTree = "<group>"; };
+		CE5227FD2CBBAAFB005C1175 /* ReestPasswordRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReestPasswordRequest.swift; sourceTree = "<group>"; };
+		CE5228002CBBABD1005C1175 /* ResetPasswordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordRepository.swift; sourceTree = "<group>"; };
 		CE5701382C9E098B003BD7CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE5701392C9E0BCA003BD7CA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE57013B2C9E0DBE003BD7CA /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninView.swift; sourceTree = "<group>"; };
@@ -258,6 +293,10 @@
 		CE5701772C9E96B8003BD7CA /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		CE5701792C9E9F29003BD7CA /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		CE57017B2C9F24C1003BD7CA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		CEA18ABF2CBBB6750096545F /* BasicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicResponse.swift; sourceTree = "<group>"; };
+		CEA18AC32CBBCDAC0096545F /* MainTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
+		CEA18AC52CBBCDDE0096545F /* MainTabViewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewRepository.swift; sourceTree = "<group>"; };
+		CEA18AC72CBBE82D0096545F /* StorageCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCodable.swift; sourceTree = "<group>"; };
 		CED05EFE2C95AF7000E51158 /* Trooute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trooute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED05F012C95AF7000E51158 /* TroouteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TroouteApp.swift; sourceTree = "<group>"; };
 		CED05F032C95AF7000E51158 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -268,6 +307,15 @@
 		CED05F182C95AF7200E51158 /* TroouteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TroouteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED05F1C2C95AF7200E51158 /* TroouteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TroouteUITests.swift; sourceTree = "<group>"; };
 		CED05F1E2C95AF7200E51158 /* TroouteUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TroouteUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CEEEA2882CBA5DDF006B8ECE /* SigninRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRequest.swift; sourceTree = "<group>"; };
+		CEEEA28A2CBA8F32006B8ECE /* SigninRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRepository.swift; sourceTree = "<group>"; };
+		CEEEA2902CBA95FC006B8ECE /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		CEEEA2942CBA982E006B8ECE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CEEEA2992CBA9BF2006B8ECE /* BannerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerHelper.swift; sourceTree = "<group>"; };
+		CEEEA2A52CBA9D7D006B8ECE /* BaseDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDestination.swift; sourceTree = "<group>"; };
+		CEEEA2A62CBA9D7D006B8ECE /* ConsoleDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleDestination.swift; sourceTree = "<group>"; };
+		CEEEA2A72CBA9D7D006B8ECE /* FileDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDestination.swift; sourceTree = "<group>"; };
+		CEEEA2A82CBA9D7D006B8ECE /* Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,13 +323,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE0854222CB31D3600A3E422 /* FirebaseMessaging in Frameworks */,
-				CE0854202CB31D3600A3E422 /* FirebaseInAppMessaging-Beta in Frameworks */,
-				CE08541C2CB31D3600A3E422 /* FirebaseCore in Frameworks */,
+				CE5227D32CBABAC3005C1175 /* CurrencyField in Frameworks */,
 				CE4E3E172CA5E728005C3CEE /* SDWebImageSwiftUI in Frameworks */,
-				CE08541E2CB31D3600A3E422 /* FirebaseCrashlytics in Frameworks */,
-				CE08541A2CB31D3600A3E422 /* FirebaseAnalytics in Frameworks */,
-				CE0081D72CA3455B00D84ACB /* CurrencyField in Frameworks */,
+				CE5227CD2CBAAD84005C1175 /* SwiftLoader in Frameworks */,
+				CE5227D02CBABA6B005C1175 /* FirebaseCore in Frameworks */,
+				CEEEA2982CBA9BE3006B8ECE /* BRYXBanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,35 +375,34 @@
 			path = "Trip Views";
 			sourceTree = "<group>";
 		};
-		CE270B922CB0678F00B9CFDC /* Login Views */ = {
+		CE270B922CB0678F00B9CFDC /* OnboardView */ = {
 			isa = PBXGroup;
 			children = (
 				CE5150742CA093CB00B10107 /* OnboardView.swift */,
-				CE5701442C9E16DD003BD7CA /* ResetPasswordView.swift */,
-				CE57013B2C9E0DBE003BD7CA /* SigninView.swift */,
-				CE57014B2C9E1CC7003BD7CA /* SignUpView.swift */,
 			);
-			path = "Login Views";
+			path = OnboardView;
 			sourceTree = "<group>";
 		};
-		CE270B932CB067C800B9CFDC /* Setting Views */ = {
+		CE270B932CB067C800B9CFDC /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				CEA18AC12CBBC7350096545F /* Main Setting View */,
 				CE270B982CB07C5600B9CFDC /* BecomeDriverView.swift */,
 				CE5150432C9F512700B10107 /* CarInfoView.swift */,
 				CE4E3D742CA356CD005C3CEE /* FAQView.swift */,
-				CE5150342C9F258100B10107 /* SettingsView.swift */,
 				CE5150472C9FD5AD00B10107 /* UpdateProfileView.swift */,
 				CE51504D2C9FDC8400B10107 /* UpdatePasswordView.swift */,
 				CE5150412C9F3BD900B10107 /* UserInfoCardView.swift */,
 				CE179D532CAC43C200FFC206 /* WishView.swift */,
 			);
-			path = "Setting Views";
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		CE4E3D842CA4A3A1005C3CEE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CEEEA2A92CBA9D7D006B8ECE /* Logger */,
+				CEEEA2942CBA982E006B8ECE /* NetworkService.swift */,
 				CE4E3E132CA5D93D005C3CEE /* Constants.swift */,
 				CE4E3E112CA5C979005C3CEE /* MockDate.swift */,
 				CE4E3D852CA4A3AA005C3CEE /* Utils.swift */,
@@ -371,7 +416,6 @@
 				CE179D552CAC442D00FFC206 /* GetTripListResponse.swift */,
 				CE1D67FD2CA93E730070970D /* GetBookingsResponse.swift */,
 				CE1D680D2CA9C3B10070970D /* GetBookingDetailsResponse.swift */,
-				CE4E3EA72CA7F123005C3CEE /* GetLoginResponse.swift */,
 				CE4E3E072CA5C219005C3CEE /* GetTripDetailsResponse.swift */,
 				CE4E3E052CA5C1F6005C3CEE /* GetTripsResponse.swift */,
 			);
@@ -399,15 +443,63 @@
 			path = CustomTabView;
 			sourceTree = "<group>";
 		};
+		CE5227E02CBAE27F005C1175 /* Verification View */ = {
+			isa = PBXGroup;
+			children = (
+				CE5227F52CBB921A005C1175 /* VerificationRepository.swift */,
+				CE5227E32CBAE2D7005C1175 /* VerificationViewModel.swift */,
+				CE5227E12CBAE2A5005C1175 /* VerificationView.swift */,
+			);
+			path = "Verification View";
+			sourceTree = "<group>";
+		};
+		CE5227E52CBAF790005C1175 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				CE5227E82CBAF7B1005C1175 /* SignupResponse.swift */,
+				CE5227E62CBAF7A2005C1175 /* SignupRequest.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		CE5227F72CBB973D005C1175 /* OTP */ = {
+			isa = PBXGroup;
+			children = (
+				CE5227FA2CBB9E9F005C1175 /* ResendOTPRequest.swift */,
+				CE5227F82CBB974B005C1175 /* OTPVerificationRequest.swift */,
+			);
+			path = OTP;
+			sourceTree = "<group>";
+		};
+		CE5227FC2CBBAAED005C1175 /* RestPassword */ = {
+			isa = PBXGroup;
+			children = (
+				CE5227FD2CBBAAFB005C1175 /* ReestPasswordRequest.swift */,
+			);
+			path = RestPassword;
+			sourceTree = "<group>";
+		};
+		CE5227FF2CBBABB7005C1175 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CE5227E02CBAE27F005C1175 /* Verification View */,
+				CEEEA2932CBA976C006B8ECE /* ResetPassword */,
+				CEEEA2922CBA973A006B8ECE /* Signup */,
+				CEEEA28C2CBA93D3006B8ECE /* Signin */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		CE57013D2C9E0DCB003BD7CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE5227FF2CBBABB7005C1175 /* Auth */,
 				CE270B902CB0672900B9CFDC /* Booking Views */,
-				CE270B932CB067C800B9CFDC /* Setting Views */,
-				CE270B922CB0678F00B9CFDC /* Login Views */,
+				CE270B932CB067C800B9CFDC /* Setting */,
+				CE270B922CB0678F00B9CFDC /* OnboardView */,
 				CE270B912CB0674800B9CFDC /* Trip Views */,
 				CE5150362C9F259200B10107 /* InboxView.swift */,
-				CE57017B2C9F24C1003BD7CA /* MainTabView.swift */,
+				CEA18AC22CBBCD980096545F /* TabBarView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -426,11 +518,7 @@
 				CE4E3E872CA73652005C3CEE /* DriverCarViewModel.swift */,
 				CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */,
 				CE1D67F92CA88CF40070970D /* ProceedViewModel.swift */,
-				CE5701462C9E16E4003BD7CA /* ResetPasswordViewModel.swift */,
 				CE4E3E0B2CA5C52F005C3CEE /* SearchResultsViewModel.swift */,
-				CE51503F2C9F3B2000B10107 /* SettingsViewModel.swift */,
-				CE57014D2C9E1DBB003BD7CA /* SignUpViewModel.swift */,
-				CE57013F2C9E0DEB003BD7CA /* SigninViewModel.swift */,
 				CE4E3E9F2CA76BD3005C3CEE /* TripDetailsViewModel.swift */,
 				CE4E3E0F2CA5C5C1005C3CEE /* TripCardViewModel.swift */,
 				CE4E3D822CA49C71005C3CEE /* TripsViewModel.swift */,
@@ -446,6 +534,8 @@
 		CE5701412C9E0DFD003BD7CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE5227DE2CBADE31005C1175 /* LoggedInUser.swift */,
+				CEEEA28D2CBA95D1006B8ECE /* RequestResponseObjects */,
 				CE4E3E002CA5B351005C3CEE /* Booking.swift */,
 				CE1D67FF2CA93ED10070970D /* BookingData.swift */,
 				CE5701742C9E8FB3003BD7CA /* CountryCode.swift */,
@@ -470,6 +560,7 @@
 		CE5701482C9E1A36003BD7CA /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				CEEEA2992CBA9BF2006B8ECE /* BannerHelper.swift */,
 				CE0854272CB3B02F00A3E422 /* GooglePlacesModifier.swift */,
 				CE0854252CB3AC6900A3E422 /* GoogleAutocompleteView.swift */,
 				CE0854132CB3175C00A3E422 /* BluePriceView.swift */,
@@ -503,6 +594,8 @@
 		CE5701762C9E96AF003BD7CA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CEA18AC72CBBE82D0096545F /* StorageCodable.swift */,
+				CE5227F02CBB1D9D005C1175 /* Image.swift */,
 				CE4E3EA12CA7DE10005C3CEE /* String.swift */,
 				CE4E3D802CA49ABE005C3CEE /* Date.swift */,
 				CE5150452C9F57CE00B10107 /* Color.swift */,
@@ -510,6 +603,25 @@
 				CE5701772C9E96B8003BD7CA /* Bundle.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CEA18AC12CBBC7350096545F /* Main Setting View */ = {
+			isa = PBXGroup;
+			children = (
+				CE51503F2C9F3B2000B10107 /* SettingsViewModel.swift */,
+				CE5150342C9F258100B10107 /* SettingsView.swift */,
+			);
+			path = "Main Setting View";
+			sourceTree = "<group>";
+		};
+		CEA18AC22CBBCD980096545F /* TabBarView */ = {
+			isa = PBXGroup;
+			children = (
+				CEA18AC52CBBCDDE0096545F /* MainTabViewRepository.swift */,
+				CEA18AC32CBBCDAC0096545F /* MainTabViewModel.swift */,
+				CE57017B2C9F24C1003BD7CA /* MainTabView.swift */,
+			);
+			path = TabBarView;
 			sourceTree = "<group>";
 		};
 		CED05EF52C95AF6F00E51158 = {
@@ -577,6 +689,77 @@
 				CED05F1E2C95AF7200E51158 /* TroouteUITestsLaunchTests.swift */,
 			);
 			path = TroouteUITests;
+			sourceTree = "<group>";
+		};
+		CEEEA28C2CBA93D3006B8ECE /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				CEEEA28A2CBA8F32006B8ECE /* SigninRepository.swift */,
+				CE57013F2C9E0DEB003BD7CA /* SigninViewModel.swift */,
+				CE57013B2C9E0DBE003BD7CA /* SigninView.swift */,
+			);
+			path = Signin;
+			sourceTree = "<group>";
+		};
+		CEEEA28D2CBA95D1006B8ECE /* RequestResponseObjects */ = {
+			isa = PBXGroup;
+			children = (
+				CEA18ABF2CBBB6750096545F /* BasicResponse.swift */,
+				CE5227FC2CBBAAED005C1175 /* RestPassword */,
+				CE5227F72CBB973D005C1175 /* OTP */,
+				CE5227E52CBAF790005C1175 /* Signup */,
+				CEEEA28F2CBA95F5006B8ECE /* Common */,
+				CEEEA28E2CBA95DF006B8ECE /* Signin */,
+			);
+			path = RequestResponseObjects;
+			sourceTree = "<group>";
+		};
+		CEEEA28E2CBA95DF006B8ECE /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				CEEEA2882CBA5DDF006B8ECE /* SigninRequest.swift */,
+				CE4E3EA72CA7F123005C3CEE /* SigninResponse.swift */,
+			);
+			path = Signin;
+			sourceTree = "<group>";
+		};
+		CEEEA28F2CBA95F5006B8ECE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CEEEA2902CBA95FC006B8ECE /* BaseResponse.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CEEEA2922CBA973A006B8ECE /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				CE5227EE2CBAFE0A005C1175 /* SignupRepository.swift */,
+				CE57014D2C9E1DBB003BD7CA /* SignUpViewModel.swift */,
+				CE57014B2C9E1CC7003BD7CA /* SignUpView.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		CEEEA2932CBA976C006B8ECE /* ResetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				CE5228002CBBABD1005C1175 /* ResetPasswordRepository.swift */,
+				CE5701462C9E16E4003BD7CA /* ResetPasswordViewModel.swift */,
+				CE5701442C9E16DD003BD7CA /* ResetPasswordView.swift */,
+			);
+			path = ResetPassword;
+			sourceTree = "<group>";
+		};
+		CEEEA2A92CBA9D7D006B8ECE /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				CEEEA2A52CBA9D7D006B8ECE /* BaseDestination.swift */,
+				CEEEA2A62CBA9D7D006B8ECE /* ConsoleDestination.swift */,
+				CEEEA2A72CBA9D7D006B8ECE /* FileDestination.swift */,
+				CEEEA2A82CBA9D7D006B8ECE /* Logs.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -668,9 +851,11 @@
 			);
 			mainGroup = CED05EF52C95AF6F00E51158;
 			packageReferences = (
-				CE0081D52CA3455B00D84ACB /* XCRemoteSwiftPackageReference "swiftui-currency-field" */,
 				CE4E3E152CA5E728005C3CEE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
-				CE0854182CB31D3600A3E422 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CEEEA2962CBA9BE3006B8ECE /* XCRemoteSwiftPackageReference "BRYXBanner" */,
+				CE5227CB2CBAAD84005C1175 /* XCRemoteSwiftPackageReference "SwiftLoader" */,
+				CE5227CE2CBABA6B005C1175 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CE5227D12CBABAC3005C1175 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */,
 			);
 			productRefGroup = CED05EFF2C95AF7000E51158 /* Products */;
 			projectDirPath = "";
@@ -724,14 +909,16 @@
 				CE0854282CB3B03100A3E422 /* GooglePlacesModifier.swift in Sources */,
 				CE4E3D7F2CA49A85005C3CEE /* InvertedTriangle.swift in Sources */,
 				CE0854142CB3176800A3E422 /* BluePriceView.swift in Sources */,
-				CE4E3EA82CA7F12E005C3CEE /* GetLoginResponse.swift in Sources */,
+				CE4E3EA82CA7F12E005C3CEE /* SigninResponse.swift in Sources */,
 				CE5701402C9E0DF6003BD7CA /* SigninViewModel.swift in Sources */,
 				CE4E3E0C2CA5C533005C3CEE /* SearchResultsViewModel.swift in Sources */,
 				CE4E3EA42CA7E7A9005C3CEE /* UserInfoCardViewModel.swift in Sources */,
 				CE5150372C9F259200B10107 /* InboxView.swift in Sources */,
 				CE270B972CB0765000B9CFDC /* NavigationUtil.swift in Sources */,
+				CEEEA2952CBA982F006B8ECE /* NetworkService.swift in Sources */,
 				CE4E3E902CA753C4005C3CEE /* CheckboxStyle.swift in Sources */,
 				CE4E3E192CA5ED1A005C3CEE /* DriverCarView.swift in Sources */,
+				CE5227F92CBB975D005C1175 /* OTPVerificationRequest.swift in Sources */,
 				CE28F12C2CB72325001CF2A1 /* SearchedLocation.swift in Sources */,
 				CE51507B2CA0B21800B10107 /* DashedLine.swift in Sources */,
 				CE4E3EA62CA7EC1C005C3CEE /* UserProfile.swift in Sources */,
@@ -744,6 +931,8 @@
 				CE179D4C2CAC3AB900FFC206 /* WebViewModel.swift in Sources */,
 				CE5150792CA0AFAE00B10107 /* CreateTripViewModel.swift in Sources */,
 				CE179D502CAC40C400FFC206 /* TripInfo.swift in Sources */,
+				CEEEA2892CBA5DE9006B8ECE /* SigninRequest.swift in Sources */,
+				CE5227FB2CBB9E9F005C1175 /* ResendOTPRequest.swift in Sources */,
 				CE1D68102CA9C4BA0070970D /* BookingDetailsView.swift in Sources */,
 				CE5150682CA035A800B10107 /* UITabBarControllerRepresentable.swift in Sources */,
 				CE5150692CA035A800B10107 /* CustomTabView.swift in Sources */,
@@ -751,6 +940,7 @@
 				CE08540E2CB29B8000A3E422 /* CameraView.swift in Sources */,
 				CE4E3DFB2CA5A787005C3CEE /* ReviewsStats.swift in Sources */,
 				CE4E3D772CA35794005C3CEE /* FAQViewModel.swift in Sources */,
+				CEEEA28B2CBA8F33006B8ECE /* SigninRepository.swift in Sources */,
 				CE51506F2CA035A800B10107 /* KeyboardReadable.swift in Sources */,
 				CE1D68122CA9C4DA0070970D /* BookingDetailsViewModel.swift in Sources */,
 				CE4E3D752CA356CD005C3CEE /* FAQView.swift in Sources */,
@@ -758,6 +948,7 @@
 				CE5701782C9E96B9003BD7CA /* Bundle.swift in Sources */,
 				CE4E3DF92CA5A741005C3CEE /* CarDetails.swift in Sources */,
 				CE1D67FA2CA88CF70070970D /* ProceedViewModel.swift in Sources */,
+				CE5227DF2CBADE3F005C1175 /* LoggedInUser.swift in Sources */,
 				CE1D67F82CA88C9C0070970D /* ProceedView.swift in Sources */,
 				CE1D680C2CA9474F0070970D /* BookingCardViewModel.swift in Sources */,
 				CE0854262CB3AC6C00A3E422 /* GoogleAutocompleteView.swift in Sources */,
@@ -772,38 +963,49 @@
 				CED05F022C95AF7000E51158 /* TroouteApp.swift in Sources */,
 				CE1D67E02CA8624D0070970D /* BookTripView.swift in Sources */,
 				CE4E3E082CA5C21A005C3CEE /* GetTripDetailsResponse.swift in Sources */,
+				CEA18AC42CBBCDB10096545F /* MainTabViewModel.swift in Sources */,
 				CE4E3DFD2CA5B184005C3CEE /* LuggageRestrictions.swift in Sources */,
+				CE5227E42CBAE2E7005C1175 /* VerificationViewModel.swift in Sources */,
 				CE5150502C9FE01300B10107 /* UpdatePasswordViewModel.swift in Sources */,
 				CE5701452C9E16DD003BD7CA /* ResetPasswordView.swift in Sources */,
 				CE4E3E0A2CA5C2D5005C3CEE /* SearchResults.swift in Sources */,
 				CE1D68142CAB1AD80070970D /* TripDetailsViewComponents.swift in Sources */,
 				CE51504A2C9FD63B00B10107 /* RoundProfilePictureView.swift in Sources */,
+				CEA18AC62CBBCDEA0096545F /* MainTabViewRepository.swift in Sources */,
 				CE179D4E2CAC3B0900FFC206 /* WebView.swift in Sources */,
 				CE28F12A2CB71F1F001CF2A1 /* GoogleAutocompleteViewModel.swift in Sources */,
 				CE4E3EA22CA7DE1A005C3CEE /* String.swift in Sources */,
+				CE5227EF2CBAFE0A005C1175 /* SignupRepository.swift in Sources */,
 				CE5701432C9E0E0D003BD7CA /* User.swift in Sources */,
 				CE51507D2CA0B25700B10107 /* CustomCalendarView.swift in Sources */,
 				CE179D542CAC43C200FFC206 /* WishView.swift in Sources */,
 				CE57014A2C9E1A54003BD7CA /* CustomViews.swift in Sources */,
 				CE4E3DF32CA5A54A005C3CEE /* TripsData.swift in Sources */,
 				CE5150352C9F258100B10107 /* SettingsView.swift in Sources */,
+				CEA18AC82CBBE8340096545F /* StorageCodable.swift in Sources */,
 				CE4E3DF52CA5A6C1005C3CEE /* Trip.swift in Sources */,
 				CE270B9B2CB0864D00B9CFDC /* BecomeDriverViewModel.swift in Sources */,
 				CE0081A42CA1DF3A00D84ACB /* Test.swift in Sources */,
+				CEEEA2912CBA960D006B8ECE /* BaseResponse.swift in Sources */,
 				CE4E3D832CA49C76005C3CEE /* TripsViewModel.swift in Sources */,
 				CE5150752CA093CB00B10107 /* OnboardView.swift in Sources */,
+				CE5227FE2CBBAB00005C1175 /* ReestPasswordRequest.swift in Sources */,
 				CE1D67F62CA86ED50070970D /* BookTripViewModel.swift in Sources */,
 				CE270B992CB07C5600B9CFDC /* BecomeDriverView.swift in Sources */,
 				CE1D68002CA93ED40070970D /* BookingData.swift in Sources */,
 				CE4E3DFF2CA5B2C1005C3CEE /* Passenger.swift in Sources */,
 				CE57013C2C9E0DBE003BD7CA /* SigninView.swift in Sources */,
+				CEA18AC02CBBB6820096545F /* BasicResponse.swift in Sources */,
 				CE4E3E122CA5C97F005C3CEE /* MockDate.swift in Sources */,
 				CE4E3E882CA73656005C3CEE /* DriverCarViewModel.swift in Sources */,
 				CE5150552CA0153300B10107 /* TabBarView.swift in Sources */,
 				CE1D67FE2CA93E760070970D /* GetBookingsResponse.swift in Sources */,
 				CE5150462C9F57D300B10107 /* Color.swift in Sources */,
+				CE5227E92CBAF7B6005C1175 /* SignupResponse.swift in Sources */,
 				CE5150392C9F25B400B10107 /* BookingsView.swift in Sources */,
+				CE5227F12CBB1DA1005C1175 /* Image.swift in Sources */,
 				CE57014C2C9E1CC7003BD7CA /* SignUpView.swift in Sources */,
+				CE5227E72CBAF7AE005C1175 /* SignupRequest.swift in Sources */,
 				CE5150402C9F3B2700B10107 /* SettingsViewModel.swift in Sources */,
 				CE1D680A2CA9470D0070970D /* BookingCardView.swift in Sources */,
 				CE4E3E102CA5C5C5005C3CEE /* TripCardViewModel.swift in Sources */,
@@ -814,7 +1016,10 @@
 				CE5701472C9E16EA003BD7CA /* ResetPasswordViewModel.swift in Sources */,
 				CE4E3E8E2CA74945005C3CEE /* TripRouteModel.swift in Sources */,
 				CE57017A2C9E9F2C003BD7CA /* View.swift in Sources */,
+				CE5228012CBBABD1005C1175 /* ResetPasswordRepository.swift in Sources */,
 				CE5150772CA0AFA600B10107 /* CreateTripView.swift in Sources */,
+				CE5227F62CBB9228005C1175 /* VerificationRepository.swift in Sources */,
+				CE5227E22CBAE2A5005C1175 /* VerificationView.swift in Sources */,
 				CE4E3EA02CA76BDE005C3CEE /* TripDetailsViewModel.swift in Sources */,
 				CE5701752C9E8FC0003BD7CA /* CountryCode.swift in Sources */,
 				CE4E3E012CA5B353005C3CEE /* Booking.swift in Sources */,
@@ -822,7 +1027,12 @@
 				CE1D680E2CA9C3B10070970D /* GetBookingDetailsResponse.swift in Sources */,
 				CE1D68082CA944C40070970D /* BookingsViewModel.swift in Sources */,
 				CE57017C2C9F24C1003BD7CA /* MainTabView.swift in Sources */,
+				CEEEA29A2CBA9BF6006B8ECE /* BannerHelper.swift in Sources */,
 				CE5150482C9FD5AD00B10107 /* UpdateProfileView.swift in Sources */,
+				CEEEA2AA2CBA9D7D006B8ECE /* Logs.swift in Sources */,
+				CEEEA2AB2CBA9D7D006B8ECE /* BaseDestination.swift in Sources */,
+				CEEEA2AC2CBA9D7D006B8ECE /* FileDestination.swift in Sources */,
+				CEEEA2AD2CBA9D7D006B8ECE /* ConsoleDestination.swift in Sources */,
 				CE5150422C9F3BD900B10107 /* UserInfoCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1163,22 +1373,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CE0081D52CA3455B00D84ACB /* XCRemoteSwiftPackageReference "swiftui-currency-field" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jtrinc/swiftui-currency-field.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.0.2;
-			};
-		};
-		CE0854182CB31D3600A3E422 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 11.3.0;
-			};
-		};
 		CE4E3E152CA5E728005C3CEE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -1187,43 +1381,65 @@
 				minimumVersion = 3.1.2;
 			};
 		};
+		CE5227CB2CBAAD84005C1175 /* XCRemoteSwiftPackageReference "SwiftLoader" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/leoru/SwiftLoader";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		CE5227CE2CBABA6B005C1175 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.3.0;
+			};
+		};
+		CE5227D12CBABAC3005C1175 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jtrinc/swiftui-currency-field.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+		CEEEA2962CBA9BE3006B8ECE /* XCRemoteSwiftPackageReference "BRYXBanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bryx-inc/BRYXBanner.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.8.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CE0081D62CA3455B00D84ACB /* CurrencyField */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE0081D52CA3455B00D84ACB /* XCRemoteSwiftPackageReference "swiftui-currency-field" */;
-			productName = CurrencyField;
-		};
-		CE0854192CB31D3600A3E422 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE0854182CB31D3600A3E422 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		CE08541B2CB31D3600A3E422 /* FirebaseCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE0854182CB31D3600A3E422 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCore;
-		};
-		CE08541D2CB31D3600A3E422 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE0854182CB31D3600A3E422 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-		CE08541F2CB31D3600A3E422 /* FirebaseInAppMessaging-Beta */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE0854182CB31D3600A3E422 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseInAppMessaging-Beta";
-		};
-		CE0854212CB31D3600A3E422 /* FirebaseMessaging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE0854182CB31D3600A3E422 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
-		};
 		CE4E3E162CA5E728005C3CEE /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE4E3E152CA5E728005C3CEE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		CE5227CC2CBAAD84005C1175 /* SwiftLoader */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE5227CB2CBAAD84005C1175 /* XCRemoteSwiftPackageReference "SwiftLoader" */;
+			productName = SwiftLoader;
+		};
+		CE5227CF2CBABA6B005C1175 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE5227CE2CBABA6B005C1175 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		CE5227D22CBABAC3005C1175 /* CurrencyField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE5227D12CBABAC3005C1175 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */;
+			productName = CurrencyField;
+		};
+		CEEEA2972CBA9BE3006B8ECE /* BRYXBanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEEEA2962CBA9BE3006B8ECE /* XCRemoteSwiftPackageReference "BRYXBanner" */;
+			productName = BRYXBanner;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

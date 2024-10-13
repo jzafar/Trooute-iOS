@@ -8,13 +8,13 @@
 
 import SwiftUI
 struct BookingCardView: View {
-    @EnvironmentObject var userModel: SigninViewModel
+    @AppStorage(UserDefaultsKey.user.key) var user: User?
     @ObservedObject var viewModel: BookingCardViewModel
     var body: some View {
         VStack (alignment: .leading, spacing: 5){
             VStack(alignment: .leading, spacing: 10) {
                 userBookingInfo()
-                if (viewModel.getDriverMode(userModel)) {
+                if (viewModel.getDriverMode()) {
                     userInfoView()
                 } else {
                     driverCarView()
@@ -24,12 +24,12 @@ struct BookingCardView: View {
             .background(Color.white)
             .cornerRadius(10)
             VStack(alignment: .leading) {
-                if (viewModel.getDriverMode(userModel)) {
+                if (viewModel.getDriverMode()) {
                     HStack {
                         Text("\(viewModel.booking.numberOfSeats ?? 10000) x Seats")
                             .foregroundStyle(.white)
                         Spacer()
-                        Text(viewModel.bookPrice(viewModel.getDriverMode(userModel)))
+                        Text(viewModel.bookPrice(viewModel.getDriverMode()))
                             .foregroundStyle(.white)
                         
                     }.padding(.horizontal)
@@ -45,7 +45,7 @@ struct BookingCardView: View {
                     
                     
                 }
-                PriceView(price:  viewModel.finalPrice(viewModel.getDriverMode(userModel)), bookingSeats: nil, showPersonText: false)
+                PriceView(price:  viewModel.finalPrice(viewModel.getDriverMode()), bookingSeats: nil, showPersonText: false)
             }
            
             
@@ -54,7 +54,7 @@ struct BookingCardView: View {
         .shadow(radius: 10)
         .cornerRadius(15)
         .onAppear{
-            viewModel.onAppear(userModel)
+            viewModel.onAppear()
         }
     }
     
@@ -69,7 +69,7 @@ struct BookingCardView: View {
     func userBookingInfo() -> some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                let driverStatus = userModel.user?.driverMode ?? false
+                let driverStatus = user?.driverMode ?? false
                 let (image, status) = viewModel.getStatu(driverStatus)
                 image
                 Text(status)

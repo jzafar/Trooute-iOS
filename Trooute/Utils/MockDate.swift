@@ -33,12 +33,12 @@ class MockDate {
         }
     }
     
-    class func getLoginResponse() -> GetLoginResponse? {
+    class func getLoginResponse() -> SigninResponse? {
         let jsonData = Data(MockDate.LoginResponse.utf8)
         let decoder = JSONDecoder()
 
         do {
-            let user = try decoder.decode(GetLoginResponse.self, from: jsonData)
+            let user = try decoder.decode(SigninResponse.self, from: jsonData)
             return user
         } catch {
             print(error.localizedDescription)

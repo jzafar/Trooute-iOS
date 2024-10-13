@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 class BookingsViewModel: ObservableObject {
     @Published var bookings: [BookingData] = []
-    
-    func getBookings(_ userViewModel: SigninViewModel) {
-        if let driverMode = userViewModel.user?.driverMode {
+    @AppStorage(UserDefaultsKey.user.key) var user: User?
+    func getBookings() {
+        if let driverMode = user?.driverMode {
             if let bookingResponse = driverMode ? MockDate.getDriverBookingsResponse() :  MockDate.getUserBookingsResponse() {
                 if bookingResponse.success {
                     self.bookings = bookingResponse.data!

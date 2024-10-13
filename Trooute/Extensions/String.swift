@@ -15,15 +15,25 @@ extension String {
         }
         return "Unknown date"
     }
-    
-    func emptyOrNil() -> String {
-        if self.count == 0 {
-            return "Not Provided"
-        }
-        return self
+
+    func find(_ char: Character) -> Index? {
+        return self.firstIndex(of: char)
     }
     
     func firstTenCharacters() -> String {
-        return String(self.prefix(10)).uppercased()
-   }
+        return String(prefix(10)).uppercased()
+    }
+
+    func replace(_ replace: String, withString: String, caseSensitive: Bool) -> String {
+        if caseSensitive {
+            return replacingOccurrences(of: replace, with: withString)
+        } else {
+            return replacingOccurrences(of: replace, with: withString, options: .caseInsensitive)
+        }
+    }
+}
+extension Optional where Wrapped == String {
+    var emptyOrNil: String {
+        return self?.isEmpty == false ? self! : "Not Provided"
+    }
 }

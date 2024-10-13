@@ -10,17 +10,16 @@ import SwiftUI
 
 class BookingCardViewModel: ObservableObject {
     @Published var booking: BookingData
-    private var userModel: SigninViewModel? = nil
+    @AppStorage(UserDefaultsKey.user.key) var user: User?
     init(booking: BookingData) {
         self.booking = booking
     }
     
-    func onAppear(_ userModel: SigninViewModel) {
-        self.userModel = userModel
+    func onAppear() {
     }
     
-    func getDriverMode(_ userModel: SigninViewModel) -> Bool {
-        if let user = userModel.user,
+    func getDriverMode() -> Bool {
+        if let user = user,
             let driverMode = user.driverMode{
             return driverMode
         }

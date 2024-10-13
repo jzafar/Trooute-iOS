@@ -8,14 +8,13 @@
 import SwiftUI
 import FirebaseCore
 
+let log = Logs.self
 @main
 struct TroouteApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject var userViewModel = SigninViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(userViewModel)
         }
     }
 }
@@ -23,6 +22,7 @@ struct TroouteApp: App {
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    _ = Logs()
     FirebaseApp.configure()
     return true
   }

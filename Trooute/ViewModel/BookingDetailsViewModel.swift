@@ -17,13 +17,14 @@ class BookingDetailsViewModel: ObservableObject {
     @Published var suitcaseWeight: String = ""
     @Published var bookingID: String? = ""
     @Published var showPaymentsScreen = false
+    @AppStorage(UserDefaultsKey.user.key) var user: User?
     init(bookingId: String) {
         self.bookingId = bookingId
         
     }
     
-    func getBookingDetails(_ userViewModel: SigninViewModel) {
-        if let driverMode = userViewModel.user?.driverMode {
+    func getBookingDetails() {
+        if let driverMode = user?.driverMode {
             if let bookingResponse = driverMode ? MockDate.getDriverBookingDetailsResponse() :  MockDate.getUserBookingDetailsResponse() {
                 if bookingResponse.success {
                     self.bookingData = bookingResponse.data!
@@ -40,8 +41,8 @@ class BookingDetailsViewModel: ObservableObject {
     }
     
     
-    func getDriverMode(_ userModel: SigninViewModel) -> Bool {
-        if let user = userModel.user,
+    func getDriverMode() -> Bool {
+        if let user = user,
             let driverMode = user.driverMode{
             return driverMode
         }
@@ -106,7 +107,7 @@ class BookingDetailsViewModel: ObservableObject {
     }
     
     var otherReliventDetails: String {
-        return bookingData?.trip.note?.emptyOrNil() ?? "Not Provided"
+        return bookingData?.trip.note.emptyOrNil ?? "Not Provided"
     }
     
     func getDestinationModel() -> TripRouteModel? {

@@ -38,12 +38,9 @@ struct GoogleAutocompleteView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
+                        XMarkButton {
                             self.presentationMode.wrappedValue.dismiss()
-                        }) {
-                            Image(systemName: "xmark")
-                                .foregroundColor(.black) // Customize color as needed
-                        }
+                        }.padding()
                     }
                 }
         }

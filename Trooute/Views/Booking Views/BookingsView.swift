@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct BookingsView: View {
-    @EnvironmentObject var userViewModel: SigninViewModel
     @StateObject var viewModel = BookingsViewModel()
     var body: some View {
         VStack {
@@ -41,7 +40,7 @@ struct BookingsView: View {
             
         }
         .onAppear {
-            viewModel.getBookings(userViewModel)
+            viewModel.getBookings()
         }
     }
 }

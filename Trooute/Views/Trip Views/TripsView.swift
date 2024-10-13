@@ -10,10 +10,10 @@ import SwiftUI
 
 struct TripsView: View {
     @ObservedObject var viewModel = TripsViewModel()
-    @EnvironmentObject var userViewModel: SigninViewModel
+    @AppStorage(UserDefaultsKey.user.key) var user: User?
     var body: some View {
         List {
-            if userViewModel.user?.driverMode == true {
+            if user?.driverMode == true {
                 ForEach(viewModel.driverTrips) { trip in
                     ZStack {
                         NavigationLink(destination: EmptyView()) {
@@ -63,11 +63,11 @@ struct TripsView: View {
             }
 
         }.listStyle(GroupedListStyle())
-            .navigationBarTitle(userViewModel.user?.driverMode == true ? "Ongoing Trips" : "")
+            .navigationBarTitle(user?.driverMode == true ? "Ongoing Trips" : "")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack {
-                        WebImage(url: URL(string: viewModel.getUserImage(userViewModel.user?.photo))) { image in
+                        WebImage(url: URL(string: viewModel.getUserImage(user?.photo))) { image in
                             image.resizable()
                         } placeholder: {
                             Image(systemName: "person.circle")
@@ -82,14 +82,12 @@ struct TripsView: View {
                         .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
                         .padding(1)
 
-                        TextViewLableText(text: "\(userViewModel.user?.name ?? "")", textFont: .title3)
+                        TextViewLableText(text: "\(user?.name ?? "")", textFont: .title3)
                     }
                 }
             }
             .onAppear {
-                if let user = userViewModel.user {
-                    viewModel.fetchTrips(user)
-                }
+                viewModel.fetchTrips()
                 viewModel.checkLocationAuthorization()
             }.onChange(of: viewModel.fromAddressInfo) { fromInfo in
                 if fromInfo == nil {

@@ -9,8 +9,8 @@ import PhotosUI
 import SDWebImageSwiftUI
 
 struct RoundProfilePictureView: View {
-    @EnvironmentObject var userViewModel: SigninViewModel
-    @State private var image: Image?
+    @AppStorage(UserDefaultsKey.user.key) var user: User?
+    @Binding var image: Image?
     @State private var showActionSheet: Bool = false
     @State private var isShowingPhotoPicker = false
     @State private var isShowingCameraPicker = false
@@ -28,7 +28,7 @@ struct RoundProfilePictureView: View {
                     .cornerRadius(width/2)
                     .overlay(RoundedRectangle(cornerRadius: width/2).stroke(Color.black, lineWidth: 1))
                     .padding(1)
-            } else if let photo = userViewModel.user?.photo {
+            } else if let photo = user?.photo {
                 WebImage(url: URL(string: photoUrl(photo))) { image in
 //                    self.image = Image(uiimage: image.image)
 //                        image.resizable()

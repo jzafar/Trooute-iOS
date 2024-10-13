@@ -27,11 +27,11 @@ class BecomeDriverViewModel: ObservableObject {
     init(carDetails: CarDetails?) {
         self.carDetails = carDetails
         if let car = carDetails {
-            vehicleMake = car.make
-            vehicleModel = car.model
+            vehicleMake = car.make.emptyOrNil
+            vehicleModel = car.model.emptyOrNil
             vehicleYear = "\(car.year ?? 0000)"
-            vehicleColor = car.color
-            vehicleLicensePlate = car.registrationNumber
+            vehicleColor = car.color.emptyOrNil
+            vehicleLicensePlate = car.registrationNumber.emptyOrNil
         }
         Task {
             do {

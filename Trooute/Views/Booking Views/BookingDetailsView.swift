@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct BookingDetailsView: View {
-    @EnvironmentObject var userModel: SigninViewModel
+    @AppStorage(UserDefaultsKey.user.key) var user: User?
     @StateObject var viewModel: BookingDetailsViewModel
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            let driverMode = userModel.user?.driverMode ?? false
+            let driverMode = user?.driverMode ?? false
             List {
                 Section(header: TextViewLableText(text: "Booking Detail")) {
                     bookingStatusView()
@@ -76,7 +76,7 @@ struct BookingDetailsView: View {
                 }
             }.onAppear {
                 Tabbar.shared.hide = true
-                viewModel.getBookingDetails(userModel)
+                viewModel.getBookingDetails()
             }
         }.navigationTitle("Booking Details")
             .navigationBarTitleDisplayMode(.inline)
@@ -145,7 +145,8 @@ struct BookingDetailsView: View {
     
     @ViewBuilder
     func priceView() -> some View {
-        PriceView1(finalPrice: viewModel.finalPrice(viewModel.getDriverMode(userModel)),                    bookingSeats: viewModel.bookingData?.numberOfSeats,
+        PriceView1(finalPrice: viewModel.finalPrice(viewModel.getDriverMode()),
+                   bookingSeats: viewModel.bookingData?.numberOfSeats,
                    bookingSeatsPrice: viewModel.bookPrice(),
                    showPersonText: false,
                    showSeatsRow: true,
@@ -155,7 +156,7 @@ struct BookingDetailsView: View {
     @ViewBuilder
     func statusView() -> some View {
         VStack(alignment: .leading) {
-            let driverStatus = userModel.user?.driverMode ?? false
+            let driverStatus = user?.driverMode ?? false
             let (image, status) = Utils.checkStatus(isDriverApproved: driverStatus, status: viewModel.bookingData?.status ?? .none)
             HStack {
                 image

@@ -1,0 +1,33 @@
+//
+//  MainTabViewModel.swift
+//  Trooute
+//
+//  Created by Muhammad Zafar on 2024-10-13.
+//
+
+import Foundation
+import SwiftUI
+class MainTabViewModel: ObservableObject {
+    @AppStorage(UserDefaultsKey.user.key) var user: User?
+    private let repositiry = MainTabViewRepository()
+    func getMe() {
+        repositiry.getMe { [weak self] result in
+            switch result {
+            case .success(let response):
+                if response.data.success,
+                   let user = response.data.data {
+                    self?.saveUserToStorage(user: user)
+                }
+                    
+            case .failure(let error):
+                log.error("failed to get me \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func saveUserToStorage(user: User) {
+        self.user = user
+//        let userData = try? JSONEncoder().encode(user)
+//        UserDefaults.standard.set(userData, forKey: UserDefaultsKey.user.key)
+    }
+}

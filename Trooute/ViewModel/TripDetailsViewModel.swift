@@ -57,7 +57,7 @@ class TripDetailsViewModel: ObservableObject {
     }
 
     var otherReliventDetails: String {
-        return trip?.note?.emptyOrNil() ?? "Not Provided"
+        return trip?.note.emptyOrNil ?? "Not Provided"
     }
 
     func getDriverModel(driver: Driver) -> UserInfoCardViewModel {

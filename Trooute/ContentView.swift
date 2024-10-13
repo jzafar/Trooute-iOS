@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     private let isFirstLaunch: Bool = UserDefaults.standard.bool(forKey: "isFirstLaunch")
-    @EnvironmentObject var userViewModel: SigninViewModel
+    @AppStorage(UserDefaultsKey.token.key) var token: String?
     var body: some View {
         if !isFirstLaunch {
             OnboardView()
         } else {
-            if userViewModel.token != nil {
+            if token != nil {
                 MainTabView()
             } else {
                 SigninView()
