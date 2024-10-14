@@ -124,5 +124,4 @@ struct BookingCardView: View {
 //    let tripResponse = MockDate.getUserBookingsResponse()!
     let tripResponse = MockDate.getDriverBookingsResponse()!
     BookingCardView(viewModel: BookingCardViewModel(booking: tripResponse.data!.first!))
-        .environmentObject(SigninViewModel())
 }

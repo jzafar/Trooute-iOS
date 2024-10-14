@@ -47,5 +47,4 @@ struct BookingsView: View {
 
 #Preview {
     BookingsView()
-        .environmentObject(SigninViewModel())
 }

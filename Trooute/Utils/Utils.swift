@@ -15,7 +15,7 @@ struct Utils {
 
     static func convertImageToData(_ image: Image?) -> Data? {
         guard let uiImage = image?.asUIImage() else { return nil }
-        return uiImage.jpegData(compressionQuality: 1.0)
+        return uiImage.jpegData(compressionQuality: 0.7)
     }
 
     static func checkStatus(isDriverApproved: Bool, status: BookingStatus?) -> (Image, String) {
@@ -59,4 +59,9 @@ struct Utils {
         }
         return nil
     }
+    
+    static func matchPassword(_ password: String, _ confirmPassword: String) -> Bool {
+        return password != confirmPassword
+    }
+    
 }

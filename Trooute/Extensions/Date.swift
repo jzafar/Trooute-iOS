@@ -20,4 +20,10 @@ extension Date {
         formatter.timeStyle = .short
         return formatter.string(from: self)
     }
+    
+    func shotFormate() -> String { //"2024-02-27"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: self)
+    }
 }

@@ -8,12 +8,11 @@
 struct SigninRequest {
     let email: String
     let password: String
-    
-    var parameters: [String: String] {
-            return [
-                "email": email.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
-                "password": password
-            ]
-        }
-}
 
+    var parameters: [String: String] {
+        return [
+            "email": email.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
+            "password": password,
+        ]
+    }
+}

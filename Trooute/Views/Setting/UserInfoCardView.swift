@@ -10,6 +10,8 @@ import SwiftUI
 
 struct UserInfoCardView: View {
     @ObservedObject var viewModel: UserInfoCardViewModel
+    @State private var image: Image? = nil
+    var width = 80.0
     var body: some View {
         HStack {
             userImage()
@@ -41,28 +43,43 @@ struct UserInfoCardView: View {
 
     @ViewBuilder
     func userImage() -> some View {
-        WebImage(url: URL(string: viewModel.photo)) { image in
-            image.resizable()
-            .aspectRatio(contentMode: .fill)
-            .clipped()
-        } placeholder: {
-            Image("profile_place_holder")
+        if let img = self.image {
+            img
                 .resizable()
+                .aspectRatio(contentMode: .fill)
+                .clipped()
+                .frame(width: width, height: width)
+                .cornerRadius(width/2)
+                .overlay(RoundedRectangle(cornerRadius: width/2).stroke(Color.black, lineWidth: 1))
+                .padding(1)
+        } else {
+            WebImage(url: URL(string: viewModel.photo)) { image in
+                image.resizable()
+                .aspectRatio(contentMode: .fill)
+                .clipped()
+            } placeholder: {
+                Image("profile_place_holder")
+                    .resizable()
+            }
+            .onSuccess { image, _, _ in
+                DispatchQueue.main.async {
+                    self.image =  Image(uiImage: image)
+                }
+            }
+            .indicator(.activity)
+            .transition(.fade(duration: 0.5))
+            .scaledToFit()
+            .frame(width: width, height: width)
+            .clipShape(Circle())
+            .overlay(Circle().stroke(Color.black, lineWidth: 1))
+            .padding(5)
+            .padding(.trailing, 0)
         }
-        .onSuccess { _, _, _ in
-        }
-        .indicator(.activity)
-        .transition(.fade(duration: 0.5))
-        .scaledToFit()
-        .frame(width: 80, height: 80)
-        .clipShape(Circle())
-        .overlay(Circle().stroke(Color.black, lineWidth: 1))
-        .padding(5)
-        .padding(.trailing, 0)
+        
     }
 }
 
-#Preview {
-    let data = MockDate.getTripsResponse()?.data?.first?.driver
-    UserInfoCardView(viewModel: UserInfoCardViewModel(user: data!))
-}
+//#Preview {
+//    let data = MockDate.getTripsResponse()?.data?.first?.driver
+//    UserInfoCardView(viewModel: UserInfoCardViewModel(user: data!))
+//}

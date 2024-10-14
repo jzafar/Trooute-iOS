@@ -99,7 +99,7 @@ struct UpdatePasswordView: View {
     @ViewBuilder
     func updateButton()-> some View {
         PrimaryGreenButton(title: "Update") {
-            
+            viewModel.updatePasswordPressed()
         }
         .padding(.horizontal, 30)
     }

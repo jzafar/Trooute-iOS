@@ -16,18 +16,12 @@ class MainTabViewModel: ObservableObject {
             case .success(let response):
                 if response.data.success,
                    let user = response.data.data {
-                    self?.saveUserToStorage(user: user)
+                    self?.user = user
                 }
                     
             case .failure(let error):
                 log.error("failed to get me \(error.localizedDescription)")
             }
         }
-    }
-    
-    private func saveUserToStorage(user: User) {
-        self.user = user
-//        let userData = try? JSONEncoder().encode(user)
-//        UserDefaults.standard.set(userData, forKey: UserDefaultsKey.user.key)
     }
 }

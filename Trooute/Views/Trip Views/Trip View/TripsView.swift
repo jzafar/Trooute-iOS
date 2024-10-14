@@ -333,5 +333,4 @@ struct TripsView: View {
 
 #Preview {
     TripsView()
-        .environmentObject(SigninViewModel())
 }

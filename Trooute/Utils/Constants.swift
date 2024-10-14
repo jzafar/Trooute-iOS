@@ -24,6 +24,8 @@ struct Apis {
     static let updatePassword = base + "users/updateMyPassword"
     static let getMe = base + "users/me"
     static let updateDeviceId = base + "users/updateDeviceId"
+    ///: TRIPS ENDPOINTS
+    static let trip = base + "trips"
     
 }
 //// TRIPS END POINT

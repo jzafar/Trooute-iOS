@@ -10,27 +10,20 @@ import SwiftUI
 
 struct UpdateProfileView: View {
     @ObservedObject var viewModel = UpdateProfileViewModel()
-    @AppStorage(UserDefaultsKey.user.key) var user: User?
     @FocusState var keyIsFocused: Bool
     var body: some View {
         VStack {
-
             RoundProfilePictureView(image: $viewModel.useImage, width: 100)
                 .padding(30)
-
             fullName()
-
             phoneNumber()
-
             signInButton()
                 .padding(.top, 50)
             scendoryGrayButton()
             Spacer()
         }.onAppear {
             Tabbar.shared.hide = true
-            viewModel.fullName = user?.name ?? ""
-            viewModel.phoneNumber = user?.phoneNumber ?? ""
-            
+            viewModel.loadData()
         }
         .navigationTitle("Update Profile")
         .navigationBarTitleDisplayMode(.inline)
@@ -53,7 +46,7 @@ struct UpdateProfileView: View {
     func phoneNumber() -> some View {
         VStack(alignment: .leading) {
             TextViewLableText(text: "Phone Number")
-            TextField("+49XXXXXXXXX", text: $viewModel.phoneNumber)
+            TextField("+46XXXXXXXXX", text: $viewModel.phoneNumber)
                 .textFieldStyle(AppTextFieldStyle())
         }
         .padding(.horizontal, 30)
@@ -62,6 +55,7 @@ struct UpdateProfileView: View {
     @ViewBuilder
     func signInButton() -> some View {
         PrimaryGreenButton(title: "Update") {
+            viewModel.updateProfile()
         }
         .padding(.horizontal, 30)
     }
@@ -77,5 +71,4 @@ struct UpdateProfileView: View {
 
 #Preview {
     UpdateProfileView()
-        .environmentObject(SigninViewModel())
 }

@@ -50,9 +50,6 @@ class SignUpViewModel: ObservableObject {
         stringvar = pureNumber
     }
     
-    func matchPassword() -> Bool {
-        return password != confirmPassword
-    }
     
     func signupButtonPressed() {
         if agreeToTerms == false {
@@ -73,7 +70,7 @@ class SignUpViewModel: ObservableObject {
         } else if mobPhoneNumber.count == 0 {
             BannerHelper.displayBanner(.error, message: "Phone number is not correct")
             return
-        } else if matchPassword() {
+        } else if Utils.matchPassword(password, confirmPassword) {
             BannerHelper.displayBanner(.error, message: "Passwords did not matched")
             return
         } else if !Utils.isValidEmail(email) {

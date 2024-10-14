@@ -80,6 +80,10 @@
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
+      <LocationScenarioReference
+         identifier = "../../Trooute/Location.gpx"
+         referenceType = "0">
+      </LocationScenarioReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

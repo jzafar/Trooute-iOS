@@ -66,52 +66,6 @@ public struct User: Codable, UserProfile, Identifiable {
     }
 }
 
-//extension Optional: @retroactive RawRepresentable where Wrapped == User {
-//    public init?(rawValue: String) {
-//        guard let data = rawValue.data(using: .utf8),
-//              let result = try? JSONDecoder().decode(User.self, from: data)
-//        else {
-//            return nil
-//        }
-//        self = result
-//    }
-//
-//    public var rawValue: String {
-//        guard let data = try? JSONEncoder().encode(self),
-//              let result = String(data: data, encoding: .utf8)
-//        else {
-//            return "[]"
-//        }
-//        return result
-//    }
-//
-//    func encode(to encoder: Encoder) throws {
-//        var container = encoder.container(keyedBy: User.CodingKeys.self)
-//        try container.encode(self?.id, forKey: .id)
-//        try container.encode(self?.name, forKey: .name)
-//        try container.encode(self?.email, forKey: .email)
-//        try container.encode(self?.photo, forKey: .photo)
-//        try container.encode(self?.gender, forKey: .gender)
-//        try container.encode(self?.rating, forKey: .rating)
-//        try container.encode(self?.totlaReview, forKey: .totlaReview)
-//        try container.encode(self?.phoneNumber, forKey: .phoneNumber)
-//        try container.encode(self?.reviewsStats, forKey: .reviewsStats)
-//        try container.encode(self?.carDetails, forKey: .carDetails)
-//        try container.encode(self?.role, forKey: .role)
-//        try container.encode(self?.driverMode, forKey: .driverMode)
-//        try container.encode(self?.isApprovedDriver, forKey: .isApprovedDriver)
-//        try container.encode(self?.isEmailVerified, forKey: .isEmailVerified)
-//        try container.encode(self?.status, forKey: .status)
-//        try container.encode(self?.createdAt, forKey: .createdAt)
-//        try container.encode(self?.updatedAt, forKey: .updatedAt)
-//        try container.encode(self?.v, forKey: .v)
-//        try container.encode(self?.emailverifyOTP, forKey: .emailverifyOTP)
-//        try container.encode(self?.passwordChangedAt, forKey: .passwordChangedAt)
-//        try container.encode(self?.stripeConnectedAccountId, forKey: .stripeConnectedAccountId)
-//        try container.encode(self?.stripeToken, forKey: .stripeToken)
-//    }
-//}
-
  extension User: RawRepresentable {
     public init?(rawValue: String) {
         guard let data = rawValue.data(using: .utf8),

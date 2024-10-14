@@ -33,7 +33,9 @@ class TripsViewModel: NSObject, ObservableObject {
     private var lastKnownLocation: CLLocationCoordinate2D?
     var errorTitle = ""
     var errorMessage = ""
-
+    
+    private var repository = TripRepository()
+    
     func fetchTrips() {
         if user?.driverMode == true {
             if let tripResponse = MockDate.getDriverTripsList() {
@@ -44,12 +46,24 @@ class TripsViewModel: NSObject, ObservableObject {
                 }
             }
         } else {
-            let tripResponse = MockDate.getTripsResponse()!
-            if tripResponse.success == true,
-               let trips = tripResponse.data {
-                nearByTrips = trips
-                driverTrips = []
+            if let coordinates = locationManager.location?.coordinate {
+                let request = GetTripsRequest(fromLatitude: coordinates.latitude, fromLongitude: coordinates.longitude, currentDate: Date().shotFormate())
+                
+                self.repository.getNearByTrips(request: request) { [weak self] result in
+                    switch result {
+                    case .success(let response):
+                        if response.data.success,
+                           let trips = response.data.data {
+                            self?.nearByTrips = trips
+                            self?.driverTrips = []
+                        }
+                            
+                    case .failure(let error):
+                        log.error("failed to get me \(error.localizedDescription)")
+                    }
+                }
             }
+
         }
     }
 
@@ -99,6 +113,7 @@ extension TripsViewModel: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        lastKnownLocation = locations.first?.coordinate
+        self.lastKnownLocation = locations.first?.coordinate
+        self.fetchTrips()
     }
 }
