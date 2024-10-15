@@ -64,8 +64,6 @@ struct PriceView1: View {
         return "€\(String(format: "%.1f", price ?? 0.0))"
     }
 }
-struct UserCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        PriceView1(finalPrice: 52.0, bookingSeats: 2, bookingSeatsPrice: 50.0, showPersonText: true, showSeatsRow: true, showPlateformFee: true)
-    }
+#Preview {
+    PriceView1(finalPrice: 52.0, bookingSeats: 2, bookingSeatsPrice: 50.0, showPersonText: true, showSeatsRow: true, showPlateformFee: true)
 }

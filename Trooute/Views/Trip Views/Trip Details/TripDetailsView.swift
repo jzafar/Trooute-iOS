@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TripDetailsView: View {
     @ObservedObject var viewModel: TripDetailsViewModel
+    
     var body: some View {
         List {
             if let driver = viewModel.trip?.driver {
@@ -22,7 +23,7 @@ struct TripDetailsView: View {
                 }
             }
 
-            Section(header: PassengersSectionHeader(seats: viewModel.availableSeats), content: {
+            Section(header: PassengersSectionHeader(seats: "\(viewModel.trip?.availableSeats ?? 0)"), content: {
                 TripDetailsViewComponents.passengersView()
             })
 
@@ -66,11 +67,16 @@ struct TripDetailsView: View {
     func bookNowView(_ trip: TripsData) -> some View {
         VStack {
             HStack {
-                Image("ic_heart")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .padding(.horizontal)
-                    .foregroundStyle(.white)
+                Button(action: {
+//                    viewModel.addToWishList()
+                }) {
+                    Image("ic_heart")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .padding(.horizontal)
+                        .foregroundColor(viewModel.trip?.isAddedInWishList ?? false ? .red : .white)
+                }
+                
                 NavigationLink(destination: BookTripView(viewModel: BookTripViewModel(trip: trip))) {
                     PrimaryGreenText(title: "Book now")
                         .padding(.horizontal)

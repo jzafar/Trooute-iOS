@@ -6,7 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
+
 class DriverCarViewModel: ObservableObject {
+    @Published var driverImage: Image? = nil
+    @Published var carImage: Image? = nil
     var driver: Driver
     init(driver: Driver) {
         self.driver = driver

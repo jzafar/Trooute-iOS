@@ -6,15 +6,22 @@
 //
 
 import Foundation
+import SwiftUI
 
-class CarInfoViewModel {
+class CarInfoViewModel: ObservableObject {
+    @Published var image: Image? = nil
     let carDetails: CarDetails
-    init(carDetails: CarDetails) {
+    var isEditable: Bool
+    init(carDetails: CarDetails, isEditable: Bool = false) {
         self.carDetails = carDetails
+        self.isEditable = isEditable
     }
     
     var photo: String {
-        return "\(Constants.baseImageUrl)/\(carDetails.photo)"
+        if let photo = carDetails.photo {
+            return "\(Constants.baseImageUrl)/\(photo)"
+        }
+        return "\(Constants.baseImageUrl)/\(carDetails.photo ?? "")"
     }
     
     var carMakeModel: String {
@@ -26,9 +33,5 @@ class CarInfoViewModel {
             return "\(year)"
         }
         return "Not Provided"
-    }
-    
-    var isEditable: Bool {
-        return false
     }
 }

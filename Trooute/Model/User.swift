@@ -30,11 +30,11 @@ public struct User: Codable, UserProfile, Identifiable {
     let passwordChangedAt: String?
     let stripeConnectedAccountId: String?
     let stripeToken: String?
-
+    let wishlist: [String]?
     enum CodingKeys: String, CodingKey {
         case carDetails
         case id = "_id"
-        case name, email, role, photo, driverMode, isApprovedDriver, phoneNumber, isEmailVerified, status, createdAt, updatedAt, rating
+        case name, email, role, photo, driverMode, isApprovedDriver, phoneNumber, isEmailVerified, status, createdAt, updatedAt, rating, wishlist
         case v = "__v"
         case emailverifyOTP, passwordChangedAt, stripeConnectedAccountId, stripeToken, gender, reviewsStats, totlaReview
     }
@@ -63,6 +63,7 @@ public struct User: Codable, UserProfile, Identifiable {
         passwordChangedAt = try? values.decodeIfPresent(String.self, forKey: .passwordChangedAt)
         stripeConnectedAccountId = try? values.decodeIfPresent(String.self, forKey: .stripeConnectedAccountId)
         stripeToken = try? values.decodeIfPresent(String.self, forKey: .stripeToken)
+        wishlist = try? values.decodeIfPresent([String].self, forKey: .wishlist)
     }
 }
 

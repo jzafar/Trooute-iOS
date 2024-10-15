@@ -6,12 +6,40 @@
 //
 
 import Foundation
+import SwiftUI
+import SwiftLoader
+
 class TripCardViewModel: ObservableObject {
+    @AppStorage(UserDefaultsKey.user.key) var user: User?
     @Published var trip: TripsData
+    @Published var bookMarked = false
     var bookingSeats: Int?
+    private let repository = TripCardRepository()
     init(trip: TripsData, bookingSeats: Int? = nil) {
         self.trip = trip
         self.bookingSeats = bookingSeats
+//        if let wishlist = user?.wishlist {
+//            self.bookMarked = wishlist.contains(trip.id)
+//        }
+    }
+    
+    
+    func addToWishList() {
+        SwiftLoader.show(animated: true)
+        repository.addToWishList(tripId: trip.id) { [weak self] result in
+            SwiftLoader.hide()
+            switch result {
+            case .success(let response):
+                if response.data.success,
+                   let user = response.data.data {
+                    self?.user = user
+                } else {
+                    BannerHelper.displayBanner(.error, message:  response.data.message)
+                }
+            case .failure(let error):
+                BannerHelper.displayBanner(.error, message:  error.localizedDescription)
+            }
+        }
     }
     
     var driverImageUrl: String {

@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct CarInfoView: View {
-    var viewModel: CarInfoViewModel
+    @ObservedObject var viewModel: CarInfoViewModel
     var action: ((Bool) -> Void)? = nil
     var body: some View {
         HStack {
@@ -21,23 +21,37 @@ struct CarInfoView: View {
     
     @ViewBuilder
     func carImageView() -> some View {
-        WebImage(url: URL(string: viewModel.photo)) { image in
-                image.resizable()
-                image.aspectRatio(contentMode: .fit)
-            } placeholder: {
-                Image("place_holder")
+        if let image = viewModel.image {
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .clipped()
+                .frame(width: 80, height: 80)
+                .cornerRadius(10)
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+                .padding(1)
+        } else {
+            WebImage(url: URL(string: viewModel.photo)) { image in
+                image
                     .resizable()
-            }
-            .onSuccess { image, data, cacheType in
-               
-            }
-            .indicator(.activity)
-            .transition(.fade(duration: 0.5))
-            .scaledToFit()
-            .frame(width: 80, height: 80)
-            .cornerRadius(10)
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
-            .padding(1)
+                    .aspectRatio(contentMode: .fill)
+                } placeholder: {
+                    Image("place_holder")
+                        .resizable()
+                }
+                .onSuccess { image, data, cacheType in
+                    DispatchQueue.main.async {
+                        viewModel.image = Image(uiImage: image) 
+                    }
+                }
+                .indicator(.activity)
+                .transition(.fade(duration: 0.5))
+                .scaledToFit()
+                .frame(width: 80, height: 80)
+                .cornerRadius(10)
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+                .padding(1)
+        }
     }
     
     @ViewBuilder
@@ -47,7 +61,7 @@ struct CarInfoView: View {
                 TextViewLableText(text: viewModel.carMakeModel, textFont: .headline)
                 Spacer()
                 HStack {
-                    if !viewModel.isEditable {
+                    if viewModel.isEditable {
                         Button(action: {action?(true)}) {
                             Image(systemName: "pencil")
                                 .font(.title).bold()

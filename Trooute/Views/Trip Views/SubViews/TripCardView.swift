@@ -8,6 +8,7 @@
 import SwiftUI
 struct TripCardView: View {
     @ObservedObject var viewModel: TripCardViewModel
+    @AppStorage(UserDefaultsKey.user.key) var user: User?
     var body: some View {
         VStack (alignment: .leading, spacing: 5){
             VStack(alignment: .leading, spacing: 10) {
@@ -50,7 +51,7 @@ struct TripCardView: View {
                     
                     
                 }
-                PriceView(price: viewModel.finalPrice, bookingSeats: viewModel.bookingSeats, showPersonText: false)
+                PriceView(price: viewModel.finalPrice, bookingSeats: viewModel.bookingSeats, showPersonText: !(user?.driverMode ?? true))
             }
            
             
@@ -71,9 +72,17 @@ struct TripCardView: View {
                 .padding(.vertical, 8)
                 .background(Color.blue.opacity(0.1))
                 .cornerRadius(15)
-            Image("ic_heart")
-                .resizable()
-                .frame(width: 25, height: 25)
+//            Button(action: {
+////                viewModel.addToWishList()
+//            }) {
+                Image("ic_heart")
+                    .resizable()
+                    .frame(width: 25, height: 25)
+                    .foregroundColor(viewModel.trip.isAddedInWishList ? .red : .black)
+                    .onTapGesture {
+                        viewModel.addToWishList()
+                    }
+//            }
         }.padding(.horizontal)
             .padding(.top)
     }
@@ -85,24 +94,6 @@ struct TripCardView: View {
                 .padding(.horizontal)
         }
     }
-    
-//    @ViewBuilder
-//    func circleWithDottedLines() -> some View {
-//        VStack {
-//            Image("ic_location_from")
-//                .frame(width: 12, height: 12)
-//                .padding(.top, 5)
-//
-//            // Dotted Line
-//            DashedLine()
-//                .stroke(style: StrokeStyle(lineWidth: 1, dash: [3]))
-//                .frame(height: 65)
-//
-//            Image("ic_location_where_to")
-//                .frame(width: 12, height: 12)
-//        }.frame(width: 30)
-//        
-//    }
     
     @ViewBuilder
     func tripRouteView() -> some View {

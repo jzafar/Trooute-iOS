@@ -34,22 +34,36 @@ struct DriverCarView: View {
     
     @ViewBuilder
     func driverImage() -> some View {
-        WebImage(url: URL(string: viewModel.driverPicture)) { image in
-                image.resizable()
-            } placeholder: {
-                Image("profile_place_holder")
-                    .resizable()
-            }
-            .onSuccess { image, data, cacheType in
-               
-            }
-            .indicator(.activity)
-            .transition(.fade(duration: 0.5))
-            .scaledToFit()
-            .frame(width: 75, height: 75)
-            .clipShape(Circle())
-            .overlay(Circle().stroke(Color.black, lineWidth: 1))
-            .padding(1)
+        if let driverImage = viewModel.driverImage {
+            driverImage
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .clipped()
+                .frame(width: 75, height: 75)
+                .cornerRadius(75/2)
+                .overlay(Circle().stroke(Color.black, lineWidth: 1))
+                .padding(1)
+        } else {
+            WebImage(url: URL(string: viewModel.driverPicture)) { image in
+                    image.resizable()
+                } placeholder: {
+                    Image("profile_place_holder")
+                        .resizable()
+                }
+                .onSuccess { image, data, cacheType in
+                    DispatchQueue.main.async {
+                        self.viewModel.driverImage = Image(uiImage: image)
+                    }
+                }
+                .indicator(.activity)
+                .transition(.fade(duration: 0.5))
+                .scaledToFit()
+                .frame(width: 75, height: 75)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.black, lineWidth: 1))
+                .padding(1)
+        }
+       
     }
     
     @ViewBuilder
@@ -86,23 +100,38 @@ struct DriverCarView: View {
     
     @ViewBuilder
     func carImageView() -> some View {
-        WebImage(url: URL(string: viewModel.carPicture)) { image in
-                image.resizable()
-                image.aspectRatio(contentMode: .fit)
-            } placeholder: {
-                Image("place_holder")
-                    .resizable()
-            }
-            .onSuccess { image, data, cacheType in
-               
-            }
-            .indicator(.activity)
-            .transition(.fade(duration: 0.5))
-            .scaledToFit()
-            .frame(width: 70, height: 70)
-            .cornerRadius(10)
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
-            .padding(1)
+        if let carImage = viewModel.carImage {
+            carImage
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .clipped()
+                .frame(width: 70, height: 70)
+                .cornerRadius(10)
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+                .padding(1)
+            
+        } else {
+            WebImage(url: URL(string: viewModel.carPicture)) { image in
+                    image.resizable()
+                    image.aspectRatio(contentMode: .fit)
+                } placeholder: {
+                    Image("place_holder")
+                        .resizable()
+                }
+                .onSuccess { image, data, cacheType in
+                    DispatchQueue.main.async {
+                        self.viewModel.carImage = Image(uiImage: image)
+                    }
+                }
+                .indicator(.activity)
+                .transition(.fade(duration: 0.5))
+                .scaledToFit()
+                .frame(width: 70, height: 70)
+                .cornerRadius(10)
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+                .padding(1)
+        }
+        
     }
     
     @ViewBuilder

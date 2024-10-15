@@ -13,9 +13,11 @@ struct MasterDetailsView: View {
     var body: some View {
         HStack {
             Text(master)
+                .font(.body)
                 .foregroundStyle(.gray)
             Spacer()
             Text(details)
+                .font(.body)
                 .foregroundStyle(.black)
         }.padding(.horizontal)
     }

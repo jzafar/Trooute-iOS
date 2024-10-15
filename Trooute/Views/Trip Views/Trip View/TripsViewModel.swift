@@ -63,7 +63,6 @@ class TripsViewModel: NSObject, ObservableObject {
                     }
                 }
             }
-
         }
     }
 

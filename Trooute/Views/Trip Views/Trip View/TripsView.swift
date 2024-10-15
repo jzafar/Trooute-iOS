@@ -48,15 +48,13 @@ struct TripsView: View {
                     } else {
                         ForEach(viewModel.nearByTrips) { trip in
                             ZStack {
-                                NavigationLink(destination: TripDetailsView(viewModel: TripDetailsViewModel(tripId: trip.id))) {
-                                    EmptyView()
-                                }.opacity(0)
+                                NavigationLink(destination: TripDetailsView(viewModel: TripDetailsViewModel(tripId: trip.id))) { EmptyView()}.opacity(0)
                                 TripCardView(viewModel: TripCardViewModel(trip: trip))
                                     .listRowSeparator(.hidden)
                                     .listRowBackground(Color.clear)
                             }.background(.clear)
-                                .listRowSeparator(.hidden)
-                                .listRowBackground(Color.clear)
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
                         }
                     }
                 }
