@@ -250,7 +250,6 @@ struct CreateTripView: View {
     @ViewBuilder
     func fromWhereToView() -> some View {
         VStack(alignment: .leading, spacing: 10) {
-            // "From" TextField
             VStack(alignment: .leading, spacing: 4) {
                 TextViewLableText(text: "From", textFont: .headline)
                 TextField("Enter starting location", text: $viewModel.fromLocation)
@@ -259,7 +258,6 @@ struct CreateTripView: View {
                     .cornerRadius(8)
             }
 
-            // "Where to" TextField
             VStack(alignment: .leading, spacing: 4) {
                 TextViewLableText(text: "Where to", textFont: .headline)
                 TextField("Enter destination location", text: $viewModel.toLocation)

@@ -13,14 +13,13 @@ class TripCardViewModel: ObservableObject {
     @AppStorage(UserDefaultsKey.user.key) var user: User?
     @Published var trip: TripsData
     @Published var bookMarked = false
+    @Published var showPersonText: Bool
     var bookingSeats: Int?
     private let repository = TripCardRepository()
-    init(trip: TripsData, bookingSeats: Int? = nil) {
+    init(trip: TripsData, bookingSeats: Int? = nil, showPersonText: Bool = true) {
         self.trip = trip
         self.bookingSeats = bookingSeats
-//        if let wishlist = user?.wishlist {
-//            self.bookMarked = wishlist.contains(trip.id)
-//        }
+        self.showPersonText = showPersonText
     }
     
     

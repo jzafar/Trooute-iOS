@@ -47,7 +47,7 @@ struct Trip: Codable {
 
 struct Location: Codable {
     let coordinates: [Double]?
-    let type: String
+    let type: String?
 
     enum CodingKeys: String, CodingKey {
         case coordinates

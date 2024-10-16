@@ -40,7 +40,7 @@ struct BookingDetailsView: View {
                     }
                     
                     Section(header: PassengersSectionHeader(seats: viewModel.availableSeats), content: {
-                        TripDetailsViewComponents.passengersView()
+                        TripDetailsViewComponents.passengersView(passengers: viewModel.bookingData?.trip.passengers ?? [])
                     })
                     
                     if let des = viewModel.getDestinationModel() {

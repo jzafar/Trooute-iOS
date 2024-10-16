@@ -37,6 +37,10 @@
 		CE1D68102CA9C4BA0070970D /* BookingDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D680F2CA9C4BA0070970D /* BookingDetailsView.swift */; };
 		CE1D68122CA9C4DA0070970D /* BookingDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D68112CA9C4D50070970D /* BookingDetailsViewModel.swift */; };
 		CE1D68142CAB1AD80070970D /* TripDetailsViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D68132CAB1ACC0070970D /* TripDetailsViewComponents.swift */; };
+		CE2169EF2CC04044002B9333 /* ProceedRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2169EE2CC04044002B9333 /* ProceedRepository.swift */; };
+		CE2169F22CC04159002B9333 /* CreateBookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2169F12CC04151002B9333 /* CreateBookingRequest.swift */; };
+		CE2169F42CC0427C002B9333 /* CreateBookingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2169F32CC04276002B9333 /* CreateBookingResponse.swift */; };
+		CE2169F62CC0558F002B9333 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2169F52CC0558B002B9333 /* Double.swift */; };
 		CE270B952CB069C500B9CFDC /* BookingConfirmedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE270B942CB069C500B9CFDC /* BookingConfirmedView.swift */; };
 		CE270B972CB0765000B9CFDC /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE270B962CB0764E00B9CFDC /* NavigationUtil.swift */; };
 		CE270B992CB07C5600B9CFDC /* BecomeDriverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE270B982CB07C5600B9CFDC /* BecomeDriverView.swift */; };
@@ -212,6 +216,10 @@
 		CE1D680F2CA9C4BA0070970D /* BookingDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDetailsView.swift; sourceTree = "<group>"; };
 		CE1D68112CA9C4D50070970D /* BookingDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDetailsViewModel.swift; sourceTree = "<group>"; };
 		CE1D68132CAB1ACC0070970D /* TripDetailsViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailsViewComponents.swift; sourceTree = "<group>"; };
+		CE2169EE2CC04044002B9333 /* ProceedRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProceedRepository.swift; sourceTree = "<group>"; };
+		CE2169F12CC04151002B9333 /* CreateBookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBookingRequest.swift; sourceTree = "<group>"; };
+		CE2169F32CC04276002B9333 /* CreateBookingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBookingResponse.swift; sourceTree = "<group>"; };
+		CE2169F52CC0558B002B9333 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		CE270B942CB069C500B9CFDC /* BookingConfirmedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingConfirmedView.swift; sourceTree = "<group>"; };
 		CE270B962CB0764E00B9CFDC /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 		CE270B982CB07C5600B9CFDC /* BecomeDriverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BecomeDriverView.swift; sourceTree = "<group>"; };
@@ -368,15 +376,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE2169F02CC0413C002B9333 /* Create Booking */ = {
+			isa = PBXGroup;
+			children = (
+				CE2169F32CC04276002B9333 /* CreateBookingResponse.swift */,
+				CE2169F12CC04151002B9333 /* CreateBookingRequest.swift */,
+			);
+			path = "Create Booking";
+			sourceTree = "<group>";
+		};
 		CE270B902CB0672900B9CFDC /* Booking Views */ = {
 			isa = PBXGroup;
 			children = (
 				CE1D68092CA9470D0070970D /* BookingCardView.swift */,
 				CE5150382C9F25B400B10107 /* BookingsView.swift */,
-				CE1D680F2CA9C4BA0070970D /* BookingDetailsView.swift */,
-				CE1D67DF2CA8624D0070970D /* BookTripView.swift */,
+				CEFD59DB2CC03B2B00E4A50B /* Booking Details view */,
+				CEFD59DA2CC0172700E4A50B /* Book Trip (Proceed View) */,
 				CE270B942CB069C500B9CFDC /* BookingConfirmedView.swift */,
-				CE1D67F72CA88C9C0070970D /* ProceedView.swift */,
+				CEFD59DC2CC03FA300E4A50B /* Book Now View */,
 				CE179D4D2CAC3B0900FFC206 /* WebView.swift */,
 			);
 			path = "Booking Views";
@@ -528,10 +545,7 @@
 				CE270B9A2CB0864900B9CFDC /* BecomeDriverViewModel.swift */,
 				CE1D68072CA944C20070970D /* BookingsViewModel.swift */,
 				CE1D680B2CA9474F0070970D /* BookingCardViewModel.swift */,
-				CE1D67F52CA86ED30070970D /* BookTripViewModel.swift */,
-				CE1D68112CA9C4D50070970D /* BookingDetailsViewModel.swift */,
 				CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */,
-				CE1D67F92CA88CF40070970D /* ProceedViewModel.swift */,
 				CE4E3E0B2CA5C52F005C3CEE /* SearchResultsViewModel.swift */,
 				CE4E3EA32CA7E7A3005C3CEE /* UserInfoCardViewModel.swift */,
 				CE179D4B2CAC3AB700FFC206 /* WebViewModel.swift */,
@@ -600,6 +614,7 @@
 		CE5701762C9E96AF003BD7CA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CE2169F52CC0558B002B9333 /* Double.swift */,
 				CEA18AC72CBBE82D0096545F /* StorageCodable.swift */,
 				CE5227F02CBB1D9D005C1175 /* Image.swift */,
 				CE4E3EA12CA7DE10005C3CEE /* String.swift */,
@@ -808,6 +823,7 @@
 		CEEEA28D2CBA95D1006B8ECE /* RequestResponseObjects */ = {
 			isa = PBXGroup;
 			children = (
+				CE2169F02CC0413C002B9333 /* Create Booking */,
 				CEA18ABF2CBBB6750096545F /* BasicResponse.swift */,
 				CEA18AE02CBD82FB0096545F /* Trips */,
 				CEA18AD52CBC5A940096545F /* Update Profile */,
@@ -886,6 +902,34 @@
 				CE4E3E872CA73652005C3CEE /* DriverCarViewModel.swift */,
 			);
 			path = "Driver And Car View";
+			sourceTree = "<group>";
+		};
+		CEFD59DA2CC0172700E4A50B /* Book Trip (Proceed View) */ = {
+			isa = PBXGroup;
+			children = (
+				CE1D67DF2CA8624D0070970D /* BookTripView.swift */,
+				CE1D67F52CA86ED30070970D /* BookTripViewModel.swift */,
+			);
+			path = "Book Trip (Proceed View)";
+			sourceTree = "<group>";
+		};
+		CEFD59DB2CC03B2B00E4A50B /* Booking Details view */ = {
+			isa = PBXGroup;
+			children = (
+				CE1D680F2CA9C4BA0070970D /* BookingDetailsView.swift */,
+				CE1D68112CA9C4D50070970D /* BookingDetailsViewModel.swift */,
+			);
+			path = "Booking Details view";
+			sourceTree = "<group>";
+		};
+		CEFD59DC2CC03FA300E4A50B /* Book Now View */ = {
+			isa = PBXGroup;
+			children = (
+				CE2169EE2CC04044002B9333 /* ProceedRepository.swift */,
+				CE1D67F72CA88C9C0070970D /* ProceedView.swift */,
+				CE1D67F92CA88CF40070970D /* ProceedViewModel.swift */,
+			);
+			path = "Book Now View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1063,6 +1107,7 @@
 				CE5150792CA0AFAE00B10107 /* CreateTripViewModel.swift in Sources */,
 				CE179D502CAC40C400FFC206 /* TripInfo.swift in Sources */,
 				CEEEA2892CBA5DE9006B8ECE /* SigninRequest.swift in Sources */,
+				CE2169F42CC0427C002B9333 /* CreateBookingResponse.swift in Sources */,
 				CE5227FB2CBB9E9F005C1175 /* ResendOTPRequest.swift in Sources */,
 				CE1D68102CA9C4BA0070970D /* BookingDetailsView.swift in Sources */,
 				CE5150682CA035A800B10107 /* UITabBarControllerRepresentable.swift in Sources */,
@@ -1137,8 +1182,10 @@
 				CE1D67FE2CA93E760070970D /* GetBookingsResponse.swift in Sources */,
 				CE5150462C9F57D300B10107 /* Color.swift in Sources */,
 				CE5227E92CBAF7B6005C1175 /* SignupResponse.swift in Sources */,
+				CE2169F22CC04159002B9333 /* CreateBookingRequest.swift in Sources */,
 				CEA18AE22CBD831E0096545F /* GetTripsRequest.swift in Sources */,
 				CE5150392C9F25B400B10107 /* BookingsView.swift in Sources */,
+				CE2169EF2CC04044002B9333 /* ProceedRepository.swift in Sources */,
 				CE5227F12CBB1DA1005C1175 /* Image.swift in Sources */,
 				CE57014C2C9E1CC7003BD7CA /* SignUpView.swift in Sources */,
 				CE5227E72CBAF7AE005C1175 /* SignupRequest.swift in Sources */,
@@ -1169,6 +1216,7 @@
 				CEEEA2AB2CBA9D7D006B8ECE /* BaseDestination.swift in Sources */,
 				CEEEA2AC2CBA9D7D006B8ECE /* FileDestination.swift in Sources */,
 				CEEEA2AD2CBA9D7D006B8ECE /* ConsoleDestination.swift in Sources */,
+				CE2169F62CC0558F002B9333 /* Double.swift in Sources */,
 				CE5150422C9F3BD900B10107 /* UserInfoCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,6 +8,7 @@
 import CoreLocation
 import Foundation
 import SwiftUI
+
 class TripsViewModel: NSObject, ObservableObject {
     @Published var fromLocation: String = ""
     @Published var toLocation: String = ""
@@ -71,9 +72,7 @@ class TripsViewModel: NSObject, ObservableObject {
     }
 
     func showErrorAlert() {
-        errorTitle = "Error"
-        errorMessage = "App could not get coordinates of this location. Please choose some other location or try again"
-        addressInfoErrorAlert = true
+        BannerHelper.displayBanner(.error, message: "App could not get coordinates of this location. Please choose some other location or try again")
     }
 
     func checkLocationAuthorization() {

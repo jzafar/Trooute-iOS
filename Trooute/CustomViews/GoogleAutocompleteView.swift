@@ -12,12 +12,19 @@ struct GoogleAutocompleteView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var selectedAddress: String
     @Binding var placeInfo: SearchedLocation?
+    @FocusState private var isFocused: Bool
     @StateObject private var viewModel = GoogleAutocompleteViewModel()
     var body: some View {
         NavigationView {
             Form {
                 Section {
                     TextField("Type address here ...", text: $viewModel.searchTerm)
+                        .focused($isFocused)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                isFocused = true
+                            }
+                        }
                 }
                 Section {
                     ForEach(viewModel.locationResults, id: \.self) { location in
@@ -44,6 +51,5 @@ struct GoogleAutocompleteView: View {
                     }
                 }
         }
-        
     }
 }

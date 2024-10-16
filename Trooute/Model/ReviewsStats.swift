@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct ReviewsStats: Codable {
+struct ReviewsStats: Codable, Hashable {
     let avgRating: Float?
     let ratings: Ratings?
     let totalReviews: Int?
-
+    var id = UUID()
     enum CodingKeys: String, CodingKey {
         case avgRating
         case ratings
@@ -57,7 +57,7 @@ struct Ratings: Codable {
     let threeStars: Float?
     let fourStars: Float?
     let fiveStars: Float?
-
+    var id = UUID()
     enum CodingKeys: String, CodingKey {
         case oneStar = "1"
         case twoStars = "2"

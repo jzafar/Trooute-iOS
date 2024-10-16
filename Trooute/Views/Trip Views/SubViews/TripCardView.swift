@@ -51,7 +51,7 @@ struct TripCardView: View {
                     
                     
                 }
-                PriceView(price: viewModel.finalPrice, bookingSeats: viewModel.bookingSeats, showPersonText: !(user?.driverMode ?? true))
+                PriceView(price: viewModel.finalPrice, bookingSeats: viewModel.bookingSeats, showPersonText: viewModel.showPersonText)
             }
            
             
@@ -103,5 +103,5 @@ struct TripCardView: View {
 }
 #Preview {
     let tripResponse = MockDate.getTripsResponse()!
-    TripCardView(viewModel: TripCardViewModel(trip: tripResponse.data!.first!, bookingSeats: 2))
+    TripCardView(viewModel: TripCardViewModel(trip: tripResponse.data!.first!, bookingSeats: 2, showPersonText: true))
 }

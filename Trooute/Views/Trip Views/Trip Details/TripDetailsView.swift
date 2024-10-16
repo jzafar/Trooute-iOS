@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TripDetailsView: View {
     @ObservedObject var viewModel: TripDetailsViewModel
-    
+
     var body: some View {
         List {
             if let driver = viewModel.trip?.driver {
@@ -22,30 +22,29 @@ struct TripDetailsView: View {
                     CarInfoView(viewModel: viewModel.getCarDetailsModel(carDetails: carDetails))
                 }
             }
-
-            Section(header: PassengersSectionHeader(seats: "\(viewModel.trip?.availableSeats ?? 0)"), content: {
-                TripDetailsViewComponents.passengersView()
-            })
-
             if let trip = viewModel.trip {
+                Section(header: PassengersSectionHeader(seats: "\(viewModel.trip?.availableSeats ?? 0)"), content: {
+                    TripDetailsViewComponents.passengersView(passengers: viewModel.trip?.passengers ?? [])
+
+                })
+
                 Section(header: TextViewLableText(text: "Destination and schedule", textFont: .headline))
                     {
                         DestinationView(destination: viewModel.getDestinationModel(trip: trip), price: trip.pricePerPerson)
                             .listRowBackground(Color.clear)
                             .listRowInsets(EdgeInsets())
                     }
-            }
-            
 
-            Section(header: TextViewLableText(text: "Trip Details", textFont: .headline)) {
-                TripPrefView(handCarryWeight: viewModel.handCarryWeight,
-                             suitcaseWeight: viewModel.suitcaseWeight,
-                             smokingPreference: viewModel.smokingPreference,
-                             petPreference: viewModel.petPreference,
-                             languagePreference: viewModel.languagePreference,
-                             otherReliventDetails: viewModel.otherReliventDetails)
-                    .listRowBackground(Color.clear)
-                    .listRowInsets(EdgeInsets())
+                Section(header: TextViewLableText(text: "Trip Details", textFont: .headline)) {
+                    TripPrefView(handCarryWeight: viewModel.handCarryWeight,
+                                 suitcaseWeight: viewModel.suitcaseWeight,
+                                 smokingPreference: viewModel.smokingPreference,
+                                 petPreference: viewModel.petPreference,
+                                 languagePreference: viewModel.languagePreference,
+                                 otherReliventDetails: viewModel.otherReliventDetails)
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets())
+                }
             }
         }
         .safeAreaInset(edge: .bottom) {
@@ -76,7 +75,7 @@ struct TripDetailsView: View {
                         .padding(.horizontal)
                         .foregroundColor(viewModel.trip?.isAddedInWishList ?? false ? .red : .white)
                 }
-                
+
                 NavigationLink(destination: BookTripView(viewModel: BookTripViewModel(trip: trip))) {
                     PrimaryGreenText(title: "Book now")
                         .padding(.horizontal)

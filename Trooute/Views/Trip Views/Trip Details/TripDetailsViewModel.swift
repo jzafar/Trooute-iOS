@@ -23,7 +23,7 @@ class TripDetailsViewModel: ObservableObject {
     @Published var smokingPreference: String = "NO"
     @Published var petPreference: String = "NO"
     @Published var languagePreference: String = "Not Provided"
-    @Published var otherReliventDetails: String = ""
+    @Published var otherReliventDetails: String = "Not Provided"
     @Published var showLoader = true
     private let repositiry = TripDetailsRepository()
     init(tripId: String) {

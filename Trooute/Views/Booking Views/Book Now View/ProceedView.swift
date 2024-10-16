@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct ProceedView: View {
-    var viewModel: ProceedViewModel
+    @ObservedObject var viewModel: ProceedViewModel
     var body: some View {
         VStack {
             List {
                 Section(header: TextViewLableText(text: "Booking Detail")) {
-                    TripCardView(viewModel: TripCardViewModel(trip: viewModel.trip, bookingSeats: viewModel.numberOfSeats))
+                    TripCardView(viewModel: TripCardViewModel(trip: viewModel.trip, bookingSeats: viewModel.numberOfSeats, showPersonText: false)) // user booking
                 }.listRowInsets(EdgeInsets())
             }.navigationTitle("Confirm Booking")
                 .navigationBarTitleDisplayMode(.inline)
                 .safeAreaInset(edge: .bottom) {
                     bookNowView()
+                }.navigationDestination(isPresented: $viewModel.showSuccessView) {
+                    BookingConfirmedView(trip: viewModel.trip, numberOfSeats: viewModel.numberOfSeats)
                 }
         }
         .toolbarRole(.editor)
@@ -33,11 +35,9 @@ struct ProceedView: View {
                     .font(.title3).bold()
                     .foregroundColor(.white)
                     .padding(.horizontal)
-                NavigationLink(destination: BookingConfirmedView(trip: viewModel.trip)) {
-                    PrimaryGreenText(title: "Book now")
-                        .padding(.horizontal)
-                }
-
+                PrimaryGreenButton(title: "Book now") {
+                    viewModel.bookNoewPressed()
+                }.padding(.horizontal)
             }.padding(.horizontal)
                 .background(Color("TitleColor"))
                 .frame(height: 100)
@@ -49,5 +49,5 @@ struct ProceedView: View {
 
 #Preview {
     let data = MockDate.getTripsResponse()?.data?.first
-    ProceedView(viewModel: ProceedViewModel(trip: data!, numberOfSeats: 2))
+    ProceedView(viewModel: ProceedViewModel(trip: data!, numberOfSeats: 2, pickupLocation: BookingPickupLocation(address: "", location: [12.12,12.12]), note: ""))
 }

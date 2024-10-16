@@ -13,7 +13,7 @@ struct BookTripView: View {
         VStack {
             List {
                 Section {
-                    TripCardView(viewModel: TripCardViewModel(trip: viewModel.trip))
+                    TripCardView(viewModel: TripCardViewModel(trip: viewModel.trip, showPersonText: true)) // user side = true
                 }.listRowInsets(EdgeInsets())
 
                 Section(header: TextViewLableText(text: "Pickup location")) {
@@ -29,10 +29,17 @@ struct BookTripView: View {
                 .safeAreaInset(edge: .bottom) {
                     proceedView()
                 }
-        }.navigationTitle("Booking")
+        }
+        .onChange(of: viewModel.pickUpAddressInfo) { fromInfo in
+            if fromInfo == nil {
+                viewModel.showErrorAlert()
+            }
+        }
+        .navigationTitle("Booking")
         .navigationBarTitleDisplayMode(.inline)
         .ignoresSafeArea(edges: .bottom)
         .toolbarRole(.editor)
+        
     }
 
     @ViewBuilder
@@ -40,10 +47,12 @@ struct BookTripView: View {
         VStack(alignment: .leading, spacing: 10) {
             TextViewLableText(text: "Pickup location", textFont: .subheadline)
             TextField("Enter Pickup location", text: $viewModel.pickupLocation)
+                .googlePlacesAutocomplete($viewModel.pickupLocation, placeInfo: $viewModel.pickUpAddressInfo)
                 .padding()
                 .background(Color(.systemGray6))
                 .cornerRadius(8)
-
+                .font(.body)
+                
             TextViewLableText(text: "Other relevent details about trip", textFont: .subheadline)
             ZStack {
                 TextEditor(text: $viewModel.otherReleventDetails)
@@ -97,8 +106,7 @@ struct BookTripView: View {
                         .font(.title)
                         .foregroundStyle(.primaryGreen)
                         .onTapGesture {
-                            viewModel.totalPerson += 1
-                            viewModel.updatePrice()
+                            viewModel.updatePassengers()
                         }
                 }
             }
@@ -116,10 +124,14 @@ struct BookTripView: View {
                     .font(.title3).bold()
                     .foregroundColor(.white)
                     .padding(.horizontal)
-                NavigationLink(destination: ProceedView(viewModel: ProceedViewModel(trip: viewModel.trip, numberOfSeats: viewModel.totalPerson))) {
-                    PrimaryGreenText(title: "Proceed")
-                        .padding(.horizontal)
-                }
+                PrimaryGreenButton(title: "Proceed") {
+                    viewModel.proceedButtonPressed()
+                }.padding(.horizontal)
+                    .navigationDestination(isPresented: $viewModel.shouldNavigate) {
+                        if let proceedViewModel = viewModel.proceedViewModel {
+                            ProceedView(viewModel: proceedViewModel)
+                        }
+                    }
 
             }.padding(.horizontal)
                 .background(Color("TitleColor"))

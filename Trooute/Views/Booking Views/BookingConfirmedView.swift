@@ -10,6 +10,7 @@ import SwiftUI
 struct BookingConfirmedView: View {
 
     let trip: TripsData
+    let numberOfSeats: Int
     var body: some View {
         VStack {
             ScrollView(showsIndicators: false) {
@@ -33,10 +34,7 @@ struct BookingConfirmedView: View {
                     }
                     .padding(.bottom, 16)
                     
-                    TripCardView(viewModel: TripCardViewModel(trip: trip, bookingSeats: trip.availableSeats))
-                    
-                    
-                    
+                    TripCardView(viewModel: TripCardViewModel(trip: trip, bookingSeats: numberOfSeats, showPersonText: false))
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 16)
@@ -61,7 +59,7 @@ struct BookingConfirmedView: View {
 struct BookingConfirmedView_Previews: PreviewProvider {
     static var previews: some View {
         let tripResponse = MockDate.getTripsResponse()!
-        BookingConfirmedView(trip: tripResponse.data!.first!)
+        BookingConfirmedView(trip: tripResponse.data!.first!, numberOfSeats: 2)
     }
 }
 

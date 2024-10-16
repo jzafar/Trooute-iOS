@@ -4,6 +4,7 @@
 //
 //  Created by Muhammad Zafar on 2024-09-30.
 //
+import SDWebImageSwiftUI
 import SwiftUI
 
 struct DestinationView: View {
@@ -62,7 +63,7 @@ struct TripPrefView: View {
     }
 }
 
-struct PickupLocationView : View {
+struct PickupLocationView: View {
     @State var pickupLication: PickupLocation
     @State var otherReleventDetails: String?
     var body: some View {
@@ -86,25 +87,59 @@ struct PickupLocationView : View {
                     .multilineTextAlignment(.leading)
             }
         }.padding()
-        .background(.white)
+            .background(.white)
             .cornerRadius(25)
     }
 }
 
 struct TripDetailsViewComponents {
     @ViewBuilder
-    static func passengersView() -> some View {
-        VStack(alignment: .leading, spacing: 10) {
+    static func passengersView(passengers: [Passenger]) -> some View {
+        let columns = [
+            GridItem(.adaptive(minimum: 40)),
+        ]
+        @State var path = NavigationPath()
+
+        VStack(alignment: .leading, spacing: 5) {
             HStack {
-                Text("Passengers not available")
-                    .foregroundStyle(.gray)
+                if passengers.isEmpty {
+                    Text("Passengers not available")
+                        .foregroundColor(.gray)
+                } else {
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(passengers, id: \.id) { passenger in
+                                WebImage(url: URL(string: getUrl(passenger: passenger)))
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(Circle())
+                                    .onTapGesture {
+                                        path.append(passenger)
+                                    }
+                            }
+                        }
+                    
+                    
+                }
+            }.navigationDestination(for: Passenger.self) { _ in
+                EmptyView()
             }
             Divider()
 
             HStack {
                 Text("You might share the ride with fellow passengers heading the same way")
-                    .foregroundStyle(.gray)
+                    .font(.footnote)
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(.gray)
             }
+        }.frame(height: passengers.count == 0 ? 50 : 90)
+    }
+
+    static func getUrl(passenger: Passenger) -> String {
+        var imageUrl = "\(Constants.baseImageUrl)"
+        if let photo = passenger.photo {
+            imageUrl = "\(Constants.baseImageUrl)/\(photo)"
         }
+        return imageUrl
     }
 }

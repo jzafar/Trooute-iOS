@@ -26,7 +26,8 @@ struct Apis {
     static let updateDeviceId = base + "users/updateDeviceId"
     ///: TRIPS ENDPOINTS
     static let trip = base + "trips"
-    
+    ///: Bookings ENDPOINTS
+    static let booking = base + "bookings"
 }
 //// TRIPS END POINT
 //  const val CREATE_TRIPS_END_POINT = "/api/v1/trips"
