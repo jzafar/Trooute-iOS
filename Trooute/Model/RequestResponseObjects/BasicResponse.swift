@@ -8,4 +8,5 @@ import Foundation
 struct BasicResponse: Codable {
     let success: Bool
     let message: String
+    let url: String?
 }

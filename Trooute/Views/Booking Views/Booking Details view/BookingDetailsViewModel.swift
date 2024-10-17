@@ -7,37 +7,52 @@
 
 import Foundation
 import SwiftUI
+import SwiftLoader
+
 class BookingDetailsViewModel: ObservableObject {
     private var bookingId: String
-    @Published var bookingData: BookingData?
+    @Published var bookingData: BookingData? {
+        didSet {
+            self.setDepartureDate()
+            self.handCarryWeight = self.getHandCarryWeight()
+            self.suitcaseWeight = self.getSuitcaseWeight()
+            self.bookingID = "Booking # \(self.bookingId.firstTenCharacters())"
+        }
+    }
     @Published var status: BookingStatus = .waiting
     @Published var departureDate = ""
     @Published var availableSeats = ""
-    @Published var handCarryWeight: String = ""
-    @Published var suitcaseWeight: String = ""
     @Published var bookingID: String? = ""
     @Published var showPaymentsScreen = false
+    @Published var suitcaseWeight = "Not Provided"
+    @Published var handCarryWeight = "Not Provided"
+    @Published var popView = false
     @AppStorage(UserDefaultsKey.user.key) var user: User?
+    private let repository = BookingDetailsRepository()
+    private var paymentUrl: String? = nil
     init(bookingId: String) {
         self.bookingId = bookingId
         
     }
     
     func getBookingDetails() {
-        if let driverMode = user?.driverMode {
-            if let bookingResponse = driverMode ? MockDate.getDriverBookingDetailsResponse() :  MockDate.getUserBookingDetailsResponse() {
-                if bookingResponse.success {
-                    self.bookingData = bookingResponse.data!
-                    self.status = bookingData?.status ?? .waiting
-                    self.serDepartureDate()
-                    self.availableSeats = "\(bookingData?.numberOfSeats ?? 0)"
-                    self.handCarryWeight = self.getHandCarryWeight()
-                    self.suitcaseWeight = self.getSuitcaseWeight()
-                    self.bookingID = "Booking # \(self.bookingId.firstTenCharacters())"
+        SwiftLoader.show(title: "Loading...", animated: true)
+        repository.getBookingDetails(bookingId: self.bookingId) { [weak self] result in
+            SwiftLoader.hide()
+            switch result {
+            case .success(let response):
+                if response.data.success,
+                   let bookingData = response.data.data {
+                    self?.bookingData = bookingData
+                    self?.status = bookingData.status ?? .waiting
+                    self?.availableSeats = "\(bookingData.numberOfSeats ?? 0)"
+                } else {
+                    BannerHelper.displayBanner(.error, message: response.data.message)
                 }
+            case .failure(let failure):
+                BannerHelper.displayBanner(.error, message: failure.localizedDescription)
             }
         }
-        
     }
     
     
@@ -67,7 +82,7 @@ class BookingDetailsViewModel: ObservableObject {
         }
     }
     
-    func serDepartureDate() {
+    func setDepartureDate() {
          self.departureDate = bookingData?.trip.departureDate.fullFormate() ?? bookingData?.trip.departureDate ?? "Unknown"
     }
     
@@ -140,10 +155,40 @@ class BookingDetailsViewModel: ObservableObject {
     }
     
     func makePayments() {
-        self.showPaymentsScreen = true
+        repository.confirmBooking(bookingId: self.bookingId) { [weak self] result in
+            switch result {
+            case .success(let response):
+                if response.data.success,
+                   let url = response.data.url {
+                    self?.paymentUrl = url
+                    self?.showPaymentsScreen = true
+                } else {
+                    BannerHelper.displayBanner(.error, message: response.data.message)
+                }
+            case .failure(let failure):
+                BannerHelper.displayBanner(.error, message: failure.localizedDescription)
+            }
+        }
+        
     }
     
     func getWebViewModel() -> WebViewModel {
-        return WebViewModel(url: "https://checkout.stripe.com/c/pay/cs_live_b1M0w5BBV1IhVnr5dKz1tvQATxAiBwMn34VT2ZxGq6LDtVWuOKuSQq03dQ#fidkdWxOYHwnPyd1blppbHNgWjA0S31jUE9BNDRjXV1Pa3xza1RHYHJnVUFiU0FvcTRPU0FvX2YyT0lVPXdHV0BLa2pPVGFuQWdKM01JPHNTcDBEXzNzanFJPX9xXG1BM1BTcG9WdWxCY1RDNTVwV3JEMDR3XycpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl")
+        return WebViewModel(url: self.paymentUrl ?? "")
+    }
+    
+    func cancelBooking() {
+        repository.cancelBooking(bookingId: bookingId) { [weak self] result in
+            switch result {
+            case .success(let response):
+                if response.data.success {
+                    self?.popView = true
+                    BannerHelper.displayBanner(.success, message: response.data.message)
+                } else {
+                    BannerHelper.displayBanner(.error, message: response.data.message)
+                }
+            case .failure(let failure):
+                BannerHelper.displayBanner(.error, message: failure.localizedDescription)
+            }
+        }
     }
 }

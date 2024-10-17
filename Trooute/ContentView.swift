@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     private let isFirstLaunch: Bool = UserDefaults.standard.bool(forKey: "isFirstLaunch")
-    @AppStorage(UserDefaultsKey.token.key) var token: String?
+    @AppStorage(UserDefaultsKey.token.key) var token: String? 
     var body: some View {
         if !isFirstLaunch {
             OnboardView()

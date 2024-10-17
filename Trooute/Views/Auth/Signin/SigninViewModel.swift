@@ -35,7 +35,7 @@ class SigninViewModel: ObservableObject {
                         if response.data.success,
                            let user = response.data.data,
                            let token = response.data.token {
-                            UserUtils.saveUserToStorage(user: user, token: token)
+                            UserUtils.shared.saveUserToStorage(user: user, token: token)
                         } else if (response.statusCode == 205) {
                             self?.showVerificationCodeView = true
                         } else {

@@ -7,6 +7,6 @@
 import Foundation
 struct GetBookingsResponse: Codable {
     let data: [BookingData]?
-    let message: String?
+    let message: String
     let success: Bool
 }

@@ -5,22 +5,24 @@
 //  Created by Muhammad Zafar on 2024-10-13.
 //
 import Foundation
-
+import SwiftUI
 struct UserUtils {
-    static func saveUserToStorage(user: User, token: String) {
-        let userData = try? JSONEncoder().encode(user)
-        UserDefaults.standard.set(userData, forKey: UserDefaultsKey.user.key)
-        UserDefaults.standard.set(token, forKey: UserDefaultsKey.token.key)
-
+    @AppStorage(UserDefaultsKey.user.key) var user: User?
+    @AppStorage(UserDefaultsKey.token.key) var token: String?
+    static let shared = UserUtils()
+    func saveUserToStorage(user: User, token: String) {
+        self.user = user
+        self.token = token
     }
 
-    static func clearUserFromStorage() {
-        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.user.key)
-        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.token.key)
+    func clearUserFromStorage() {
+        self.user = nil
+        self.token = nil
+//        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.user.key)
+//        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.token.key)
     }
     
-    static func saveUserToStorage(user: User) {
-        let userData = try? JSONEncoder().encode(user)
-        UserDefaults.standard.set(userData, forKey: UserDefaultsKey.user.key)
+    func saveUserToStorage(user: User) {
+        self.user = user
     }
 }

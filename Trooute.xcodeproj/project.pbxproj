@@ -15,6 +15,8 @@
 		CE0854242CB31E1C00A3E422 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE0854232CB31E1C00A3E422 /* GoogleService-Info.plist */; };
 		CE0854262CB3AC6C00A3E422 /* GoogleAutocompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0854252CB3AC6900A3E422 /* GoogleAutocompleteView.swift */; };
 		CE0854282CB3B03100A3E422 /* GooglePlacesModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0854272CB3B02F00A3E422 /* GooglePlacesModifier.swift */; };
+		CE1430992CC17DCD001C1732 /* GetBookingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1430982CC17DBD001C1732 /* GetBookingRepository.swift */; };
+		CE14309C2CC18BFF001C1732 /* BookingDetailsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE14309B2CC18BEC001C1732 /* BookingDetailsRepository.swift */; };
 		CE179D4C2CAC3AB900FFC206 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE179D4B2CAC3AB700FFC206 /* WebViewModel.swift */; };
 		CE179D4E2CAC3B0900FFC206 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE179D4D2CAC3B0900FFC206 /* WebView.swift */; };
 		CE179D502CAC40C400FFC206 /* TripInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE179D4F2CAC40B900FFC206 /* TripInfo.swift */; };
@@ -194,6 +196,8 @@
 		CE0854232CB31E1C00A3E422 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE0854252CB3AC6900A3E422 /* GoogleAutocompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAutocompleteView.swift; sourceTree = "<group>"; };
 		CE0854272CB3B02F00A3E422 /* GooglePlacesModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesModifier.swift; sourceTree = "<group>"; };
+		CE1430982CC17DBD001C1732 /* GetBookingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBookingRepository.swift; sourceTree = "<group>"; };
+		CE14309B2CC18BEC001C1732 /* BookingDetailsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDetailsRepository.swift; sourceTree = "<group>"; };
 		CE179D4B2CAC3AB700FFC206 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		CE179D4D2CAC3B0900FFC206 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		CE179D4F2CAC40B900FFC206 /* TripInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInfo.swift; sourceTree = "<group>"; };
@@ -376,6 +380,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE14309A2CC17F42001C1732 /* Get Bookings */ = {
+			isa = PBXGroup;
+			children = (
+				CE1430982CC17DBD001C1732 /* GetBookingRepository.swift */,
+				CE5150382C9F25B400B10107 /* BookingsView.swift */,
+				CE1D68072CA944C20070970D /* BookingsViewModel.swift */,
+			);
+			path = "Get Bookings";
+			sourceTree = "<group>";
+		};
 		CE2169F02CC0413C002B9333 /* Create Booking */ = {
 			isa = PBXGroup;
 			children = (
@@ -388,8 +402,8 @@
 		CE270B902CB0672900B9CFDC /* Booking Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE14309A2CC17F42001C1732 /* Get Bookings */,
 				CE1D68092CA9470D0070970D /* BookingCardView.swift */,
-				CE5150382C9F25B400B10107 /* BookingsView.swift */,
 				CEFD59DB2CC03B2B00E4A50B /* Booking Details view */,
 				CEFD59DA2CC0172700E4A50B /* Book Trip (Proceed View) */,
 				CE270B942CB069C500B9CFDC /* BookingConfirmedView.swift */,
@@ -543,7 +557,6 @@
 			children = (
 				CE28F1292CB71F1B001CF2A1 /* GoogleAutocompleteViewModel.swift */,
 				CE270B9A2CB0864900B9CFDC /* BecomeDriverViewModel.swift */,
-				CE1D68072CA944C20070970D /* BookingsViewModel.swift */,
 				CE1D680B2CA9474F0070970D /* BookingCardViewModel.swift */,
 				CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */,
 				CE4E3E0B2CA5C52F005C3CEE /* SearchResultsViewModel.swift */,
@@ -823,8 +836,8 @@
 		CEEEA28D2CBA95D1006B8ECE /* RequestResponseObjects */ = {
 			isa = PBXGroup;
 			children = (
-				CE2169F02CC0413C002B9333 /* Create Booking */,
 				CEA18ABF2CBBB6750096545F /* BasicResponse.swift */,
+				CE2169F02CC0413C002B9333 /* Create Booking */,
 				CEA18AE02CBD82FB0096545F /* Trips */,
 				CEA18AD52CBC5A940096545F /* Update Profile */,
 				CEA18ACC2CBC4A030096545F /* Update Password */,
@@ -916,6 +929,7 @@
 		CEFD59DB2CC03B2B00E4A50B /* Booking Details view */ = {
 			isa = PBXGroup;
 			children = (
+				CE14309B2CC18BEC001C1732 /* BookingDetailsRepository.swift */,
 				CE1D680F2CA9C4BA0070970D /* BookingDetailsView.swift */,
 				CE1D68112CA9C4D50070970D /* BookingDetailsViewModel.swift */,
 			);
@@ -1151,6 +1165,7 @@
 				CEA18AC62CBBCDEA0096545F /* MainTabViewRepository.swift in Sources */,
 				CE179D4E2CAC3B0900FFC206 /* WebView.swift in Sources */,
 				CE28F12A2CB71F1F001CF2A1 /* GoogleAutocompleteViewModel.swift in Sources */,
+				CE1430992CC17DCD001C1732 /* GetBookingRepository.swift in Sources */,
 				CEA18AD72CBC5AB60096545F /* UpdateProfileRequest.swift in Sources */,
 				CE4E3EA22CA7DE1A005C3CEE /* String.swift in Sources */,
 				CE5227EF2CBAFE0A005C1175 /* SignupRepository.swift in Sources */,
@@ -1212,6 +1227,7 @@
 				CE57017C2C9F24C1003BD7CA /* MainTabView.swift in Sources */,
 				CEEEA29A2CBA9BF6006B8ECE /* BannerHelper.swift in Sources */,
 				CE5150482C9FD5AD00B10107 /* UpdateProfileView.swift in Sources */,
+				CE14309C2CC18BFF001C1732 /* BookingDetailsRepository.swift in Sources */,
 				CEEEA2AA2CBA9D7D006B8ECE /* Logs.swift in Sources */,
 				CEEEA2AB2CBA9D7D006B8ECE /* BaseDestination.swift in Sources */,
 				CEEEA2AC2CBA9D7D006B8ECE /* FileDestination.swift in Sources */,
