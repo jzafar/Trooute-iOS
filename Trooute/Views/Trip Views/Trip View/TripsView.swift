@@ -10,10 +10,10 @@ import SwiftUI
 
 struct TripsView: View {
     @ObservedObject var viewModel = TripsViewModel()
-    @AppStorage(UserDefaultsKey.user.key) var user: User?
+    @ObservedObject var userModel: UserUtils = UserUtils.shared
     var body: some View {
         List {
-            if user?.driverMode == true {
+            if userModel.driverMode == true {
                 ForEach(viewModel.driverTrips) { trip in
                     ZStack {
                         NavigationLink(destination: EmptyView()) {
@@ -48,39 +48,57 @@ struct TripsView: View {
                     } else {
                         ForEach(viewModel.nearByTrips) { trip in
                             ZStack {
-                                NavigationLink(destination: TripDetailsView(viewModel: TripDetailsViewModel(tripId: trip.id))) { EmptyView()}.opacity(0)
+                                NavigationLink(destination: TripDetailsView(viewModel: TripDetailsViewModel(tripId: trip.id))) { EmptyView() }.opacity(0)
                                 TripCardView(viewModel: TripCardViewModel(trip: trip))
                                     .listRowSeparator(.hidden)
                                     .listRowBackground(Color.clear)
                             }.background(.clear)
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(Color.clear)
                         }
                     }
                 }
             }
 
         }.listStyle(GroupedListStyle())
-            .navigationBarTitle(user?.driverMode == true ? "Ongoing Trips" : "")
+            .navigationBarTitle(userModel.driverMode == true ? "Ongoing Trips" : "")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack {
-                        WebImage(url: URL(string: viewModel.getUserImage(user?.photo))) { image in
-                            image.resizable()
-                        } placeholder: {
-                            Image(systemName: "person.circle")
-                        }
-                        .onSuccess { _, _, _ in
-                        }
-                        .indicator(.activity)
-                        .transition(.fade(duration: 0.5))
-                        .scaledToFit()
-                        .frame(width: 30, height: 30)
-                        .cornerRadius(15)
-                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
-                        .padding(1)
+                        if let photo = userModel.user?.photo {
+                            WebImage(url: URL(string: viewModel.getUserImage(photo)))
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 30, height: 30)
+                                .clipShape(Circle())
+                                .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
+                                .padding(1)
 
-                        TextViewLableText(text: "\(user?.name ?? "")", textFont: .title3)
+//                            WebImage(url: URL(string: viewModel.getUserImage(user.photo))) { image in
+//                                image.resizable()
+//                            } placeholder: {
+//                                Image(systemName: "person.circle")
+//                            }
+//                            .onSuccess { _, _, _ in
+//                            }
+//                            .indicator(.activity)
+//                            .transition(.fade(duration: 0.5))
+//                            .scaledToFit()
+//                            .frame(width: 30, height: 30)
+//                            .cornerRadius(15)
+//                            .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
+//                            .padding(1)
+                        } else {
+                            Image(systemName: "person.circle")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 30, height: 30)
+                                .clipShape(Circle())
+                                .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
+                                .padding(1)
+                        }
+
+                        TextViewLableText(text: "\(userModel.user?.name ?? "")", textFont: .title3)
                     }
                 }
             }
@@ -98,11 +116,10 @@ struct TripsView: View {
                 }
             }.alert(viewModel.errorTitle,
                     isPresented: $viewModel.addressInfoErrorAlert) {
-                    Button("Ok", role: .cancel) {}
-             } message: {
-                    Text(viewModel.errorMessage)
-             }
-        
+                Button("Ok", role: .cancel) {}
+            } message: {
+                Text(viewModel.errorMessage)
+            }
     }
 
     @ViewBuilder
@@ -150,7 +167,6 @@ struct TripsView: View {
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(8)
-                    
             }
 
             VStack(alignment: .leading, spacing: 4) {

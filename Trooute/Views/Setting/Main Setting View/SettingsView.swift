@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @AppStorage(UserDefaultsKey.user.key) var user: User?
+    @StateObject var userModel: UserUtils = UserUtils.shared
     @StateObject var viewModel = SettingsViewModel()
     var body: some View {
         List {
-            if let user = user {
+            if let user = userModel.user {
                 ZStack {
                     NavigationLink(destination: UpdateProfileView()) {
                         EmptyView()
@@ -24,8 +24,8 @@ struct SettingsView: View {
                 }.listRowBackground(Color.white)
             }
 
-            if user?.driverMode ?? false {
-                if let carDetails = user?.carDetails {
+            if let user = userModel.user {
+                if let carDetails = user.carDetails {
                     Section {
                         CarInfoView(viewModel: CarInfoViewModel(carDetails: carDetails)) { editCar in
                             viewModel.editCarInfo = editCar
@@ -34,12 +34,10 @@ struct SettingsView: View {
                 }
             }
 
-            // Section 3: Driver Mode Toggle
             Section {
                 driverModeView()
             }
 
-            // Section 4: Settings
             Section(header: TextViewLableText(text: "Settings")) {
                 settingsSection()
             }.listRowSeparator(.hidden)
@@ -66,23 +64,38 @@ struct SettingsView: View {
         .fullScreenCover(isPresented: $viewModel.editCarInfo, onDismiss: {
             // Reload
         }, content: {
-            BecomeDriverView(viewModel: BecomeDriverViewModel(carDetails: user?.carDetails))
+            BecomeDriverView(viewModel: BecomeDriverViewModel(carDetails: userModel.user?.carDetails))
         })
     }
 
     @ViewBuilder
     func driverModeView() -> some View {
-        Toggle(isOn: $viewModel.isDriverModeOn) {
+        if userModel.driverStatus == .approved {
+            Toggle(isOn: $viewModel.isDriverModeOn) {
+                HStack {
+                    Image("ic_become_driver")
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                    ListRowText(text: "Driver Mode")
+                }
+            }.onChange(of: viewModel.isDriverModeOn) { newValue in
+                viewModel.toggleDriverMode(userIntrection: viewModel.isUserInteractionWithSwitch)
+            }
+        } else {
             HStack {
                 Image("ic_become_driver")
                     .resizable()
                     .frame(width: 25, height: 25)
-
-                ListRowText(text: "Driver Mode")
+                if userModel.driverStatus == .pending {
+                    let str = "Driver Mode (Request Pending)"
+                    ListRowText(text: str)
+                } else if userModel.driverStatus == .rejected {
+                    let str = "Driver Mode (Request Rejected)"
+                    ListRowText(text: str)
+                } else {
+                    ListRowText(text: "Become a Driver")
+                }
             }
-        }.onChange(of: viewModel.isDriverModeOn) { newValue in
-//            viewModel.toggleDriverMode(newValue, userViewModel: userViewModel)
-            user?.driverMode = newValue
         }
     }
 

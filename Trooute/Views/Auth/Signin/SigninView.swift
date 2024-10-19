@@ -15,12 +15,9 @@ struct SigninView: View {
             Spacer().frame(height: 30)
             emailView()
             passwordView()
-            // Forgot Password
             forgetButtonView()
             Spacer().frame(height: 20)
-            // Sign in Button
             signInButton()
-            // Sign up
             signupText()
             
         }

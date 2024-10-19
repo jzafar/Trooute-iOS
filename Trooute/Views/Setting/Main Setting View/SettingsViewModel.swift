@@ -7,19 +7,43 @@
 
 import Foundation
 import SwiftUI
+import SwiftLoader
+
 class SettingsViewModel: ObservableObject {
     @Published var isDriverModeOn = true
-    @Published var isNotificationOn = true
+    @Published var isNotificationOn = false
     @Published var editCarInfo = false
-    @AppStorage(UserDefaultsKey.user.key) var user: User?
+    var isUserInteractionWithSwitch: Bool = true
+    private let repository = SettingsRepository()
+    
     init() {
-        if let user = self.user {
-            self.isDriverModeOn = user.driverMode ?? false
-        }
+        self.setDriverMode()
     }
     
+    func setDriverMode() {
+        self.isDriverModeOn = UserUtils.shared.driverMode
+    }
     
-    func toggleDriverMode(_ mode: Bool) {
-        user?.driverMode = mode
+    func toggleDriverMode(userIntrection: Bool) {
+        if userIntrection {
+            isUserInteractionWithSwitch = false
+            SwiftLoader.show(animated: true)
+            repository.switchDriverMode { [weak self] result in
+                SwiftLoader.hide()
+                switch result {
+                case .success(let response):
+                    if response.data.success {
+                        UserUtils.shared.updateDriverMode()
+                    } else {
+                        self?.setDriverMode()
+                        BannerHelper.displayBanner(.error, message: response.data.message)
+                    }
+                case .failure(let failure):
+                    self?.setDriverMode()
+                    BannerHelper.displayBanner(.error, message: failure.localizedDescription)
+                }
+                self?.isUserInteractionWithSwitch = true
+            }
+        }
     }
 }

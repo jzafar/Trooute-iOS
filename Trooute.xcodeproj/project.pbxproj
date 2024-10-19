@@ -136,6 +136,7 @@
 		CE5701782C9E96B9003BD7CA /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5701772C9E96B8003BD7CA /* Bundle.swift */; };
 		CE57017A2C9E9F2C003BD7CA /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5701792C9E9F29003BD7CA /* View.swift */; };
 		CE57017C2C9F24C1003BD7CA /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57017B2C9F24C1003BD7CA /* MainTabView.swift */; };
+		CE631B5D2CC389B800976FAD /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE631B5C2CC389A400976FAD /* SettingsRepository.swift */; };
 		CEA18AC02CBBB6820096545F /* BasicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18ABF2CBBB6750096545F /* BasicResponse.swift */; };
 		CEA18AC42CBBCDB10096545F /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18AC32CBBCDAC0096545F /* MainTabViewModel.swift */; };
 		CEA18AC62CBBCDEA0096545F /* MainTabViewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18AC52CBBCDDE0096545F /* MainTabViewRepository.swift */; };
@@ -314,6 +315,7 @@
 		CE5701772C9E96B8003BD7CA /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		CE5701792C9E9F29003BD7CA /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		CE57017B2C9F24C1003BD7CA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		CE631B5C2CC389A400976FAD /* SettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
 		CEA18ABF2CBBB6750096545F /* BasicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicResponse.swift; sourceTree = "<group>"; };
 		CEA18AC32CBBCDAC0096545F /* MainTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
 		CEA18AC52CBBCDDE0096545F /* MainTabViewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewRepository.swift; sourceTree = "<group>"; };
@@ -642,6 +644,7 @@
 		CEA18AC12CBBC7350096545F /* Main Setting View */ = {
 			isa = PBXGroup;
 			children = (
+				CE631B5C2CC389A400976FAD /* SettingsRepository.swift */,
 				CE51503F2C9F3B2000B10107 /* SettingsViewModel.swift */,
 				CE5150342C9F258100B10107 /* SettingsView.swift */,
 			);
@@ -1199,6 +1202,7 @@
 				CE5227E92CBAF7B6005C1175 /* SignupResponse.swift in Sources */,
 				CE2169F22CC04159002B9333 /* CreateBookingRequest.swift in Sources */,
 				CEA18AE22CBD831E0096545F /* GetTripsRequest.swift in Sources */,
+				CE631B5D2CC389B800976FAD /* SettingsRepository.swift in Sources */,
 				CE5150392C9F25B400B10107 /* BookingsView.swift in Sources */,
 				CE2169EF2CC04044002B9333 /* ProceedRepository.swift in Sources */,
 				CE5227F12CBB1DA1005C1175 /* Image.swift in Sources */,

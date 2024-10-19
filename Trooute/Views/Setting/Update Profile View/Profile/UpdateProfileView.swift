@@ -15,6 +15,7 @@ struct UpdateProfileView: View {
         VStack {
             RoundProfilePictureView(image: $viewModel.useImage, width: 100)
                 .padding(30)
+            emaiView()
             fullName()
             phoneNumber()
             signInButton()
@@ -38,6 +39,17 @@ struct UpdateProfileView: View {
             TextViewLableText(text: "Full name")
             TextField("E.g. John Smith", text: $viewModel.fullName)
                 .textFieldStyle(AppTextFieldStyle())
+        }
+        .padding(.horizontal, 30)
+    }
+    
+    @ViewBuilder
+    func emaiView() -> some View {
+        VStack(alignment: .leading) {
+            TextViewLableText(text: "Email")
+            TextField("E.g. John Smith", text: $viewModel.email)
+                .textFieldStyle(AppTextFieldStyle())
+                .disabled(true)
         }
         .padding(.horizontal, 30)
     }

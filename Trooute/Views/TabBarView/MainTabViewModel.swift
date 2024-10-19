@@ -8,15 +8,16 @@
 import Foundation
 import SwiftUI
 class MainTabViewModel: ObservableObject {
-    @AppStorage(UserDefaultsKey.user.key) var user: User?
+//    @AppStorage(UserDefaultsKey.user.key) var user: User?
     private let repositiry = MainTabViewRepository()
     func getMe() {
-        repositiry.getMe { [weak self] result in
+        repositiry.getMe { result in
             switch result {
             case .success(let response):
                 if response.data.success,
                    let user = response.data.data {
-                    self?.user = user
+//                    self?.user = user
+                    UserUtils.shared.saveUserToStorage(user: user)
                 }
                     
             case .failure(let error):

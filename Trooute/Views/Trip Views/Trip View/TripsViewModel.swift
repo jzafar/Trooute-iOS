@@ -42,7 +42,7 @@ class TripsViewModel: NSObject, ObservableObject {
             if let tripResponse = MockDate.getDriverTripsList() {
                 if tripResponse.success == true,
                    let trips = tripResponse.data {
-                    driverTrips = trips
+                    driverTrips = trips.reversed()
                     nearByTrips = []
                 }
             }
@@ -55,7 +55,7 @@ class TripsViewModel: NSObject, ObservableObject {
                     case .success(let response):
                         if response.data.success,
                            let trips = response.data.data {
-                            self?.nearByTrips = trips
+                            self?.nearByTrips = trips.reversed()
                             self?.driverTrips = []
                         }
                             

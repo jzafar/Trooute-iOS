@@ -8,6 +8,9 @@ import Foundation
 enum UserDefaultsKey: String {
     case user = "USER"
     case token = "TOKEN"
+    case driverMode = "DriverMode"
+    case stripeToken = "StripeToken"
+    case driverState = "DriverState"
     var key: String {
         return rawValue
     }

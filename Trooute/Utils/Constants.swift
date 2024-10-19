@@ -15,19 +15,24 @@ struct Apis {
     static let apiVersion = "/api/v1/"
     static let base = Constants.baseUrl + apiVersion
     ///: AUTH END POINT
-    static let signin =  base + "users/login"
-    static let signup = base + "users/signup"
-    static let verifyOTP = base + "users/verify/email"
-    static let resendOTP = base + "users/resend-token"
-    static let updateProfile = base + "users/updateMe"
-    static let forgotPassword = base + "users/forgotPassword"
-    static let updatePassword = base + "users/updateMyPassword"
-    static let getMe = base + "users/me"
-    static let updateDeviceId = base + "users/updateDeviceId"
+    static let signin =             base + "users/login"
+    static let signup =             base + "users/signup"
+    static let verifyOTP =          base + "users/verify/email"
+    static let resendOTP =          base + "users/resend-token"
+    static let updateProfile =      base + "users/updateMe"
+    static let forgotPassword =     base + "users/forgotPassword"
+    static let updatePassword =     base + "users/updateMyPassword"
+    static let getMe =              base + "users/me"
+    static let updateDeviceId =     base + "users/updateDeviceId"
     ///: TRIPS ENDPOINTS
-    static let trip = base + "trips"
+    static let trip =               base + "trips"
     ///: Bookings ENDPOINTS
-    static let booking = base + "bookings"
+    static let booking =            base + "bookings"
+    ///: Driver ENDPOINTS
+    static let switchDriverMode =   base + "users/driver/switch-to-driver-mode"
+    static let uploadDriverDetail = base + "driver/upload-driver-details"
+
+   
 }
 //// TRIPS END POINT
 //  const val CREATE_TRIPS_END_POINT = "/api/v1/trips"

@@ -12,9 +12,11 @@ let log = Logs.self
 @main
 struct TroouteApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var user = UserUtils.shared
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(user)
         }
     }
 }

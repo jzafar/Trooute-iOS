@@ -6,23 +6,88 @@
 //
 import Foundation
 import SwiftUI
-struct UserUtils {
+
+class UserUtils: ObservableObject {
     @AppStorage(UserDefaultsKey.user.key) var user: User?
     @AppStorage(UserDefaultsKey.token.key) var token: String?
-    static let shared = UserUtils()
+    @Published var token1: String?
+    @Published var driverStatus: DriverStatus = .unknown
+    @Published var driverMode: Bool = false
+    private var _driverState : String {
+        set {
+            UserDefaults.standard.set(newValue, forKey: UserDefaultsKey.driverState.key)
+        } get {
+            return UserDefaults.standard.string(forKey: UserDefaultsKey.driverState.key) ?? "unknown"
+        }
+    }
+    static var shared = UserUtils()
+    init() {
+        self.token1 = token
+        let driverState = UserDefaults.standard.string(forKey: UserDefaultsKey.driverState.key) ?? "unknown"
+        self.driverStatus = DriverStatus(from: driverState)
+        self.driverMode = drivMode
+    }
+    var drivMode: Bool {
+        set {
+            self.driverMode = newValue
+            UserDefaults.standard.set(newValue, forKey: UserDefaultsKey.driverMode.key)
+        } get {
+            return UserDefaults.standard.bool(forKey: UserDefaultsKey.driverMode.key)
+        }
+    }
+    
+    var stripeToken: String? {
+        set {
+            UserDefaults.standard.set(newValue, forKey: UserDefaultsKey.stripeToken.key)
+        } get {
+            return UserDefaults.standard.string(forKey: UserDefaultsKey.stripeToken.key)
+        }
+    }
+    
     func saveUserToStorage(user: User, token: String) {
         self.user = user
         self.token = token
+        self.token1 = token
+        if let mode = user.driverMode {
+            self.drivMode = mode
+        }
+        if let status = user.isApprovedDriver {
+            self.driverStatus = DriverStatus(from: status)
+        }
     }
 
     func clearUserFromStorage() {
         self.user = nil
         self.token = nil
-//        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.user.key)
-//        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.token.key)
+        self.drivMode = false
+        self.driverStatus = .unknown
+        self._driverState = "unknown"
     }
     
     func saveUserToStorage(user: User) {
         self.user = user
+        if let mode = user.driverMode {
+            self.drivMode = mode
+        }
+        if let status = user.isApprovedDriver {
+            self._driverState = status
+            self.driverStatus = DriverStatus(from: status)
+        }
+        if let stripeToken = user.stripeToken {
+            self.stripeToken = stripeToken
+        }
+        
     }
+    
+    func updateDriverMode() {
+        self.user?.driverMode = !driverMode
+        drivMode = !driverMode
+    }
+}
+
+enum DriverStatus: String {
+    case approved, pending, rejected, unknown
+    init(from rawValue: String) {
+            self = DriverStatus(rawValue: rawValue) ?? .unknown
+        }
 }

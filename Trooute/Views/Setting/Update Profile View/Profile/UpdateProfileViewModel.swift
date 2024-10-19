@@ -12,7 +12,7 @@ class UpdateProfileViewModel: ObservableObject {
     @Published var phoneNumber = ""
     @Published var updatePassword = false
     @Published var useImage: Image? = nil
-    
+    @Published var email = ""
     private let repository = UpdateProfileRepository()
     @AppStorage(UserDefaultsKey.user.key) var user: User?
     func updateProfile() {
@@ -46,6 +46,7 @@ class UpdateProfileViewModel: ObservableObject {
             self.fullName = user.name
             self.phoneNumber = user.phoneNumber ?? ""
             self.useImage = nil
+            self.email = user.email ?? ""
         }
     }
 }
