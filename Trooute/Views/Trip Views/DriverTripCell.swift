@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 
 struct DriverTripCell: View {
     var trip: TripInfo
+    @ObservedObject var userModel: UserUtils = UserUtils.shared
     var body: some View {
         wishCell(wish: trip)
     }
@@ -66,17 +67,20 @@ struct DriverTripCell: View {
     func availableSeatsView(_ numberOfSeat: Int) -> some View {
         HStack {
             Spacer()
-            Text("\(numberOfSeat) Seats Available")
+            Text("\(numberOfSeat) Seats \(userModel.driverMode ? "Left" : "Available")")
                 .font(.footnote)
                 .foregroundStyle(.darkBlue)
                 .padding(.horizontal, 15)
                 .padding(.vertical, 8)
                 .background(Color.blue.opacity(0.1))
                 .cornerRadius(15)
-            Image("ic_heart")
-                .resizable()
-                .foregroundStyle(trip.isAddedInWishList == true ? .red : .black)
-                .frame(width: 25, height: 25)
+            if !userModel.driverMode {
+                Image("ic_heart")
+                    .resizable()
+                    .foregroundStyle(trip.isAddedInWishList == true ? .red : .black)
+                    .frame(width: 25, height: 25)
+            }
+            
         }.padding(.horizontal)
             .padding(.top, 10)
     }

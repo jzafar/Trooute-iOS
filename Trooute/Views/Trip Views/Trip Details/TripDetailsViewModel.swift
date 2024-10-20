@@ -9,6 +9,7 @@ import Foundation
 import SwiftLoader
 class TripDetailsViewModel: ObservableObject {
     private var tripId: String
+    private var userModel: UserUtils = UserUtils.shared
     @Published var trip: TripsData? {
         didSet {
             calculateHandCarryWeight()
@@ -48,33 +49,69 @@ class TripDetailsViewModel: ObservableObject {
     }
 
     private func calculateHandCarryWeight() {
-        if let handCarryLuggage = trip?.luggageRestrictions?.compactMap({ $0 }).filter({ $0.type == .handCarry }).first,
-           let weight = handCarryLuggage.weight {
-            self.handCarryWeight = "\(weight) KG"
+        if userModel.drivMode {
+            if let handCarryLuggage = trip?.trip?.luggageRestrictions?.compactMap({ $0 }).filter({ $0.type == .handCarry }).first,
+               let weight = handCarryLuggage.weight {
+                self.handCarryWeight = "\(weight) KG"
+            }
+        } else {
+            if let handCarryLuggage = trip?.luggageRestrictions?.compactMap({ $0 }).filter({ $0.type == .handCarry }).first,
+               let weight = handCarryLuggage.weight {
+                self.handCarryWeight = "\(weight) KG"
+            }
         }
+        
     }
 
     private func calculateSuitcaseWeight() {
-        if let handCarryLuggage = trip?.luggageRestrictions?.compactMap({ $0 }).filter({ $0.type == .suitCase }).first,
-           let weight = handCarryLuggage.weight {
-            self.suitcaseWeight =  "\(weight) KG"
+        if userModel.drivMode {
+            if let handCarryLuggage = trip?.trip?.luggageRestrictions?.compactMap({ $0 }).filter({ $0.type == .suitCase }).first,
+               let weight = handCarryLuggage.weight {
+                self.suitcaseWeight =  "\(weight) KG"
+            }
+        } else {
+            if let handCarryLuggage = trip?.luggageRestrictions?.compactMap({ $0 }).filter({ $0.type == .suitCase }).first,
+               let weight = handCarryLuggage.weight {
+                self.suitcaseWeight =  "\(weight) KG"
+            }
         }
+        
     }
 
     private func updateSmokingPreference() {
-        smokingPreference = trip?.smokingPreference ?? false ? "Yes" : "No"
+        if userModel.drivMode {
+            smokingPreference = trip?.trip?.smokingPreference ?? false ? "Yes" : "No"
+        } else {
+            smokingPreference = trip?.smokingPreference ?? false ? "Yes" : "No"
+        }
+        
     }
     
     private func updatePetPreference() {
-        petPreference = trip?.petPreference ?? false ? "Yes" : "No"
+        if userModel.drivMode {
+            petPreference = trip?.trip?.petPreference ?? false ? "Yes" : "No"
+        } else {
+            petPreference = trip?.petPreference ?? false ? "Yes" : "No"
+        }
+        
     }
 
     private func updateLanguagePreference() {
-        languagePreference =  trip?.languagePreference ?? "Not Provided"
+        if userModel.drivMode {
+            languagePreference =  trip?.trip?.languagePreference ?? "Not Provided"
+        } else {
+            languagePreference =  trip?.languagePreference ?? "Not Provided"
+        }
+        
     }
 
     private func updateOtherReliventDetails() {
-        otherReliventDetails = trip?.note.emptyOrNil ?? "Not Provided"
+        if userModel.drivMode {
+            otherReliventDetails = trip?.trip?.note.emptyOrNil ?? "Not Provided"
+        } else {
+            otherReliventDetails = trip?.note.emptyOrNil ?? "Not Provided"
+        }
+        
     }
 
     func getDriverModel(driver: Driver) -> UserInfoCardViewModel {
@@ -86,12 +123,24 @@ class TripDetailsViewModel: ObservableObject {
     }
 
     func getDestinationModel(trip: TripsData) -> TripRouteModel? {
-        if let fromAddress = trip.fromAddress,
-           let whereToAddress = trip.whereToAddress,
-           let departureDate = trip.departureDate{
-            return TripRouteModel(fromAddress: fromAddress, whereToAddress: whereToAddress, date: departureDate)
+        if userModel.drivMode {
+            if let fromAddress = trip.trip?.fromAddress,
+               let whereToAddress = trip.trip?.whereToAddress,
+               let departureDate = trip.trip?.departureDate{
+                return TripRouteModel(fromAddress: fromAddress, whereToAddress: whereToAddress, date: departureDate)
+            }
+        } else {
+            if let fromAddress = trip.fromAddress,
+               let whereToAddress = trip.whereToAddress,
+               let departureDate = trip.departureDate{
+                return TripRouteModel(fromAddress: fromAddress, whereToAddress: whereToAddress, date: departureDate)
+            }
         }
         return nil
+    }
+    
+    func bookingCardVM(booking: Booking) -> DriverSideBookingTripPassengerCellModel {
+        return DriverSideBookingTripPassengerCellModel(booking: booking)
     }
 
 }

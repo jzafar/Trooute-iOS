@@ -8,13 +8,13 @@
 
 import SwiftUI
 struct BookingCardView: View {
-    @AppStorage(UserDefaultsKey.user.key) var user: User?
     @ObservedObject var viewModel: BookingCardViewModel
+    @ObservedObject var userModel: UserUtils = UserUtils.shared
     var body: some View {
         VStack (alignment: .leading, spacing: 5){
             VStack(alignment: .leading, spacing: 10) {
                 userBookingInfo()
-                if (viewModel.getDriverMode()) {
+                if userModel.drivMode {
                     userInfoView()
                 } else {
                     driverCarView()
@@ -24,12 +24,12 @@ struct BookingCardView: View {
             .background(Color.white)
             .cornerRadius(10)
             VStack(alignment: .leading) {
-                if (viewModel.getDriverMode()) {
+                if userModel.drivMode {
                     HStack {
-                        Text("\(viewModel.booking.numberOfSeats ?? 10000) x Seats")
+                        Text("\(viewModel.booking.numberOfSeats ?? 0) x Seats")
                             .foregroundStyle(.white)
                         Spacer()
-                        Text(viewModel.bookPrice(viewModel.getDriverMode()))
+                        Text(viewModel.bookPrice(userModel.drivMode))
                             .foregroundStyle(.white)
                         
                     }.padding(.horizontal)
@@ -45,7 +45,7 @@ struct BookingCardView: View {
                     
                     
                 }
-                PriceView(price:  viewModel.finalPrice(viewModel.getDriverMode()), bookingSeats: nil, showPersonText: false)
+                PriceView(price:  viewModel.finalPrice(userModel.drivMode), bookingSeats: nil, showPersonText: false)
             }
            
             
@@ -69,7 +69,7 @@ struct BookingCardView: View {
     func userBookingInfo() -> some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                let driverStatus = user?.driverMode ?? false
+                let driverStatus = userModel.driverMode
                 let (image, status) = viewModel.getStatu(driverStatus)
                 image
                 Text(status)

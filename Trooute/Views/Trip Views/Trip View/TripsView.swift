@@ -16,7 +16,7 @@ struct TripsView: View {
             if userModel.driverMode == true {
                 ForEach(viewModel.driverTrips) { trip in
                     ZStack {
-                        NavigationLink(destination: EmptyView()) {
+                        NavigationLink(destination: TripDetailsView(viewModel: TripDetailsViewModel(tripId: trip.id))) {
                             EmptyView()
                         }.opacity(0)
                         Section {

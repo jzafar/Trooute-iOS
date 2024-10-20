@@ -18,14 +18,6 @@ class BookingCardViewModel: ObservableObject {
     func onAppear() {
     }
     
-    func getDriverMode() -> Bool {
-        if let user = user,
-            let driverMode = user.driverMode{
-            return driverMode
-        }
-        return false
-    }
-    
     var status: BookingStatus {
         return booking.status ?? .waiting
     }

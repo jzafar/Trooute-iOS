@@ -10,13 +10,29 @@ import SwiftUI
 struct TripDetailsView: View {
     @ObservedObject var viewModel: TripDetailsViewModel
     @ObservedObject var userModel = UserUtils.shared
+    let screenWidth = UIScreen.main.bounds.width
     var body: some View {
         List {
             if userModel.driverMode {
-                Section(header: DriverSectionHeader(seats: "\(viewModel.trip?.availableSeats ?? 0)"), content: {
-                    
-                    
-                })
+                Section(header: DriverSectionHeader(seats: "\(viewModel.trip?.trip?.availableSeats ?? 0)")) {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 15) {
+                            ForEach(viewModel.trip?.bookings ?? []) { booking in
+                                DriverSideBookingTripPassengerCell(viewModel: viewModel.bookingCardVM(booking: booking))
+                                    .background(
+                                        NavigationLink(destination: BookingDetailsView(viewModel: BookingDetailsViewModel(bookingId: booking.id))) {
+                                            EmptyView()
+                                        }
+                                        .opacity(0)
+                                    )
+                                    .frame(width: viewModel.trip?.bookings?.count == 1 ? screenWidth - 50 : screenWidth - 80)
+                            }
+                        }
+                    }
+                    .listRowBackground(Color.clear)
+                    .padding(0)
+
+                }.listRowInsets(EdgeInsets())
             } else {
                 if let driver = viewModel.trip?.driver {
                     Section {
@@ -29,26 +45,21 @@ struct TripDetailsView: View {
                     }
                 }
             }
-            
+
             if let trip = viewModel.trip {
                 if userModel.driverMode == false {
                     Section(header: PassengersSectionHeader(seats: "\(viewModel.trip?.availableSeats ?? 0)"), content: {
                         TripDetailsViewComponents.passengersView(passengers: viewModel.trip?.passengers ?? [])
-                        
+
                     })
                 }
                 if let destination = viewModel.getDestinationModel(trip: trip) {
-                    Section(header: TextViewLableText(text: "Destination and schedule", textFont: .headline))
-                        {
-                           
-                            DestinationView(destination: destination, price: trip.pricePerPerson ?? 0.0)
-                                    .listRowBackground(Color.clear)
-                                    .listRowInsets(EdgeInsets())
-                            
-                            
-                        }
+                    Section(header: TextViewLableText(text: "Destination and schedule", textFont: .headline)) {
+                        DestinationView(destination: destination, price: userModel.driverMode ? trip.trip?.pricePerPerson ?? 0.0 : trip.pricePerPerson ?? 0.0)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(EdgeInsets())
+                    }
                 }
-                
 
                 Section(header: TextViewLableText(text: "Trip Details", textFont: .headline)) {
                     TripPrefView(handCarryWeight: viewModel.handCarryWeight,
@@ -63,8 +74,14 @@ struct TripDetailsView: View {
             }
         }
         .safeAreaInset(edge: .bottom) {
-            if let trip = viewModel.trip {
-                bookNowView(trip)
+            if userModel.drivMode {
+                if let trip = viewModel.trip?.trip {
+                    pickUpPassengers(trip)
+                }
+            } else {
+                if let trip = viewModel.trip {
+                    bookNowView(trip)
+                }
             }
         }
         .onAppear {
@@ -75,6 +92,24 @@ struct TripDetailsView: View {
         .navigationTitle("Trip Details")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarRole(.editor)
+    }
+
+    @ViewBuilder
+    func pickUpPassengers(_ trip: Trip) -> some View {
+        VStack {
+            HStack {
+                WhiteBorderButton(title: "Cancel") {
+                }
+
+                PrimaryGreenButton(title: "Pickup Passengers") {
+                }
+
+            }.padding(.horizontal)
+                .background(Color("TitleColor"))
+                .frame(height: 100)
+
+        }.background(Color("TitleColor"))
+            .frame(height: 130)
     }
 
     @ViewBuilder

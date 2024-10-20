@@ -55,7 +55,7 @@ class TripsViewModel: NSObject, ObservableObject {
             }
             
         } else {
-            if let coordinates = locationManager.location?.coordinate {
+//            let coordinates = locationManager.location?.coordinate
             let request = GetTripsRequest(fromLatitude: locationManager.location?.coordinate.latitude, fromLongitude: locationManager.location?.coordinate.longitude, currentDate: Date().shotFormate())
                 
                 self.repository.getNearByTrips(request: request) { [weak self] result in
@@ -63,15 +63,21 @@ class TripsViewModel: NSObject, ObservableObject {
                     case .success(let response):
                         if response.data.success,
                            let trips = response.data.data {
-                            self?.nearByTrips = trips.reversed()
-                            self?.driverTrips = []
+                            if self?.user?.driverMode == true {
+//                                self?.driverTrips = trips.reversed()
+                                self?.nearByTrips = []
+                            } else {
+                                self?.nearByTrips = trips.reversed()
+                                self?.driverTrips = []
+                            }
+                           
                         }
                             
                     case .failure(let error):
                         log.error("failed to get me \(error.localizedDescription)")
                     }
                 }
-            }
+//            }
         }
     }
 

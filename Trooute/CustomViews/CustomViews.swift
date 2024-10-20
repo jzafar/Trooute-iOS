@@ -16,28 +16,47 @@ struct PrimaryGreenButton: View {
                 .frame(maxWidth: .infinity)
                 .font(.headline)
                 .fontWeight(.bold)
-                .padding()
+                .padding(.horizontal, 1)
+                .padding(.vertical)
                 .background(.primaryGreen)
                 .cornerRadius(8)
         }
     }
 }
 
-struct PrimaryGreenText: View {
+struct WhiteBorderButton: View {
     var title: String
+    var action: () -> Void
     var body: some View {
+        Button(action: action) {
             Text(title)
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
                 .font(.headline)
-                .fontWeight(.bold)
-                .padding()
-                .background(.primaryGreen)
-                .cornerRadius(8)
-        }
-    
+                .padding(.horizontal, 1)
+                .padding(.horizontal, 1)
+                .padding(.vertical)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.white, lineWidth: 2)
+                )
+        }.background(.clear)
+    }
 }
 
+struct PrimaryGreenText: View {
+    var title: String
+    var body: some View {
+        Text(title)
+            .foregroundColor(.white)
+            .frame(maxWidth: .infinity)
+            .font(.headline)
+            .fontWeight(.bold)
+            .padding()
+            .background(.primaryGreen)
+            .cornerRadius(8)
+    }
+}
 
 struct SecondaryGrayButton: View {
     var title: String
@@ -110,11 +129,10 @@ struct ListRowText: View {
 
 struct AppTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
-            configuration
+        configuration
             .padding()
             .background(Color(UIColor.systemGray6))
             .cornerRadius(8)
-        
     }
 }
 
@@ -122,7 +140,7 @@ struct RadioButtonField: View {
     var label: String
     @Binding var isSelected: String
     var value: String
-    
+
     var body: some View {
         HStack {
             Button(action: {
@@ -137,7 +155,7 @@ struct RadioButtonField: View {
     }
 }
 
-//struct CheckboxToggleStyle: ToggleStyle {
+// struct CheckboxToggleStyle: ToggleStyle {
 //    func makeBody(configuration: Configuration) -> some View {
 //        Button(action: {
 //            configuration.isOn.toggle()
@@ -148,7 +166,7 @@ struct RadioButtonField: View {
 //            }
 //        }
 //    }
-//}
+// }
 
 struct PriceView: View {
     let price: Double
@@ -156,7 +174,7 @@ struct PriceView: View {
     let showPersonText: Bool
     var body: some View {
         HStack {
-            Text( "€\(String(format: "%.1f", (price + Double(bookingSeats ?? 0))))")
+            Text("€\(String(format: "%.1f", price + Double(bookingSeats ?? 0)))")
                 .font(.title3).bold()
                 .foregroundColor(.white)
             if showPersonText {
@@ -166,11 +184,10 @@ struct PriceView: View {
                     .padding(.top, 5)
                     .padding(.leading, -3)
             }
-        }.padding()
+        }.padding(.horizontal)
+            .padding(.vertical, 5)
     }
 }
-
-
 
 struct XMarkButton: View {
     var action: () -> Void

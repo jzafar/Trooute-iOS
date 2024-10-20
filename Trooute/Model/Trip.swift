@@ -20,7 +20,7 @@ struct Trip: Codable {
     var petPreference: Bool? = false
     var languagePreference: String? = "Not provided"
     var note: String? = "Not provided"
-    var availableSeats: Double?
+    var availableSeats: Int?
     var status: String? = "Scheduled"
     var refunded: Bool?
     var createdAt: String?
@@ -34,7 +34,7 @@ struct Trip: Codable {
     enum CodingKeys: String, CodingKey {
         case v = "__v"
         case id = "_id"
-        case departureDate
+        case departureDate, createdAt, updatedAt
         case driver
         case passengers
         case fromAddress = "from_address"
@@ -47,6 +47,10 @@ struct Trip: Codable {
         case luggageRestrictions
         case roundTrip
         case petPreference
+        case availableSeats, totalSeats
+        case from_location, whereTo_location
+        case isAddedInWishList
+        case totalAmount
     }
 }
 

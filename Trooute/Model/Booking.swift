@@ -7,31 +7,50 @@
 
 import Foundation
 
-struct Booking: Codable {
+struct Booking: Codable, Identifiable {
     let v: Int?
     let id: String
     var amount: Double = 0.0
     var note: String = ""
-    var driverId: String = ""
+    var driverId: String? = ""
     var numberOfSeats: Int = 0
-    var pricePerPerson: Double = 0.0
+    var pricePerPerson: Double? = 0.0
     var pickupLocation: PickupLocation?
     var reviewsGivenToCar: Review?
     var reviewsGivenToDriver: Review?
     var reviewsGivenToUser: Review?
-    var reviewsGivenToUsersByUser: [Review] = []
-    var status: String = ""
+    var reviewsGivenToUsersByUser: [Review]? = []
+    var status: BookingStatus = .waiting
     var createdAt: String = ""
     var updatedAt: String = ""
-    var trip: String = ""
+    var trip: String? = ""
     var tripData: Trip?
     var user: User?
     var pickupStatus: PickupStatus?
     var plateFormFee: Double = 1.0
-    var refunded: Bool = false
+    var refunded: Bool? = false
     enum CodingKeys: String, CodingKey {
         case v = "__v"
         case id = "_id"
+        case amount
+        case note
+        case driverId
+        case numberOfSeats
+        case pricePerPerson
+        case pickupLocation
+        case reviewsGivenToCar
+        case reviewsGivenToDriver
+        case reviewsGivenToUser
+        case reviewsGivenToUsersByUser
+        case status
+        case createdAt
+        case updatedAt
+        case trip
+        case tripData
+        case user
+        case pickupStatus
+        case plateFormFee
+        case refunded
     }
 
     // Codable already handles encoding and decoding automatically

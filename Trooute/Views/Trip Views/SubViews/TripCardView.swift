@@ -8,7 +8,7 @@
 import SwiftUI
 struct TripCardView: View {
     @ObservedObject var viewModel: TripCardViewModel
-    @AppStorage(UserDefaultsKey.user.key) var user: User?
+    @ObservedObject var userModel: UserUtils = UserUtils.shared
     var body: some View {
         VStack (alignment: .leading, spacing: 5){
             VStack(alignment: .leading, spacing: 10) {
@@ -68,7 +68,7 @@ struct TripCardView: View {
     func availableSeatsView() -> some View {
         HStack {
             Spacer()
-            Text("\(viewModel.trip.availableSeats) Seats Available")
+            Text("\(viewModel.trip.availableSeats ?? 0) Seats Available")
                 .font(.footnote)
                 .foregroundStyle(.darkBlue)
                 .padding(.horizontal, 15)
