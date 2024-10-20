@@ -10,6 +10,7 @@ import SwiftLoader
 class TripDetailsViewModel: ObservableObject {
     private var tripId: String
     private var userModel: UserUtils = UserUtils.shared
+    @Published var showAlert = false
     @Published var trip: TripsData? {
         didSet {
             calculateHandCarryWeight()
@@ -25,7 +26,8 @@ class TripDetailsViewModel: ObservableObject {
     @Published var petPreference: String = "NO"
     @Published var languagePreference: String = "Not Provided"
     @Published var otherReliventDetails: String = "Not Provided"
-    @Published var showLoader = true
+    var alertTitle = ""
+    var alertMessage = ""
     private let repositiry = TripDetailsRepository()
     init(tripId: String) {
         self.tripId = tripId
@@ -35,7 +37,6 @@ class TripDetailsViewModel: ObservableObject {
         SwiftLoader.show(title: "Loading...",animated: true)
         repositiry.getTripDetails(tripId: tripId) { [weak self] result in
             SwiftLoader.hide()
-            self?.showLoader = false
             switch result {
             case .success(let response):
                 if  response.data.success,
@@ -143,4 +144,51 @@ class TripDetailsViewModel: ObservableObject {
         return DriverSideBookingTripPassengerCellModel(booking: booking)
     }
 
+    func pickUpPassengersPressed() {
+        updateTripStatus(status: .PickupStarted) { result in
+            
+        }
+    }
+    
+    func cancelTrip() {
+        updateTripStatus(status: .CANCELED) { success in
+            if success {
+                NavigationUtil.popToRootView(animated: true)
+            }
+        }
+    }
+    
+    private func updateTripStatus(status: TripStatus, completion: @escaping (Bool) -> Void) {
+        SwiftLoader.show(animated: true)
+        repositiry.updateTripStatus(tripId: self.tripId, status: status) { [weak self] result in
+            SwiftLoader.hide()
+            switch result {
+            case .success(let response):
+                if response.data.success {
+                    self?.showErroBanner(key: response.data.message, defaultMessage: response.data.message, defaultType: .success)
+                    completion(true)
+                } else {
+                    self?.showErroBanner(key: response.data.message, defaultMessage: response.data.message, defaultType: .error)
+                    completion(false)
+                }
+            case .failure(let failure):
+                BannerHelper.displayBanner(.error, message: failure.localizedDescription)
+                completion(false)
+            }
+        }
+    }
+    
+    private func showErroBanner(key: String, defaultMessage: String , defaultType: BannerType) {
+        if (key == "remaining_time_more_than_12h") {
+            BannerHelper.displayBanner(.info, message: "You can start picking up passengers 12 hours before the trip start time.")
+        } else if (key == "invalid_status") {
+            BannerHelper.displayBanner(.info, message: "Invalid trip status.")
+        } else if (key == "trip_status_INPROGRESS") {
+            BannerHelper.displayBanner(.info, message: "Update trip status to In Progress")
+        } else if (key == "trip_status_Canceled") {
+            BannerHelper.displayBanner(.info, message: "Update trip status to canceled")
+        } else {
+            BannerHelper.displayBanner(.error, message: defaultMessage)
+        }
+    }
 }

@@ -62,6 +62,7 @@ struct BookingCardView: View {
     func userInfoView() -> some View {
         if let user = viewModel.booking.user {
             UserInfoCardView(viewModel: UserInfoCardViewModel(user: user))
+                .padding(.horizontal)
         }
     }
     
@@ -69,8 +70,8 @@ struct BookingCardView: View {
     func userBookingInfo() -> some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                let driverStatus = userModel.driverMode
-                let (image, status) = viewModel.getStatu(driverStatus)
+                let driverMode = userModel.driverMode
+                let (image, status) = viewModel.getStatu(driverMode)
                 image
                 Text(status)
             }

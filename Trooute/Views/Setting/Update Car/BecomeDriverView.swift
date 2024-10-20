@@ -10,6 +10,7 @@ import SwiftUI
 
 struct BecomeDriverView: View {
     @StateObject var viewModel: BecomeDriverViewModel
+    @StateObject var userModel = UserUtils.shared
     @Environment(\.dismiss) var dismiss
     var body: some View {
         NavigationView {
@@ -45,7 +46,12 @@ struct BecomeDriverView: View {
                     .padding()
                 }
                 .safeAreaInset(edge: .bottom) {
-                    PrimaryGreenButton(title: (viewModel.carDetails == nil) ? "Submit" : "Update") {
+                    PrimaryGreenButton(title: (viewModel.carDetails == nil) ? "Submit Request" : "Update") {
+                        if userModel.driverStatus == .approved {
+                            viewModel.updateCarInfo()
+                        } else {
+                            viewModel.becomeADriver()
+                        }
                     }.padding()
                 }
             }

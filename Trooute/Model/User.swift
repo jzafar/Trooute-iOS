@@ -16,7 +16,7 @@ public struct User: Codable, UserProfile, Identifiable {
     var totlaReview: String?
     let phoneNumber: String?
     let reviewsStats: ReviewsStats?
-    let carDetails: CarDetails?
+    var carDetails: CarDetails?
     let email: String?
     let role: String?
     var driverMode: Bool?

@@ -51,7 +51,7 @@ struct MainTabView: View {
             }
         }
         .onAppear {
-//            viewModel.getMe()
+            viewModel.getMe()
         }
     }
 }

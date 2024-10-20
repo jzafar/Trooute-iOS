@@ -134,7 +134,7 @@ class NetworkService: NetworkServiceProtocol {
                 body.append("\(stringValue)\r\n")
             } else if let imageData = value as? Data {
                 body.append("--\(boundary)\r\n")
-                body.append("Content-Disposition: form-data; name=\"photo\"; filename=\"image.jpg\"\r\n")
+                body.append("Content-Disposition: form-data; name=\"\(key)\"; filename=\"\(String(describing: Date().fullFormatDate)).jpg\"\r\n")
                 body.append("Content-Type: image/jpeg\r\n\r\n")
                 body.append(imageData)
                 body.append("\r\n")

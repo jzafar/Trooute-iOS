@@ -139,6 +139,11 @@
 		CE631B5D2CC389B800976FAD /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE631B5C2CC389A400976FAD /* SettingsRepository.swift */; };
 		CE631B6C2CC5173C00976FAD /* DriverSideBookingTripPassengerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE631B6B2CC5173C00976FAD /* DriverSideBookingTripPassengerCell.swift */; };
 		CE631B6E2CC51A7100976FAD /* DriverSideBookingTripPassengerCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE631B6D2CC51A6C00976FAD /* DriverSideBookingTripPassengerCellModel.swift */; };
+		CE631B712CC551CE00976FAD /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE631B702CC551C900976FAD /* Enums.swift */; };
+		CE631B742CC55EE000976FAD /* UpdateDeviceIDRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE631B732CC55ECC00976FAD /* UpdateDeviceIDRequest.swift */; };
+		CE631B782CC56CB400976FAD /* DriverRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE631B772CC56CA300976FAD /* DriverRepository.swift */; };
+		CE631B7B2CC56D8600976FAD /* UpdateCarInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE631B7A2CC56D7B00976FAD /* UpdateCarInfoResponse.swift */; };
+		CE631B7D2CC56D8E00976FAD /* UpdateCarInfoRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE631B7C2CC56D8A00976FAD /* UpdateCarInfoRequests.swift */; };
 		CEA18AC02CBBB6820096545F /* BasicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18ABF2CBBB6750096545F /* BasicResponse.swift */; };
 		CEA18AC42CBBCDB10096545F /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18AC32CBBCDAC0096545F /* MainTabViewModel.swift */; };
 		CEA18AC62CBBCDEA0096545F /* MainTabViewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18AC52CBBCDDE0096545F /* MainTabViewRepository.swift */; };
@@ -320,6 +325,12 @@
 		CE631B5C2CC389A400976FAD /* SettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
 		CE631B6B2CC5173C00976FAD /* DriverSideBookingTripPassengerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverSideBookingTripPassengerCell.swift; sourceTree = "<group>"; };
 		CE631B6D2CC51A6C00976FAD /* DriverSideBookingTripPassengerCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverSideBookingTripPassengerCellModel.swift; sourceTree = "<group>"; };
+		CE631B702CC551C900976FAD /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		CE631B732CC55ECC00976FAD /* UpdateDeviceIDRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDeviceIDRequest.swift; sourceTree = "<group>"; };
+		CE631B752CC5602F00976FAD /* Trooute.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Trooute.entitlements; sourceTree = "<group>"; };
+		CE631B772CC56CA300976FAD /* DriverRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverRepository.swift; sourceTree = "<group>"; };
+		CE631B7A2CC56D7B00976FAD /* UpdateCarInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCarInfoResponse.swift; sourceTree = "<group>"; };
+		CE631B7C2CC56D8A00976FAD /* UpdateCarInfoRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCarInfoRequests.swift; sourceTree = "<group>"; };
 		CEA18ABF2CBBB6750096545F /* BasicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicResponse.swift; sourceTree = "<group>"; };
 		CEA18AC32CBBCDAC0096545F /* MainTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
 		CEA18AC52CBBCDDE0096545F /* MainTabViewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewRepository.swift; sourceTree = "<group>"; };
@@ -443,8 +454,8 @@
 		CE270B932CB067C800B9CFDC /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				CE631B762CC56BA900976FAD /* Update Car */,
 				CEA18AC12CBBC7350096545F /* Main Setting View */,
-				CE270B982CB07C5600B9CFDC /* BecomeDriverView.swift */,
 				CEFD59D82CBEECFB00E4A50B /* Car Info View */,
 				CE4E3D742CA356CD005C3CEE /* FAQView.swift */,
 				CEA18AC92CBC492D0096545F /* Update Profile View */,
@@ -562,7 +573,6 @@
 			isa = PBXGroup;
 			children = (
 				CE28F1292CB71F1B001CF2A1 /* GoogleAutocompleteViewModel.swift */,
-				CE270B9A2CB0864900B9CFDC /* BecomeDriverViewModel.swift */,
 				CE1D680B2CA9474F0070970D /* BookingCardViewModel.swift */,
 				CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */,
 				CE4E3E0B2CA5C52F005C3CEE /* SearchResultsViewModel.swift */,
@@ -576,6 +586,7 @@
 		CE5701412C9E0DFD003BD7CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE631B702CC551C900976FAD /* Enums.swift */,
 				CEEEA28D2CBA95D1006B8ECE /* RequestResponseObjects */,
 				CE4E3E002CA5B351005C3CEE /* Booking.swift */,
 				CE1D67FF2CA93ED10070970D /* BookingData.swift */,
@@ -652,6 +663,39 @@
 				CE631B6B2CC5173C00976FAD /* DriverSideBookingTripPassengerCell.swift */,
 			);
 			path = "Driver Side Passenger Celll";
+			sourceTree = "<group>";
+		};
+		CE631B722CC55EAC00976FAD /* User */ = {
+			isa = PBXGroup;
+			children = (
+				CE631B792CC56D6700976FAD /* Car Info */,
+				CE631B732CC55ECC00976FAD /* UpdateDeviceIDRequest.swift */,
+				CEA18AD52CBC5A940096545F /* Update Profile */,
+				CEA18ACC2CBC4A030096545F /* Update Password */,
+				CE5227FC2CBBAAED005C1175 /* RestPassword */,
+				CE5227E52CBAF790005C1175 /* Signup */,
+				CEEEA28E2CBA95DF006B8ECE /* Signin */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		CE631B762CC56BA900976FAD /* Update Car */ = {
+			isa = PBXGroup;
+			children = (
+				CE631B772CC56CA300976FAD /* DriverRepository.swift */,
+				CE270B9A2CB0864900B9CFDC /* BecomeDriverViewModel.swift */,
+				CE270B982CB07C5600B9CFDC /* BecomeDriverView.swift */,
+			);
+			path = "Update Car";
+			sourceTree = "<group>";
+		};
+		CE631B792CC56D6700976FAD /* Car Info */ = {
+			isa = PBXGroup;
+			children = (
+				CE631B7C2CC56D8A00976FAD /* UpdateCarInfoRequests.swift */,
+				CE631B7A2CC56D7B00976FAD /* UpdateCarInfoResponse.swift */,
+			);
+			path = "Car Info";
 			sourceTree = "<group>";
 		};
 		CEA18AC12CBBC7350096545F /* Main Setting View */ = {
@@ -794,6 +838,7 @@
 		CED05F002C95AF7000E51158 /* Trooute */ = {
 			isa = PBXGroup;
 			children = (
+				CE631B752CC5602F00976FAD /* Trooute.entitlements */,
 				CE0081A32CA1DF3700D84ACB /* Test.swift */,
 				CE4E3E112CA5C979005C3CEE /* MockDate.swift */,
 				CE5701482C9E1A36003BD7CA /* CustomViews */,
@@ -856,14 +901,10 @@
 				CEA18ABF2CBBB6750096545F /* BasicResponse.swift */,
 				CE2169F02CC0413C002B9333 /* Create Booking */,
 				CEA18AE02CBD82FB0096545F /* Trips */,
-				CEA18AD52CBC5A940096545F /* Update Profile */,
-				CEA18ACC2CBC4A030096545F /* Update Password */,
+				CE631B722CC55EAC00976FAD /* User */,
 				CE4E3E042CA5C1EC005C3CEE /* Bookings */,
-				CE5227FC2CBBAAED005C1175 /* RestPassword */,
 				CE5227F72CBB973D005C1175 /* OTP */,
-				CE5227E52CBAF790005C1175 /* Signup */,
 				CEEEA28F2CBA95F5006B8ECE /* Common */,
-				CEEEA28E2CBA95DF006B8ECE /* Signin */,
 			);
 			path = RequestResponseObjects;
 			sourceTree = "<group>";
@@ -1144,6 +1185,7 @@
 				CE5150682CA035A800B10107 /* UITabBarControllerRepresentable.swift in Sources */,
 				CE631B6E2CC51A7100976FAD /* DriverSideBookingTripPassengerCellModel.swift in Sources */,
 				CE5150692CA035A800B10107 /* CustomTabView.swift in Sources */,
+				CE631B712CC551CE00976FAD /* Enums.swift in Sources */,
 				CE51506E2CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift in Sources */,
 				CEA18AD92CBC5B470096545F /* UpdateProfileRepository.swift in Sources */,
 				CE08540E2CB29B8000A3E422 /* CameraView.swift in Sources */,
@@ -1166,6 +1208,7 @@
 				CE4E3E0E2CA5C558005C3CEE /* TripCardView.swift in Sources */,
 				CE179D582CAC8C1700FFC206 /* DriverTripCell.swift in Sources */,
 				CE4E3D862CA4A3AD005C3CEE /* Utils.swift in Sources */,
+				CE631B742CC55EE000976FAD /* UpdateDeviceIDRequest.swift in Sources */,
 				CE4E3E942CA7636D005C3CEE /* MasterDetailsView.swift in Sources */,
 				CE4E3E062CA5C1FA005C3CEE /* GetTripsResponse.swift in Sources */,
 				CED05F022C95AF7000E51158 /* TroouteApp.swift in Sources */,
@@ -1205,10 +1248,12 @@
 				CE5150752CA093CB00B10107 /* OnboardView.swift in Sources */,
 				CE5227FE2CBBAB00005C1175 /* ReestPasswordRequest.swift in Sources */,
 				CE1D67F62CA86ED50070970D /* BookTripViewModel.swift in Sources */,
+				CE631B782CC56CB400976FAD /* DriverRepository.swift in Sources */,
 				CE270B992CB07C5600B9CFDC /* BecomeDriverView.swift in Sources */,
 				CE1D68002CA93ED40070970D /* BookingData.swift in Sources */,
 				CE4E3DFF2CA5B2C1005C3CEE /* Passenger.swift in Sources */,
 				CE57013C2C9E0DBE003BD7CA /* SigninView.swift in Sources */,
+				CE631B7D2CC56D8E00976FAD /* UpdateCarInfoRequests.swift in Sources */,
 				CEA18AC02CBBB6820096545F /* BasicResponse.swift in Sources */,
 				CE4E3E122CA5C97F005C3CEE /* MockDate.swift in Sources */,
 				CE4E3E882CA73656005C3CEE /* DriverCarViewModel.swift in Sources */,
@@ -1249,6 +1294,7 @@
 				CE5150482C9FD5AD00B10107 /* UpdateProfileView.swift in Sources */,
 				CE14309C2CC18BFF001C1732 /* BookingDetailsRepository.swift in Sources */,
 				CEEEA2AA2CBA9D7D006B8ECE /* Logs.swift in Sources */,
+				CE631B7B2CC56D8600976FAD /* UpdateCarInfoResponse.swift in Sources */,
 				CEEEA2AB2CBA9D7D006B8ECE /* BaseDestination.swift in Sources */,
 				CEEEA2AC2CBA9D7D006B8ECE /* FileDestination.swift in Sources */,
 				CEEEA2AD2CBA9D7D006B8ECE /* ConsoleDestination.swift in Sources */,
@@ -1414,6 +1460,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Trooute/Trooute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trooute/Preview Content\"";
@@ -1449,6 +1496,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Trooute/Trooute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trooute/Preview Content\"";

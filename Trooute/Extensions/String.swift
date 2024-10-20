@@ -31,6 +31,10 @@ extension String {
             return replacingOccurrences(of: replace, with: withString, options: .caseInsensitive)
         }
     }
+    
+    func trim() -> String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 }
 extension Optional where Wrapped == String {
     var emptyOrNil: String {

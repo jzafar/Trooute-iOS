@@ -5,16 +5,7 @@
 //  Created by Muhammad Zafar on 2024-10-13.
 //
 import Foundation
-enum UserDefaultsKey: String {
-    case user = "USER"
-    case token = "TOKEN"
-    case driverMode = "DriverMode"
-    case stripeToken = "StripeToken"
-    case driverState = "DriverState"
-    var key: String {
-        return rawValue
-    }
-}
+
 //public protocol StorageCodable: Codable, RawRepresentable {}
 //
 //public extension StorageCodable {

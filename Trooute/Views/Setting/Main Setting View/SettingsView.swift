@@ -27,7 +27,7 @@ struct SettingsView: View {
             if let user = userModel.user {
                 if let carDetails = user.carDetails {
                     Section {
-                        CarInfoView(viewModel: CarInfoViewModel(carDetails: carDetails)) { editCar in
+                        CarInfoView(viewModel: CarInfoViewModel(carDetails: carDetails, isEditable: true)) { editCar in
                             viewModel.editCarInfo = editCar
                         }
                     }.listRowBackground(Color.white)

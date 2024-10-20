@@ -83,11 +83,8 @@ class UserUtils: ObservableObject {
         self.user?.driverMode = !driverMode
         drivMode = !driverMode
     }
-}
-
-enum DriverStatus: String {
-    case approved, pending, rejected, unknown
-    init(from rawValue: String) {
-            self = DriverStatus(rawValue: rawValue) ?? .unknown
-        }
+    
+    func updateCarInfo(car: CarDetails) {
+        self.user?.carDetails = car
+    }
 }

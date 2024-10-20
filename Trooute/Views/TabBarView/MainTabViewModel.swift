@@ -16,7 +16,6 @@ class MainTabViewModel: ObservableObject {
             case .success(let response):
                 if response.data.success,
                    let user = response.data.data {
-//                    self?.user = user
                     UserUtils.shared.saveUserToStorage(user: user)
                 }
                     

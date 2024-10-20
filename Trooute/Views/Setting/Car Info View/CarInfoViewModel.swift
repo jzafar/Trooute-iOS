@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 class CarInfoViewModel: ObservableObject {
-    @Published var image: Image? = nil
     let carDetails: CarDetails
     var isEditable: Bool
     init(carDetails: CarDetails, isEditable: Bool = false) {

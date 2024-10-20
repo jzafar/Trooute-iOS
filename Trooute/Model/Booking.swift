@@ -64,7 +64,7 @@ struct PickupLocation: Codable {
 struct PickupStatus: Codable {
     let v: Int
     let id: String
-    var driverStatus: String?
+    var driverStatus: DriverStatus?
     var passengerStatus: String?
     var booking: String?
     var trip: String?

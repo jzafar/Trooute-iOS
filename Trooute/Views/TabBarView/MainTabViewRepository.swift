@@ -8,6 +8,7 @@
 
 protocol GetMeRepositoryProtocol {
     func getMe(completion: @escaping (Result<Response<SigninResponse>, Error>) -> Void)
+    func updateDeviceId(request: UpdateDeviceIDRequest, completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void)
 }
 class MainTabViewRepository: GetMeRepositoryProtocol{
     private let networkService: NetworkServiceProtocol
@@ -15,8 +16,13 @@ class MainTabViewRepository: GetMeRepositoryProtocol{
     init(networkService: NetworkServiceProtocol = NetworkService()) {
         self.networkService = networkService
     }
+    
     func getMe(completion: @escaping (Result<Response<SigninResponse>, Error>) -> Void) {
         self.networkService.request(url: Apis.getMe, method: .GET, completion: completion)
+    }
+    
+    func updateDeviceId(request: UpdateDeviceIDRequest, completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void) {
+        self.networkService.request(url: Apis.updateDeviceId, method: .POST, httpBody: request.parameters, completion: completion)
     }
 }
 

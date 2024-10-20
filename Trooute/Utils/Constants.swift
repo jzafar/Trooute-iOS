@@ -24,14 +24,17 @@ struct Apis {
     static let updatePassword =     base + "users/updateMyPassword"
     static let getMe =              base + "users/me"
     static let updateDeviceId =     base + "users/updateDeviceId"
-    ///: TRIPS ENDPOINTS
-    static let trip =               base + "trips"
-    ///: Bookings ENDPOINTS
-    static let booking =            base + "bookings"
     ///: Driver ENDPOINTS
     static let switchDriverMode =   base + "users/driver/switch-to-driver-mode"
-    static let uploadDriverDetail = base + "driver/upload-driver-details"
-
+    static let becomeADriver =      base + "users/driver/upload-driver-details"
+    static let updateCarInfo =      base + "users/driver/update-car-info"
+    ///: TRIPS ENDPOINTS
+    static let trip =               base + "trips"
+    static let updateTripStatus =   base + "trips/update-trip-status"
+    static let updatePickupStatus = base + "trips/updatePickupStatus"
+    ///: Bookings ENDPOINTS
+    static let booking =            base + "bookings"
+    
    
 }
 //// TRIPS END POINT

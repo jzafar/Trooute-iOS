@@ -92,6 +92,15 @@ struct TripDetailsView: View {
         .navigationTitle("Trip Details")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarRole(.editor)
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(
+                title: Text("Alert"),
+                message: Text("Are you sure you want to cancel this trip. If you\'ll cancel this trip, your confirmed bookings will be refunded as well."),
+                primaryButton: .default(Text("OK"), action: {
+                    viewModel.cancelTrip()
+            }),
+            secondaryButton: .cancel(Text("Cancel")))
+        }
     }
 
     @ViewBuilder
@@ -99,9 +108,11 @@ struct TripDetailsView: View {
         VStack {
             HStack {
                 WhiteBorderButton(title: "Cancel") {
+                    viewModel.showAlert = true
                 }
 
                 PrimaryGreenButton(title: "Pickup Passengers") {
+                    viewModel.pickUpPassengersPressed()
                 }
 
             }.padding(.horizontal)

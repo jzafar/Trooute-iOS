@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct BookingDetailsView: View {
-    @AppStorage(UserDefaultsKey.user.key) var user: User?
     @StateObject var viewModel: BookingDetailsViewModel
+    @StateObject var userModel = UserUtils.shared
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            let driverMode = user?.driverMode ?? false
+            let driverMode = userModel.driverMode
             List {
                 Section(header: TextViewLableText(text: "Booking Detail")) {
                     bookingStatusView()
@@ -136,14 +136,14 @@ struct BookingDetailsView: View {
     @ViewBuilder
     func statusView() -> some View {
         VStack(alignment: .leading) {
-            let driverStatus = user?.driverMode ?? false
-            let (image, status) = Utils.checkStatus(isDriverApproved: driverStatus, status: viewModel.bookingData?.status ?? .none)
+            let driverMode = userModel.driverMode
+            let (image, status) = Utils.checkStatus(isDriverApproved: driverMode, status: viewModel.bookingData?.status ?? .none)
             HStack {
                 image
                 Text(status)
             }
             HStack {
-                Text(viewModel.getStatusText(isDriver: driverStatus, status: viewModel.status))
+                Text(viewModel.getStatusText(isDriver: driverMode, status: viewModel.status))
                     .foregroundStyle(.gray)
                     .font(.footnote)
             }.padding(.bottom, 10)
@@ -157,7 +157,7 @@ struct BookingDetailsView: View {
             }
 
             HStack {
-                if driverStatus {
+                if driverMode {
                     if viewModel.bookingData?.status == .waiting {
                         SecondaryBookingButton(title: "Cancel booking") {
                             viewModel.cancelBooking()

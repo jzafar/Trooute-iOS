@@ -5,8 +5,8 @@
 //  Created by Muhammad Zafar on 2024-09-21.
 //
 
-import SwiftUI
 import SDWebImageSwiftUI
+import SwiftUI
 
 struct CarInfoView: View {
     @ObservedObject var viewModel: CarInfoViewModel
@@ -18,42 +18,26 @@ struct CarInfoView: View {
             Spacer()
         }
     }
-    
+
     @ViewBuilder
     func carImageView() -> some View {
-        if let image = viewModel.image {
+        WebImage(url: URL(string: viewModel.photo)) { image in
             image
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .clipped()
-                .frame(width: 80, height: 80)
-                .cornerRadius(10)
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
-                .padding(1)
-        } else {
-            WebImage(url: URL(string: viewModel.photo)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                } placeholder: {
-                    Image("place_holder")
-                        .resizable()
-                }
-                .onSuccess { image, data, cacheType in
-                    DispatchQueue.main.async {
-                        viewModel.image = Image(uiImage: image) 
-                    }
-                }
-                .indicator(.activity)
-                .transition(.fade(duration: 0.5))
-                .scaledToFit()
-                .frame(width: 80, height: 80)
-                .cornerRadius(10)
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
-                .padding(1)
+        } placeholder: {
+            Image("place_holder")
+                .resizable()
         }
+
+        .indicator(.activity)
+        .transition(.fade(duration: 0.5))
+        .frame(width: 80, height: 80)
+        .cornerRadius(10)
+        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
+        .padding(1)
     }
-    
+
     @ViewBuilder
     func carDetailsView() -> some View {
         VStack(alignment: .leading) {
@@ -62,23 +46,21 @@ struct CarInfoView: View {
                 Spacer()
                 HStack {
                     if viewModel.isEditable {
-                        Button(action: {action?(true)}) {
+                        Button(action: { action?(true) }) {
                             Image(systemName: "pencil")
                                 .font(.title).bold()
                                 .foregroundStyle(Color("DarkBlue"))
                         }
                     }
                 }
-                
-                
             }
             HStack {
                 Text(viewModel.year)
                     .font(.subheadline)
                     .foregroundStyle(Color.gray)
-                
+
                 Spacer()
-            
+
                 Text(viewModel.carDetails.registrationNumber.emptyOrNil)
                     .padding(.horizontal, 30)
                     .padding(.vertical, 10)
@@ -86,9 +68,8 @@ struct CarInfoView: View {
                     .background(Color("LightBlue"))
                     .frame(height: 40)
                     .cornerRadius(20)
-                    
             }
-            
+
             HStack(spacing: 2) {
                 Circle()
                     .fill(Color.green)
