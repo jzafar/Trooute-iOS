@@ -17,7 +17,7 @@ struct PriceView1: View {
             VStack(alignment: .leading) {
                 if showSeatsRow {
                     HStack {
-                        Text("\(bookingSeats ?? 10000) x Seats")
+                        Text("\(bookingSeats ?? 0) x Seats")
                             .foregroundStyle(.white)
                         Spacer()
                         Text(self.bookPrice(bookingSeatsPrice))
@@ -30,7 +30,7 @@ struct PriceView1: View {
                             Text("Platform fee")
                                 .foregroundStyle(.white)
                             Spacer()
-                            Text("€1.0")
+                            Text("€\(bookingSeats ?? 1).0")
                                 .foregroundStyle(.white)
 
                         }.padding(.bottom, 1)

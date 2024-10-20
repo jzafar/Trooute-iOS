@@ -10,9 +10,11 @@ import SwiftUI
 
 class BookingCardViewModel: ObservableObject {
     @Published var booking: BookingData
-    @AppStorage(UserDefaultsKey.user.key) var user: User?
+    let userModel = UserUtils.shared
+    @Published var totalPrice = ""
     init(booking: BookingData) {
         self.booking = booking
+        self.bookPrice()
     }
     
     func onAppear() {
@@ -35,16 +37,16 @@ class BookingCardViewModel: ObservableObject {
         return TripRouteModel(fromAddress: self.booking.trip.fromAddress, whereToAddress: self.booking.trip.whereToAddress, date: self.booking.trip.departureDate)
     }
     
-    func bookPrice(_ driverMode: Bool) -> String {
-        if driverMode {
-            return "€\(String(format: "%.1f", self.booking.trip.pricePerPerson ?? 0.0))"
+    func bookPrice() {
+        if userModel.driverMode {
+            totalPrice = "€\(String(format: "%.1f", Double(self.booking.numberOfSeats ?? 0) * (self.booking.trip.pricePerPerson ?? 0.0)))"
         } else {
-            return "€\(String(format: "%.1f", self.booking.amount ?? 0.0))"
+            totalPrice = "€\(String(format: "%.1f", self.booking.amount ?? 0.0))"
         }
     }
     
-    func finalPrice(_ driverMode: Bool) -> Double {
-        if driverMode {
+    func finalPrice() -> Double {
+        if userModel.driverMode {
             return self.booking.trip.pricePerPerson ?? 0.0
         } else {
             return self.booking.amount ?? 0.0

@@ -15,9 +15,12 @@ struct BookingDetailsView: View {
             let driverMode = userModel.driverMode
             List {
                 Section(header: TextViewLableText(text: "Booking Detail")) {
-                    bookingStatusView()
-                        .listRowBackground(Color.white)
-                        .listRowInsets(EdgeInsets())
+                    if let _ = viewModel.bookingData {
+                        bookingStatusView()
+                            .listRowBackground(Color.white)
+                            .listRowInsets(EdgeInsets())
+                    }
+                   
                 }
 
                 if driverMode {
@@ -125,7 +128,7 @@ struct BookingDetailsView: View {
 
     @ViewBuilder
     func priceView() -> some View {
-        PriceView1(finalPrice: viewModel.finalPrice(viewModel.getDriverMode()),
+        PriceView1(finalPrice: viewModel.finalPrice,
                    bookingSeats: viewModel.bookingData?.numberOfSeats,
                    bookingSeatsPrice: viewModel.bookPrice(),
                    showPersonText: false,
@@ -164,6 +167,7 @@ struct BookingDetailsView: View {
                         }
 
                         PrimaryGreenButton(title: "Accept") {
+                            viewModel.accerptBooking()
                         }
                     } else if viewModel.bookingData?.status == .approved {
                         Spacer()

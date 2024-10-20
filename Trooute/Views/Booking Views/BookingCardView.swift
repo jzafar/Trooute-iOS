@@ -29,7 +29,7 @@ struct BookingCardView: View {
                         Text("\(viewModel.booking.numberOfSeats ?? 0) x Seats")
                             .foregroundStyle(.white)
                         Spacer()
-                        Text(viewModel.bookPrice(userModel.drivMode))
+                        Text(viewModel.totalPrice)
                             .foregroundStyle(.white)
                         
                     }.padding(.horizontal)
@@ -45,7 +45,8 @@ struct BookingCardView: View {
                     
                     
                 }
-                PriceView(price:  viewModel.finalPrice(userModel.drivMode), bookingSeats: nil, showPersonText: false)
+                PriceView(price:  viewModel.finalPrice(), bookingSeats: nil, showPersonText: true)
+                // For driver view need to send showPersonText = true
             }
            
             

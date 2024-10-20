@@ -17,6 +17,7 @@ class BookingDetailsViewModel: ObservableObject {
             self.handCarryWeight = self.getHandCarryWeight()
             self.suitcaseWeight = self.getSuitcaseWeight()
             self.bookingID = "Booking # \(self.bookingId.firstTenCharacters())"
+            self.finalPrice = self.getFinalPrice()
         }
     }
     @Published var status: BookingStatus = .waiting
@@ -27,7 +28,8 @@ class BookingDetailsViewModel: ObservableObject {
     @Published var suitcaseWeight = "Not Provided"
     @Published var handCarryWeight = "Not Provided"
     @Published var popView = false
-    @AppStorage(UserDefaultsKey.user.key) var user: User?
+    @Published var finalPrice: Double = 0.0
+    let user = UserUtils.shared
     private let repository = BookingDetailsRepository()
     private var paymentUrl: String? = nil
     init(bookingId: String) {
@@ -57,15 +59,10 @@ class BookingDetailsViewModel: ObservableObject {
     
     
     func getDriverMode() -> Bool {
-        if let user = user,
-            let driverMode = user.driverMode{
-            return driverMode
-        }
-        return false
+        return user.driverMode
     }
     
     func bookPrice() -> Double {
-        
             if let price = self.bookingData?.trip.pricePerPerson {
                 return price * Double(self.bookingData?.numberOfSeats ?? 0)
             }
@@ -74,9 +71,12 @@ class BookingDetailsViewModel: ObservableObject {
         
     }
     
-    func finalPrice(_ driverMode: Bool) -> Double {
-        if driverMode {
-            return ((self.bookingData?.trip.pricePerPerson ?? 0.0) -  Double(self.bookingData?.numberOfSeats ?? 0))
+    func getFinalPrice() -> Double{
+        if user.driverMode { // Details from tabbar booking -> booking details
+            let pricePerPerson = self.bookingData?.trip.pricePerPerson ?? 0.0
+            let numberOfSeats = Double(self.bookingData?.numberOfSeats ?? 0)
+            let price = (pricePerPerson * numberOfSeats) -  numberOfSeats
+            return price
         } else {
             return self.bookingData?.amount ?? 0.0
         }
@@ -174,6 +174,13 @@ class BookingDetailsViewModel: ObservableObject {
     
     func getWebViewModel() -> WebViewModel {
         return WebViewModel(url: self.paymentUrl ?? "")
+    }
+    
+    func accerptBooking() {
+        if bookingData?.trip.driver?.stripeConnectedAccountId == nil {
+            BannerHelper.displayBanner(.error, message: "You can\'t accept this booking. You must have to connect your stripe account to accept this booking. When we have approved you as a driver, we send you an email to connect your stripe account.")
+            return
+        }
     }
     
     func cancelBooking() {
