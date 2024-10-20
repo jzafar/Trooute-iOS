@@ -9,10 +9,10 @@ struct Trip: Codable {
     let v: Int?
     let id: String
     var departureDate: String
-    var driver: Driver?
-    var passengers: [Passenger]?
     var fromAddress: String
     var whereToAddress: String
+    var driver: Driver?
+    var passengers: [Passenger]?
     var pricePerPerson: Double?
     var luggageRestrictions: [LuggageRestrictions]?
     var roundTrip: Bool? = false
@@ -25,6 +25,11 @@ struct Trip: Codable {
     var refunded: Bool?
     var createdAt: String?
     var updatedAt: String?
+    var from_location: Location?
+    var whereTo_location: Location?
+    var totalSeats: Int?
+    var isAddedInWishList: Bool? = false
+    var totalAmount: Double? = 0.0
     
     enum CodingKeys: String, CodingKey {
         case v = "__v"

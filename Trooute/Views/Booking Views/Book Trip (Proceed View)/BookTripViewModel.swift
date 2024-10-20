@@ -21,13 +21,11 @@ class BookTripViewModel: ObservableObject {
     }
     
     func updatePrice() {
-        totalPrice = self.trip.pricePerPerson * Double(totalPerson)
+        totalPrice = (self.trip.pricePerPerson ?? 0.0) * Double(totalPerson)
     }
     
     func updatePassengers() {
-        print(totalPerson)
-        print(trip.availableSeats)
-        if totalPerson < trip.availableSeats {
+        if totalPerson < trip.availableSeats ?? 0 {
             totalPerson += 1
         } else {
             BannerHelper.displayBanner(.info, message: "No more seats are available")

@@ -19,7 +19,7 @@ class ProceedViewModel: ObservableObject {
     init(trip: TripsData, numberOfSeats: Int, pickupLocation: BookingPickupLocation, note: String) {
         self.trip = trip
         self.numberOfSeats = numberOfSeats
-        totalPrice = Double(numberOfSeats) * self.trip.pricePerPerson + Double(numberOfSeats)
+        totalPrice = Double(numberOfSeats) * (self.trip.pricePerPerson ?? 0.0) + Double(numberOfSeats)
         self.pickupLocation = pickupLocation
         self.note = note
     }

@@ -39,16 +39,24 @@ class TripsViewModel: NSObject, ObservableObject {
     
     func fetchTrips() {
         if user?.driverMode == true {
-            if let tripResponse = MockDate.getDriverTripsList() {
-                if tripResponse.success == true,
-                   let trips = tripResponse.data {
-                    driverTrips = trips.reversed()
-                    nearByTrips = []
+            let request = GetTripsRequest(departureDate: Date().shotFormate())
+            self.repository.getDriverTrips(request: request) { [weak self] result in
+                switch result {
+                case .success(let response):
+                    if response.data.success,
+                       let trips = response.data.data {
+                        self?.driverTrips = trips.reversed()
+                        self?.nearByTrips = []
+                    }
+                        
+                case .failure(let error):
+                    log.error("failed to get me \(error.localizedDescription)")
                 }
             }
+            
         } else {
             if let coordinates = locationManager.location?.coordinate {
-                let request = GetTripsRequest(fromLatitude: coordinates.latitude, fromLongitude: coordinates.longitude, currentDate: Date().shotFormate())
+            let request = GetTripsRequest(fromLatitude: locationManager.location?.coordinate.latitude, fromLongitude: locationManager.location?.coordinate.longitude, currentDate: Date().shotFormate())
                 
                 self.repository.getNearByTrips(request: request) { [weak self] result in
                     switch result {

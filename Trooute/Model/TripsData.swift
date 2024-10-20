@@ -9,28 +9,28 @@ import Foundation
 
 struct TripsData: Codable, Identifiable {
     let v: Int?
-    let id: String
-    var isAddedInWishList: Bool
-    let availableSeats: Int
-    let departureDate: String
+    var id: String
+    let availableSeats: Int?
+    let departureDate: String?
+    let fromAddress: String?
+    let whereToAddress: String?
+    let pricePerPerson: Double?
+    let status: String?
+    var isAddedInWishList: Bool? = false
     let driver: Driver?
-    let fromAddress: String
     let fromLocation: Location?
     let languagePreference: String?
     let note: String?
     let passengers: [Passenger]?
-    let pricePerPerson: Double
-    var smokingPreference: Bool = false
-    var petPreference: Bool = false
-    let status: String
+    var smokingPreference: Bool? = false
+    var petPreference: Bool? = false
     let totalAmount: Double?
     let totalSeats: Int?
-    let whereToAddress: String
     let whereToLocation: Location?
     let bookings: [Booking]?
     let trip: Trip?
-    let luggageRestrictions: [LuggageRestrictions?]
-    var roundTrip: Bool = false
+    let luggageRestrictions: [LuggageRestrictions?]?
+    var roundTrip: Bool? = false
 
     enum CodingKeys: String, CodingKey {
         case v = "__v"

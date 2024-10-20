@@ -100,6 +100,15 @@ class NetworkService: NetworkServiceProtocol {
                     DispatchQueue.main.async {
                         completion(.success(response))
                     }
+                }
+                catch let DecodingError.keyNotFound(key, context) {
+                    log.error("Missing key: \(key.stringValue) in \(context.codingPath)")
+                } catch let DecodingError.typeMismatch(type, context) {
+                    log.error("Type mismatch for key \(context.codingPath): \(type)")
+                } catch let DecodingError.valueNotFound(value, context) {
+                    log.error("Missing value for key \(context.codingPath): \(value)")
+                } catch let DecodingError.dataCorrupted(context) {
+                    log.error("Corrupted data: \(context.debugDescription)")
                 } catch {
                     DispatchQueue.main.async {
                         completion(.failure(error))

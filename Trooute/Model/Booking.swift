@@ -27,7 +27,8 @@ struct Booking: Codable {
     var tripData: Trip?
     var user: User?
     var pickupStatus: PickupStatus?
-
+    var plateFormFee: Double = 1.0
+    var refunded: Bool = false
     enum CodingKeys: String, CodingKey {
         case v = "__v"
         case id = "_id"

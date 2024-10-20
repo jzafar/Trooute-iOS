@@ -14,6 +14,7 @@ struct GetTripsRequest {
     var flexibleDays: Int?
     var toRange: Int?
     var fromRange: Int?
+    var departureDate: String?
     var parameters: [String: String] {
         var params: [String: String] = [:]
         
@@ -31,6 +32,9 @@ struct GetTripsRequest {
         }
         if let currentDate = currentDate {
             params["currentDate"] = currentDate
+        }
+        if let departureDate = departureDate {
+            params["departureDate"] = departureDate
         }
         if let flexibleDays = flexibleDays {
             params["flexibleDays"] = "\(flexibleDays)"

@@ -14,7 +14,10 @@ struct TripCardView: View {
             VStack(alignment: .leading, spacing: 10) {
                 availableSeatsView()
                 driverCarView()
-                tripRouteView()
+                if let vm = viewModel.getTripRouteModel() {
+                    tripRouteView(vm: vm)
+                }
+               
             }
             .background(Color.white)
             .cornerRadius(10)
@@ -78,7 +81,7 @@ struct TripCardView: View {
                 Image("ic_heart")
                     .resizable()
                     .frame(width: 25, height: 25)
-                    .foregroundColor(viewModel.trip.isAddedInWishList ? .red : .black)
+                    .foregroundColor(viewModel.trip.isAddedInWishList ?? false ? .red : .black)
                     .onTapGesture {
                         viewModel.addToWishList()
                     }
@@ -96,8 +99,8 @@ struct TripCardView: View {
     }
     
     @ViewBuilder
-    func tripRouteView() -> some View {
-        TripRouteView(info: viewModel.getTripRouteModel())
+    func tripRouteView(vm: TripRouteModel) -> some View {
+        TripRouteView(info: vm)
             .padding(.horizontal)
     }
 }

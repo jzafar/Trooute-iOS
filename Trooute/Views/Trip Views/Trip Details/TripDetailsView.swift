@@ -9,31 +9,46 @@ import SwiftUI
 
 struct TripDetailsView: View {
     @ObservedObject var viewModel: TripDetailsViewModel
-
+    @ObservedObject var userModel = UserUtils.shared
     var body: some View {
         List {
-            if let driver = viewModel.trip?.driver {
-                Section {
-                    UserInfoCardView(viewModel: viewModel.getDriverModel(driver: driver))
-                }
-            }
-            if let carDetails = viewModel.trip?.driver?.carDetails {
-                Section {
-                    CarInfoView(viewModel: viewModel.getCarDetailsModel(carDetails: carDetails))
-                }
-            }
-            if let trip = viewModel.trip {
-                Section(header: PassengersSectionHeader(seats: "\(viewModel.trip?.availableSeats ?? 0)"), content: {
-                    TripDetailsViewComponents.passengersView(passengers: viewModel.trip?.passengers ?? [])
-
+            if userModel.driverMode {
+                Section(header: DriverSectionHeader(seats: "\(viewModel.trip?.availableSeats ?? 0)"), content: {
+                    
+                    
                 })
-
-                Section(header: TextViewLableText(text: "Destination and schedule", textFont: .headline))
-                    {
-                        DestinationView(destination: viewModel.getDestinationModel(trip: trip), price: trip.pricePerPerson)
-                            .listRowBackground(Color.clear)
-                            .listRowInsets(EdgeInsets())
+            } else {
+                if let driver = viewModel.trip?.driver {
+                    Section {
+                        UserInfoCardView(viewModel: viewModel.getDriverModel(driver: driver))
                     }
+                }
+                if let carDetails = viewModel.trip?.driver?.carDetails {
+                    Section {
+                        CarInfoView(viewModel: viewModel.getCarDetailsModel(carDetails: carDetails))
+                    }
+                }
+            }
+            
+            if let trip = viewModel.trip {
+                if userModel.driverMode == false {
+                    Section(header: PassengersSectionHeader(seats: "\(viewModel.trip?.availableSeats ?? 0)"), content: {
+                        TripDetailsViewComponents.passengersView(passengers: viewModel.trip?.passengers ?? [])
+                        
+                    })
+                }
+                if let destination = viewModel.getDestinationModel(trip: trip) {
+                    Section(header: TextViewLableText(text: "Destination and schedule", textFont: .headline))
+                        {
+                           
+                            DestinationView(destination: destination, price: trip.pricePerPerson ?? 0.0)
+                                    .listRowBackground(Color.clear)
+                                    .listRowInsets(EdgeInsets())
+                            
+                            
+                        }
+                }
+                
 
                 Section(header: TextViewLableText(text: "Trip Details", textFont: .headline)) {
                     TripPrefView(handCarryWeight: viewModel.handCarryWeight,
@@ -92,7 +107,7 @@ struct TripDetailsView: View {
 
 #Preview {
     let data = MockDate.getTripsResponse()?.data?.first
-    TripDetailsView(viewModel: TripDetailsViewModel(tripId: data!.id))
+    TripDetailsView(viewModel: TripDetailsViewModel(tripId: data!.id ?? ""))
 }
 
 struct PassengersSectionHeader: View {
@@ -104,6 +119,25 @@ struct PassengersSectionHeader: View {
             TextViewLableText(text: title, textFont: .headline)
             Spacer()
             Text("\(seats) Seats Available")
+                .font(.footnote)
+                .foregroundStyle(.darkBlue)
+                .padding(.horizontal, 15)
+                .padding(.vertical, 8)
+                .background(Color.blue.opacity(0.1))
+                .cornerRadius(15)
+        }.padding(.bottom, 10)
+    }
+}
+
+struct DriverSectionHeader: View {
+    let title: String = "Passengers"
+    let seats: String
+
+    var body: some View {
+        HStack {
+            TextViewLableText(text: title, textFont: .headline)
+            Spacer()
+            Text("\(seats) Seats Left")
                 .font(.footnote)
                 .foregroundStyle(.darkBlue)
                 .padding(.horizontal, 15)

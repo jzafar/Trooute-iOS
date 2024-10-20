@@ -65,38 +65,18 @@ struct TripsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack {
-                        if let photo = userModel.user?.photo {
-                            WebImage(url: URL(string: viewModel.getUserImage(photo)))
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 30, height: 30)
-                                .clipShape(Circle())
-                                .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
-                                .padding(1)
-
-//                            WebImage(url: URL(string: viewModel.getUserImage(user.photo))) { image in
-//                                image.resizable()
-//                            } placeholder: {
-//                                Image(systemName: "person.circle")
-//                            }
-//                            .onSuccess { _, _, _ in
-//                            }
-//                            .indicator(.activity)
-//                            .transition(.fade(duration: 0.5))
-//                            .scaledToFit()
-//                            .frame(width: 30, height: 30)
-//                            .cornerRadius(15)
-//                            .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
-//                            .padding(1)
-                        } else {
+                        WebImage(url: URL(string: viewModel.getUserImage(userModel.user?.photo))) { image in
+                            image.resizable()
+                        } placeholder: {
                             Image(systemName: "person.circle")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 30, height: 30)
-                                .clipShape(Circle())
-                                .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
-                                .padding(1)
                         }
+
+                        .indicator(.activity)
+                        .transition(.fade(duration: 0.5))
+                        .frame(width: 30, height: 30)
+                        .cornerRadius(15)
+                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
+                        .padding(1)
 
                         TextViewLableText(text: "\(userModel.user?.name ?? "")", textFont: .title3)
                     }

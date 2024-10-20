@@ -30,10 +30,10 @@ struct DriverTripCell: View {
                     tripRouteView(fromAddress, whereToAddress: whereTo, date: date)
                 }
             }.background(.white)
-                .cornerRadius(25)
+                .cornerRadius(15)
             priceView(wish.pricePerPerson ?? 0.0)
         }.background(Color("TitleColor"))
-            .cornerRadius(25)
+            .cornerRadius(15)
     }
     
     @ViewBuilder
@@ -94,11 +94,8 @@ struct HorizontalCollectionView: View {
                         } placeholder: {
                             Image(systemName: "person.circle")
                         }
-                        .onSuccess { _, _, _ in
-                        }
                         .indicator(.activity)
                         .transition(.fade(duration: 0.5))
-                        .scaledToFit()
                         .frame(width: 50, height: 50)
                         .cornerRadius(25)
                         .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.black, lineWidth: 1))

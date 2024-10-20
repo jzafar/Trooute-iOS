@@ -48,14 +48,14 @@ class TripDetailsViewModel: ObservableObject {
     }
 
     private func calculateHandCarryWeight() {
-        if let handCarryLuggage = trip?.luggageRestrictions.compactMap({ $0 }).filter({ $0.type == .handCarry }).first,
+        if let handCarryLuggage = trip?.luggageRestrictions?.compactMap({ $0 }).filter({ $0.type == .handCarry }).first,
            let weight = handCarryLuggage.weight {
             self.handCarryWeight = "\(weight) KG"
         }
     }
 
     private func calculateSuitcaseWeight() {
-        if let handCarryLuggage = trip?.luggageRestrictions.compactMap({ $0 }).filter({ $0.type == .suitCase }).first,
+        if let handCarryLuggage = trip?.luggageRestrictions?.compactMap({ $0 }).filter({ $0.type == .suitCase }).first,
            let weight = handCarryLuggage.weight {
             self.suitcaseWeight =  "\(weight) KG"
         }
@@ -85,8 +85,13 @@ class TripDetailsViewModel: ObservableObject {
         return CarInfoViewModel(carDetails: carDetails)
     }
 
-    func getDestinationModel(trip: TripsData) -> TripRouteModel {
-        return TripRouteModel(fromAddress: trip.fromAddress, whereToAddress: trip.whereToAddress, date: trip.departureDate)
+    func getDestinationModel(trip: TripsData) -> TripRouteModel? {
+        if let fromAddress = trip.fromAddress,
+           let whereToAddress = trip.whereToAddress,
+           let departureDate = trip.departureDate{
+            return TripRouteModel(fromAddress: fromAddress, whereToAddress: whereToAddress, date: departureDate)
+        }
+        return nil
     }
 
 }

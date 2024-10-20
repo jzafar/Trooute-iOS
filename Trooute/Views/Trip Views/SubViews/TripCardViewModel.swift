@@ -45,21 +45,26 @@ class TripCardViewModel: ObservableObject {
         return "\(Constants.baseImageUrl)/\(self.trip.driver?.photo ?? "")"
     }
     
-    func getTripRouteModel() -> TripRouteModel {
-        return TripRouteModel(fromAddress: self.trip.fromAddress, whereToAddress: self.trip.whereToAddress, date: self.trip.departureDate)
+    func getTripRouteModel() -> TripRouteModel? {
+        if let fromAddress = self.trip.fromAddress,
+           let whereToAddress = self.trip.whereToAddress,
+           let departureDate = self.trip.departureDate {
+            return TripRouteModel(fromAddress: fromAddress, whereToAddress: whereToAddress, date: departureDate)
+        }
+        return nil
     }
     
     var bookPrice: String {
         if let seats = self.bookingSeats {
-            return "€\(String(format: "%.1f", Double(seats) * trip.pricePerPerson))"
+            return "€\(String(format: "%.1f", Double(seats) * (trip.pricePerPerson ?? 0.0)))"
         }
         return "€0.0"
     }
     
     var finalPrice: Double {
         if let seats = self.bookingSeats {
-            return  Double(seats) * trip.pricePerPerson
+            return  Double(seats) * (trip.pricePerPerson ?? 0.0)
         }
-        return self.trip.pricePerPerson
+        return self.trip.pricePerPerson ?? 0.0
     }
 }
