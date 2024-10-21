@@ -62,6 +62,7 @@ class UserUtils: ObservableObject {
         self.drivMode = false
         self.driverStatus = .unknown
         self._driverState = "unknown"
+        self.stripeToken = nil
     }
     
     func saveUserToStorage(user: User) {

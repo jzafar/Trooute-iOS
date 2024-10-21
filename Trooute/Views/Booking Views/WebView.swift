@@ -10,7 +10,7 @@ import WebKit
 
 struct WebView: UIViewRepresentable {
     @ObservedObject var webViewModel: WebViewModel
-
+    @Environment(\.dismiss) var dismiss
         func makeCoordinator() -> WebView.Coordinator {
             Coordinator(self, webViewModel)
         }
@@ -32,6 +32,7 @@ struct WebView: UIViewRepresentable {
             if webViewModel.shouldGoBack {
                 uiView.goBack()
                 webViewModel.shouldGoBack = false
+                dismiss()
             }
         }
 }

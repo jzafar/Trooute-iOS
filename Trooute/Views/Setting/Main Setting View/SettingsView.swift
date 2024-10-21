@@ -24,8 +24,8 @@ struct SettingsView: View {
                 }.listRowBackground(Color.white)
             }
 
-            if let user = userModel.user {
-                if let carDetails = user.carDetails {
+            if userModel.driverStatus == .approved {
+                if let carDetails = userModel.user?.carDetails {
                     Section {
                         CarInfoView(viewModel: CarInfoViewModel(carDetails: carDetails, isEditable: true)) { editCar in
                             viewModel.editCarInfo = editCar
@@ -95,6 +95,8 @@ struct SettingsView: View {
                 } else {
                     ListRowText(text: "Become a Driver")
                 }
+            }.onTapGesture {
+                viewModel.editCarInfo = true
             }
         }
     }
@@ -209,6 +211,9 @@ struct SettingsView: View {
                 .resizable()
                 .frame(width: 25, height: 25)
             ListRowText(text: "Logout")
+                
+        }.onTapGesture {
+            userModel.clearUserFromStorage()
         }
     }
 }

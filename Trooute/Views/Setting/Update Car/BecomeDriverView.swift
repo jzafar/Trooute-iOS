@@ -34,7 +34,7 @@ struct BecomeDriverView: View {
                         }
 
                         CustomTextField(title: "Vehicle License Plate", placeholder: "AFK 235", text: $viewModel.vehicleLicensePlate)
-                        if viewModel.carDetails == nil {
+                        if userModel.driverStatus != .approved {
                             SectionView(title: "Upload Driving License", description: "Ensure your driving license is clear and visible.") {
                                 PictureView(image: $viewModel.drivingLicenseImage, placeholderText: "Click to upload photo")
                             }
@@ -46,7 +46,7 @@ struct BecomeDriverView: View {
                     .padding()
                 }
                 .safeAreaInset(edge: .bottom) {
-                    PrimaryGreenButton(title: (viewModel.carDetails == nil) ? "Submit Request" : "Update") {
+                    PrimaryGreenButton(title: (userModel.driverStatus != .approved) ? "Submit Request" : "Update") {
                         if userModel.driverStatus == .approved {
                             viewModel.updateCarInfo()
                         } else {
@@ -55,7 +55,7 @@ struct BecomeDriverView: View {
                     }.padding()
                 }
             }
-            .navigationTitle((viewModel.carDetails == nil) ? "Become a driver" : "Update car Info")
+            .navigationTitle((userModel.driverStatus != .approved) ? "Become a driver" : "Update car Info")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     XMarkButton {

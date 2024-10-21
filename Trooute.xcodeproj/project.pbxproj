@@ -457,8 +457,8 @@
 				CE631B762CC56BA900976FAD /* Update Car */,
 				CEA18AC12CBBC7350096545F /* Main Setting View */,
 				CEFD59D82CBEECFB00E4A50B /* Car Info View */,
-				CE4E3D742CA356CD005C3CEE /* FAQView.swift */,
 				CEA18AC92CBC492D0096545F /* Update Profile View */,
+				CE4E3D742CA356CD005C3CEE /* FAQView.swift */,
 				CE5150412C9F3BD900B10107 /* UserInfoCardView.swift */,
 				CE179D532CAC43C200FFC206 /* WishView.swift */,
 			);

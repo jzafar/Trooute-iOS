@@ -28,7 +28,7 @@ class TripsViewModel: NSObject, ObservableObject {
     @Published var fromAddressInfo: SearchedLocation? = nil
     @Published var whereToAddressInfo: SearchedLocation? = nil
     @Published var addressInfoErrorAlert = false
-    @AppStorage(UserDefaultsKey.user.key) var user: User?
+    private var userModel = UserUtils.shared
     private let locationManager = CLLocationManager()
     @Published var authorisationStatus: CLAuthorizationStatus = .notDetermined
     private var lastKnownLocation: CLLocationCoordinate2D?
@@ -38,15 +38,15 @@ class TripsViewModel: NSObject, ObservableObject {
     private var repository = TripRepository()
     
     func fetchTrips() {
-        if user?.driverMode == true {
+        if userModel.driverMode == true {
             let request = GetTripsRequest(departureDate: Date().shotFormate())
             self.repository.getDriverTrips(request: request) { [weak self] result in
                 switch result {
                 case .success(let response):
                     if response.data.success,
                        let trips = response.data.data {
-                        self?.driverTrips = trips.reversed()
                         self?.nearByTrips = []
+                        self?.driverTrips = trips.reversed()
                     }
                         
                 case .failure(let error):
@@ -63,14 +63,9 @@ class TripsViewModel: NSObject, ObservableObject {
                     case .success(let response):
                         if response.data.success,
                            let trips = response.data.data {
-                            if self?.user?.driverMode == true {
-//                                self?.driverTrips = trips.reversed()
-                                self?.nearByTrips = []
-                            } else {
-                                self?.nearByTrips = trips.reversed()
-                                self?.driverTrips = []
-                            }
-                           
+                            self?.nearByTrips = trips.reversed()
+                            self?.driverTrips = []
+                            
                         }
                             
                     case .failure(let error):
@@ -126,6 +121,8 @@ extension TripsViewModel: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.lastKnownLocation = locations.first?.coordinate
-        self.fetchTrips()
+        if userModel.driverMode == false {
+            self.fetchTrips()
+        }
     }
 }

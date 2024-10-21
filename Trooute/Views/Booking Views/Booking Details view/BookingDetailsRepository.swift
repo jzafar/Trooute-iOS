@@ -26,13 +26,16 @@ class BookingDetailsRepository: BookingDetailsRepositoryProtocol {
     
     func cancelBooking(bookingId: String, completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void) {
         let url = Apis.booking + "/\(bookingId)/cancel"
+        networkService.request(url: url, method: .POST, completion: completion)
     }
     
     func approveBooking(bookingId: String, completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void) {
         let url = Apis.booking + "/\(bookingId)/approve"
+        networkService.request(url: url, method: .POST, completion: completion)
     }
     
     func confirmBooking(bookingId: String, completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void) {
         let url = Apis.booking + "/\(bookingId)/confirm"
+        networkService.request(url: url, method: .POST, completion: completion)
     }
 }

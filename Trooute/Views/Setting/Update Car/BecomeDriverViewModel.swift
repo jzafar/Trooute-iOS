@@ -33,7 +33,7 @@ class BecomeDriverViewModel: ObservableObject {
             vehicleModel = car.model.emptyOrNil
             vehicleYear = "\(car.year ?? 0000)"
             vehicleColor = car.color.emptyOrNil
-            vehicleLicensePlate = car.registrationNumber.emptyOrNil
+            vehicleLicensePlate = car.registrationNumber ?? ""
         }
         Task {
             do {

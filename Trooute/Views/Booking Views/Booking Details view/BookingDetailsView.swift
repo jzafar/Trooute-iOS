@@ -20,7 +20,6 @@ struct BookingDetailsView: View {
                             .listRowBackground(Color.white)
                             .listRowInsets(EdgeInsets())
                     }
-                   
                 }
 
                 if driverMode {
@@ -166,9 +165,11 @@ struct BookingDetailsView: View {
                             viewModel.cancelBooking()
                         }
 
+                        Spacer()
                         PrimaryGreenButton(title: "Accept") {
-                            viewModel.accerptBooking()
+                            viewModel.acceptBooking()
                         }
+
                     } else if viewModel.bookingData?.status == .approved {
                         Spacer()
                         SecondaryBookingButton(title: "Cancel booking") {
@@ -182,6 +183,7 @@ struct BookingDetailsView: View {
                     } else if viewModel.bookingData?.status == .approved {
                         SecondaryBookingButton(title: "Cancel booking") {
                         }
+                        Spacer()
                         PrimaryGreenButton(title: "Make Payment") {
                             viewModel.makePayments()
                         }

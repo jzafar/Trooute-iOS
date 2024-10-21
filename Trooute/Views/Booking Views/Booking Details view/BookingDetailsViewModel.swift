@@ -155,13 +155,16 @@ class BookingDetailsViewModel: ObservableObject {
     }
     
     func makePayments() {
+        SwiftLoader.show(title:"Loading...",animated: true)
         repository.confirmBooking(bookingId: self.bookingId) { [weak self] result in
+            SwiftLoader.hide()
             switch result {
             case .success(let response):
                 if response.data.success,
                    let url = response.data.url {
                     self?.paymentUrl = url
                     self?.showPaymentsScreen = true
+                    print(url)
                 } else {
                     BannerHelper.displayBanner(.error, message: response.data.message)
                 }
@@ -172,23 +175,40 @@ class BookingDetailsViewModel: ObservableObject {
         
     }
     
-    func getWebViewModel() -> WebViewModel {
-        return WebViewModel(url: self.paymentUrl ?? "")
-    }
-    
-    func accerptBooking() {
-        if bookingData?.trip.driver?.stripeConnectedAccountId == nil {
-            BannerHelper.displayBanner(.error, message: "You can\'t accept this booking. You must have to connect your stripe account to accept this booking. When we have approved you as a driver, we send you an email to connect your stripe account.")
-            return
-        }
-    }
-    
     func cancelBooking() {
+        SwiftLoader.show(animated: true)
         repository.cancelBooking(bookingId: bookingId) { [weak self] result in
+            SwiftLoader.hide()
             switch result {
             case .success(let response):
                 if response.data.success {
                     self?.popView = true
+                    BannerHelper.displayBanner(.success, message: response.data.message)
+                } else {
+                    BannerHelper.displayBanner(.error, message: response.data.message)
+                }
+            case .failure(let failure):
+                BannerHelper.displayBanner(.error, message: failure.localizedDescription)
+            }
+        }
+    }
+    
+    func getWebViewModel() -> WebViewModel {
+        return WebViewModel(url: self.paymentUrl ?? "")
+    }
+    
+    func acceptBooking() {
+        if bookingData?.trip.driver?.stripeConnectedAccountId == nil {
+            BannerHelper.displayBanner(.error, message: "You can\'t accept this booking. You must have to connect your stripe account to accept this booking. When we have approved you as a driver, we send you an email to connect your stripe account.")
+            return
+        }
+        SwiftLoader.show(animated: true)
+        repository.approveBooking(bookingId: self.bookingId) { [weak self] result in
+            SwiftLoader.hide()
+            switch result {
+            case .success(let response):
+                if response.data.success {
+                    self?.getBookingDetails()
                     BannerHelper.displayBanner(.success, message: response.data.message)
                 } else {
                     BannerHelper.displayBanner(.error, message: response.data.message)

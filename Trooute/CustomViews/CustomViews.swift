@@ -20,7 +20,7 @@ struct PrimaryGreenButton: View {
                 .padding(.vertical)
                 .background(.primaryGreen)
                 .cornerRadius(8)
-        }
+        }.buttonStyle(PlainButtonStyle())
     }
 }
 
@@ -88,7 +88,7 @@ struct SecondaryBookingButton: View {
                 .padding()
                 .background(Color(UIColor.systemGray6))
                 .cornerRadius(8)
-        }
+        }.buttonStyle(PlainButtonStyle())
     }
 }
 

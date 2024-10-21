@@ -46,4 +46,7 @@ class SettingsViewModel: ObservableObject {
             }
         }
     }
+    func logoutPressed() {
+        UserUtils.shared.clearUserFromStorage()
+    }
 }
