@@ -17,6 +17,7 @@ struct Driver: UserProfile, Codable {
     let isApprovedDriver: String?
     let reviewsStats: ReviewsStats?
     let stripeConnectedAccountId: String?
+    let phoneNumber: String?
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case carDetails
@@ -28,5 +29,6 @@ struct Driver: UserProfile, Codable {
         case reviewsStats
         case gender
         case stripeConnectedAccountId
+        case phoneNumber
     }
 }

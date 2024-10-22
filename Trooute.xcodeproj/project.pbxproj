@@ -49,6 +49,7 @@
 		CE270B9B2CB0864D00B9CFDC /* BecomeDriverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE270B9A2CB0864900B9CFDC /* BecomeDriverViewModel.swift */; };
 		CE28F12A2CB71F1F001CF2A1 /* GoogleAutocompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28F1292CB71F1B001CF2A1 /* GoogleAutocompleteViewModel.swift */; };
 		CE28F12C2CB72325001CF2A1 /* SearchedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28F12B2CB7231E001CF2A1 /* SearchedLocation.swift */; };
+		CE36D2612CC82DA8005F3A0C /* WebViewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36D2602CC82DA8005F3A0C /* WebViewRepository.swift */; };
 		CE4E3D752CA356CD005C3CEE /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D742CA356CD005C3CEE /* FAQView.swift */; };
 		CE4E3D772CA35794005C3CEE /* FAQViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */; };
 		CE4E3D792CA357C8005C3CEE /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D782CA357B5005C3CEE /* FAQ.swift */; };
@@ -238,6 +239,7 @@
 		CE270B9A2CB0864900B9CFDC /* BecomeDriverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BecomeDriverViewModel.swift; sourceTree = "<group>"; };
 		CE28F1292CB71F1B001CF2A1 /* GoogleAutocompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAutocompleteViewModel.swift; sourceTree = "<group>"; };
 		CE28F12B2CB7231E001CF2A1 /* SearchedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedLocation.swift; sourceTree = "<group>"; };
+		CE36D2602CC82DA8005F3A0C /* WebViewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewRepository.swift; sourceTree = "<group>"; };
 		CE4E3D742CA356CD005C3CEE /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
 		CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewModel.swift; sourceTree = "<group>"; };
 		CE4E3D782CA357B5005C3CEE /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ.swift; sourceTree = "<group>"; };
@@ -425,7 +427,7 @@
 				CEFD59DA2CC0172700E4A50B /* Book Trip (Proceed View) */,
 				CE270B942CB069C500B9CFDC /* BookingConfirmedView.swift */,
 				CEFD59DC2CC03FA300E4A50B /* Book Now View */,
-				CE179D4D2CAC3B0900FFC206 /* WebView.swift */,
+				CE36D25F2CC82D7E005F3A0C /* Payment Web View */,
 			);
 			path = "Booking Views";
 			sourceTree = "<group>";
@@ -463,6 +465,16 @@
 				CE179D532CAC43C200FFC206 /* WishView.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		CE36D25F2CC82D7E005F3A0C /* Payment Web View */ = {
+			isa = PBXGroup;
+			children = (
+				CE36D2602CC82DA8005F3A0C /* WebViewRepository.swift */,
+				CE179D4D2CAC3B0900FFC206 /* WebView.swift */,
+				CE179D4B2CAC3AB700FFC206 /* WebViewModel.swift */,
+			);
+			path = "Payment Web View";
 			sourceTree = "<group>";
 		};
 		CE4E3D842CA4A3A1005C3CEE /* Utils */ = {
@@ -577,7 +589,6 @@
 				CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */,
 				CE4E3E0B2CA5C52F005C3CEE /* SearchResultsViewModel.swift */,
 				CE4E3EA32CA7E7A3005C3CEE /* UserInfoCardViewModel.swift */,
-				CE179D4B2CAC3AB700FFC206 /* WebViewModel.swift */,
 				CE179D512CAC438C00FFC206 /* WishViewModel.swift */,
 			);
 			path = ViewModel;
@@ -1155,6 +1166,7 @@
 				CE0854282CB3B03100A3E422 /* GooglePlacesModifier.swift in Sources */,
 				CE4E3D7F2CA49A85005C3CEE /* InvertedTriangle.swift in Sources */,
 				CE0854142CB3176800A3E422 /* BluePriceView.swift in Sources */,
+				CE36D2612CC82DA8005F3A0C /* WebViewRepository.swift in Sources */,
 				CE4E3EA82CA7F12E005C3CEE /* SigninResponse.swift in Sources */,
 				CE5701402C9E0DF6003BD7CA /* SigninViewModel.swift in Sources */,
 				CEA18ACE2CBC4A260096545F /* UpdatePasswordRequest.swift in Sources */,

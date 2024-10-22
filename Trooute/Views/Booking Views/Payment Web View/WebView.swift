@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
-import WebKit
+@preconcurrency import WebKit
+import SwiftLoader
 
 struct WebView: UIViewRepresentable {
     @ObservedObject var webViewModel: WebViewModel
@@ -34,6 +35,8 @@ struct WebView: UIViewRepresentable {
                 webViewModel.shouldGoBack = false
                 dismiss()
             }
+            
+           
         }
 }
 
@@ -49,16 +52,37 @@ extension WebView {
 
         func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
             webViewModel.isLoading = true
+            SwiftLoader.show(title: "Loading...", animated: true)
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             webViewModel.isLoading = false
             webViewModel.title = webView.title ?? ""
             webViewModel.canGoBack = webView.canGoBack
+            SwiftLoader.hide()
         }
+        
+        func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+
+                let url = navigationAction.request.url?.absoluteString
+                print("onLoadResource: url -> \(url ?? "")")
+
+                // Check if the URL contains "payment-success"
+                if let url = url, url.contains("payment-success") {
+                    let modifiedUrl = url.replacingOccurrences(of: "http://localhost:4000", with: "")
+                    webViewModel.paymentSuccess(url: modifiedUrl)
+                }
+
+                if let url = url, url.contains("payment-failed") {
+                    webViewModel.shouldGoBack = true
+                }
+
+                decisionHandler(.allow)
+            }
 
         func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
             webViewModel.isLoading = false
+            SwiftLoader.hide()
         }
     }
 }

@@ -14,53 +14,53 @@ struct BookingDetailsView: View {
         VStack(alignment: .leading, spacing: 10) {
             let driverMode = userModel.driverMode
             List {
-                Section(header: TextViewLableText(text: "Booking Detail")) {
-                    if let _ = viewModel.bookingData {
+                if let _ = viewModel.bookingData {
+                    Section(header: TextViewLableText(text: "Booking Detail")) {
                         bookingStatusView()
                             .listRowBackground(Color.white)
                             .listRowInsets(EdgeInsets())
                     }
-                }
 
-                if driverMode {
-                    Section(header: TextViewLableText(text: "Passengers Details")) {
-                        passengerInfoView()
-                            .listRowBackground(Color.white)
-                    }
+                    if driverMode {
+                        Section(header: TextViewLableText(text: "Passengers Details")) {
+                            passengerInfoView()
+                                .listRowBackground(Color.white)
+                        }
 
-                } else {
-                    Section(header: TextViewLableText(text: "Driver Details")) {
-                        driverDetails()
-                            .listRowBackground(Color.white)
-                    }
+                    } else {
+                        Section(header: TextViewLableText(text: "Driver Details")) {
+                            driverDetails()
+                                .listRowBackground(Color.white)
+                        }
 
-                    Section {
-                        carInfoView()
-                            .listRowBackground(Color.white)
-                    }
+                        Section {
+                            carInfoView()
+                                .listRowBackground(Color.white)
+                        }
 
-                    Section(header: PassengersSectionHeader(seats: viewModel.availableSeats), content: {
-                        TripDetailsViewComponents.passengersView(passengers: viewModel.bookingData?.trip.passengers ?? [])
-                    })
+                        Section(header: PassengersSectionHeader(seats: viewModel.availableSeats), content: {
+                            TripDetailsViewComponents.passengersView(passengers: viewModel.bookingData?.trip.passengers ?? [])
+                        })
 
-                    if let des = viewModel.getDestinationModel() {
-                        Section(header: TextViewLableText(text: "Destination and schedule", textFont: .headline))
-                            {
-                                DestinationView(destination: des, price: viewModel.bookingData?.trip.pricePerPerson ?? 0.0)
-                                    .listRowBackground(Color.clear)
-                                    .listRowInsets(EdgeInsets())
-                            }
-                    }
+                        if let des = viewModel.getDestinationModel() {
+                            Section(header: TextViewLableText(text: "Destination and schedule", textFont: .headline))
+                                {
+                                    DestinationView(destination: des, price: viewModel.bookingData?.trip.pricePerPerson ?? 0.0)
+                                        .listRowBackground(Color.clear)
+                                        .listRowInsets(EdgeInsets())
+                                }
+                        }
 
-                    Section(header: TextViewLableText(text: "Trip Details")) {
-                        TripPrefView(handCarryWeight: viewModel.handCarryWeight,
-                                     suitcaseWeight: viewModel.suitcaseWeight,
-                                     smokingPreference: viewModel.smokingPreference,
-                                     petPreference: viewModel.petPreference,
-                                     languagePreference: viewModel.languagePreference,
-                                     otherReliventDetails: viewModel.otherReliventDetails)
-                            .listRowBackground(Color.clear)
-                            .listRowInsets(EdgeInsets())
+                        Section(header: TextViewLableText(text: "Trip Details")) {
+                            TripPrefView(handCarryWeight: viewModel.handCarryWeight,
+                                         suitcaseWeight: viewModel.suitcaseWeight,
+                                         smokingPreference: viewModel.smokingPreference,
+                                         petPreference: viewModel.petPreference,
+                                         languagePreference: viewModel.languagePreference,
+                                         otherReliventDetails: viewModel.otherReliventDetails)
+                                .listRowBackground(Color.clear)
+                                .listRowInsets(EdgeInsets())
+                        }
                     }
                 }
 
@@ -71,6 +71,7 @@ struct BookingDetailsView: View {
                             .listRowInsets(EdgeInsets())
                     }
                 }
+
             }.onAppear {
                 Tabbar.shared.hide = true
                 viewModel.getBookingDetails()
@@ -82,9 +83,12 @@ struct BookingDetailsView: View {
         }.navigationTitle("Booking Details")
             .navigationBarTitleDisplayMode(.inline)
             .toolbarRole(.editor)
-            .sheet(isPresented: $viewModel.showPaymentsScreen) {
+            .sheet(isPresented:  $viewModel.showPaymentsScreen) {
+                viewModel.getBookingDetails()
+            } content: {
                 WebView(webViewModel: viewModel.getWebViewModel())
             }
+
     }
 
     @ViewBuilder
@@ -95,7 +99,7 @@ struct BookingDetailsView: View {
     @ViewBuilder
     func userInfoView() -> some View {
         if let user = viewModel.bookingData?.trip.driver {
-            UserInfoCardView(viewModel: UserInfoCardViewModel(user: user))
+            UserInfoCardView(viewModel: UserInfoCardViewModel(user: user, showUserContact: viewModel.bookingData?.status == .confirmed))
         }
     }
 
@@ -149,6 +153,7 @@ struct BookingDetailsView: View {
                     .foregroundStyle(.gray)
                     .font(.footnote)
             }.padding(.bottom, 10)
+                
             HStack {
                 TextViewLableText(text: viewModel.bookingID ?? "")
             }
@@ -176,12 +181,14 @@ struct BookingDetailsView: View {
                         }
                     }
                 } else {
-                    if viewModel.bookingData?.status == .waiting {
+                    if viewModel.bookingData?.status == .waiting ||  viewModel.bookingData?.status == .confirmed {
                         Spacer()
                         SecondaryBookingButton(title: "Cancel booking") {
+                            viewModel.cancelBooking()
                         }
                     } else if viewModel.bookingData?.status == .approved {
                         SecondaryBookingButton(title: "Cancel booking") {
+                            viewModel.cancelBooking()
                         }
                         Spacer()
                         PrimaryGreenButton(title: "Make Payment") {

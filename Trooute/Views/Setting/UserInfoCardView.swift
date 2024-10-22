@@ -24,14 +24,37 @@ struct UserInfoCardView: View {
 
                 Text(viewModel.gender)
                 HStack {
-                    Image(systemName: "star.fill")
-                        .foregroundStyle(Color.yellow)
-                    Text(viewModel.avgRating.formatted(.number.precision(.fractionLength(1))))
-                        .font(.headline)
+                    HStack {
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(Color.yellow)
+                        Text(viewModel.avgRating.formatted(.number.precision(.fractionLength(1))))
+                            .font(.headline)
 
-                    Text(viewModel.totalReviews)
-                        .font(.subheadline)
-                        .foregroundStyle(Color.gray)
+                        Text(viewModel.totalReviews)
+                            .font(.subheadline)
+                            .foregroundStyle(Color.gray)
+                    }
+                    if viewModel.showUserContact {
+                        HStack {
+                            Spacer()
+                            Image("ic_open_inbox")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                                .padding(.horizontal,5)
+                                .onTapGesture {
+                                    print(viewModel.user.id)
+                                }
+                            Image("ic_call")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                                .onTapGesture {
+                                    viewModel.phoneCall()
+                                }
+                            
+                        }
+                    }
                 }
             }
             .padding(5)

@@ -9,8 +9,10 @@ import Foundation
 
 class UserInfoCardViewModel: ObservableObject {
     let user: UserProfile
-    init(user: UserProfile) {
+    @Published var showUserContact: Bool = false
+    init(user: UserProfile, showUserContact: Bool = false) {
         self.user = user
+        self.showUserContact = showUserContact
     }
     
     var photo: String {
@@ -43,6 +45,14 @@ class UserInfoCardViewModel: ObservableObject {
         }
         return "0"
         
+    }
+    
+    func phoneCall() {
+        if let driver = user as? Driver {
+            print(driver.phoneNumber)
+        } else if let user = user as? User {
+            print(user.phoneNumber)
+        }
     }
     
 }
