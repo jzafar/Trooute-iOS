@@ -25,7 +25,7 @@ struct Utils {
         case .waiting:
             image = Image("ic_status_waiting")
             string = isDriverApproved ? "Waiting for approval" : "Waiting"
-        case .cancled:
+        case .canceled:
             image = Image("ic_status_cancelled")
             string = "Canceled"
         case .approved:

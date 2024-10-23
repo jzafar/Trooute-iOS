@@ -59,6 +59,7 @@ class UserUtils: ObservableObject {
     func clearUserFromStorage() {
         self.user = nil
         self.token = nil
+        self.token1 = nil
         self.drivMode = false
         self.driverStatus = .unknown
         self._driverState = "unknown"

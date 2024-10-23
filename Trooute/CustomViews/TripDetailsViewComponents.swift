@@ -121,8 +121,6 @@ struct TripDetailsViewComponents {
                     
                     
                 }
-            }.navigationDestination(for: Passenger.self) { _ in
-                EmptyView()
             }
             Divider()
 
@@ -133,6 +131,9 @@ struct TripDetailsViewComponents {
                     .foregroundColor(.gray)
             }
         }.frame(height: passengers.count == 0 ? 50 : 90)
+            .navigationDestination(for: Passenger.self) { _ in
+                EmptyView()
+            }
     }
 
     static func getUrl(passenger: Passenger) -> String {

@@ -174,6 +174,11 @@
 		CEEEA2AB2CBA9D7D006B8ECE /* BaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEA2A52CBA9D7D006B8ECE /* BaseDestination.swift */; };
 		CEEEA2AC2CBA9D7D006B8ECE /* FileDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEA2A72CBA9D7D006B8ECE /* FileDestination.swift */; };
 		CEEEA2AD2CBA9D7D006B8ECE /* ConsoleDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEA2A62CBA9D7D006B8ECE /* ConsoleDestination.swift */; };
+		CEF80EDF2CC9701100AA478D /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80EDE2CC9701100AA478D /* ReviewView.swift */; };
+		CEF80EE12CC9707F00AA478D /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80EE02CC9707400AA478D /* ReviewViewModel.swift */; };
+		CEF80EE32CC970F400AA478D /* ReviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80EE22CC970E400AA478D /* ReviewRepository.swift */; };
+		CEF80EE52CC9717D00AA478D /* GetReviewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80EE42CC9717700AA478D /* GetReviewsResponse.swift */; };
+		CEF80EE72CC971E400AA478D /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80EE62CC971E100AA478D /* Reviews.swift */; };
 		CEFD59D12CBDB6B700E4A50B /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = CEFD59D02CBDB6B700E4A50B /* Location.gpx */; };
 		CEFD59D32CBEB78300E4A50B /* TripCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD59D22CBEB77700E4A50B /* TripCardRepository.swift */; };
 		CEFD59D52CBED54C00E4A50B /* TripDetailsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD59D42CBED54200E4A50B /* TripDetailsRepository.swift */; };
@@ -364,6 +369,11 @@
 		CEEEA2A62CBA9D7D006B8ECE /* ConsoleDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleDestination.swift; sourceTree = "<group>"; };
 		CEEEA2A72CBA9D7D006B8ECE /* FileDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDestination.swift; sourceTree = "<group>"; };
 		CEEEA2A82CBA9D7D006B8ECE /* Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
+		CEF80EDE2CC9701100AA478D /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		CEF80EE02CC9707400AA478D /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
+		CEF80EE22CC970E400AA478D /* ReviewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRepository.swift; sourceTree = "<group>"; };
+		CEF80EE42CC9717700AA478D /* GetReviewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewsResponse.swift; sourceTree = "<group>"; };
+		CEF80EE62CC971E100AA478D /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		CEFD59D02CBDB6B700E4A50B /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		CEFD59D22CBEB77700E4A50B /* TripCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardRepository.swift; sourceTree = "<group>"; };
 		CEFD59D42CBED54200E4A50B /* TripDetailsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailsRepository.swift; sourceTree = "<group>"; };
@@ -461,7 +471,7 @@
 				CEFD59D82CBEECFB00E4A50B /* Car Info View */,
 				CEA18AC92CBC492D0096545F /* Update Profile View */,
 				CE4E3D742CA356CD005C3CEE /* FAQView.swift */,
-				CE5150412C9F3BD900B10107 /* UserInfoCardView.swift */,
+				CEF80EE82CC9817F00AA478D /* User Info Card */,
 				CE179D532CAC43C200FFC206 /* WishView.swift */,
 			);
 			path = Setting;
@@ -569,6 +579,7 @@
 		CE57013D2C9E0DCB003BD7CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CEF80EDD2CC96FF100AA478D /* Review */,
 				CE5227FF2CBBABB7005C1175 /* Auth */,
 				CEFD59D92CBEF02F00E4A50B /* Driver And Car View */,
 				CE270B902CB0672900B9CFDC /* Booking Views */,
@@ -588,7 +599,6 @@
 				CE1D680B2CA9474F0070970D /* BookingCardViewModel.swift */,
 				CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */,
 				CE4E3E0B2CA5C52F005C3CEE /* SearchResultsViewModel.swift */,
-				CE4E3EA32CA7E7A3005C3CEE /* UserInfoCardViewModel.swift */,
 				CE179D512CAC438C00FFC206 /* WishViewModel.swift */,
 			);
 			path = ViewModel;
@@ -597,6 +607,7 @@
 		CE5701412C9E0DFD003BD7CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CEF80EE62CC971E100AA478D /* Reviews.swift */,
 				CE631B702CC551C900976FAD /* Enums.swift */,
 				CEEEA28D2CBA95D1006B8ECE /* RequestResponseObjects */,
 				CE4E3E002CA5B351005C3CEE /* Booking.swift */,
@@ -909,6 +920,7 @@
 		CEEEA28D2CBA95D1006B8ECE /* RequestResponseObjects */ = {
 			isa = PBXGroup;
 			children = (
+				CEF80EE42CC9717700AA478D /* GetReviewsResponse.swift */,
 				CEA18ABF2CBBB6750096545F /* BasicResponse.swift */,
 				CE2169F02CC0413C002B9333 /* Create Booking */,
 				CEA18AE02CBD82FB0096545F /* Trips */,
@@ -966,6 +978,25 @@
 				CEEEA2A82CBA9D7D006B8ECE /* Logs.swift */,
 			);
 			path = Logger;
+			sourceTree = "<group>";
+		};
+		CEF80EDD2CC96FF100AA478D /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				CEF80EE22CC970E400AA478D /* ReviewRepository.swift */,
+				CEF80EE02CC9707400AA478D /* ReviewViewModel.swift */,
+				CEF80EDE2CC9701100AA478D /* ReviewView.swift */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
+		CEF80EE82CC9817F00AA478D /* User Info Card */ = {
+			isa = PBXGroup;
+			children = (
+				CE5150412C9F3BD900B10107 /* UserInfoCardView.swift */,
+				CE4E3EA32CA7E7A3005C3CEE /* UserInfoCardViewModel.swift */,
+			);
+			path = "User Info Card";
 			sourceTree = "<group>";
 		};
 		CEFD59D82CBEECFB00E4A50B /* Car Info View */ = {
@@ -1214,6 +1245,7 @@
 				CE1D67F82CA88C9C0070970D /* ProceedView.swift in Sources */,
 				CE1D680C2CA9474F0070970D /* BookingCardViewModel.swift in Sources */,
 				CE0854262CB3AC6C00A3E422 /* GoogleAutocompleteView.swift in Sources */,
+				CEF80EE12CC9707F00AA478D /* ReviewViewModel.swift in Sources */,
 				CED05F042C95AF7000E51158 /* ContentView.swift in Sources */,
 				CE57014E2C9E1DC0003BD7CA /* SignUpViewModel.swift in Sources */,
 				CE51503B2C9F25C400B10107 /* TripsView.swift in Sources */,
@@ -1231,6 +1263,7 @@
 				CE5227E42CBAE2E7005C1175 /* VerificationViewModel.swift in Sources */,
 				CE5150502C9FE01300B10107 /* UpdatePasswordViewModel.swift in Sources */,
 				CE5701452C9E16DD003BD7CA /* ResetPasswordView.swift in Sources */,
+				CEF80EDF2CC9701100AA478D /* ReviewView.swift in Sources */,
 				CE4E3E0A2CA5C2D5005C3CEE /* SearchResults.swift in Sources */,
 				CE1D68142CAB1AD80070970D /* TripDetailsViewComponents.swift in Sources */,
 				CE51504A2C9FD63B00B10107 /* RoundProfilePictureView.swift in Sources */,
@@ -1238,6 +1271,7 @@
 				CEFD59D32CBEB78300E4A50B /* TripCardRepository.swift in Sources */,
 				CEA18AC62CBBCDEA0096545F /* MainTabViewRepository.swift in Sources */,
 				CE179D4E2CAC3B0900FFC206 /* WebView.swift in Sources */,
+				CEF80EE32CC970F400AA478D /* ReviewRepository.swift in Sources */,
 				CE28F12A2CB71F1F001CF2A1 /* GoogleAutocompleteViewModel.swift in Sources */,
 				CE1430992CC17DCD001C1732 /* GetBookingRepository.swift in Sources */,
 				CEA18AD72CBC5AB60096545F /* UpdateProfileRequest.swift in Sources */,
@@ -1256,6 +1290,7 @@
 				CE270B9B2CB0864D00B9CFDC /* BecomeDriverViewModel.swift in Sources */,
 				CE0081A42CA1DF3A00D84ACB /* Test.swift in Sources */,
 				CEEEA2912CBA960D006B8ECE /* BaseResponse.swift in Sources */,
+				CEF80EE52CC9717D00AA478D /* GetReviewsResponse.swift in Sources */,
 				CE4E3D832CA49C76005C3CEE /* TripsViewModel.swift in Sources */,
 				CE5150752CA093CB00B10107 /* OnboardView.swift in Sources */,
 				CE5227FE2CBBAB00005C1175 /* ReestPasswordRequest.swift in Sources */,
@@ -1298,6 +1333,7 @@
 				CE4E3EA02CA76BDE005C3CEE /* TripDetailsViewModel.swift in Sources */,
 				CE5701752C9E8FC0003BD7CA /* CountryCode.swift in Sources */,
 				CE4E3E012CA5B353005C3CEE /* Booking.swift in Sources */,
+				CEF80EE72CC971E400AA478D /* Reviews.swift in Sources */,
 				CE0854102CB29BD600A3E422 /* CustomDropdownField.swift in Sources */,
 				CE1D680E2CA9C3B10070970D /* GetBookingDetailsResponse.swift in Sources */,
 				CE1D68082CA944C40070970D /* BookingsViewModel.swift in Sources */,

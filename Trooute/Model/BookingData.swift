@@ -36,7 +36,7 @@ struct BookingData: Codable, Identifiable {
 
 enum BookingStatus: String, Codable {
     case waiting = "Waiting"
-    case cancled = "Cancled"
+    case canceled = "Canceled"
     case approved = "Approved"
     case confirmed = "Confirmed"
     case completed = "Completed"

@@ -34,6 +34,8 @@ struct Apis {
     static let updatePickupStatus = base + "trips/updatePickupStatus"
     ///: Bookings ENDPOINTS
     static let booking =            base + "bookings"
+    ///: Review ENDPOINTS
+    static let review =             base + "review"
     
    
 }

@@ -147,6 +147,7 @@ struct BookingDetailsView: View {
             HStack {
                 image
                 Text(status)
+                Spacer()
             }
             HStack {
                 Text(viewModel.getStatusText(isDriver: driverMode, status: viewModel.status))
@@ -175,7 +176,7 @@ struct BookingDetailsView: View {
                             viewModel.acceptBooking()
                         }
 
-                    } else if viewModel.bookingData?.status == .approved {
+                    } else if viewModel.bookingData?.status == .approved ||  viewModel.bookingData?.status == .confirmed {
                         Spacer()
                         SecondaryBookingButton(title: "Cancel booking") {
                         }

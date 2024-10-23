@@ -141,6 +141,10 @@ class BookingDetailsViewModel: ObservableObject {
                 str = "Passenger is waiting for your respnse."
             } else if status == .approved {
                 str = "We are waiting for payments."
+            } else if status == .confirmed {
+                str = "This booking is now confirmed! Anticipate the upcomming trip day."
+            } else if status == .canceled {
+                str = "Booking canceled. We're Sorry for the Inconvenience."
             }
         } else {
             if status == .waiting {
@@ -149,6 +153,8 @@ class BookingDetailsViewModel: ObservableObject {
                 str = "Your booking is approved! Please proceed with payment to confirm."
             } else if status == .confirmed {
                 str = "Your booking is now confirmed! Anticipate the upcoming trip day."
+            } else if status == .canceled {
+                str = "Booking canceled. We're Sorry for the Inconvenience."
             }
         }
         return str
