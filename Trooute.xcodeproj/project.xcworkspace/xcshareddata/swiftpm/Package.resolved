@@ -1,5 +1,5 @@
 {
-  "originHash" : "0cb58830c38be07494d526c99720ea0d27f8130486c7af3af5491327bc545e6c",
+  "originHash" : "216578741e07b9ea54c4ac3fcf7070cf2743391145c5166440db8160a30ec904",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -152,15 +152,6 @@
       "state" : {
         "revision" : "3d03ac07764075bfab4c9ce9d5ba4556d6af350e",
         "version" : "1.1.0"
-      }
-    },
-    {
-      "identity" : "swiftui-currency-field",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/jtrinc/swiftui-currency-field.git",
-      "state" : {
-        "revision" : "8a0f3f26695710464ca8a0a7ddba2f3a6b2f2f2d",
-        "version" : "1.0.2"
       }
     }
   ],

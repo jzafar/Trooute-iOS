@@ -17,6 +17,7 @@
 		CE0854282CB3B03100A3E422 /* GooglePlacesModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0854272CB3B02F00A3E422 /* GooglePlacesModifier.swift */; };
 		CE1430992CC17DCD001C1732 /* GetBookingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1430982CC17DBD001C1732 /* GetBookingRepository.swift */; };
 		CE14309C2CC18BFF001C1732 /* BookingDetailsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE14309B2CC18BEC001C1732 /* BookingDetailsRepository.swift */; };
+		CE17834A2CCD5EE60022193D /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1783492CCD5ED80022193D /* SearchRepository.swift */; };
 		CE179D4C2CAC3AB900FFC206 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE179D4B2CAC3AB700FFC206 /* WebViewModel.swift */; };
 		CE179D4E2CAC3B0900FFC206 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE179D4D2CAC3B0900FFC206 /* WebView.swift */; };
 		CE179D502CAC40C400FFC206 /* TripInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE179D4F2CAC40B900FFC206 /* TripInfo.swift */; };
@@ -50,6 +51,9 @@
 		CE28F12A2CB71F1F001CF2A1 /* GoogleAutocompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28F1292CB71F1B001CF2A1 /* GoogleAutocompleteViewModel.swift */; };
 		CE28F12C2CB72325001CF2A1 /* SearchedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28F12B2CB7231E001CF2A1 /* SearchedLocation.swift */; };
 		CE36D2612CC82DA8005F3A0C /* WebViewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36D2602CC82DA8005F3A0C /* WebViewRepository.swift */; };
+		CE48A7C02CCC372300E751E2 /* CreateTripRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE48A7BF2CCC371400E751E2 /* CreateTripRepository.swift */; };
+		CE48A7C22CCC3B0100E751E2 /* CreateTripRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE48A7C12CCC3AF500E751E2 /* CreateTripRequest.swift */; };
+		CE48A7C42CCC4C1200E751E2 /* CurrencyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE48A7C32CCC4C1200E751E2 /* CurrencyField.swift */; };
 		CE4E3D752CA356CD005C3CEE /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D742CA356CD005C3CEE /* FAQView.swift */; };
 		CE4E3D772CA35794005C3CEE /* FAQViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */; };
 		CE4E3D792CA357C8005C3CEE /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3D782CA357B5005C3CEE /* FAQ.swift */; };
@@ -111,7 +115,6 @@
 		CE51507D2CA0B25700B10107 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51507C2CA0B25500B10107 /* CustomCalendarView.swift */; };
 		CE5227CD2CBAAD84005C1175 /* SwiftLoader in Frameworks */ = {isa = PBXBuildFile; productRef = CE5227CC2CBAAD84005C1175 /* SwiftLoader */; };
 		CE5227D02CBABA6B005C1175 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = CE5227CF2CBABA6B005C1175 /* FirebaseCore */; };
-		CE5227D32CBABAC3005C1175 /* CurrencyField in Frameworks */ = {isa = PBXBuildFile; productRef = CE5227D22CBABAC3005C1175 /* CurrencyField */; };
 		CE5227E22CBAE2A5005C1175 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5227E12CBAE2A5005C1175 /* VerificationView.swift */; };
 		CE5227E42CBAE2E7005C1175 /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5227E32CBAE2D7005C1175 /* VerificationViewModel.swift */; };
 		CE5227E72CBAF7AE005C1175 /* SignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5227E62CBAF7A2005C1175 /* SignupRequest.swift */; };
@@ -212,6 +215,7 @@
 		CE0854272CB3B02F00A3E422 /* GooglePlacesModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesModifier.swift; sourceTree = "<group>"; };
 		CE1430982CC17DBD001C1732 /* GetBookingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBookingRepository.swift; sourceTree = "<group>"; };
 		CE14309B2CC18BEC001C1732 /* BookingDetailsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDetailsRepository.swift; sourceTree = "<group>"; };
+		CE1783492CCD5ED80022193D /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
 		CE179D4B2CAC3AB700FFC206 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		CE179D4D2CAC3B0900FFC206 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		CE179D4F2CAC40B900FFC206 /* TripInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInfo.swift; sourceTree = "<group>"; };
@@ -245,6 +249,9 @@
 		CE28F1292CB71F1B001CF2A1 /* GoogleAutocompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAutocompleteViewModel.swift; sourceTree = "<group>"; };
 		CE28F12B2CB7231E001CF2A1 /* SearchedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedLocation.swift; sourceTree = "<group>"; };
 		CE36D2602CC82DA8005F3A0C /* WebViewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewRepository.swift; sourceTree = "<group>"; };
+		CE48A7BF2CCC371400E751E2 /* CreateTripRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripRepository.swift; sourceTree = "<group>"; };
+		CE48A7C12CCC3AF500E751E2 /* CreateTripRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripRequest.swift; sourceTree = "<group>"; };
+		CE48A7C32CCC4C1200E751E2 /* CurrencyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyField.swift; sourceTree = "<group>"; };
 		CE4E3D742CA356CD005C3CEE /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
 		CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewModel.swift; sourceTree = "<group>"; };
 		CE4E3D782CA357B5005C3CEE /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ.swift; sourceTree = "<group>"; };
@@ -384,7 +391,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE5227D32CBABAC3005C1175 /* CurrencyField in Frameworks */,
 				CE4E3E172CA5E728005C3CEE /* SDWebImageSwiftUI in Frameworks */,
 				CE5227CD2CBAAD84005C1175 /* SwiftLoader in Frameworks */,
 				CE5227D02CBABA6B005C1175 /* FirebaseCore in Frameworks */,
@@ -419,6 +425,16 @@
 			path = "Get Bookings";
 			sourceTree = "<group>";
 		};
+		CE1783482CCD5EC60022193D /* Search Trips */ = {
+			isa = PBXGroup;
+			children = (
+				CE1783492CCD5ED80022193D /* SearchRepository.swift */,
+				CE4E3E092CA5C2D5005C3CEE /* SearchResults.swift */,
+				CE4E3E0B2CA5C52F005C3CEE /* SearchResultsViewModel.swift */,
+			);
+			path = "Search Trips";
+			sourceTree = "<group>";
+		};
 		CE2169F02CC0413C002B9333 /* Create Booking */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,11 +462,10 @@
 			isa = PBXGroup;
 			children = (
 				CEA18ADA2CBD807D0096545F /* SubViews */,
-				CEA18ADB2CBD80AB0096545F /* Create Trip */,
 				CE179D572CAC8C1700FFC206 /* DriverTripCell.swift */,
 				CEA18ADC2CBD80CE0096545F /* Trip View */,
 				CEA18ADD2CBD80F60096545F /* Trip Details */,
-				CE4E3E092CA5C2D5005C3CEE /* SearchResults.swift */,
+				CE1783482CCD5EC60022193D /* Search Trips */,
 			);
 			path = "Trip Views";
 			sourceTree = "<group>";
@@ -473,6 +488,7 @@
 				CE4E3D742CA356CD005C3CEE /* FAQView.swift */,
 				CEF80EE82CC9817F00AA478D /* User Info Card */,
 				CE179D532CAC43C200FFC206 /* WishView.swift */,
+				CEA18ADB2CBD80AB0096545F /* Create Trip */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -598,7 +614,6 @@
 				CE28F1292CB71F1B001CF2A1 /* GoogleAutocompleteViewModel.swift */,
 				CE1D680B2CA9474F0070970D /* BookingCardViewModel.swift */,
 				CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */,
-				CE4E3E0B2CA5C52F005C3CEE /* SearchResultsViewModel.swift */,
 				CE179D512CAC438C00FFC206 /* WishViewModel.swift */,
 			);
 			path = ViewModel;
@@ -633,6 +648,7 @@
 		CE5701482C9E1A36003BD7CA /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				CE48A7C32CCC4C1200E751E2 /* CurrencyField.swift */,
 				CEEEA2992CBA9BF2006B8ECE /* BannerHelper.swift */,
 				CE0854272CB3B02F00A3E422 /* GooglePlacesModifier.swift */,
 				CE0854252CB3AC6900A3E422 /* GoogleAutocompleteView.swift */,
@@ -799,6 +815,7 @@
 		CEA18ADB2CBD80AB0096545F /* Create Trip */ = {
 			isa = PBXGroup;
 			children = (
+				CE48A7BF2CCC371400E751E2 /* CreateTripRepository.swift */,
 				CE5150762CA0AFA600B10107 /* CreateTripView.swift */,
 				CE5150782CA0AFAB00B10107 /* CreateTripViewModel.swift */,
 			);
@@ -829,6 +846,7 @@
 		CEA18AE02CBD82FB0096545F /* Trips */ = {
 			isa = PBXGroup;
 			children = (
+				CE48A7C12CCC3AF500E751E2 /* CreateTripRequest.swift */,
 				CEA18AE12CBD83080096545F /* GetTripsRequest.swift */,
 				CE4E3E052CA5C1F6005C3CEE /* GetTripsResponse.swift */,
 				CE4E3E072CA5C219005C3CEE /* GetTripDetailsResponse.swift */,
@@ -1139,7 +1157,6 @@
 				CEEEA2962CBA9BE3006B8ECE /* XCRemoteSwiftPackageReference "BRYXBanner" */,
 				CE5227CB2CBAAD84005C1175 /* XCRemoteSwiftPackageReference "SwiftLoader" */,
 				CE5227CE2CBABA6B005C1175 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				CE5227D12CBABAC3005C1175 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */,
 			);
 			productRefGroup = CED05EFF2C95AF7000E51158 /* Products */;
 			projectDirPath = "";
@@ -1196,9 +1213,11 @@
 				CE4E3DF72CA5A715005C3CEE /* Driver.swift in Sources */,
 				CE0854282CB3B03100A3E422 /* GooglePlacesModifier.swift in Sources */,
 				CE4E3D7F2CA49A85005C3CEE /* InvertedTriangle.swift in Sources */,
+				CE48A7C42CCC4C1200E751E2 /* CurrencyField.swift in Sources */,
 				CE0854142CB3176800A3E422 /* BluePriceView.swift in Sources */,
 				CE36D2612CC82DA8005F3A0C /* WebViewRepository.swift in Sources */,
 				CE4E3EA82CA7F12E005C3CEE /* SigninResponse.swift in Sources */,
+				CE48A7C22CCC3B0100E751E2 /* CreateTripRequest.swift in Sources */,
 				CE5701402C9E0DF6003BD7CA /* SigninViewModel.swift in Sources */,
 				CEA18ACE2CBC4A260096545F /* UpdatePasswordRequest.swift in Sources */,
 				CE4E3E0C2CA5C533005C3CEE /* SearchResultsViewModel.swift in Sources */,
@@ -1242,6 +1261,7 @@
 				CE5701782C9E96B9003BD7CA /* Bundle.swift in Sources */,
 				CE4E3DF92CA5A741005C3CEE /* CarDetails.swift in Sources */,
 				CE1D67FA2CA88CF70070970D /* ProceedViewModel.swift in Sources */,
+				CE17834A2CCD5EE60022193D /* SearchRepository.swift in Sources */,
 				CE1D67F82CA88C9C0070970D /* ProceedView.swift in Sources */,
 				CE1D680C2CA9474F0070970D /* BookingCardViewModel.swift in Sources */,
 				CE0854262CB3AC6C00A3E422 /* GoogleAutocompleteView.swift in Sources */,
@@ -1297,6 +1317,7 @@
 				CE1D67F62CA86ED50070970D /* BookTripViewModel.swift in Sources */,
 				CE631B782CC56CB400976FAD /* DriverRepository.swift in Sources */,
 				CE270B992CB07C5600B9CFDC /* BecomeDriverView.swift in Sources */,
+				CE48A7C02CCC372300E751E2 /* CreateTripRepository.swift in Sources */,
 				CE1D68002CA93ED40070970D /* BookingData.swift in Sources */,
 				CE4E3DFF2CA5B2C1005C3CEE /* Passenger.swift in Sources */,
 				CE57013C2C9E0DBE003BD7CA /* SigninView.swift in Sources */,
@@ -1713,14 +1734,6 @@
 				minimumVersion = 11.3.0;
 			};
 		};
-		CE5227D12CBABAC3005C1175 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jtrinc/swiftui-currency-field.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.0.2;
-			};
-		};
 		CEEEA2962CBA9BE3006B8ECE /* XCRemoteSwiftPackageReference "BRYXBanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bryx-inc/BRYXBanner.git";
@@ -1746,11 +1759,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE5227CE2CBABA6B005C1175 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCore;
-		};
-		CE5227D22CBABAC3005C1175 /* CurrencyField */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE5227D12CBABAC3005C1175 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */;
-			productName = CurrencyField;
 		};
 		CEEEA2972CBA9BE3006B8ECE /* BRYXBanner */ = {
 			isa = XCSwiftPackageProductDependency;

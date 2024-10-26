@@ -1,16 +1,11 @@
 //
-//  TripRepository.swift
+//  SearchRepository.swift
 //  Trooute
 //
-//  Created by Muhammad Zafar on 2024-10-14.
+//  Created by Muhammad Zafar on 2024-10-26.
 //
 
-protocol TripRepositoryProtocol {
-    func getTrips(request: GetTripsRequest, completion: @escaping (Result<Response<GetTripsResponse>, Error>) -> Void)
-    func getDriverTrips(request: GetTripsRequest, completion: @escaping (Result<Response<GetTripListResponse>, Error>) -> Void)
-}
-
-class TripRepository: TripRepositoryProtocol {
+class SearchRepository: TripRepositoryProtocol {
     
     private let networkService: NetworkServiceProtocol
     init(networkService: NetworkServiceProtocol = NetworkService()) {

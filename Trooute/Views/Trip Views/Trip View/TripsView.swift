@@ -14,17 +14,29 @@ struct TripsView: View {
     var body: some View {
         List {
             if userModel.driverMode == true {
-                ForEach(viewModel.driverTrips) { trip in
-                    ZStack {
-                        NavigationLink(destination: TripDetailsView(viewModel: TripDetailsViewModel(tripId: trip.id))) {
-                            EmptyView()
-                        }.opacity(0)
-                        Section {
-                            DriverTripCell(trip: trip)
-                        }.listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
+                if viewModel.driverTrips.count == 0 {
+                    HStack {
+                        Spacer()
+                        Text("You don't have any ongoing trip")
+                            .font(.subheadline)
+                            .foregroundStyle(.gray)
+                            .padding(.vertical)
+                        Spacer()
                     }.listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)
+                } else {
+                    ForEach(viewModel.driverTrips) { trip in
+                        ZStack {
+                            NavigationLink(destination: TripDetailsView(viewModel: TripDetailsViewModel(tripId: trip.id))) {
+                                EmptyView()
+                            }.opacity(0)
+                            Section {
+                                DriverTripCell(trip: trip)
+                            }.listRowSeparator(.hidden)
+                                .listRowBackground(Color.clear)
+                        }.listRowBackground(Color.clear)
+                            .listRowSeparator(.hidden)
+                    }
                 }
 
             } else {
@@ -83,23 +95,26 @@ struct TripsView: View {
                 }
             }
             .onAppear {
-                viewModel.fetchTrips()
-                viewModel.checkLocationAuthorization()
+                viewModel.onAppear()
             }.onChange(of: viewModel.fromAddressInfo) { fromInfo in
                 if fromInfo == nil {
-                    viewModel.showErrorAlert()
+                    if viewModel.fromLocation.count != 0 {
+                        viewModel.showErrorAlert()
+                    }
                 }
             }
             .onChange(of: viewModel.whereToAddressInfo) { whereInfo in
                 if whereInfo == nil {
-                    viewModel.showErrorAlert()
+                    if viewModel.toLocation.count != 0 {
+                        viewModel.showErrorAlert()
+                    }
                 }
-            }.alert(viewModel.errorTitle,
-                    isPresented: $viewModel.addressInfoErrorAlert) {
-                Button("Ok", role: .cancel) {}
-            } message: {
-                Text(viewModel.errorMessage)
+            }.fullScreenCover(isPresented: $viewModel.showSearchTrips) {
+                viewModel.onAppear()
+            } content: {
+                SearchResults(viewModel: SearchResultsViewModel(trips: viewModel.searchTripsResult))
             }
+
     }
 
     @ViewBuilder
@@ -258,7 +273,7 @@ struct TripsView: View {
             .padding()
             .background(Color(UIColor.systemGray6))
             .cornerRadius(10)
-        }
+        }.buttonStyle(PlainButtonStyle())
         .sheet(isPresented: $viewModel.isDatePickerPresented) {
             showDatePicker()
         }
@@ -267,13 +282,19 @@ struct TripsView: View {
     @ViewBuilder
     func showDatePicker() -> some View {
         VStack {
+            HStack {
+                Spacer()
+                Button("Done") {
+                    viewModel.date = viewModel.date == nil ? Date() : viewModel.date
+                    viewModel.isDatePickerPresented = false
+                }.padding(.horizontal)
+            }
             DatePicker(
                 "Select Date",
                 selection: Binding(
                     get: { viewModel.date ?? Date() },
                     set: { newDate in
                         viewModel.date = newDate
-                        viewModel.isDatePickerPresented = false
                     }
                 ),
                 in: Date()..., // Prevent selecting past dates
@@ -321,10 +342,11 @@ struct TripsView: View {
     @ViewBuilder
     func seekOutTripsButton() -> some View {
         PrimaryGreenButton(title: "Seek Out Trips") {
+            viewModel.seekOutTrip()
         }.padding(.vertical)
     }
 }
 
-#Preview {
-    TripsView()
-}
+//#Preview {
+//    TripsView()
+//}

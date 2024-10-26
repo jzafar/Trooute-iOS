@@ -34,7 +34,7 @@ struct BookingData: Codable, Identifiable {
     }
 }
 
-enum BookingStatus: String, Codable {
+enum BookingStatus: String, Codable, Hashable {
     case waiting = "Waiting"
     case canceled = "Canceled"
     case approved = "Approved"

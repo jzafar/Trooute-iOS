@@ -19,12 +19,10 @@ struct TripDetailsView: View {
                         HStack(spacing: 15) {
                             ForEach(viewModel.trip?.bookings ?? []) { booking in
                                 DriverSideBookingTripPassengerCell(viewModel: viewModel.bookingCardVM(booking: booking))
-                                    .background(
-                                        NavigationLink(destination: BookingDetailsView(viewModel: BookingDetailsViewModel(bookingId: booking.id))) {
-                                            EmptyView()
-                                        }
-                                        .opacity(0)
-                                    )
+                                    .onTapGesture {
+                                        viewModel.bookingId = booking.id
+                                        viewModel.openDetailsView = true
+                                    }
                                     .frame(width: viewModel.trip?.bookings?.count == 1 ? screenWidth - 50 : screenWidth - 80)
                             }
                         }
@@ -73,6 +71,15 @@ struct TripDetailsView: View {
                 }
             }
         }
+//        .navigationDestination(for: Booking.self) { booking in
+//            BookingDetailsView(viewModel: BookingDetailsViewModel(bookingId: booking.id))
+//        }
+        .navigationDestination(isPresented: $viewModel.openDetailsView, destination: {
+            if let bookingId = viewModel.bookingId {
+                BookingDetailsView(viewModel: BookingDetailsViewModel(bookingId: bookingId))
+            }
+            
+        })
         .safeAreaInset(edge: .bottom) {
             if userModel.drivMode {
                 if let trip = viewModel.trip?.trip {
@@ -151,10 +158,10 @@ struct TripDetailsView: View {
     }
 }
 
-#Preview {
-    let data = MockDate.getTripsResponse()?.data?.first
-    TripDetailsView(viewModel: TripDetailsViewModel(tripId: data!.id ?? ""))
-}
+//#Preview {
+//    let data = MockDate.getTripsResponse()?.data?.first
+//    TripDetailsView(viewModel: TripDetailsViewModel(tripId: data!.id ?? ""))
+//}
 
 struct PassengersSectionHeader: View {
     let title: String = "Passengers"

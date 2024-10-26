@@ -5,7 +5,7 @@
 //  Created by Muhammad Zafar on 2024-09-26.
 //
 
-struct Trip: Codable {
+struct Trip: Codable, Hashable {
     let v: Int?
     let id: String
     var departureDate: String
@@ -54,10 +54,10 @@ struct Trip: Codable {
     }
 }
 
-struct Location: Codable {
+struct Location: Codable, Hashable {
     let coordinates: [Double]?
     let type: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case coordinates
         case type

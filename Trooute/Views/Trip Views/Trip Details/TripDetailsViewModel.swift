@@ -17,6 +17,7 @@ class TripDetailsViewModel: ObservableObject {
             calculateSuitcaseWeight()
             updateSmokingPreference()
             updatePetPreference()
+            updateLanguagePreference()
             updateOtherReliventDetails()
         }
     }
@@ -26,6 +27,8 @@ class TripDetailsViewModel: ObservableObject {
     @Published var petPreference: String = "NO"
     @Published var languagePreference: String = "Not Provided"
     @Published var otherReliventDetails: String = "Not Provided"
+    @Published var openDetailsView: Bool = false
+    var bookingId: String? = nil
     var alertTitle = ""
     var alertMessage = ""
     private let repositiry = TripDetailsRepository()

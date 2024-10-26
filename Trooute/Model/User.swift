@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct User: Codable, UserProfile, Identifiable {
+public struct User: Codable, UserProfile, Identifiable, Hashable {
     public var id: String
     var name: String
     var photo: String?

@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct Driver: UserProfile, Codable {
+struct Driver: UserProfile, Codable, Hashable {
     var id: String
     var name: String
     var photo: String?

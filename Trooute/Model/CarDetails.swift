@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CarDetails: Codable {
+struct CarDetails: Codable, Hashable {
     let color: String?
     let driverLicense: String?
     let make: String?

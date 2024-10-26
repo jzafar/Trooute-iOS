@@ -6,10 +6,11 @@
 //
 
 import Combine
-import CurrencyField
 import SwiftUI
 struct CreateTripView: View {
     @StateObject var viewModel = CreateTripViewModel()
+    @FocusState private var isFocused: Bool
+    @Environment(\.dismiss) var dismiss
     let currencyFormat = NumberFormatter()
     var body: some View {
         List {
@@ -27,14 +28,25 @@ struct CreateTripView: View {
                 }.listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets())
             }
-            
+
         }.navigationTitle("Set up your Trip")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 Tabbar.shared.hide = true
-                currencyFormat.usesGroupingSeparator = true
-                currencyFormat.numberStyle = .currency
-                currencyFormat.locale = Locale.current
+            }
+            .onChange(of: viewModel.fromAddressInfo) { fromInfo in
+                if fromInfo == nil {
+                    viewModel.showErrorAlert()
+                }
+            }
+            .onChange(of: viewModel.whereToAddressInfo) { whereInfo in
+                if whereInfo == nil {
+                    viewModel.showErrorAlert()
+                }
+            }.onChange(of: viewModel.dissMissView) { newVal in
+                if newVal {
+                    dismiss()
+                }
             }
     }
 
@@ -83,13 +95,14 @@ struct CreateTripView: View {
                 TextViewLableText(text: "Hand carry", textFont: .headline)
                     .foregroundColor(.gray)
                 Spacer()
-                TextField("weight (kg)", text: $viewModel.suitcaseWeight)
+                TextField("weight (kg)", text: $viewModel.handCarryWeight)
                     .keyboardType(.numberPad)
-                    .onReceive(Just(viewModel.suitcaseWeight)) { newValue in
+                    .multilineTextAlignment(.trailing)
+                    .onReceive(Just(viewModel.handCarryWeight)) { newValue in
                         // Ensure only digits are entered for suitcase weight
                         let filtered = newValue.filter { "0123456789".contains($0) }
                         if filtered != newValue {
-                            viewModel.suitcaseWeight = filtered
+                            viewModel.handCarryWeight = filtered
                         }
                     }
                     .frame(width: 100)
@@ -104,6 +117,7 @@ struct CreateTripView: View {
                 Spacer()
                 TextField("weight (kg)", text: $viewModel.suitcaseWeight)
                     .keyboardType(.numberPad)
+                    .multilineTextAlignment(.trailing)
                     .onReceive(Just(viewModel.suitcaseWeight)) { newValue in
                         // Ensure only digits are entered for suitcase weight
                         let filtered = newValue.filter { "0123456789".contains($0) }
@@ -150,6 +164,15 @@ struct CreateTripView: View {
                     .cornerRadius(8)
                     .multilineTextAlignment(.leading)
                     .frame(height: 120)
+                    .submitLabel(.done)
+                    .focused($isFocused)
+
+                    .onChange(of: viewModel.otherReleventDetails) { _ in
+                        if viewModel.otherReleventDetails.last?.isNewline == .some(true) {
+                            viewModel.otherReleventDetails.removeLast()
+                            isFocused = false
+                        }
+                    }
                 if viewModel.otherReleventDetails.isEmpty {
                     VStack {
                         HStack {
@@ -165,7 +188,7 @@ struct CreateTripView: View {
                     }
                 }
             }
-        }.padding(.bottom,20)
+        }.padding(.bottom, 20)
     }
 
     @ViewBuilder
@@ -253,6 +276,7 @@ struct CreateTripView: View {
             VStack(alignment: .leading, spacing: 4) {
                 TextViewLableText(text: "From", textFont: .headline)
                 TextField("Enter starting location", text: $viewModel.fromLocation)
+                    .googlePlacesAutocomplete($viewModel.fromLocation, placeInfo: $viewModel.fromAddressInfo)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(8)
@@ -261,6 +285,7 @@ struct CreateTripView: View {
             VStack(alignment: .leading, spacing: 4) {
                 TextViewLableText(text: "Where to", textFont: .headline)
                 TextField("Enter destination location", text: $viewModel.toLocation)
+                    .googlePlacesAutocomplete($viewModel.toLocation, placeInfo: $viewModel.whereToAddressInfo)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(8)

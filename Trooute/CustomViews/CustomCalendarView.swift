@@ -134,7 +134,7 @@ struct CustomCalendarView: View {
     
     func selectDate(day: String) {
         let dayInt = Int(day) ?? 1
-        var components = Calendar.current.dateComponents([.year, .month], from: Calendar.current.date(byAdding: .month, value: currentMonth, to: Date())!)
+        var components = Calendar.current.dateComponents([.year, .month, .hour, .minute], from: Calendar.current.date(byAdding: .month, value: currentMonth, to: Date())!)
         components.day = dayInt
         
         if let date = Calendar.current.date(from: components) {

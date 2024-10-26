@@ -115,7 +115,7 @@ struct TextViewLableText: View {
     var body: some View {
         Text(text)
             .font(textFont)
-            .foregroundColor(Color("TitleColor"))
+            .foregroundColor(.black)
     }
 }
 
@@ -123,7 +123,7 @@ struct ListRowText: View {
     var text: String
     var body: some View {
         Text(text)
-            .foregroundColor(Color("TitleColor"))
+            .foregroundColor(.black)
     }
 }
 

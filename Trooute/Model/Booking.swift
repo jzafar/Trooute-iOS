@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Booking: Codable, Identifiable {
+struct Booking: Codable, Identifiable, Hashable {
     let v: Int?
     let id: String
     var amount: Double = 0.0
@@ -56,12 +56,12 @@ struct Booking: Codable, Identifiable {
     // Codable already handles encoding and decoding automatically
 }
 
-struct PickupLocation: Codable {
+struct PickupLocation: Codable, Hashable {
     var address: String?
     var location: Location?
 }
 
-struct PickupStatus: Codable {
+struct PickupStatus: Codable, Hashable {
     let v: Int
     let id: String
     var driverStatus: DriverStatus?

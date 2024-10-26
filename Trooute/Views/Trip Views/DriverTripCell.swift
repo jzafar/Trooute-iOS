@@ -75,10 +75,18 @@ struct DriverTripCell: View {
                 .background(Color.blue.opacity(0.1))
                 .cornerRadius(15)
             if !userModel.driverMode {
-                Image("ic_heart")
-                    .resizable()
-                    .foregroundStyle(trip.isAddedInWishList == true ? .red : .black)
-                    .frame(width: 25, height: 25)
+                Button(action: {
+                    print("Button pressed")
+                }) {
+                    Image("ic_heart")
+                        .resizable()
+                        .foregroundStyle(trip.isAddedInWishList == true ? .red : .black)
+                        .frame(width: 25, height: 25)
+                       }.buttonStyle(ScaleButtonStyle())
+//                Image("ic_heart")
+//                    .resizable()
+//                    .foregroundStyle(trip.isAddedInWishList == true ? .red : .black)
+//                    .frame(width: 25, height: 25)
             }
             
         }.padding(.horizontal)
@@ -110,5 +118,11 @@ struct HorizontalCollectionView: View {
                 }
             }
         }
+    }
+}
+struct ScaleButtonStyle: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 2 : 1)
     }
 }

@@ -5,7 +5,7 @@
 //  Created by Muhammad Zafar on 2024-09-29.
 //
 
-struct Review: Codable, Identifiable {
+struct Review: Codable, Identifiable, Hashable {
     var v: Int? = 0
     var id: String
     var comment: String? =  "No comment"
@@ -17,5 +17,6 @@ struct Review: Codable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case v = "__v"
         case id = "_id"
+        case comment, rating, target, targetType, trip, user
     }
 }
