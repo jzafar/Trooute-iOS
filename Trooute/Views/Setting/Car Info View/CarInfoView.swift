@@ -62,30 +62,22 @@ struct CarInfoView: View {
                 Spacer()
 
                 Text(viewModel.carDetails.registrationNumber.emptyOrNil)
-                    .font(.body)
-                    .padding(.horizontal, 30)
-                    .padding(.vertical, 10)
+                    .font(.footnote)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 5)
                     .foregroundStyle(Color("DarkBlue"))
                     .background(Color("LightBlue"))
                     .frame(height: 30)
-                    .cornerRadius(20)
+                    .cornerRadius(15)
             }
 
             HStack(spacing: 2) {
                 Circle()
                     .fill(Color.green)
-                    .frame(width: 15, height: 15)
-                TextViewLableText(text: viewModel.carDetails.color.emptyOrNil, textFont: .headline)
+                    .frame(width: 10, height: 10)
+                TextViewLableText(text: viewModel.carDetails.color.emptyOrNil, textFont: .body)
                     .padding(.leading, 10)
             }
-//            HStack(spacing: 2) {
-//                Image(systemName: "star.fill")
-//                    .foregroundStyle(Color.yellow)
-//                TextViewLableText(text: "5.0", textFont: .headline)
-//                Text("(100)")
-//                    .font(.subheadline)
-//                    .foregroundStyle(Color.gray)
-//            }
         }
     }
 }

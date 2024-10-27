@@ -39,7 +39,9 @@ struct BookingDetailsView: View {
                         }
 
                         Section(header: PassengersSectionHeader(seats: viewModel.availableSeats), content: {
-                            TripDetailsViewComponents.passengersView(passengers: viewModel.bookingData?.trip.passengers ?? [])
+                            TripDetailsViewComponents.passengersView(passengers: viewModel.bookingData?.trip.passengers ?? []) { passengerId in
+                                viewModel.onTapPassenger(id: passengerId)
+                            }
                         })
 
                         if let des = viewModel.getDestinationModel() {
@@ -88,6 +90,12 @@ struct BookingDetailsView: View {
             } content: {
                 WebView(webViewModel: viewModel.getWebViewModel())
             }
+            .fullScreenCover(item: $viewModel.passgenerId) {
+                viewModel.getBookingDetails()
+            } content: { id in
+                ReviewView(viewModel: ReviewViewModel(userId: id))
+            }
+
 
     }
 

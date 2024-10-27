@@ -47,7 +47,9 @@ struct TripDetailsView: View {
             if let trip = viewModel.trip {
                 if userModel.driverMode == false {
                     Section(header: PassengersSectionHeader(seats: "\(viewModel.trip?.availableSeats ?? 0)"), content: {
-                        TripDetailsViewComponents.passengersView(passengers: viewModel.trip?.passengers ?? [])
+                        TripDetailsViewComponents.passengersView(passengers: viewModel.trip?.passengers ?? []) {
+                            _ in
+                        }
 
                     })
                 }

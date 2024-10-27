@@ -8,7 +8,7 @@ import Foundation
 import SwiftLoader
 class ReviewViewModel: ObservableObject {
     let userId: String
-    @Published var use: User?
+    @Published var user: User?
     @Published var reviews: [Reviews] = []
     private let repository = ReviewRepository()
     init(userId: String) {
@@ -23,7 +23,16 @@ class ReviewViewModel: ObservableObject {
             case .success(let response):
                 if response.data.success,
                    let reviews = response.data.data {
-                    self?.reviews = reviews
+                    if let target = reviews.first?.target {
+                        self?.user = target
+                        
+                    }
+                    if (reviews.first?.user) != nil {
+                        self?.reviews = reviews
+                    } else {
+                        self?.reviews = []
+                    }
+                    
                 } else {
                     BannerHelper.displayBanner(.error, message: response.data.message)
                 }

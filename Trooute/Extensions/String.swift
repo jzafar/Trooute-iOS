@@ -36,8 +36,13 @@ extension String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
+
 extension Optional where Wrapped == String {
     var emptyOrNil: String {
         return self?.isEmpty == false ? self! : "Not Provided"
     }
+}
+
+extension String: @retroactive Identifiable {
+    public var id: String { self }
 }

@@ -28,6 +28,7 @@ class BookingDetailsViewModel: ObservableObject {
     @Published var suitcaseWeight = "Not Provided"
     @Published var handCarryWeight = "Not Provided"
     @Published var popView = false
+    @Published var passgenerId: String?
     @Published var finalPrice: Double = 0.0
     let user = UserUtils.shared
     private let repository = BookingDetailsRepository()
@@ -223,5 +224,9 @@ class BookingDetailsViewModel: ObservableObject {
                 BannerHelper.displayBanner(.error, message: failure.localizedDescription)
             }
         }
+    }
+    
+    func onTapPassenger(id: String) {
+        self.passgenerId = id
     }
 }

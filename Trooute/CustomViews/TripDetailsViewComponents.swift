@@ -94,11 +94,10 @@ struct PickupLocationView: View {
 
 struct TripDetailsViewComponents {
     @ViewBuilder
-    static func passengersView(passengers: [Passenger]) -> some View {
+    static func passengersView(passengers: [Passenger], action: @escaping (String) -> Void) -> some View {
         let columns = [
             GridItem(.adaptive(minimum: 40)),
         ]
-        @State var path = NavigationPath()
 
         VStack(alignment: .leading, spacing: 5) {
             HStack {
@@ -114,7 +113,7 @@ struct TripDetailsViewComponents {
                                     .frame(width: 40, height: 40)
                                     .clipShape(Circle())
                                     .onTapGesture {
-                                        path.append(passenger)
+                                        action(passenger.id)
                                     }
                             }
                         }
@@ -131,9 +130,6 @@ struct TripDetailsViewComponents {
                     .foregroundColor(.gray)
             }
         }.frame(height: passengers.count == 0 ? 70 : 110)
-            .navigationDestination(for: Passenger.self) { _ in
-                EmptyView()
-            }
     }
 
     static func getUrl(passenger: Passenger) -> String {
