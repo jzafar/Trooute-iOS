@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CE0081A42CA1DF3A00D84ACB /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0081A32CA1DF3700D84ACB /* Test.swift */; };
+		CE0506AA2CCE193900D4AE79 /* WishViewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0506A92CCE193900D4AE79 /* WishViewRepository.swift */; };
 		CE08540C2CB29B4100A3E422 /* PictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08540B2CB29AE800A3E422 /* PictureView.swift */; };
 		CE08540E2CB29B8000A3E422 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08540D2CB29B7800A3E422 /* CameraView.swift */; };
 		CE0854102CB29BD600A3E422 /* CustomDropdownField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08540F2CB29BD500A3E422 /* CustomDropdownField.swift */; };
@@ -206,6 +207,7 @@
 
 /* Begin PBXFileReference section */
 		CE0081A32CA1DF3700D84ACB /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		CE0506A92CCE193900D4AE79 /* WishViewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishViewRepository.swift; sourceTree = "<group>"; };
 		CE08540B2CB29AE800A3E422 /* PictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureView.swift; sourceTree = "<group>"; };
 		CE08540D2CB29B7800A3E422 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		CE08540F2CB29BD500A3E422 /* CustomDropdownField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropdownField.swift; sourceTree = "<group>"; };
@@ -415,6 +417,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE0506A82CCE18E600D4AE79 /* Book Mark */ = {
+			isa = PBXGroup;
+			children = (
+				CE179D532CAC43C200FFC206 /* WishView.swift */,
+				CE179D512CAC438C00FFC206 /* WishViewModel.swift */,
+				CE0506A92CCE193900D4AE79 /* WishViewRepository.swift */,
+			);
+			path = "Book Mark";
+			sourceTree = "<group>";
+		};
 		CE14309A2CC17F42001C1732 /* Get Bookings */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,7 +499,7 @@
 				CEA18AC92CBC492D0096545F /* Update Profile View */,
 				CE4E3D742CA356CD005C3CEE /* FAQView.swift */,
 				CEF80EE82CC9817F00AA478D /* User Info Card */,
-				CE179D532CAC43C200FFC206 /* WishView.swift */,
+				CE0506A82CCE18E600D4AE79 /* Book Mark */,
 				CEA18ADB2CBD80AB0096545F /* Create Trip */,
 			);
 			path = Setting;
@@ -614,7 +626,6 @@
 				CE28F1292CB71F1B001CF2A1 /* GoogleAutocompleteViewModel.swift */,
 				CE1D680B2CA9474F0070970D /* BookingCardViewModel.swift */,
 				CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */,
-				CE179D512CAC438C00FFC206 /* WishViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1352,6 +1363,7 @@
 				CE5227F62CBB9228005C1175 /* VerificationRepository.swift in Sources */,
 				CE5227E22CBAE2A5005C1175 /* VerificationView.swift in Sources */,
 				CE4E3EA02CA76BDE005C3CEE /* TripDetailsViewModel.swift in Sources */,
+				CE0506AA2CCE193900D4AE79 /* WishViewRepository.swift in Sources */,
 				CE5701752C9E8FC0003BD7CA /* CountryCode.swift in Sources */,
 				CE4E3E012CA5B353005C3CEE /* Booking.swift in Sources */,
 				CEF80EE72CC971E400AA478D /* Reviews.swift in Sources */,

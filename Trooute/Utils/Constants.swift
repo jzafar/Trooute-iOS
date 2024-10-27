@@ -36,6 +36,8 @@ struct Apis {
     static let booking =            base + "bookings"
     ///: Review ENDPOINTS
     static let review =             base + "review"
+    ///: Wish ENDPOINTS
+    static let getWishList =               base + "users/get-my-wishlist"
     
    
 }

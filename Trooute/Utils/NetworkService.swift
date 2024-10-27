@@ -28,6 +28,7 @@ class NetworkService: NetworkServiceProtocol {
         isMultipart: Bool = false,
         completion: @escaping (Result<Response<T>, Error>) -> Void
     ) {
+        log.debug("calling api \(url)")
         guard var urlComponents = URLComponents(string: url) else {
             DispatchQueue.main.async {
                 completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))

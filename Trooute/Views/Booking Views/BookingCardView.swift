@@ -45,7 +45,7 @@ struct BookingCardView: View {
                     
                     
                 }
-                PriceView(price:  viewModel.finalPrice(), bookingSeats: nil, showPersonText: true)
+                PriceView(price:  viewModel.finalPrice(), bookingSeats: nil, showPersonText: userModel.drivMode ? true : false)
                 // For driver view need to send showPersonText = true
             }
            
@@ -122,8 +122,8 @@ struct BookingCardView: View {
             .padding(.horizontal)
     }
 }
-#Preview {
-//    let tripResponse = MockDate.getUserBookingsResponse()!
-    let tripResponse = MockDate.getDriverBookingsResponse()!
-    BookingCardView(viewModel: BookingCardViewModel(booking: tripResponse.data!.first!))
-}
+//#Preview {
+////    let tripResponse = MockDate.getUserBookingsResponse()!
+//    let tripResponse = MockDate.getDriverBookingsResponse()!
+//    BookingCardView(viewModel: BookingCardViewModel(booking: tripResponse.data!.first!))
+//}

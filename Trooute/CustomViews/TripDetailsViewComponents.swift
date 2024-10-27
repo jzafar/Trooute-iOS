@@ -130,7 +130,7 @@ struct TripDetailsViewComponents {
                     .multilineTextAlignment(.leading)
                     .foregroundColor(.gray)
             }
-        }.frame(height: passengers.count == 0 ? 50 : 90)
+        }.frame(height: passengers.count == 0 ? 70 : 110)
             .navigationDestination(for: Passenger.self) { _ in
                 EmptyView()
             }

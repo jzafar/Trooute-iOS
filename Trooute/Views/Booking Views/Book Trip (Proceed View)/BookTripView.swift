@@ -142,7 +142,7 @@ struct BookTripView: View {
     }
 }
 
-#Preview {
-    let data = MockDate.getTripsResponse()?.data?.first
-    BookTripView(viewModel: BookTripViewModel(trip: data!))
-}
+//#Preview {
+//    let data = MockDate.getTripsResponse()?.data?.first
+//    BookTripView(viewModel: BookTripViewModel(trip: data!))
+//}

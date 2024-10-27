@@ -45,6 +45,6 @@ struct BookingsView: View {
     }
 }
 
-#Preview {
-    BookingsView()
-}
+//#Preview {
+//    BookingsView()
+//}

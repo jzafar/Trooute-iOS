@@ -11,10 +11,11 @@ import SwiftUI
 import SwiftLoader
 
 class TripsViewModel: NSObject, ObservableObject {
+    private static let defaultDistance = 10.0
     @Published var fromLocation: String = ""
     @Published var toLocation: String = ""
-    @Published var distanceFrom: Double = 5
-    @Published var distanceTo: Double = 5
+    @Published var distanceFrom: Double = TripsViewModel.defaultDistance
+    @Published var distanceTo: Double = TripsViewModel.defaultDistance
     @Published var date: Date? = nil
     @Published var isDatePickerPresented: Bool = false
     @Published var isFlexibleDate: Bool = false
@@ -44,8 +45,8 @@ class TripsViewModel: NSObject, ObservableObject {
         date = nil
         fromLocation = ""
         toLocation = ""
-        distanceFrom = 5
-        distanceTo = 5
+        distanceFrom = TripsViewModel.defaultDistance
+        distanceTo = TripsViewModel.defaultDistance
         flexibleDays = 1
         isFlexibleDate = false
         self.checkLocationAuthorization()

@@ -11,7 +11,7 @@ struct SearchResults: View {
     @StateObject var viewModel: SearchResultsViewModel
     @Environment(\.presentationMode) var presentationMode
         var body: some View {
-            NavigationView {
+            NavigationStack {
                 List(viewModel.trips) { trip in
                     ZStack {
                         NavigationLink(destination: TripDetailsView(viewModel: TripDetailsViewModel(tripId: trip.id))) { EmptyView() }.opacity(0)

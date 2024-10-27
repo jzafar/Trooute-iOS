@@ -56,10 +56,10 @@ struct BookingConfirmedView: View {
 
 
 
-struct BookingConfirmedView_Previews: PreviewProvider {
-    static var previews: some View {
-        let tripResponse = MockDate.getTripsResponse()!
-        BookingConfirmedView(trip: tripResponse.data!.first!, numberOfSeats: 2)
-    }
-}
+//struct BookingConfirmedView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let tripResponse = MockDate.getTripsResponse()!
+//        BookingConfirmedView(trip: tripResponse.data!.first!, numberOfSeats: 2)
+//    }
+//}
 

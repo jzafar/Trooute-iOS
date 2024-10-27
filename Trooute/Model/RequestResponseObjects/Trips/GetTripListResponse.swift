@@ -8,6 +8,6 @@
 import Foundation
 struct GetTripListResponse: Codable {
     let data: [TripInfo]?
-    let message: String?
+    let message: String
     let success: Bool
 }

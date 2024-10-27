@@ -204,6 +204,6 @@ struct BookingDetailsView: View {
     }
 }
 
-#Preview {
-    BookingDetailsView(viewModel: BookingDetailsViewModel(bookingId: "132"))
-}
+//#Preview {
+//    BookingDetailsView(viewModel: BookingDetailsViewModel(bookingId: "132"))
+//}

@@ -62,11 +62,12 @@ struct CarInfoView: View {
                 Spacer()
 
                 Text(viewModel.carDetails.registrationNumber.emptyOrNil)
+                    .font(.body)
                     .padding(.horizontal, 30)
                     .padding(.vertical, 10)
                     .foregroundStyle(Color("DarkBlue"))
                     .background(Color("LightBlue"))
-                    .frame(height: 40)
+                    .frame(height: 30)
                     .cornerRadius(20)
             }
 
@@ -89,7 +90,7 @@ struct CarInfoView: View {
     }
 }
 
-#Preview {
-    let loginResponse = MockDate.getLoginResponse()!
-    CarInfoView(viewModel: CarInfoViewModel(carDetails: loginResponse.data!.carDetails!))
-}
+//#Preview {
+//    let loginResponse = MockDate.getLoginResponse()!
+//    CarInfoView(viewModel: CarInfoViewModel(carDetails: loginResponse.data!.carDetails!))
+//}

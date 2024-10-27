@@ -33,6 +33,6 @@ struct WishView: View {
     }
 }
 
-#Preview {
-    WishView()
-}
+//#Preview {
+//    WishView()
+//}
