@@ -49,6 +49,7 @@ struct FAQView: View {
         .listStyle(PlainListStyle())
         .navigationTitle("Frequently asked questions")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarRole(.editor)
     }
 }
 

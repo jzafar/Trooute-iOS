@@ -13,9 +13,11 @@ class WebViewModel: ObservableObject {
     @Published var shouldGoBack: Bool = false
     @Published var title: String = ""
     var url: String
+    var adjustFont = false
     let repo = WebViewRepository()
-    init(url: String) {
+    init(url: String, adjustFont: Bool = false) {
         self.url = url
+        self.adjustFont = adjustFont
     }
     
     

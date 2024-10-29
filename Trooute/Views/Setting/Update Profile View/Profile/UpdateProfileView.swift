@@ -28,6 +28,7 @@ struct UpdateProfileView: View {
         }
         .navigationTitle("Update Profile")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarRole(.editor)
         .navigationDestination(isPresented: $viewModel.updatePassword) {
             UpdatePasswordView()
         }
@@ -81,6 +82,6 @@ struct UpdateProfileView: View {
     }
 }
 
-#Preview {
-    UpdateProfileView()
-}
+//#Preview {
+//    UpdateProfileView()
+//}

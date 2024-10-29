@@ -30,6 +30,7 @@ struct WishView: View {
             viewModel.getWishList()
         }.navigationTitle("Bookmark")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbarRole(.editor)
     }
 }
 

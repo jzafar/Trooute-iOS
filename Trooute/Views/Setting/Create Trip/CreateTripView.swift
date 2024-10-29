@@ -31,6 +31,7 @@ struct CreateTripView: View {
 
         }.navigationTitle("Set up your Trip")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbarRole(.editor)
             .onAppear {
                 Tabbar.shared.hide = true
             }
@@ -310,20 +311,7 @@ struct CreateTripView: View {
     }
 }
 
-#Preview {
-    CreateTripView()
-}
+//#Preview {
+//    CreateTripView()
+//}
 
-extension Double {
-    static let formatter = NumberFormatter()
-
-    func asCurrencyString() -> String {
-        Double.formatter.numberStyle = .currency
-        let returnString = Double.formatter.string(from: self as NSNumber)
-        if let returnString {
-            return returnString
-        } else {
-            return "Default Value or error message...."
-        }
-    }
-}

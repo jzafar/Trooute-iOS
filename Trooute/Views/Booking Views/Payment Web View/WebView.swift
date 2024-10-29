@@ -25,7 +25,9 @@ struct WebView: UIViewRepresentable {
             let webView = WKWebView()
             webView.navigationDelegate = context.coordinator
             webView.load(request)
-
+            if webViewModel.adjustFont {
+                webView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: -10)
+            }
             return webView
         }
 
@@ -60,6 +62,11 @@ extension WebView {
             webViewModel.title = webView.title ?? ""
             webViewModel.canGoBack = webView.canGoBack
             SwiftLoader.hide()
+            if webViewModel.adjustFont {
+                let js = "document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust='200%'"//dual size
+                    webView.evaluateJavaScript(js, completionHandler: nil)
+            }
+            
         }
         
         func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {

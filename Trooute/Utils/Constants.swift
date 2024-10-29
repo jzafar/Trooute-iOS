@@ -8,6 +8,7 @@
 struct Constants {
     static let baseUrl = "https://backened.trooute.com"
     static let baseImageUrl = "\(Constants.baseUrl)/files"
+    static let TERMS_CONDITIONS = "https://trooute.com/terms-and-conditions.html"
 }
 
 struct Apis {
@@ -32,6 +33,7 @@ struct Apis {
     static let trip =               base + "trips"
     static let updateTripStatus =   base + "trips/update-trip-status"
     static let updatePickupStatus = base + "trips/updatePickupStatus"
+    static let getPickupStatus =    base + "trips/getPickupStatus"
     ///: Bookings ENDPOINTS
     static let booking =            base + "bookings"
     ///: Review ENDPOINTS

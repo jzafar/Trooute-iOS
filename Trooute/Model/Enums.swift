@@ -10,14 +10,14 @@ enum TripStatus: String {
     case IN_PROGRESS = "In Progress"
     case COMPLETED = "Completed"
     case CANCELED = "Canceled"
-    case PickupStarted = "PickupStarted"
+    case PickupStarted
 }
 
 enum DriverStatus: String, Codable {
     case approved, pending, rejected, unknown
     init(from rawValue: String) {
-            self = DriverStatus(rawValue: rawValue) ?? .unknown
-        }
+        self = DriverStatus(rawValue: rawValue) ?? .unknown
+    }
 }
 
 enum UserDefaultsKey: String {
@@ -28,5 +28,23 @@ enum UserDefaultsKey: String {
     case driverState = "DriverState"
     var key: String {
         return rawValue
+    }
+}
+
+enum PickUpPassengersStatus: String, Codable {
+    // DriverSide Statues
+    case NotStarted
+    case PickupStarted
+    case PassengerNotified
+    case PassengerPickedup
+    case PassengerNotShowedup
+
+    // PassengersSide Statues
+    case NotSetYet
+    case DriverPickedup
+    case DriverNotShowedup
+    
+    init(from rawValue: String) {
+        self = PickUpPassengersStatus(rawValue: rawValue) ?? .NotSetYet
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftLoader
 class TripDetailsViewModel: ObservableObject {
-    private var tripId: String
+    var tripId: String
     private var userModel: UserUtils = UserUtils.shared
     @Published var showAlert = false
     @Published var trip: TripsData? {
@@ -28,6 +28,7 @@ class TripDetailsViewModel: ObservableObject {
     @Published var languagePreference: String = "Not Provided"
     @Published var otherReliventDetails: String = "Not Provided"
     @Published var openDetailsView: Bool = false
+    @Published var showPickUpPassengers = false
     var bookingId: String? = nil
     var alertTitle = ""
     var alertMessage = ""
@@ -149,7 +150,12 @@ class TripDetailsViewModel: ObservableObject {
 
     func pickUpPassengersPressed() {
         updateTripStatus(status: .PickupStarted) { result in
-            
+            if result {
+                DispatchQueue.main.async {
+                    self.showPickUpPassengers = true
+                }
+                
+            }
         }
     }
     
@@ -190,7 +196,10 @@ class TripDetailsViewModel: ObservableObject {
             BannerHelper.displayBanner(.info, message: "Update trip status to In Progress")
         } else if (key == "trip_status_Canceled") {
             BannerHelper.displayBanner(.info, message: "Update trip status to canceled")
-        } else {
+        } else if (key == "trip_status_PickupStarted") {
+            BannerHelper.displayBanner(.info, message: "Update trip status to started")
+        }
+        else {
             BannerHelper.displayBanner(.error, message: defaultMessage)
         }
     }

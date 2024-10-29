@@ -109,6 +109,8 @@ struct TripDetailsView: View {
                     viewModel.cancelTrip()
             }),
             secondaryButton: .cancel(Text("Cancel")))
+        }.navigationDestination(isPresented: $viewModel.showPickUpPassengers) {
+            PickupPassengersView(viewModel: PickupPassengersViewModel(tripId: viewModel.tripId))
         }
     }
 

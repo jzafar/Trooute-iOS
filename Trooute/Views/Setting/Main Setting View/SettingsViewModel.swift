@@ -8,16 +8,19 @@
 import Foundation
 import SwiftUI
 import SwiftLoader
+import MessageUI
 
 class SettingsViewModel: ObservableObject {
     @Published var isDriverModeOn = true
     @Published var isNotificationOn = false
     @Published var editCarInfo = false
+    
     var isUserInteractionWithSwitch: Bool = true
     private let repository = SettingsRepository()
     
     init() {
         self.setDriverMode()
+        self.getNotificationPermission()
     }
     
     func setDriverMode() {
@@ -49,4 +52,25 @@ class SettingsViewModel: ObservableObject {
     func logoutPressed() {
         UserUtils.shared.clearUserFromStorage()
     }
+    
+    func sendEmail() {
+        EmailController.shared.sendEmail(subject: "", body: "", to: "support@trooute.com")
+    }
+    
+    func actionSheet() {
+        let data = "Hey! I want to invite you to try Trooute App. Get where you’re going with affordable, convenient rides. You can download App from this link: https://play.google.com/store/apps/details?id=com.travel.trooute"
+        let av = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+        Utils.getRootViewController()?.present(av, animated: true, completion: nil)
+    }
+    
+    private func getNotificationPermission() {
+         Task {
+             let notificationsAllowed = await UNUserNotificationCenter.notificationsAllowed()
+             withAnimation {
+                 DispatchQueue.main.async {
+                     self.isNotificationOn = notificationsAllowed
+                 }
+             }
+         }
+     }
 }

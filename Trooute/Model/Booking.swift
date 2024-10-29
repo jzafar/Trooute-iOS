@@ -62,10 +62,10 @@ struct PickupLocation: Codable, Hashable {
 }
 
 struct PickupStatus: Codable, Hashable {
-    let v: Int
+    let v: Int?
     let id: String
-    var driverStatus: DriverStatus?
-    var passengerStatus: String?
+    var driverStatus: PickUpPassengersStatus?
+    var passengerStatus: PickUpPassengersStatus?
     var booking: String?
     var trip: String?
 

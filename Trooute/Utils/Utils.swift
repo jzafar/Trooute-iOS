@@ -47,6 +47,32 @@ struct Utils {
         }
         return (image, string)
     }
+    
+    static func checkPickUpStatus(status: PickUpPassengersStatus?) -> (Image, String, String) {
+        var image: Image
+        var statusString: String
+        var statusDetails: String
+        switch status {
+        case .NotSetYet:
+            image = Image("ic_status_waiting")
+            statusString = "Waiting To Be Picked up"
+            statusDetails = "When you notify passenger to get ready we'll send a notification to passenger to get ready for pickup"
+        case .DriverPickedup:
+            image = Image("ic_confirm_check")
+            statusString = "Picked up"
+            statusDetails = "Trooute wishes you safe journey."
+        case .DriverNotShowedup:
+            image = Image("ic_status_cancelled")
+            statusString = "Not Showed up"
+            statusDetails = "The passenger has marked that you didn’t show up. Please pick up the passenger."
+        default:
+            image = Image("ic_status_cancelled")
+            statusString = "Unknown"
+            statusDetails = "Unknown"
+        }
+        
+        return (image, statusString, statusDetails)
+    }
 
     static func downloadImage(url: String) async throws -> Image? {
         guard let url = URL(string: url) else {
@@ -64,4 +90,15 @@ struct Utils {
         return password != confirmPassword
     }
     
+    static func getRootViewController() -> UIViewController? {
+        guard let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return nil
+        }
+
+        guard let firstWindow = firstScene.windows.first else {
+            return nil
+        }
+
+        return firstWindow.rootViewController
+    }
 }

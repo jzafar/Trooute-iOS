@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     @StateObject var userModel: UserUtils = UserUtils.shared
     @StateObject var viewModel = SettingsViewModel()
+    @Environment(\.openURL) var openURL
     var body: some View {
         List {
             if let user = userModel.user {
@@ -58,7 +59,6 @@ struct SettingsView: View {
             }
         }
         .onAppear {
-            
         }
         .listStyle(InsetGroupedListStyle())
         .fullScreenCover(isPresented: $viewModel.editCarInfo, onDismiss: {
@@ -78,7 +78,7 @@ struct SettingsView: View {
                         .frame(width: 25, height: 25)
                     ListRowText(text: "Driver Mode")
                 }
-            }.onChange(of: viewModel.isDriverModeOn) { newValue in
+            }.onChange(of: viewModel.isDriverModeOn) { _ in
                 viewModel.toggleDriverMode(userIntrection: viewModel.isUserInteractionWithSwitch)
             }
         } else {
@@ -146,16 +146,20 @@ struct SettingsView: View {
             }
         }
 
-        NavigationLink(destination: EmptyView(), label: {
             HStack {
                 Image("ic_invite_friend")
                     .resizable()
                     .frame(width: 25, height: 25)
                 ListRowText(text: "Invite a friend")
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundColor(.gray.opacity(0.6))
+            }.onTapGesture {
+                viewModel.actionSheet()
             }
-        })
     }
-
+    
     @ViewBuilder
     func supportSection() -> some View {
         NavigationLink(destination: FAQView(), label: {
@@ -166,27 +170,38 @@ struct SettingsView: View {
                 ListRowText(text: "Frequently asked questions")
             }
         })
-        NavigationLink(destination: EmptyView(), label: {
+        
             HStack {
                 Image("ic_feedback")
                     .resizable()
                     .frame(width: 25, height: 25)
                 ListRowText(text: "Give us feedback")
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundColor(.gray.opacity(0.6))
+            }.onTapGesture {
+               
             }
-        })
-        NavigationLink(destination: EmptyView(), label: {
-            HStack {
-                Image("ic_repot")
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                ListRowText(text: "Report a problem")
-            }
-        })
+        
+
+        HStack {
+            Image("ic_repot")
+                .resizable()
+                .frame(width: 25, height: 25)
+            ListRowText(text: "Report a problem")
+            Spacer()
+            Image(systemName: "chevron.right")
+                .font(.system(size: 14, weight: .medium))
+                .foregroundColor(.gray.opacity(0.6))
+        }.onTapGesture {
+            viewModel.sendEmail()
+        }
     }
 
     @ViewBuilder
     func legalSection() -> some View {
-        NavigationLink(destination: EmptyView(), label: {
+        NavigationLink(destination: WebView(webViewModel: WebViewModel(url: Constants.TERMS_CONDITIONS, adjustFont: true)), label: {
             HStack {
                 Image("ic_terms_conditions")
                     .resizable()
@@ -194,7 +209,7 @@ struct SettingsView: View {
                 ListRowText(text: "Terms & Conditions")
             }
         })
-        NavigationLink(destination: EmptyView(), label: {
+        NavigationLink(destination:  WebView(webViewModel: WebViewModel(url: Constants.TERMS_CONDITIONS, adjustFont: true)), label: {
             HStack {
                 Image("ic_privacy_policy")
                     .resizable()
@@ -211,13 +226,13 @@ struct SettingsView: View {
                 .resizable()
                 .frame(width: 25, height: 25)
             ListRowText(text: "Logout")
-                
+            Spacer()
         }.onTapGesture {
             userModel.clearUserFromStorage()
         }
     }
 }
 
-//#Preview {
+// #Preview {
 //    SettingsView()
-//}
+// }

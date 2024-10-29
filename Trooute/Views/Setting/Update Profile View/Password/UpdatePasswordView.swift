@@ -22,6 +22,7 @@ struct UpdatePasswordView: View {
             }
         }.navigationTitle("Update Password")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbarRole(.editor)
     }
     
     @ViewBuilder
@@ -105,6 +106,6 @@ struct UpdatePasswordView: View {
     }
 }
 
-#Preview {
-    UpdatePasswordView()
-}
+//#Preview {
+//    UpdatePasswordView()
+//}
