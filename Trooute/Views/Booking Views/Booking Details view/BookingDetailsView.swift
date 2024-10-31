@@ -14,6 +14,17 @@ struct BookingDetailsView: View {
         VStack(alignment: .leading, spacing: 10) {
             let driverMode = userModel.driverMode
             List {
+                if !userModel.driverMode &&
+                    viewModel.bookingData?.trip.status == .PickupStarted &&
+                    viewModel.bookingData?.status == .confirmed,
+                    let booking = viewModel.currentBooking {
+                    Section (header: TextViewLableText(text: "Pickup Status")) {
+                        pickupStatusView(booking)
+                            .listRowBackground(Color.white)
+                            .listRowInsets(EdgeInsets())
+                    }
+                    
+                }
                 if let _ = viewModel.bookingData {
                     Section(header: TextViewLableText(text: "Booking Detail")) {
                         bookingStatusView()
@@ -80,12 +91,14 @@ struct BookingDetailsView: View {
             }.onChange(of: viewModel.popView) { newVal in
                 if newVal == true {
                 }
+            }.onDisappear {
+                viewModel.stopTimerIfRunning()
             }
 
         }.navigationTitle("Booking Details")
             .navigationBarTitleDisplayMode(.inline)
             .toolbarRole(.editor)
-            .sheet(isPresented:  $viewModel.showPaymentsScreen) {
+            .sheet(isPresented: $viewModel.showPaymentsScreen) {
                 viewModel.getBookingDetails()
             } content: {
                 WebView(webViewModel: viewModel.getWebViewModel())
@@ -95,8 +108,15 @@ struct BookingDetailsView: View {
             } content: { id in
                 ReviewView(viewModel: ReviewViewModel(userId: id))
             }
+    }
 
-
+    @ViewBuilder
+    func pickupStatusView(_ booking: Booking) -> some View {
+        VStack(alignment: .leading) {
+            VStack(alignment: .leading) {
+                pickUpStatusView(booking)
+            }
+        }
     }
 
     @ViewBuilder
@@ -148,6 +168,50 @@ struct BookingDetailsView: View {
     }
 
     @ViewBuilder
+    func pickUpStatusView(_ booking: Booking) -> some View {
+        VStack(alignment: .leading) {
+            let isDriver = userModel.driverMode
+            if let driverStatus = booking.pickupStatus?.driverStatus {
+                let (image, status, details) = Utils.checkPickUpStatus(isDriver: isDriver, status: driverStatus)
+                if let passengerStatus = booking.pickupStatus?.passengerStatus,
+                     passengerStatus == .DriverPickedup || passengerStatus == .DriverNotShowedup {
+                        let (image1, status1, details1) = Utils.checkPickUpStatus(isDriver: isDriver, status: passengerStatus)
+                        HStack {
+                            image1
+                            Text(status1)
+                            Spacer()
+                        }
+                        Text(details1)
+                    
+                } else {
+                    HStack {
+                        image
+                        Text(status)
+                        Spacer()
+                    }
+                    Text(details)
+                }
+            }
+            if let passengerStatus = booking.pickupStatus?.passengerStatus,
+               passengerStatus == .DriverPickedup  {
+            } else {
+                HStack {
+                    SecondaryBookingButton(title: "Not showed up") {
+                        viewModel.updatePickUpStatus(status: .DriverNotShowedup)
+                    }
+
+                    Spacer()
+                    PrimaryGreenButton(title: "Marked as Pickup") {
+                        viewModel.updatePickUpStatus(status: .DriverPickedup)
+                    }
+                }
+            }
+            
+        }.padding()
+        .cornerRadius(15)
+    }
+
+    @ViewBuilder
     func statusView() -> some View {
         VStack(alignment: .leading) {
             let driverMode = userModel.driverMode
@@ -162,7 +226,7 @@ struct BookingDetailsView: View {
                     .foregroundStyle(.gray)
                     .font(.footnote)
             }.padding(.bottom, 10)
-                
+
             HStack {
                 TextViewLableText(text: viewModel.bookingID ?? "")
             }
@@ -184,17 +248,24 @@ struct BookingDetailsView: View {
                             viewModel.acceptBooking()
                         }
 
-                    } else if viewModel.bookingData?.status == .approved ||  viewModel.bookingData?.status == .confirmed {
-                        Spacer()
-                        SecondaryBookingButton(title: "Cancel booking") {
-                        }
-                    }
-                } else {
-                    if viewModel.bookingData?.status == .waiting ||  viewModel.bookingData?.status == .confirmed {
+                    } else if viewModel.bookingData?.status == .approved ||
+                        viewModel.bookingData?.status == .confirmed {
                         Spacer()
                         SecondaryBookingButton(title: "Cancel booking") {
                             viewModel.cancelBooking()
                         }
+                    }
+                } else {
+                    if viewModel.bookingData?.status == .waiting ||
+                        viewModel.bookingData?.status == .confirmed {
+                        if viewModel.bookingData?.trip.status == .PickupStarted {
+                        } else {
+                            Spacer()
+                            SecondaryBookingButton(title: "Cancel booking") {
+                                viewModel.cancelBooking()
+                            }
+                        }
+
                     } else if viewModel.bookingData?.status == .approved {
                         SecondaryBookingButton(title: "Cancel booking") {
                             viewModel.cancelBooking()
@@ -212,6 +283,6 @@ struct BookingDetailsView: View {
     }
 }
 
-//#Preview {
+// #Preview {
 //    BookingDetailsView(viewModel: BookingDetailsViewModel(bookingId: "132"))
-//}
+// }

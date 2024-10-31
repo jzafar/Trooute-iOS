@@ -15,7 +15,7 @@ struct TripsData: Codable, Identifiable {
     let fromAddress: String?
     let whereToAddress: String?
     let pricePerPerson: Double?
-    let status: String?
+    var status: TripStatus?
     var isAddedInWishList: Bool? = false
     let driver: Driver?
     let fromLocation: Location?

@@ -27,7 +27,7 @@ class UserUtils: ObservableObject {
         self.driverStatus = DriverStatus(from: driverState)
         self.driverMode = drivMode
     }
-    var drivMode: Bool {
+    private var drivMode: Bool {
         set {
             self.driverMode = newValue
             UserDefaults.standard.set(newValue, forKey: UserDefaultsKey.driverMode.key)

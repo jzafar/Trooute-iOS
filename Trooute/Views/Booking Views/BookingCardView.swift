@@ -14,7 +14,7 @@ struct BookingCardView: View {
         VStack (alignment: .leading, spacing: 5){
             VStack(alignment: .leading, spacing: 10) {
                 userBookingInfo()
-                if userModel.drivMode {
+                if userModel.driverMode {
                     userInfoView()
                 } else {
                     driverCarView()
@@ -24,7 +24,7 @@ struct BookingCardView: View {
             .background(Color.white)
             .cornerRadius(10)
             VStack(alignment: .leading) {
-                if userModel.drivMode {
+                if userModel.driverMode {
                     HStack {
                         Text("\(viewModel.booking.numberOfSeats ?? 0) x Seats")
                             .foregroundStyle(.white)
@@ -45,7 +45,7 @@ struct BookingCardView: View {
                     
                     
                 }
-                PriceView(price:  viewModel.finalPrice(), bookingSeats: nil, showPersonText: userModel.drivMode ? true : false)
+                PriceView(price:  viewModel.finalPrice(), bookingSeats: nil, showPersonText: userModel.driverMode ? true : false)
                 // For driver view need to send showPersonText = true
             }
            

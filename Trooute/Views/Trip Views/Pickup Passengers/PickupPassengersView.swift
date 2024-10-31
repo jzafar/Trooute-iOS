@@ -8,42 +8,54 @@
 import SwiftUI
 
 struct PickupPassengersView: View {
-    @ObservedObject var viewModel: PickupPassengersViewModel
+    @StateObject var viewModel: PickupPassengersViewModel
     @StateObject var userModel = UserUtils.shared
     var body: some View {
-        VStack {
-            List {
-                Section(header: TextViewLableText(text: "Passengers", textFont: .headline)) {
-                    ForEach(viewModel.bookings) { booking in
-                        makePickupView(booking: booking)
-                            .listRowBackground(Color.white)
-                            .listRowInsets(EdgeInsets())
-                    }
-                }.onAppear {
-                    viewModel.onAppear()
+        List {
+            Section(header: TextViewLableText(text: "Passengers", textFont: .headline)) {
+                ForEach(viewModel.tripData?.bookings ?? []) { booking in
+                    makePickupView(booking: booking)
+                        .listRowBackground(Color.white)
+                        .listRowInsets(EdgeInsets())
                 }
-                .navigationTitle("Pickup Passengers")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbarRole(.editor)
-            }.safeAreaInset(edge: .bottom) {
-                startTripView()
+            }.onAppear {
+                viewModel.onAppear()
+            }.onDisappear {
+                viewModel.stopTimer()
             }
-        }
+            .navigationTitle("Pickup Passengers")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarRole(.editor)
+        }.safeAreaInset(edge: .bottom) {
+            startTripView()
+        }.ignoresSafeArea(edges: .bottom)
     }
+
     @ViewBuilder
     func startTripView() -> some View {
-        VStack {
-            HStack {
-                PrimaryGreenButton(title: "Start Trip") {
-                    viewModel.startTrip()
-                }
+        if viewModel.tripData?.status == .PickupStarted {
+            VStack {
+                HStack {
+                    PrimaryGreenButton(title: "Start Trip") {
+                        viewModel.startTrip()
+                    }
 
-            }.padding(.horizontal)
-                .background(Color("TitleColor"))
-                .frame(height: 100)
-            
-        }.background(Color("TitleColor"))
-            .frame(height: 130)
+                }.padding()
+
+            }.background(Color("TitleColor"))
+                .frame(height: 130)
+        } else if viewModel.tripData?.status == .IN_PROGRESS {
+            VStack {
+                HStack {
+                    PrimaryGreenButton(title: "End Trip") {
+                        viewModel.endTrip()
+                    }
+
+                }.padding()
+
+            }.background(Color("TitleColor"))
+                .frame(height: 130)
+        }
     }
 
     @ViewBuilder
@@ -57,21 +69,22 @@ struct PickupPassengersView: View {
             if let location = booking.pickupLocation {
                 pickUpLocationTextView(location)
             }
-            
-            VStack {
-                HStack {
-                    SecondaryBookingButton(title: "Not Showed up") {
-                        viewModel.notShowedUP()
+            if booking.pickupStatus?.passengerStatus != .DriverPickedup {
+                VStack {
+                    HStack {
+                        SecondaryBookingButton(title: "Not Showed up") {
+                            viewModel.updatePickupStatus(booking: booking, status: .PassengerNotShowedup)
+                        }
+
+                        Spacer()
+                        PrimaryGreenButton(title: "Marked as Pickup") {
+                            viewModel.updatePickupStatus(booking: booking, status: .PassengerPickedup)
+                        }
                     }
 
-                    Spacer()
-                    PrimaryGreenButton(title: "Marked as Pickup") {
-                        viewModel.markedAsPickup()
+                    PrimaryGreenButton(title: "Notify passenger to get ready") {
+                        viewModel.updatePickupStatus(booking: booking, status: .PassengerNotified)
                     }
-                }
-                
-                PrimaryGreenButton(title: "Notify passenger to get ready") {
-                    viewModel.notifyPassengerToGetReady()
                 }
             }
 
@@ -97,7 +110,7 @@ struct PickupPassengersView: View {
                         .foregroundColor(Color(UIColor.darkGray))
                         .fixedSize(horizontal: false, vertical: true)
                 }
-                
+
                 Spacer()
                 Button {
                     viewModel.openMapButtonPressed(location: location)
@@ -106,7 +119,7 @@ struct PickupPassengersView: View {
                         Circle()
                             .fill(Color(.darkGray))
                             .frame(width: 50, height: 50)
-                        
+
                         Image(systemName: "map.fill")
                             .resizable()
                             .scaledToFit()
@@ -126,7 +139,7 @@ struct PickupPassengersView: View {
     @ViewBuilder
     func statusView(status: PickUpPassengersStatus?) -> some View {
         VStack(alignment: .leading, spacing: 5) {
-            let (image, status, statusDetails) = Utils.checkPickUpStatus(status: status)
+            let (image, status, statusDetails) = Utils.checkPickUpStatus(isDriver: true, status: status)
             HStack {
                 image
                 Text(status)

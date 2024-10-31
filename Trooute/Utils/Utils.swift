@@ -48,11 +48,12 @@ struct Utils {
         return (image, string)
     }
     
-    static func checkPickUpStatus(status: PickUpPassengersStatus?) -> (Image, String, String) {
+    static func checkPickUpStatus(isDriver: Bool, status: PickUpPassengersStatus?) -> (Image, String, String) {
         var image: Image
         var statusString: String
         var statusDetails: String
         switch status {
+            
         case .NotSetYet:
             image = Image("ic_status_waiting")
             statusString = "Waiting To Be Picked up"
@@ -64,7 +65,29 @@ struct Utils {
         case .DriverNotShowedup:
             image = Image("ic_status_cancelled")
             statusString = "Not Showed up"
-            statusDetails = "The passenger has marked that you didn’t show up. Please pick up the passenger."
+            statusDetails = isDriver ? "The passenger has marked that you didn’t show up. Please pick up the passenger." : "You have marked as driver not showed up. You can contact support from settings page."
+            
+        case .PickupStarted:
+            image = Image("ic_status_waiting")
+            statusString = "Pickup started"
+            statusDetails = "Driver has started to pick up passengers."
+            
+        case .PassengerNotified:
+            image = Image("ic_status_waiting")
+            statusString = "Get ready"
+            statusDetails = "Driver is coming to you to pick you up."
+            
+        case .PassengerPickedup:
+            image = Image("ic_status_waiting")
+            statusString = "Picked up"
+            statusDetails = "Driver marked you as a picked up. if it's correct please mark yourself as picked up."
+            
+        case .PassengerNotShowedup:
+            image = Image("ic_status_waiting")
+            statusString = "Not Showed up"
+            statusDetails = "Driver marked you as not showed up. If it's not true you can contact support from settings page."
+            
+            
         default:
             image = Image("ic_status_cancelled")
             statusString = "Unknown"

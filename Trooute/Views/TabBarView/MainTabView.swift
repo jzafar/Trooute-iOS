@@ -26,7 +26,7 @@ struct MainTabView: View {
             }
 
             NavigationView {
-                InboxView()
+                InboxView(viewModel: viewModel.fireBase)
                     .onAppear {
                         Tabbar.shared.hide = false
                     }
@@ -56,6 +56,6 @@ struct MainTabView: View {
     }
 }
 
-#Preview {
-    MainTabView()
-}
+//#Preview {
+//    MainTabView()
+//}

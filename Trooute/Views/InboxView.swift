@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct InboxView: View {
+    @ObservedObject var viewModel: FirebaseViewModel
+    @StateObject var userModel: UserUtils = UserUtils.shared
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            ForEach(viewModel.inbox) { inbox in
+                Text(inbox.user?.name ?? "No Nmae")
+            }
+        }.onAppear {
+            if let id = userModel.user?.id {
+                viewModel.getAllInbox(userId: id)
+            }
+        }
     }
 }
 
-#Preview {
-    InboxView()
-}
+//#Preview {
+//    InboxView()
+//}

@@ -54,7 +54,7 @@ class TripDetailsViewModel: ObservableObject {
     }
 
     private func calculateHandCarryWeight() {
-        if userModel.drivMode {
+        if userModel.driverMode {
             if let handCarryLuggage = trip?.trip?.luggageRestrictions?.compactMap({ $0 }).filter({ $0.type == .handCarry }).first,
                let weight = handCarryLuggage.weight {
                 self.handCarryWeight = "\(weight) KG"
@@ -69,7 +69,7 @@ class TripDetailsViewModel: ObservableObject {
     }
 
     private func calculateSuitcaseWeight() {
-        if userModel.drivMode {
+        if userModel.driverMode {
             if let handCarryLuggage = trip?.trip?.luggageRestrictions?.compactMap({ $0 }).filter({ $0.type == .suitCase }).first,
                let weight = handCarryLuggage.weight {
                 self.suitcaseWeight =  "\(weight) KG"
@@ -84,7 +84,7 @@ class TripDetailsViewModel: ObservableObject {
     }
 
     private func updateSmokingPreference() {
-        if userModel.drivMode {
+        if userModel.driverMode {
             smokingPreference = trip?.trip?.smokingPreference ?? false ? "Yes" : "No"
         } else {
             smokingPreference = trip?.smokingPreference ?? false ? "Yes" : "No"
@@ -93,7 +93,7 @@ class TripDetailsViewModel: ObservableObject {
     }
     
     private func updatePetPreference() {
-        if userModel.drivMode {
+        if userModel.driverMode {
             petPreference = trip?.trip?.petPreference ?? false ? "Yes" : "No"
         } else {
             petPreference = trip?.petPreference ?? false ? "Yes" : "No"
@@ -102,7 +102,7 @@ class TripDetailsViewModel: ObservableObject {
     }
 
     private func updateLanguagePreference() {
-        if userModel.drivMode {
+        if userModel.driverMode {
             languagePreference =  trip?.trip?.languagePreference ?? "Not Provided"
         } else {
             languagePreference =  trip?.languagePreference ?? "Not Provided"
@@ -111,7 +111,7 @@ class TripDetailsViewModel: ObservableObject {
     }
 
     private func updateOtherReliventDetails() {
-        if userModel.drivMode {
+        if userModel.driverMode {
             otherReliventDetails = trip?.trip?.note.emptyOrNil ?? "Not Provided"
         } else {
             otherReliventDetails = trip?.note.emptyOrNil ?? "Not Provided"
@@ -128,7 +128,7 @@ class TripDetailsViewModel: ObservableObject {
     }
 
     func getDestinationModel(trip: TripsData) -> TripRouteModel? {
-        if userModel.drivMode {
+        if userModel.driverMode {
             if let fromAddress = trip.trip?.fromAddress,
                let whereToAddress = trip.trip?.whereToAddress,
                let departureDate = trip.trip?.departureDate{
@@ -155,6 +155,14 @@ class TripDetailsViewModel: ObservableObject {
                     self.showPickUpPassengers = true
                 }
                 
+            }
+        }
+    }
+    
+    func endTrip() {
+        updateTripStatus(status: .COMPLETED) { success in
+            if success {
+                NavigationUtil.popToRootView(animated: true)
             }
         }
     }
@@ -197,7 +205,7 @@ class TripDetailsViewModel: ObservableObject {
         } else if (key == "trip_status_Canceled") {
             BannerHelper.displayBanner(.info, message: "Update trip status to canceled")
         } else if (key == "trip_status_PickupStarted") {
-            BannerHelper.displayBanner(.info, message: "Update trip status to started")
+            //Don't show banner
         }
         else {
             BannerHelper.displayBanner(.error, message: defaultMessage)

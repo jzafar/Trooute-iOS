@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class UserInfoCardViewModel: ObservableObject {
     let user: UserProfile
@@ -48,11 +49,19 @@ class UserInfoCardViewModel: ObservableObject {
     }
     
     func phoneCall() {
-        if let driver = user as? Driver {
-            print(driver.phoneNumber)
-        } else if let user = user as? User {
-            print(user.phoneNumber)
+        let tel = "tel://"
+        var num = ""
+        if let driver = user as? Driver,
+           let phoneNumber = driver.phoneNumber {
+            num = phoneNumber
+        } else if let user = user as? User,
+            let phoneNumber = user.phoneNumber {
+            num = phoneNumber
         }
+       
+        let formattedString = tel + num
+        guard let url = URL(string: formattedString) else { return }
+        UIApplication.shared.open(url)
     }
     
 }

@@ -8,6 +8,7 @@
 protocol PickupPassengersProtocol {
     func updateTripStatus(tripId: String, status: TripStatus, completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void)
     func getPickupStatus(tripId: String, completion: @escaping (Result<Response<GetTripDetailsResponse>, Error>) -> Void)
+    func updatePickupStatus(request: UpdatePickupStatusRequest, completion: @escaping (Result<Response<GetTripDetailsResponse>, Error>) -> Void)
 }
 class PickupPassengersRepository: PickupPassengersProtocol {
     private let networkService: NetworkServiceProtocol
@@ -22,5 +23,9 @@ class PickupPassengersRepository: PickupPassengersProtocol {
     
     func getPickupStatus(tripId: String, completion: @escaping (Result<Response<GetTripDetailsResponse>, Error>) -> Void) {
         networkService.request(url: Apis.getPickupStatus + "/\(tripId)", method: .GET, completion: completion)
+    }
+    
+    func updatePickupStatus(request: UpdatePickupStatusRequest, completion: @escaping (Result<Response<GetTripDetailsResponse>, Error>) -> Void) {
+        networkService.request(url: Apis.updatePickupStatus, method: .POST, httpBody: request.toDictionary(), completion: completion)
     }
 }

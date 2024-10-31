@@ -39,8 +39,21 @@ struct Apis {
     ///: Review ENDPOINTS
     static let review =             base + "review"
     ///: Wish ENDPOINTS
-    static let getWishList =               base + "users/get-my-wishlist"
+    static let getWishList =        base + "users/get-my-wishlist"
     
+    ///: Firebase // FCM
+    static let LAST_MESSAGE_FIELD_NAME = "lastMessage"
+    static let TIMESTAMP_FIELD_NAME = "timestamp"
+    static let MESSAGE_USER_INFO = "UserInfo"
+    static let FCM_BASE_URL = "https://fcm.googleapis.com"
+    static let SERVER_KEY = "AAAAsRKMUMQ:APA91bGTTdh3bQM6oORh38BawUcjBYokEyDT_j4tFkb2scXMMM7QqFRx6OE8yKTrjs9C5l_hHI3OelhaHDVnSg0LUtl0XQhWa5nPLUJ-Ul046k6w4gqIjElov_c_ycjKxCuUaO_qNaKk"
+    static let CONTENT_TYPE = "application/json"
+    static let TOPIC = "/topics/"
+    static let TROOUTE_TOPIC = "trooute_topic_"
+    static let TONE = "Tri-tone"
+    static let MUTABLE_CONTENT = true
+    static let CHANNEL_ID = "TroouteChannel"
+    static let CHANNEL_DESCRIPTION = "TroouteChannelDescription"
    
 }
 //// TRIPS END POINT

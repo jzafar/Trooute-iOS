@@ -73,17 +73,16 @@ struct TripDetailsView: View {
                 }
             }
         }
-//        .navigationDestination(for: Booking.self) { booking in
-//            BookingDetailsView(viewModel: BookingDetailsViewModel(bookingId: booking.id))
-//        }
         .navigationDestination(isPresented: $viewModel.openDetailsView, destination: {
             if let bookingId = viewModel.bookingId {
                 BookingDetailsView(viewModel: BookingDetailsViewModel(bookingId: bookingId))
             }
             
+        }).navigationDestination(isPresented: $viewModel.showPickUpPassengers, destination: {
+            PickupPassengersView(viewModel: PickupPassengersViewModel(tripId: viewModel.tripId))
         })
         .safeAreaInset(edge: .bottom) {
-            if userModel.drivMode {
+            if userModel.driverMode {
                 if let trip = viewModel.trip?.trip {
                     pickUpPassengers(trip)
                 }
@@ -109,29 +108,46 @@ struct TripDetailsView: View {
                     viewModel.cancelTrip()
             }),
             secondaryButton: .cancel(Text("Cancel")))
-        }.navigationDestination(isPresented: $viewModel.showPickUpPassengers) {
-            PickupPassengersView(viewModel: PickupPassengersViewModel(tripId: viewModel.tripId))
         }
     }
 
     @ViewBuilder
     func pickUpPassengers(_ trip: Trip) -> some View {
-        VStack {
-            HStack {
-                WhiteBorderButton(title: "Cancel") {
-                    viewModel.showAlert = true
-                }
+        if trip.status == .IN_PROGRESS {
+            VStack {
+                HStack {
+                    
+                    PrimaryGreenButton(title: "End Trip") {
+                        viewModel.endTrip()
+                    }
 
-                PrimaryGreenButton(title: "Pickup Passengers") {
-                    viewModel.pickUpPassengersPressed()
-                }
+                }.padding(.horizontal)
+                    .background(Color("TitleColor"))
+                    .frame(height: 100)
 
-            }.padding(.horizontal)
-                .background(Color("TitleColor"))
-                .frame(height: 100)
+            }.background(Color("TitleColor"))
+                .frame(height: 130)
+            
+        } else if trip.status == .SCHEDULED ||  trip.status == .PickupStarted {
+            VStack {
+                HStack {
+                    WhiteBorderButton(title: "Cancel") {
+                        viewModel.showAlert = true
+                    }
 
-        }.background(Color("TitleColor"))
-            .frame(height: 130)
+                    PrimaryGreenButton(title: "Pickup Passengers") {
+                        viewModel.pickUpPassengersPressed()
+                    }
+
+                }.padding(.horizontal)
+                    .background(Color("TitleColor"))
+                    .frame(height: 100)
+
+            }.background(Color("TitleColor"))
+                .frame(height: 130)
+            
+        }
+        
     }
 
     @ViewBuilder

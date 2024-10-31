@@ -30,9 +30,11 @@ class BookingDetailsViewModel: ObservableObject {
     @Published var popView = false
     @Published var passgenerId: String?
     @Published var finalPrice: Double = 0.0
+    @Published var currentBooking: Booking? = nil
     let user = UserUtils.shared
     private let repository = BookingDetailsRepository()
     private var paymentUrl: String? = nil
+    private var timer: Timer?
     init(bookingId: String) {
         self.bookingId = bookingId
         
@@ -49,6 +51,7 @@ class BookingDetailsViewModel: ObservableObject {
                     self?.bookingData = bookingData
                     self?.status = bookingData.status ?? .waiting
                     self?.availableSeats = "\(bookingData.numberOfSeats ?? 0)"
+                    self?.checkPickupStatus()
                 } else {
                     BannerHelper.displayBanner(.error, message: response.data.message)
                 }
@@ -58,17 +61,26 @@ class BookingDetailsViewModel: ObservableObject {
         }
     }
     
-    
+    func checkPickupStatus() {
+        if !user.driverMode &&
+            bookingData?.trip.status == .PickupStarted &&
+            bookingData?.status == .confirmed {
+            if let tripId = self.bookingData?.trip.id {
+                self.getPickUpStatus(tripId: tripId)
+            }
+            startTimer()
+        }
+    }
     func getDriverMode() -> Bool {
         return user.driverMode
     }
     
     func bookPrice() -> Double {
-            if let price = self.bookingData?.trip.pricePerPerson {
-                return price * Double(self.bookingData?.numberOfSeats ?? 0)
-            }
-            return 0.0
-           
+        if let price = self.bookingData?.trip.pricePerPerson {
+            return price * Double(self.bookingData?.numberOfSeats ?? 0)
+        }
+        return 0.0
+        
         
     }
     
@@ -84,29 +96,29 @@ class BookingDetailsViewModel: ObservableObject {
     }
     
     func setDepartureDate() {
-         self.departureDate = bookingData?.trip.departureDate.fullFormate() ?? bookingData?.trip.departureDate ?? "Unknown"
+        self.departureDate = bookingData?.trip.departureDate.fullFormate() ?? bookingData?.trip.departureDate ?? "Unknown"
     }
     
     
     func getStatu(_ driverMode: Bool) -> (Image, String) {
-       return Utils.checkStatus(isDriverApproved: driverMode, status: status)
+        return Utils.checkStatus(isDriverApproved: driverMode, status: status)
     }
     
     func getHandCarryWeight() -> String {
         if let handCarryLuggage = bookingData?.trip.luggageRestrictions?.compactMap({ $0 }).filter({ $0.type == .handCarry }).first,
-        let weight = handCarryLuggage.weight {
+           let weight = handCarryLuggage.weight {
             return "\(weight) KG"
         }
-
+        
         return "Not Provided"
     }
     
     func getSuitcaseWeight() -> String {
         if let handCarryLuggage = bookingData?.trip.luggageRestrictions?.compactMap({ $0 }).filter({ $0.type == .suitCase }).first,
-        let weight = handCarryLuggage.weight {
+           let weight = handCarryLuggage.weight {
             return "\(weight) KG"
         }
-
+        
         return "Not Provided"
     }
     
@@ -228,5 +240,60 @@ class BookingDetailsViewModel: ObservableObject {
     
     func onTapPassenger(id: String) {
         self.passgenerId = id
+    }
+    
+    func stopTimerIfRunning() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    func startTimer() {
+        if let tripId = self.bookingData?.trip.id {
+            timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { timer in
+                print("\(timer)")
+                self.getPickUpStatus(tripId: tripId)
+            })
+        }
+        
+    }
+    
+    func getPickUpStatus(tripId: String) {
+        self.repository.getPickupStatus(tripId: tripId) { [weak self] result in
+            switch result {
+            case .success(let response):
+                if response.data.success,
+                   let tripData = response.data.data {
+                    if let booking = tripData.bookings?.first(where: { $0.id == self?.bookingId }) {
+                        self?.currentBooking = booking
+                    }
+                }
+            case .failure(let failure):
+                log.error("fail to load status \(failure.localizedDescription)")
+            }
+        }
+    }
+    
+    func updatePickUpStatus(status: PickUpPassengersStatus) {
+        
+        if let tripId = currentBooking?.trip?.id,
+           let pickupStatusId = currentBooking?.pickupStatus?.id {
+            let requst = UpdatePickupStatusRequest(tripId: tripId, bookingId: self.bookingId, pickupStatus: status.rawValue, pickupId: pickupStatusId)
+            SwiftLoader.show(title: "Updating...", animated: true)
+            self.repository.updatePickupStatus(request: requst) { [weak self] result in
+                SwiftLoader.hide()
+                switch result {
+                case .success(let response):
+                    if response.data.success {
+                        BannerHelper.displayBanner(.success, message: "Status updated successfully")
+                        self?.getPickUpStatus(tripId: tripId)
+                    } else {
+                        BannerHelper.displayBanner(.error, message: response.data.message ?? "Something went wrong")
+                    }
+                case .failure(let failure):
+                    BannerHelper.displayBanner(.error, message: failure.localizedDescription)
+                }
+            }
+        }
+        
     }
 }

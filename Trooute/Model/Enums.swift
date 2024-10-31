@@ -5,12 +5,15 @@
 //  Created by Muhammad Zafar on 2024-10-20.
 //
 
-enum TripStatus: String {
+enum TripStatus: String, Codable {
     case SCHEDULED = "Scheduled"
     case IN_PROGRESS = "In Progress"
     case COMPLETED = "Completed"
     case CANCELED = "Canceled"
     case PickupStarted
+    init(from rawValue: String) {
+        self = TripStatus(rawValue: rawValue) ?? .SCHEDULED
+    }
 }
 
 enum DriverStatus: String, Codable {

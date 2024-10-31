@@ -12,7 +12,7 @@ protocol BookingDetailsRepositoryProtocol {
     func confirmBooking(bookingId: String, completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void)
 }
 
-class BookingDetailsRepository: BookingDetailsRepositoryProtocol {
+class BookingDetailsRepository: BookingDetailsRepositoryProtocol, PickupPassengersProtocol {
     private let networkService: NetworkServiceProtocol
 
     init(networkService: NetworkServiceProtocol = NetworkService()) {
@@ -37,5 +37,18 @@ class BookingDetailsRepository: BookingDetailsRepositoryProtocol {
     func confirmBooking(bookingId: String, completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void) {
         let url = Apis.booking + "/\(bookingId)/confirm"
         networkService.request(url: url, method: .POST, completion: completion)
+    }
+    
+    func updateTripStatus(tripId: String, status: TripStatus, completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void) {
+        let url =  Apis.updateTripStatus + "/\(tripId)"
+        networkService.request(url: url, method: .PATCH, queryParams: ["status" : status.rawValue], completion: completion)
+    }
+    
+    func getPickupStatus(tripId: String, completion: @escaping (Result<Response<GetTripDetailsResponse>, Error>) -> Void) {
+        networkService.request(url: Apis.getPickupStatus + "/\(tripId)", method: .GET, completion: completion)
+    }
+    
+    func updatePickupStatus(request: UpdatePickupStatusRequest, completion: @escaping (Result<Response<GetTripDetailsResponse>, Error>) -> Void) {
+        networkService.request(url: Apis.updatePickupStatus, method: .POST, httpBody: request.toDictionary(), completion: completion)
     }
 }

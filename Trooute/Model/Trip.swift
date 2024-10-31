@@ -21,7 +21,7 @@ struct Trip: Codable, Hashable {
     var languagePreference: String? = "Not provided"
     var note: String? = "Not provided"
     var availableSeats: Int?
-    var status: String? = "Scheduled"
+    var status: TripStatus? = .SCHEDULED
     var refunded: Bool?
     var createdAt: String?
     var updatedAt: String?
