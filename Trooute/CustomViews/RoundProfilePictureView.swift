@@ -29,7 +29,7 @@ struct RoundProfilePictureView: View {
                     .overlay(RoundedRectangle(cornerRadius: width/2).stroke(Color.black, lineWidth: 1))
                     .padding(1)
             } else if let photo = user?.photo {
-                WebImage(url: URL(string: photoUrl(photo))) { image in
+                WebImage(url: URL(string: Utils.getImageFullUrl(photo))) { image in
 //                    self.image = Image(uiimage: image.image)
 //                        image.resizable()
 //                        image.aspectRatio(contentMode: .fill)
@@ -106,10 +106,6 @@ struct RoundProfilePictureView: View {
             CameraView(selectedImage: $image)
         }
         
-    }
-    
-    func photoUrl(_ photo: String) -> String {
-        return "\(Constants.baseImageUrl)/\(photo)"
     }
     
     // MARK: - Permission Requests

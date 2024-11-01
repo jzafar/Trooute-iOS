@@ -116,7 +116,6 @@ struct TripDetailsView: View {
         if trip.status == .IN_PROGRESS {
             VStack {
                 HStack {
-                    
                     PrimaryGreenButton(title: "End Trip") {
                         viewModel.endTrip()
                     }

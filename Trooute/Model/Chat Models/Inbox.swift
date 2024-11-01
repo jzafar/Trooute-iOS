@@ -13,7 +13,6 @@ struct Inbox: Codable, Hashable, Identifiable {
     let user: ChatUser?
     let users: [ChatUser]?
     let lastMessage: String?
-    let timestamp: Int?
+    let timestamp: TimeInterval?
     var message: Message? = nil
-//    @ServerTimestamp var timestamp: Date?
 }

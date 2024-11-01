@@ -10,5 +10,5 @@ struct Message: Codable, Identifiable, Hashable {
     var id: String
     let senderId: String
     let message: String
-    let timestamp: Int
+    let timestamp: TimeInterval
 }

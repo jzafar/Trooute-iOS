@@ -124,4 +124,8 @@ struct Utils {
 
         return firstWindow.rootViewController
     }
+    
+    static func getImageFullUrl(_ photo: String) -> String {
+        return "\(Constants.baseImageUrl)/\(photo)"
+    }
 }
