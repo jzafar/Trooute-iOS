@@ -11,8 +11,8 @@ struct MainTabView: View {
     @State private var selectedTab: Tab = .home
     private var viewModel = MainTabViewModel()
     private var tabBarView: TabBarView {
-        TabBarView(selection: $selectedTab) { _ in
-            print("Enjoying a custom TabView")
+        TabBarView(selection: $selectedTab) { selectedtab in
+            Tabbar.shared.selectedTab = selectedtab
         }
     }
 
@@ -29,6 +29,7 @@ struct MainTabView: View {
                 InboxView(viewModel: viewModel.fireBase)
                     .onAppear {
                         Tabbar.shared.hide = false
+                        Tabbar.shared.hasNewMessage = false
                     }
                     .navigationBarTitle("Inbox")
             }

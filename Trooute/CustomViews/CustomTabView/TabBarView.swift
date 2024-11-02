@@ -10,30 +10,35 @@ import SwiftUI
 enum Tab: String, Hashable, CaseIterable {
     case home, inbox, bookings, settings
     var index: Int {
-            switch self {
-            case .home:
-                return 0
-            case .inbox:
-                return 1
-            case .bookings:
-                return 2
-            case .settings:
-                return 3
-            }
+        switch self {
+        case .home:
+            return 0
+        case .inbox:
+            return 1
+        case .bookings:
+            return 2
+        case .settings:
+            return 3
         }
+    }
 
-        var label: String {
-            rawValue.capitalized
-        }
+    var label: String {
+        rawValue.capitalized
+    }
 }
+
 class Tabbar: ObservableObject {
     @Published var hide: Bool = false
+    @Published var selectedTab: Tab = .home
+    @Published var hasNewMessage: Bool = false
     static let shared = Tabbar()
 }
+
 struct TabBarView: View {
     @Binding var selection: Tab
     @StateObject private var tabbar = Tabbar.shared
     let onTabSelection: (Tab) -> Void
+
     var body: some View {
         if tabbar.hide {
             EmptyView()
@@ -50,7 +55,6 @@ struct TabBarView: View {
                 }
             }.background(.title)
         }
-        
     }
 
     @ViewBuilder
@@ -66,7 +70,7 @@ struct TabBarView: View {
             settingsView()
         }
     }
-    
+
     @ViewBuilder
     func homeView() -> some View {
         VStack {
@@ -78,17 +82,26 @@ struct TabBarView: View {
                 .foregroundStyle(Color.white)
         }
     }
-    
+
     @ViewBuilder
     func inboxView() -> some View {
-        Image(systemName: selection == .inbox ? "bubble.left.fill" : "bubble.left")
-            .resizable()
-            .font(.largeTitle)
-            .frame(width: 30, height: 30)
-            .padding(.top, 15)
-            .foregroundStyle(Color.white)
+        ZStack(alignment: .topTrailing) {
+            Image(systemName: selection == .inbox ? "bubble.left.fill" : "bubble.left")
+                .resizable()
+                .font(.largeTitle)
+                .frame(width: 30, height: 30)
+                .padding(.top, 15)
+                .foregroundStyle(Color.white)
+
+            if tabbar.hasNewMessage {
+                Circle()
+                    .fill(Color.red)
+                    .frame(width: 13, height: 13)
+                    .offset(x: 5, y: 10)
+            }
+        }
     }
-    
+
     @ViewBuilder
     func bookingsView() -> some View {
         Image(systemName: selection == .bookings ? "calendar.circle.fill" : "calendar.circle")
@@ -98,6 +111,7 @@ struct TabBarView: View {
             .padding(.top, 15)
             .foregroundStyle(Color.white)
     }
+
     @ViewBuilder
     func settingsView() -> some View {
         Image(systemName: selection == .settings ? "gearshape.fill" : "gearshape")
@@ -107,5 +121,4 @@ struct TabBarView: View {
             .padding(.top, 15)
             .foregroundStyle(Color.white)
     }
-    
 }

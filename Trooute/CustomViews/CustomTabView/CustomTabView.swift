@@ -78,23 +78,16 @@ private struct _CustomTabViewLayout<TabBarView: View, SelectionValue: Hashable>:
     let selectedTabIndex: Int
     
     private func contentView(children: _VariadicView.Children) -> some View {
-        #if canImport(UIKit)
         return UITabBarControllerRepresentable(
             selectedTabIndex: selectedTabIndex,
             controlledViews: children.map { UIHostingController(rootView: $0) }
         )
-        #elseif canImport(AppKit)
-        return NSTabViewControllerRepresentable(
-            selectedTabIndex: selectedTabIndex,
-            controlledViews: children.map { NSHostingController(rootView: $0) }
-        )
-        #endif
     }
     
     private func topBarView(children: _VariadicView.Children) -> some View {
         VStack(spacing: 0) {
             tabBarView
-            
+    
             contentView(children: children)
         }
     }
@@ -178,16 +171,12 @@ private struct _CustomTabViewLayout<TabBarView: View, SelectionValue: Hashable>:
                     leftBarView(children: children)
                 }
             case .bottom:
-                #if canImport(UIKit)
                 if #available(iOS 14, *) {
                     bottomBarView(children: children)
                         .ignoresSafeArea(.keyboard, edges: .bottom)
                 } else {
                     bottomBarViewiOS13(children: children)
                 }
-                #elseif canImport(AppKit)
-                bottomBarView(children: children)
-                #endif
             case .trailing:
                 switch layoutDirection {
                 case .leftToRight:

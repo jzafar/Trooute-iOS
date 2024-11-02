@@ -9,9 +9,9 @@ import Foundation
 import FirebaseFirestore
 
 struct Inbox: Codable, Hashable, Identifiable {
-    @DocumentID public var id: String?
+    var id: String
     let user: ChatUser?
-    let users: [ChatUser]?
+    var users: [ChatUser]? = nil
     let lastMessage: String?
     let timestamp: TimeInterval?
     var message: Message? = nil

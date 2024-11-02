@@ -155,6 +155,8 @@
 		CE727A8D2CD40B7000D27044 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE727A8C2CD40B6100D27044 /* ChatUser.swift */; };
 		CE727A8F2CD40BC700D27044 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE727A8E2CD40BC500D27044 /* Message.swift */; };
 		CE727A912CD40C4000D27044 /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE727A902CD40C3D00D27044 /* Inbox.swift */; };
+		CE727A962CD5060D00D27044 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE727A952CD5060D00D27044 /* MessageView.swift */; };
+		CE727A982CD509D800D27044 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE727A972CD509D300D27044 /* MessageViewModel.swift */; };
 		CEA18AC02CBBB6820096545F /* BasicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18ABF2CBBB6750096545F /* BasicResponse.swift */; };
 		CEA18AC42CBBCDB10096545F /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18AC32CBBCDAC0096545F /* MainTabViewModel.swift */; };
 		CEA18AC62CBBCDEA0096545F /* MainTabViewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18AC52CBBCDDE0096545F /* MainTabViewRepository.swift */; };
@@ -169,6 +171,7 @@
 		CEA18AE22CBD831E0096545F /* GetTripsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18AE12CBD83080096545F /* GetTripsRequest.swift */; };
 		CEAC81662CCEDBD6002C4676 /* EmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAC81652CCEDBD3002C4676 /* EmailController.swift */; };
 		CEAC81682CCEE814002C4676 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAC81672CCEE805002C4676 /* Notifications.swift */; };
+		CEB43FB62CD57050002D5CBD /* KeyboardReadable1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB43FB52CD5704F002D5CBD /* KeyboardReadable1.swift */; };
 		CED05F022C95AF7000E51158 /* TroouteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED05F012C95AF7000E51158 /* TroouteApp.swift */; };
 		CED05F042C95AF7000E51158 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED05F032C95AF7000E51158 /* ContentView.swift */; };
 		CED05F062C95AF7100E51158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CED05F052C95AF7100E51158 /* Assets.xcassets */; };
@@ -363,6 +366,8 @@
 		CE727A8C2CD40B6100D27044 /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
 		CE727A8E2CD40BC500D27044 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CE727A902CD40C3D00D27044 /* Inbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inbox.swift; sourceTree = "<group>"; };
+		CE727A952CD5060D00D27044 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		CE727A972CD509D300D27044 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		CEA18ABF2CBBB6750096545F /* BasicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicResponse.swift; sourceTree = "<group>"; };
 		CEA18AC32CBBCDAC0096545F /* MainTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
 		CEA18AC52CBBCDDE0096545F /* MainTabViewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewRepository.swift; sourceTree = "<group>"; };
@@ -377,6 +382,7 @@
 		CEA18AE12CBD83080096545F /* GetTripsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTripsRequest.swift; sourceTree = "<group>"; };
 		CEAC81652CCEDBD3002C4676 /* EmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailController.swift; sourceTree = "<group>"; };
 		CEAC81672CCEE805002C4676 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		CEB43FB52CD5704F002D5CBD /* KeyboardReadable1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardReadable1.swift; sourceTree = "<group>"; };
 		CED05EFE2C95AF7000E51158 /* Trooute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trooute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED05F012C95AF7000E51158 /* TroouteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TroouteApp.swift; sourceTree = "<group>"; };
 		CED05F032C95AF7000E51158 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -639,7 +645,7 @@
 				CE270B932CB067C800B9CFDC /* Setting */,
 				CE270B922CB0678F00B9CFDC /* OnboardView */,
 				CE270B912CB0674800B9CFDC /* Trip Views */,
-				CE5150362C9F259200B10107 /* InboxView.swift */,
+				CE727A942CD505F100D27044 /* Chat */,
 				CEA18AC22CBBCD980096545F /* TabBarView */,
 			);
 			path = Views;
@@ -648,7 +654,6 @@
 		CE57013E2C9E0DDE003BD7CA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				CE727A862CD3EF4A00D27044 /* FirebaseViewModel.swift */,
 				CE28F1292CB71F1B001CF2A1 /* GoogleAutocompleteViewModel.swift */,
 				CE1D680B2CA9474F0070970D /* BookingCardViewModel.swift */,
 				CE4E3D762CA3578A005C3CEE /* FAQViewModel.swift */,
@@ -720,6 +725,7 @@
 		CE5701762C9E96AF003BD7CA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CEB43FB52CD5704F002D5CBD /* KeyboardReadable1.swift */,
 				CE2169F52CC0558B002B9333 /* Double.swift */,
 				CEA18AC72CBBE82D0096545F /* StorageCodable.swift */,
 				CE5227F02CBB1D9D005C1175 /* Image.swift */,
@@ -797,6 +803,17 @@
 				CE727A8C2CD40B6100D27044 /* ChatUser.swift */,
 			);
 			path = "Chat Models";
+			sourceTree = "<group>";
+		};
+		CE727A942CD505F100D27044 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				CE5150362C9F259200B10107 /* InboxView.swift */,
+				CE727A862CD3EF4A00D27044 /* FirebaseViewModel.swift */,
+				CE727A952CD5060D00D27044 /* MessageView.swift */,
+				CE727A972CD509D300D27044 /* MessageViewModel.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		CEA18AC12CBBC7350096545F /* Main Setting View */ = {
@@ -1307,6 +1324,7 @@
 				CE5227F92CBB975D005C1175 /* OTPVerificationRequest.swift in Sources */,
 				CE28F12C2CB72325001CF2A1 /* SearchedLocation.swift in Sources */,
 				CE51507B2CA0B21800B10107 /* DashedLine.swift in Sources */,
+				CEB43FB62CD57050002D5CBD /* KeyboardReadable1.swift in Sources */,
 				CE4E3EA62CA7EC1C005C3CEE /* UserProfile.swift in Sources */,
 				CE08540C2CB29B4100A3E422 /* PictureView.swift in Sources */,
 				CE4E3E142CA5D948005C3CEE /* Constants.swift in Sources */,
@@ -1425,7 +1443,9 @@
 				CE4E3E102CA5C5C5005C3CEE /* TripCardViewModel.swift in Sources */,
 				CE270B952CB069C500B9CFDC /* BookingConfirmedView.swift in Sources */,
 				CE179D522CAC439400FFC206 /* WishViewModel.swift in Sources */,
+				CE727A982CD509D800D27044 /* MessageViewModel.swift in Sources */,
 				CE4E3E1B2CA5F6B8005C3CEE /* TripRouteView.swift in Sources */,
+				CE727A962CD5060D00D27044 /* MessageView.swift in Sources */,
 				CE1D68042CA940100070970D /* Review.swift in Sources */,
 				CE5701472C9E16EA003BD7CA /* ResetPasswordViewModel.swift in Sources */,
 				CE4E3E8E2CA74945005C3CEE /* TripRouteModel.swift in Sources */,

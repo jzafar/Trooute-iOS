@@ -60,4 +60,31 @@ extension TimeInterval {
             return dateFormatter.string(from: date)
         }
     }
+    
+    func formatMessageTimeInterval() -> String {
+        let date = Date(timeIntervalSince1970: self)
+        let now = Date()
+        let calendar = Calendar.current
+
+        if calendar.isDateInToday(date) {
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "h:mm a"
+            return timeFormatter.string(from: date)
+            
+        } else if calendar.isDateInYesterday(date) {
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "h:mm a"
+            return "Yesterday " + timeFormatter.string(from: date)
+            
+        } else if calendar.isDate(date, equalTo: now, toGranularity: .weekOfYear) {
+            let dayFormatter = DateFormatter()
+            dayFormatter.dateFormat = "EEEE h:mm a"
+            return dayFormatter.string(from: date)
+            
+        } else {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd h:mm a"
+            return dateFormatter.string(from: date)
+        }
+    }
 }
