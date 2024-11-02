@@ -10,34 +10,35 @@ import SDWebImageSwiftUI
 import SwiftUI
 
 struct MessageView: View {
-    @ObservedObject var viewModel: MessageViewModel
+    @ObservedObject var viewModel: FirebaseViewModel
+    var messageReceiverInfo: ChatUser
     var body: some View {
         VStack {
             ScrollViewReader { proxy in
-                List(viewModel.FBVM.messages) { message in
+                List(viewModel.messages) { message in
                     Messages(currentMessage: message)
                         .id(message)
                         .listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)
                 }
-                .onChange(of: viewModel.FBVM.messages) { _ in
+                .onChange(of: viewModel.messages) { _ in
                     // When items update, scroll to the last item
-                    if let lastItem = viewModel.FBVM.messages.last {
+                    if let lastItem = viewModel.messages.last {
                         withAnimation {
                             proxy.scrollTo(lastItem, anchor: .bottom)
                         }
                     }
                 }
                 .onReceive(keyboardPublisher) { newIsKeyboardVisible in
-                    if let lastItem = viewModel.FBVM.messages.last {
+                    if let lastItem = viewModel.messages.last {
                         withAnimation {
                             proxy.scrollTo(lastItem, anchor: .bottom)
                         }
                     }
                 }
-                .onReceive(Just(viewModel.FBVM.messages)) { _ in
+                .onReceive(Just(viewModel.messages)) { _ in
                     withAnimation {
-                        proxy.scrollTo(viewModel.FBVM.messages.last, anchor: .bottom)
+                        proxy.scrollTo(viewModel.messages.last, anchor: .bottom)
                     }
                 }
             }.onTapGesture {
@@ -45,14 +46,14 @@ struct MessageView: View {
             }
             .onAppear {
                 Tabbar.shared.hide = true
-                viewModel.getMessages()
+                viewModel.getMessages(messageReceiverInfo: messageReceiverInfo)
             }
             .ignoresSafeArea(edges: .bottom)
             .toolbarRole(.editor)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     HStack {
-                        if let photo = viewModel.messageReceiverInfo.photo {
+                        if let photo = messageReceiverInfo.photo {
                             WebImage(url: URL(string: Utils.getImageFullUrl(photo))) { image in
                                 image
                                     .resizable()
@@ -69,7 +70,7 @@ struct MessageView: View {
                             .overlay(Circle().stroke(Color.black, lineWidth: 1))
                             .padding(.vertical, 5)
                         }
-                        Text(viewModel.messageReceiverInfo.name)
+                        Text(messageReceiverInfo.name)
                             .bold()
                     }
                 }
@@ -104,7 +105,7 @@ struct MessageView: View {
             }
 
             Button(action: {
-                viewModel.sendMessage()
+                viewModel.sendMessage(messageReceiverInfo: messageReceiverInfo)
             }) {
                 Image(systemName: "paperplane.fill")
                     .foregroundColor(.blue)

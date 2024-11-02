@@ -16,7 +16,7 @@ struct InboxView: View {
         List {
             ForEach(viewModel.inbox) { inbox in
                 ZStack {
-                    NavigationLink(destination: MessageView(viewModel: MessageViewModel(viewModel: viewModel, messageReceiverInfo: inbox.user!))) {
+                    NavigationLink(destination: MessageView(viewModel: viewModel, messageReceiverInfo: inbox.user!)) {
                         messageCell(inbox: inbox)
                     }
                 }.listRowBackground(Color.clear)

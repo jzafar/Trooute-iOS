@@ -8,7 +8,7 @@
 // import FirebaseFirestoreSwift
 import Combine
 import FirebaseFirestore
-
+//TODO: fix this for inbox and messages view by adding listener
 class FirebaseViewModel: ObservableObject {
     private let inboxCollection = Firestore.firestore().collection("TroouteInbox")
     private var userModel = UserUtils.shared
@@ -16,6 +16,14 @@ class FirebaseViewModel: ObservableObject {
     @Published var inbox: [Inbox] = []
     @Published var messages: [Message] = []
     var listener: ListenerRegistration?
+    
+    
+    
+    // MARK: - Messages Sceen
+    @Published var newMessage: String = ""
+    @Published var textEditorHeight: CGFloat = 40
+    @Published var isKeyboardVisible = false
+    
     init() {
         if let userId = userModel.user?.id {
             getAllInbox(userId: userId)
@@ -260,4 +268,50 @@ class FirebaseViewModel: ObservableObject {
     }
 
     // MARK: - Messages View Model
+    func sendMessage(messageReceiverInfo: ChatUser) {
+        if newMessage.trim().count == 0 {
+            return
+        }
+        let cUser = ChatUser(id: userModel.user!.id, name: userModel.user!.name, photo: userModel.user!.photo, seen: true)
+        let receiver = ChatUser(id: messageReceiverInfo.id, name: messageReceiverInfo.name, photo: messageReceiverInfo.photo, seen: false)
+        let inbox = Inbox(id: "\(UUID())", user: receiver, lastMessage: newMessage.trim(), timestamp: Date().timeIntervalSince1970)
+        let message = Message(id: "\(UUID())", senderId: self.userModel.user!.id, message: newMessage.trim(), timestamp:  Date().timeIntervalSince1970)
+        self.sendMessage(currentUser: cUser, inbox: inbox, message: message) { [weak self] error in
+            if let err = error {
+                BannerHelper.displayBanner(.error, message: err.localizedDescription)
+            } else {
+                self?.newMessage = ""
+            }
+        }
+    }
+    
+    func markAsRead(messageReceiverInfo: ChatUser) {
+        if let currentUserId = userModel.user?.id {
+            self.updateSeenStatus(currentUID: currentUserId, receiverID: messageReceiverInfo.id, isSeen: true) { error in
+                
+            }
+        }
+    }
+        
+    func adjustTextEditorHeight() {
+        let maxHeight: CGFloat = 120
+        let fixedWidth: CGFloat = UIScreen.main.bounds.width - 100 // Adjust based on other padding
+        
+        let size = CGSize(width: fixedWidth, height: .infinity)
+        let estimatedSize = newMessage.boundingRect(
+            with: size,
+            options: .usesLineFragmentOrigin,
+            attributes: [.font: UIFont.systemFont(ofSize: 16)],
+            context: nil
+        )
+        
+        textEditorHeight = min(maxHeight, max(40, estimatedSize.height + 20))
+    }
+    
+    func getMessages(messageReceiverInfo: ChatUser) {
+        if let current = userModel.user?.id {
+            self.getAllMessages(senderId: current, receiverId: messageReceiverInfo.id)
+            self.markAsRead(messageReceiverInfo: messageReceiverInfo)
+        }
+    }
 }

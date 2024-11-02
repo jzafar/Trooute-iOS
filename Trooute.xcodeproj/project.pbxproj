@@ -156,7 +156,6 @@
 		CE727A8F2CD40BC700D27044 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE727A8E2CD40BC500D27044 /* Message.swift */; };
 		CE727A912CD40C4000D27044 /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE727A902CD40C3D00D27044 /* Inbox.swift */; };
 		CE727A962CD5060D00D27044 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE727A952CD5060D00D27044 /* MessageView.swift */; };
-		CE727A982CD509D800D27044 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE727A972CD509D300D27044 /* MessageViewModel.swift */; };
 		CEA18AC02CBBB6820096545F /* BasicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18ABF2CBBB6750096545F /* BasicResponse.swift */; };
 		CEA18AC42CBBCDB10096545F /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18AC32CBBCDAC0096545F /* MainTabViewModel.swift */; };
 		CEA18AC62CBBCDEA0096545F /* MainTabViewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18AC52CBBCDDE0096545F /* MainTabViewRepository.swift */; };
@@ -367,7 +366,6 @@
 		CE727A8E2CD40BC500D27044 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CE727A902CD40C3D00D27044 /* Inbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inbox.swift; sourceTree = "<group>"; };
 		CE727A952CD5060D00D27044 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
-		CE727A972CD509D300D27044 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		CEA18ABF2CBBB6750096545F /* BasicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicResponse.swift; sourceTree = "<group>"; };
 		CEA18AC32CBBCDAC0096545F /* MainTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
 		CEA18AC52CBBCDDE0096545F /* MainTabViewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewRepository.swift; sourceTree = "<group>"; };
@@ -811,7 +809,6 @@
 				CE5150362C9F259200B10107 /* InboxView.swift */,
 				CE727A862CD3EF4A00D27044 /* FirebaseViewModel.swift */,
 				CE727A952CD5060D00D27044 /* MessageView.swift */,
-				CE727A972CD509D300D27044 /* MessageViewModel.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1443,7 +1440,6 @@
 				CE4E3E102CA5C5C5005C3CEE /* TripCardViewModel.swift in Sources */,
 				CE270B952CB069C500B9CFDC /* BookingConfirmedView.swift in Sources */,
 				CE179D522CAC439400FFC206 /* WishViewModel.swift in Sources */,
-				CE727A982CD509D800D27044 /* MessageViewModel.swift in Sources */,
 				CE4E3E1B2CA5F6B8005C3CEE /* TripRouteView.swift in Sources */,
 				CE727A962CD5060D00D27044 /* MessageView.swift in Sources */,
 				CE1D68042CA940100070970D /* Review.swift in Sources */,
