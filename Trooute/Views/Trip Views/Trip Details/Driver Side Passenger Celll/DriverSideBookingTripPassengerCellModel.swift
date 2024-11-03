@@ -8,12 +8,15 @@
 import Foundation
 class DriverSideBookingTripPassengerCellModel {
     var booking: Booking
-    init (booking: Booking) {
+    var isHistory = false
+    private var userModel = UserUtils.shared
+    init (booking: Booking, isHistory: Bool = false) {
         self.booking = booking
+        self.isHistory = isHistory
     }
     
     func getDriverModel(user: User) -> UserInfoCardViewModel {
-        return UserInfoCardViewModel(user: user)
+        return UserInfoCardViewModel(user: user, showUserContact: (booking.status == .confirmed && !isHistory))
     }
     
     var status: BookingStatus {
@@ -25,10 +28,15 @@ class DriverSideBookingTripPassengerCellModel {
     }
     
     var departureDate: String {
-        if let date = booking.tripData?.departureDate.fullFormate() {
-            return date
+        if isHistory {
+            return booking.updatedAt.fullFormate()
+        } else {
+            if let date = booking.tripData?.departureDate.fullFormate() {
+                return date
+            }
+            return Date().fullFormatDate()
         }
-        return Date().fullFormatDate()
+       
     }
     
     
@@ -39,6 +47,9 @@ class DriverSideBookingTripPassengerCellModel {
     }
     
     func finalPrice() -> Double {
+        if isHistory && !userModel.driverMode {
+            return self.booking.amount
+        }
         return self.booking.amount - Double(booking.numberOfSeats) * 2
     }
 }

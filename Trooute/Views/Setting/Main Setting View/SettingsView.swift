@@ -127,7 +127,7 @@ struct SettingsView: View {
                 ListRowText(text: "Create a new trip")
             }
         })
-        NavigationLink(destination: EmptyView(), label: {
+        NavigationLink(destination: TripHistoryView(), label: {
             HStack {
                 Image("ic_triphistory")
                     .resizable()

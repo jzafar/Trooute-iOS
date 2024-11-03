@@ -134,7 +134,7 @@ struct BookingDetailsView: View {
     @ViewBuilder
     func passengerInfoView() -> some View {
         if let user = viewModel.bookingData?.user {
-            UserInfoCardView(viewModel: UserInfoCardViewModel(user: user))
+            UserInfoCardView(viewModel: UserInfoCardViewModel(user: user, showUserContact: viewModel.bookingData?.status == .confirmed))
         }
     }
 

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @EnvironmentObject var fireBaseVM :  FirebaseViewModel
     @State private var selectedTab: Tab = .home
     private var viewModel = MainTabViewModel()
     private var tabBarView: TabBarView {
@@ -26,7 +27,7 @@ struct MainTabView: View {
             }
 
             NavigationView {
-                InboxView(viewModel: viewModel.fireBase)
+                InboxView()
                     .onAppear {
                         Tabbar.shared.hide = false
                         Tabbar.shared.hasNewMessage = false
@@ -53,6 +54,9 @@ struct MainTabView: View {
         }
         .onAppear {
             viewModel.getMe()
+            if let id = UserUtils.shared.user?.id {
+                fireBaseVM.getAllInbox(userId: id)
+            }
         }
     }
 }

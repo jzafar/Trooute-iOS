@@ -12,6 +12,8 @@ struct PriceView1: View {
     let showPersonText: Bool
     let showSeatsRow: Bool
     let showPlateformFee: Bool
+    var showTotal: Bool = false
+    var totalPrice: Double = 0.0
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -55,9 +57,20 @@ struct PriceView1: View {
                             .padding(.top, 5)
                             .padding(.leading, -3)
                     }
-                }
+                    Spacer()
+                    if showTotal {
+                        Text("€\(String(format: "%.1f", totalPrice))")
+                            .font(.title3).bold()
+                            .foregroundColor(.white)
+                        Text("Total")
+                            .font(.footnote)
+                            .foregroundColor(.white)
+                            .padding(.top, 5)
+                            .padding(.leading, -3)
+                    }
+                }.padding(.vertical, 5)
                 
-            }.padding()
+            }.padding(.horizontal)
         }.background(Color("TitleColor"))
     }
     func bookPrice(_ price: Double?) -> String {

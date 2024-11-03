@@ -287,7 +287,7 @@ class BookingDetailsViewModel: ObservableObject {
                         BannerHelper.displayBanner(.success, message: "Status updated successfully")
                         self?.getPickUpStatus(tripId: tripId)
                     } else {
-                        BannerHelper.displayBanner(.error, message: response.data.message ?? "Something went wrong")
+                        BannerHelper.displayBanner(.error, message: response.data.message)
                     }
                 case .failure(let failure):
                     BannerHelper.displayBanner(.error, message: failure.localizedDescription)

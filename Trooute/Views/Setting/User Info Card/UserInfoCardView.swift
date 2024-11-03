@@ -43,7 +43,7 @@ struct UserInfoCardView: View {
                                 .frame(width: 30, height: 30)
                                 .padding(.horizontal,5)
                                 .onTapGesture {
-                                    print(viewModel.user.id)
+                                    viewModel.showChatScreen = true
                                 }
                             Image("ic_call")
                                 .resizable()
@@ -62,6 +62,11 @@ struct UserInfoCardView: View {
             Spacer()
         }
         .cornerRadius(25)
+        .fullScreenCover(isPresented: $viewModel.showChatScreen, content: {
+            let chatUser = ChatUser(id: viewModel.user.id, name: viewModel.name, seen: true)
+            MessageView(messageReceiverInfo: chatUser)
+                .environment(\.isInNavigationStack, false)
+        })
     }
 
     @ViewBuilder

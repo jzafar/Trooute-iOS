@@ -63,11 +63,13 @@ struct DriverSideBookingTripPassengerCell: View {
     @ViewBuilder
     func statusView() -> some View {
         VStack(alignment: .leading) {
-            let (image, status) = Utils.checkStatus(isDriverApproved: userModel.driverMode, status: viewModel.booking.status)
-            HStack {
-                image
-                Text(status)
-            }.padding(.bottom, 10)
+            if !viewModel.isHistory {
+                let (image, status) = Utils.checkStatus(isDriverApproved: userModel.driverMode, status: viewModel.booking.status)
+                HStack {
+                    image
+                    Text(status)
+                }.padding(.bottom, 10)
+            }
             
             HStack {
                 TextViewLableText(text: viewModel.bookingId)

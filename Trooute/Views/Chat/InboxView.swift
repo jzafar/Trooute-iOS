@@ -9,14 +9,13 @@ import SDWebImageSwiftUI
 import SwiftUI
 
 struct InboxView: View {
-    @ObservedObject var viewModel: FirebaseViewModel
+    @EnvironmentObject var viewModel: FirebaseViewModel
     @StateObject var userModel: UserUtils = UserUtils.shared
-    
     var body: some View {
         List {
             ForEach(viewModel.inbox) { inbox in
                 ZStack {
-                    NavigationLink(destination: MessageView(viewModel: viewModel, messageReceiverInfo: inbox.user!)) {
+                    NavigationLink(destination: MessageView(messageReceiverInfo: inbox.user!).environment(\.isInNavigationStack, true)) {
                         messageCell(inbox: inbox)
                     }
                 }.listRowBackground(Color.clear)

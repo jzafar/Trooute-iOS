@@ -13,10 +13,12 @@ let log = Logs.self
 struct TroouteApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var user = UserUtils.shared
+    @StateObject var fireBase = FirebaseViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(user)
+                .environmentObject(fireBase)
         }
     }
 }

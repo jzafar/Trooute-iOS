@@ -206,6 +206,8 @@ class TripDetailsViewModel: ObservableObject {
             BannerHelper.displayBanner(.info, message: "Update trip status to canceled")
         } else if (key == "trip_status_PickupStarted") {
             //Don't show banner
+        } else if (key == "trip_status_Completed") {
+            BannerHelper.displayBanner(.success, message: "Update trip status to completed, you can see this trip in your Trip History")
         }
         else {
             BannerHelper.displayBanner(.error, message: defaultMessage)

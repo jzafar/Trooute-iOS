@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 class MainTabViewModel: ObservableObject {
 //    @AppStorage(UserDefaultsKey.user.key) var user: User?
-    @Published var fireBase = FirebaseViewModel()
+   
     private let repositiry = MainTabViewRepository()
     func getMe() {
         repositiry.getMe { result in

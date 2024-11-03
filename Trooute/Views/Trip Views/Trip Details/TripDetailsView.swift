@@ -103,7 +103,7 @@ struct TripDetailsView: View {
         .alert(isPresented: $viewModel.showAlert) {
             Alert(
                 title: Text("Alert"),
-                message: Text("Are you sure you want to cancel this trip. If you\'ll cancel this trip, your confirmed bookings will be refunded as well."),
+                message: Text("Are you sure you want to cancel this trip. If you'll cancel this trip, your confirmed bookings will be refunded as well."),
                 primaryButton: .default(Text("OK"), action: {
                     viewModel.cancelTrip()
             }),

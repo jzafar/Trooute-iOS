@@ -17,18 +17,11 @@ class FirebaseViewModel: ObservableObject {
     @Published var messages: [Message] = []
     var listener: ListenerRegistration?
     
-    
-    
-    // MARK: - Messages Sceen
-    @Published var newMessage: String = ""
-    @Published var textEditorHeight: CGFloat = 40
-    @Published var isKeyboardVisible = false
-    
-    init() {
-        if let userId = userModel.user?.id {
-            getAllInbox(userId: userId)
-        }
-    }
+//    init() {
+//        if let userId = userModel.user?.id {
+//            getAllInbox(userId: userId)
+//        }
+//    }
 
     // MARK: - Fetch Inbox
 
@@ -266,8 +259,12 @@ class FirebaseViewModel: ObservableObject {
                 }
             }
     }
-
-    // MARK: - Messages View Model
+    // MARK: - Messages Sceen Params
+    @Published var newMessage: String = ""
+    @Published var textEditorHeight: CGFloat = 40
+    @Published var isKeyboardVisible = false
+    // MARK: - Messages View functions
+    
     func sendMessage(messageReceiverInfo: ChatUser) {
         if newMessage.trim().count == 0 {
             return

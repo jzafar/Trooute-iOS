@@ -59,7 +59,7 @@ struct TripPrefView: View {
                 .padding(.horizontal)
                 .padding(.bottom)
         }.background(.white)
-            .cornerRadius(25)
+            .cornerRadius(15)
     }
 }
 

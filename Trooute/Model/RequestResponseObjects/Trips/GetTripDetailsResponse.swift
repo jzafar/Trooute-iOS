@@ -9,6 +9,6 @@ import Foundation
 
 struct GetTripDetailsResponse: Codable {
     let data: TripsData?
-    let message: String?
+    let message: String
     let success: Bool
 }

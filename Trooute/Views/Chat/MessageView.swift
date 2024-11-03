@@ -10,9 +10,23 @@ import SDWebImageSwiftUI
 import SwiftUI
 
 struct MessageView: View {
-    @ObservedObject var viewModel: FirebaseViewModel
+    @EnvironmentObject var viewModel: FirebaseViewModel
+    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.isInNavigationStack) var isInNavigationStack
     var messageReceiverInfo: ChatUser
     var body: some View {
+        Group {
+            if isInNavigationStack {
+                messageContent
+            } else {
+                NavigationStack {
+                    messageContent
+                }
+            }
+        }
+    }
+
+    var messageContent: some View {
         VStack {
             ScrollViewReader { proxy in
                 List(viewModel.messages) { message in
@@ -29,7 +43,7 @@ struct MessageView: View {
                         }
                     }
                 }
-                .onReceive(keyboardPublisher) { newIsKeyboardVisible in
+                .onReceive(keyboardPublisher) { _ in
                     if let lastItem = viewModel.messages.last {
                         withAnimation {
                             proxy.scrollTo(lastItem, anchor: .bottom)

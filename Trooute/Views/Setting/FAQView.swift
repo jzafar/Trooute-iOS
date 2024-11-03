@@ -53,6 +53,6 @@ struct FAQView: View {
     }
 }
 
-#Preview {
-    FAQView()
-}
+//#Preview {
+//    FAQView()
+//}

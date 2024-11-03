@@ -11,6 +11,7 @@ import UIKit
 class UserInfoCardViewModel: ObservableObject {
     let user: UserProfile
     @Published var showUserContact: Bool = false
+    @Published var showChatScreen = false
     init(user: UserProfile, showUserContact: Bool = false) {
         self.user = user
         self.showUserContact = showUserContact

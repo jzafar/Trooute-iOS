@@ -71,7 +71,7 @@ class PickupPassengersViewModel: ObservableObject {
                         self?.getPickupStatus()
                         BannerHelper.displayBanner(.success, message: "Status updated successfully")
                     } else {
-                        BannerHelper.displayBanner(.error, message: response.data.message ?? "Somwthing went wrong")
+                        BannerHelper.displayBanner(.error, message: response.data.message)
                     }
                 case let .failure(failure):
                     BannerHelper.displayBanner(.error, message: failure.localizedDescription)

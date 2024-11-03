@@ -48,3 +48,14 @@ extension View {
           .eraseToAnyPublisher()
       }
 }
+
+struct IsInNavigationStackKey: EnvironmentKey {
+    static let defaultValue: Bool = false
+}
+
+extension EnvironmentValues {
+    var isInNavigationStack: Bool {
+        get { self[IsInNavigationStackKey.self] }
+        set { self[IsInNavigationStackKey.self] = newValue }
+    }
+}
