@@ -12,12 +12,14 @@ struct PickupPassengersView: View {
     @StateObject var userModel = UserUtils.shared
     var body: some View {
         List {
-            Section(header: TextViewLableText(text: "Passengers", textFont: .headline)) {
-                ForEach(viewModel.tripData?.bookings ?? []) { booking in
+            ForEach(viewModel.tripData?.bookings ?? []) { booking in
+                Section {
                     makePickupView(booking: booking)
                         .listRowBackground(Color.white)
                         .listRowInsets(EdgeInsets())
+                        .padding(.vertical, 0) // Adjust spacing between sections
                 }
+                .listRowSeparator(.hidden)
             }.onAppear {
                 viewModel.onAppear()
             }.onDisappear {
@@ -118,12 +120,12 @@ struct PickupPassengersView: View {
                     ZStack {
                         Circle()
                             .fill(Color(.darkGray))
-                            .frame(width: 50, height: 50)
+                            .frame(width: 35, height: 35)
 
                         Image(systemName: "map.fill")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 24, height: 24)
+                            .frame(width: 15, height: 15)
                             .foregroundColor(.white)
                     }
                 }

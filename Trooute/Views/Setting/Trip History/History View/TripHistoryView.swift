@@ -29,6 +29,7 @@ struct TripHistoryView: View {
                                 EmptyView()
                             }.opacity(0)
                             histroyCell(trip: trip)
+                                .padding(.vertical)
                         }.listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)
                             .listRowInsets(EdgeInsets())

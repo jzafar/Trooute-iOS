@@ -12,9 +12,13 @@ class UserInfoCardViewModel: ObservableObject {
     let user: UserProfile
     @Published var showUserContact: Bool = false
     @Published var showChatScreen = false
-    init(user: UserProfile, showUserContact: Bool = false) {
+    var showReviews = false
+    @Published var tripData: TripsData? = nil
+    init(user: UserProfile, showUserContact: Bool = false, showReviews: Bool = false, tripData: TripsData? = nil) {
         self.user = user
         self.showUserContact = showUserContact
+        self.showReviews = showReviews
+        self.tripData = tripData
     }
     
     var photo: String {

@@ -19,7 +19,7 @@ class TripHistoryViewModel: ObservableObject {
             case .success(let resposne):
                 if resposne.data.success,
                    let trips = resposne.data.data {
-                    self?.trips = trips
+                    self?.trips = trips.reversed()
                 } else {
                     BannerHelper.displayBanner(.error, message: resposne.data.message)
                 }

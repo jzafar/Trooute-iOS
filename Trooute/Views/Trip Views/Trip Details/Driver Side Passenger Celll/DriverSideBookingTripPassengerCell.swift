@@ -18,7 +18,10 @@ struct DriverSideBookingTripPassengerCell: View {
                     UserInfoCardView(viewModel: viewModel.getDriverModel(user: user))
                         .padding(.horizontal)
                 }
-                
+                if viewModel.isHistory && viewModel.booking.user?.id != userModel.user?.id {
+                    WriteReviewView(viewModel: WriteReviewViewModel(tripData: viewModel.tripData))
+                        .padding(.horizontal)
+                }
             }
             .padding(.bottom)
             .background(Color.white)

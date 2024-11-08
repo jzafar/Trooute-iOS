@@ -27,11 +27,11 @@ struct TripsData: Codable, Identifiable {
     let totalAmount: Double?
     let totalSeats: Int?
     let whereToLocation: Location?
-    let bookings: [Booking]?
+    var bookings: [Booking]?
     let trip: Trip?
     let luggageRestrictions: [LuggageRestrictions?]?
     var roundTrip: Bool? = false
-
+    var isDriverForReviews: Bool? = false // specially added for reviews
     enum CodingKeys: String, CodingKey {
         case v = "__v"
         case id = "_id"

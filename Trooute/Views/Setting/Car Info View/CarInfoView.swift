@@ -12,11 +12,17 @@ struct CarInfoView: View {
     @ObservedObject var viewModel: CarInfoViewModel
     var action: ((Bool) -> Void)? = nil
     var body: some View {
-        HStack {
-            carImageView()
-            carDetailsView()
-            Spacer()
+        VStack {
+            HStack {
+                carImageView()
+                carDetailsView()
+                Spacer()
+            }
+            if viewModel.isHistory {
+                WriteReviewView(viewModel: WriteReviewViewModel(isCarReview: true, tripData: viewModel.tripData))
+            }
         }
+        
     }
 
     @ViewBuilder

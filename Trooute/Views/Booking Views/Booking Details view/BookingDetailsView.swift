@@ -179,6 +179,7 @@ struct BookingDetailsView: View {
                         HStack {
                             image1
                             Text(status1)
+                                .foregroundStyle(.gray)
                             Spacer()
                         }
                         Text(details1)
@@ -187,6 +188,7 @@ struct BookingDetailsView: View {
                     HStack {
                         image
                         Text(status)
+                            .foregroundStyle(.gray)
                         Spacer()
                     }
                     Text(details)

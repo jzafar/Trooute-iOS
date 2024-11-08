@@ -8,11 +8,13 @@
 import Foundation
 class DriverSideBookingTripPassengerCellModel {
     var booking: Booking
-    var isHistory = false
+    @Published var isHistory = false
     private var userModel = UserUtils.shared
-    init (booking: Booking, isHistory: Bool = false) {
+    @Published var tripData: TripsData?
+    init (booking: Booking, isHistory: Bool = false, tripData: TripsData? = nil) {
         self.booking = booking
         self.isHistory = isHistory
+        self.tripData = tripData
     }
     
     func getDriverModel(user: User) -> UserInfoCardViewModel {

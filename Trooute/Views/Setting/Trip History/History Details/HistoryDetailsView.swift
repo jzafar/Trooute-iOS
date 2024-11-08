@@ -24,6 +24,8 @@ struct HistoryDetailsView: View {
                             DriverSideBookingTripPassengerCell(viewModel: viewModel.bookingCardVM(booking: booking))
                                 .listRowBackground(Color.clear)
                                 .listRowInsets(EdgeInsets())
+                                .padding(.vertical)
+                                .listRowSeparator(.hidden)
                         }
                     }
 
@@ -46,6 +48,8 @@ struct HistoryDetailsView: View {
             .listRowSeparator(.hidden)
 
         }.onAppear {
+            viewModel.onAppear()
+        }.onReceive(NotificationCenter.default.publisher(for: Notification.ReviewPosted)){ _ in
             viewModel.onAppear()
         }
         .navigationTitle(viewModel.tripId.firstTenCharacters())
@@ -105,7 +109,7 @@ struct HistoryDetailsView: View {
                         .font(.callout)
                         .foregroundStyle(.gray)
                         .padding(.bottom, 3)
-                    Text("Trip # \(viewModel.tripId)")
+                    Text("Trip # \(viewModel.tripId.uppercased())")
                     Text(viewModel.tripsData?.trip?.departureDate.fullFormate() ?? "")
                         .font(.callout)
                         .foregroundStyle(.gray)

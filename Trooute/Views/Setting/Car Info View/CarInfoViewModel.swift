@@ -11,9 +11,13 @@ import SwiftUI
 class CarInfoViewModel: ObservableObject {
     let carDetails: CarDetails
     var isEditable: Bool
-    init(carDetails: CarDetails, isEditable: Bool = false) {
+    var isHistory: Bool
+    @Published var tripData: TripsData?
+    init(carDetails: CarDetails, isEditable: Bool = false, isHistory: Bool = false, tripData: TripsData? = nil) {
         self.carDetails = carDetails
         self.isEditable = isEditable
+        self.isHistory = isHistory
+        self.tripData = tripData
     }
     
     var photo: String {

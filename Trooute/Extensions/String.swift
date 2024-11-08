@@ -46,3 +46,7 @@ extension Optional where Wrapped == String {
 extension String: @retroactive Identifiable {
     public var id: String { self }
 }
+
+extension Notification {
+    static let ReviewPosted = Notification.Name.init("ReviewPosted")
+}
