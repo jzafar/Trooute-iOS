@@ -30,14 +30,16 @@ class SigninViewModel: ObservableObject {
             SwiftLoader.show(title: "Signin...", animated: true)
             repository.signin(signinRequest: loginRequest) { [weak self] result in
                 SwiftLoader.hide()
+                guard let self = self else {return}
                     switch result {
                     case .success(let response):
                         if response.data.success,
                            let user = response.data.data,
                            let token = response.data.token {
                             UserUtils.shared.saveUserToStorage(user: user, token: token)
+                            self.subscribeTopic(userId: user.id)
                         } else if (response.statusCode == 205) {
-                            self?.showVerificationCodeView = true
+                            self.showVerificationCodeView = true
                         } else {
                             BannerHelper.displayBanner(.error, message:  response.data.message)
                         }
@@ -47,6 +49,13 @@ class SigninViewModel: ObservableObject {
                     }
                 }
             
+        }
+    }
+    
+    private func subscribeTopic(userId: String) {
+        let notifications = Notifications()
+        notifications.subscribeTopic(topic: Apis.TROOUTE_TOPIC + userId) { error in
+            log.info("subscribeTopic to \(Apis.TROOUTE_TOPIC + userId) error \(String(describing: error?.localizedDescription))")
         }
     }
 

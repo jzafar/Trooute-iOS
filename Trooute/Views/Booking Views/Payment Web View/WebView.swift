@@ -37,8 +37,6 @@ struct WebView: UIViewRepresentable {
                 webViewModel.shouldGoBack = false
                 dismiss()
             }
-            
-           
         }
 }
 

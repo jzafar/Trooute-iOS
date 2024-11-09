@@ -29,6 +29,8 @@ struct BookTripView: View {
                 .safeAreaInset(edge: .bottom) {
                     proceedView()
                 }
+        }.onTapGesture {
+            hideKeyboard()
         }
         .onChange(of: viewModel.pickUpAddressInfo) { fromInfo in
             if fromInfo == nil {
@@ -51,7 +53,7 @@ struct BookTripView: View {
                 .padding()
                 .background(Color(.systemGray6))
                 .cornerRadius(8)
-                .font(.body)
+                .font(.callout)
                 
             TextViewLableText(text: "Other relevent details about trip", textFont: .subheadline)
             ZStack {

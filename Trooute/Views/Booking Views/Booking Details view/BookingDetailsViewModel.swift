@@ -33,6 +33,7 @@ class BookingDetailsViewModel: ObservableObject {
     @Published var currentBooking: Booking? = nil
     let user = UserUtils.shared
     private let repository = BookingDetailsRepository()
+    private let notification = Notifications()
     private var paymentUrl: String? = nil
     private var timer: Timer?
     init(bookingId: String) {
@@ -201,8 +202,22 @@ class BookingDetailsViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 if response.data.success {
-                    self?.popView = true
                     BannerHelper.displayBanner(.success, message: response.data.message)
+                    guard let self = self else {return}
+                    var toId: String?
+                    if self.user.driverMode {
+                        toId = self.bookingData?.user?.id
+                    } else {
+                        toId = self.bookingData?.trip.driver?.id
+                    }
+                    if let id = toId {
+                        self.sendNotification(title: "Booking cancelled", body: "Sorry, Your trip is cancelled by ", toId: id) {
+                            self.popView = true
+                        }
+                        
+                    } else {
+                        self.popView = true
+                    }
                 } else {
                     BannerHelper.displayBanner(.error, message: response.data.message)
                 }
@@ -213,12 +228,12 @@ class BookingDetailsViewModel: ObservableObject {
     }
     
     func getWebViewModel() -> WebViewModel {
-        return WebViewModel(url: self.paymentUrl ?? "")
+        return WebViewModel(url: self.paymentUrl ?? "", makePaymentUserId: bookingData?.trip.driver?.id)
     }
     
     func acceptBooking() {
         if bookingData?.trip.driver?.stripeConnectedAccountId == nil {
-            BannerHelper.displayBanner(.error, message: "You can\'t accept this booking. You must have to connect your stripe account to accept this booking. When we have approved you as a driver, we send you an email to connect your stripe account.")
+            BannerHelper.displayBanner(.error, message: "You can't accept this booking. You must have to connect your stripe account to accept this booking. When we have approved you as a driver, we send you an email to connect your stripe account.")
             return
         }
         SwiftLoader.show(animated: true)
@@ -229,6 +244,16 @@ class BookingDetailsViewModel: ObservableObject {
                 if response.data.success {
                     self?.getBookingDetails()
                     BannerHelper.displayBanner(.success, message: response.data.message)
+                    guard let self = self else {return}
+                    var toId: String?
+                    if self.user.driverMode {
+                        toId = self.bookingData?.user?.id
+                    } else {
+                        toId = self.bookingData?.trip.driver?.id
+                    }
+                    if let id = toId {
+                        self.sendNotification(title: "Booking accepted", body: "Great news, Your trip is all set and accepted by ", toId: id) {}
+                    }
                 } else {
                     BannerHelper.displayBanner(.error, message: response.data.message)
                 }
@@ -274,7 +299,6 @@ class BookingDetailsViewModel: ObservableObject {
     }
     
     func updatePickUpStatus(status: PickUpPassengersStatus) {
-        
         if let tripId = currentBooking?.trip?.id,
            let pickupStatusId = currentBooking?.pickupStatus?.id {
             let requst = UpdatePickupStatusRequest(tripId: tripId, bookingId: self.bookingId, pickupStatus: status.rawValue, pickupId: pickupStatusId)
@@ -295,5 +319,17 @@ class BookingDetailsViewModel: ObservableObject {
             }
         }
         
+    }
+    
+    private func sendNotification(title: String, body: String, toId: String, completion: @escaping () -> Void) {
+        notification.sendNotification(title: title, body: "\(body) \(user.user?.name ?? "user")", toId: "\(Apis.TOPIC)\(Apis.TROOUTE_TOPIC)\(toId)") { result in
+            switch result {
+            case .success(let success):
+                log.info("Booking details notification send")
+            case .failure(let failure):
+                log.info("Booking details notification fails \(failure.localizedDescription)")
+            }
+            completion()
+        }
     }
 }

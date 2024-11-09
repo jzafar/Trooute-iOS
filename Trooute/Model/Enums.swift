@@ -29,6 +29,7 @@ enum UserDefaultsKey: String {
     case driverMode = "DriverMode"
     case stripeToken = "StripeToken"
     case driverState = "DriverState"
+    case isNotificationEnabled = "NOTIFICTIONENABLE"
     var key: String {
         return rawValue
     }

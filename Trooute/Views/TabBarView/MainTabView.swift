@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @EnvironmentObject var fireBaseVM :  FirebaseViewModel
+    @EnvironmentObject var fireBaseVM: FirebaseViewModel
     @State private var selectedTab: Tab = .home
     private var viewModel = MainTabViewModel()
     private var tabBarView: TabBarView {
@@ -53,7 +53,11 @@ struct MainTabView: View {
             }
         }
         .onAppear {
-            viewModel.getMe()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                viewModel.getMe()
+                viewModel.updateToken()
+            }
+            
             if let id = UserUtils.shared.user?.id {
                 fireBaseVM.getAllInbox(userId: id)
             }
@@ -61,6 +65,6 @@ struct MainTabView: View {
     }
 }
 
-//#Preview {
+// #Preview {
 //    MainTabView()
-//}
+// }

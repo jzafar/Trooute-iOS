@@ -46,46 +46,8 @@ struct Apis {
     static let LAST_MESSAGE_FIELD_NAME = "lastMessage"
     static let TIMESTAMP_FIELD_NAME = "timestamp"
     static let MESSAGE_USER_INFO = "UserInfo"
-    static let FCM_BASE_URL = "https://fcm.googleapis.com"
+    static let FCM_BASE_URL = "https://fcm.googleapis.com/fcm/send"
     static let SERVER_KEY = "AAAAsRKMUMQ:APA91bGTTdh3bQM6oORh38BawUcjBYokEyDT_j4tFkb2scXMMM7QqFRx6OE8yKTrjs9C5l_hHI3OelhaHDVnSg0LUtl0XQhWa5nPLUJ-Ul046k6w4gqIjElov_c_ycjKxCuUaO_qNaKk"
-    static let CONTENT_TYPE = "application/json"
     static let TOPIC = "/topics/"
     static let TROOUTE_TOPIC = "trooute_topic_"
-    static let TONE = "Tri-tone"
-    static let MUTABLE_CONTENT = true
-    static let CHANNEL_ID = "TroouteChannel"
-    static let CHANNEL_DESCRIPTION = "TroouteChannelDescription"
-   
 }
-//// TRIPS END POINT
-//  const val CREATE_TRIPS_END_POINT = "/api/v1/trips"
-//  const val GET_TRIPS_END_POINT = "/api/v1/trips"
-//  const val GET_TRIPS_DETAILS_END_POINT = "/api/v1/trips"
-//  const val TRIPS_HISTORY_END_POINT = "/api/v1/trips/trips-history"
-//  const val UPDATE_TRIP_STATUS = "api/v1/trips/update-trip-status"
-//  const val GET_PICKUP_PASSENGERS_STATUS = "api/v1/trips/getPickupStatus"
-//  const val UPDATE_PICKUP_PASSENGERS_STATUS = "api/v1/trips/updatePickupStatus"
-//
-//  // BOOKINGS END POINT
-//  const val CREATE_BOOKING_END_POINT = "/api/v1/bookings"
-//  const val GET_BOOKING_END_POINT = "/api/v1/bookings"
-//  const val GET_BOOKING_DETAILS_END_POINT = "/api/v1/bookings"
-//  const val APPROVE_BOOKING_END_POINT = "/api/v1/bookings"
-//  const val CONFIRM_BOOKING_END_POINT = "/api/v1/bookings"
-//  const val CANCEL_BOOKING_END_POINT = "/api/v1/bookings"
-//  const val COMPLETE_BOOKING_END_POINT = "/api/v1/bookings"
-//
-//  // REVIEW END POINT
-//  const val REVIEW_END_POINT = "/api/v1/review"
-//  const val GET_REVIEW_END_POINT = "/api/v1/review/"
-//
-//  // DRIVER END POINT
-//  const val UPLOAD_DRIVER_END_POINT = "/api/v1/users/driver/upload-driver-details"
-//  const val SWITCH_DRIVER_END_POINT = "/api/v1/users/driver/switch-to-driver-mode"
-//  const val GET_DRIVERS_REQUESTS_END_POINT = "/api/v1/users/driver/get-drivers-requests"
-//  const val APPROVE_DRIVER_END_POINT = "/api/v1/users/driver"
-//  const val UPDATE_CAR_INFO_END_POINT = "/api/v1/users/driver/update-car-info"
-//
-//  // WISH LIST POINT
-//  const val ADD_TO_WISH_LIST = "api/v1/trips"
-//  const val GET_MY_WISH_LIST = "api/v1/users/get-my-wishlist"

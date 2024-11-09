@@ -33,6 +33,7 @@ class TripDetailsViewModel: ObservableObject {
     var alertTitle = ""
     var alertMessage = ""
     private let repositiry = TripDetailsRepository()
+    private let notification = Notifications()
     init(tripId: String) {
         self.tripId = tripId
     }
@@ -162,7 +163,9 @@ class TripDetailsViewModel: ObservableObject {
     func endTrip() {
         updateTripStatus(status: .COMPLETED) { success in
             if success {
-                NavigationUtil.popToRootView(animated: true)
+                self.sendNotification(title: "Trip completed", body: "Congratulations! Your trip has successfully come to a memorable end by ", toId: self.trip?.bookings) { _ in
+                    NavigationUtil.popToRootView(animated: true)
+                }
             }
         }
     }
@@ -170,7 +173,9 @@ class TripDetailsViewModel: ObservableObject {
     func cancelTrip() {
         updateTripStatus(status: .CANCELED) { success in
             if success {
-                NavigationUtil.popToRootView(animated: true)
+                self.sendNotification(title: "Booking cancelled", body: "Sorry, Your trip is cancelled by ", toId: self.trip?.bookings) { _ in
+                    NavigationUtil.popToRootView(animated: true)
+                }
             }
         }
     }
@@ -212,5 +217,39 @@ class TripDetailsViewModel: ObservableObject {
         else {
             BannerHelper.displayBanner(.error, message: defaultMessage)
         }
+    }
+    
+    private func sendNotification(title: String, body: String, toId: [Booking]?, completion: @escaping (Bool) -> Void) {
+        guard let toId = toId else {
+                completion(false) // No notifications to send
+                return
+            }
+
+            // Create a DispatchGroup to track the completion of each notification
+            let dispatchGroup = DispatchGroup()
+            var allSucceeded = true
+
+            for booking in toId {
+                if let user = userModel.user, let bUser = booking.user {
+                    dispatchGroup.enter() // Enter the group for each notification
+                    
+                    notification.sendNotification(title: title, body: "\(body) \(user.name)", toId: "\(Apis.TOPIC)\(Apis.TROOUTE_TOPIC)\(bUser.id)") { response in
+                        switch response {
+                        case .success:
+                            log.info("End trip notification sent for user \(bUser.name)")
+                        case .failure(let error):
+                            log.error("Failed to send end trip notification for user \(bUser.name): \(error.localizedDescription)")
+                            allSucceeded = false // Mark as failed if any notification fails
+                        }
+                        
+                        dispatchGroup.leave() // Leave the group after handling the response
+                    }
+                }
+            }
+
+            // Wait until all notifications are processed before calling the completion handler
+            dispatchGroup.notify(queue: .main) {
+                completion(allSucceeded)
+            }
     }
 }

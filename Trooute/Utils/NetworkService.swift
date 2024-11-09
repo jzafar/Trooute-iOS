@@ -15,6 +15,7 @@ protocol NetworkServiceProtocol {
         queryParams: [String: String]?,
         httpBody: [String: Any?]?,
         isMultipart: Bool,
+        isFireBase: Bool,
         completion: @escaping (Result<Response<T>, Error>) -> Void
     )
 }
@@ -26,6 +27,7 @@ class NetworkService: NetworkServiceProtocol {
         queryParams: [String: String]? = nil,
         httpBody: [String: Any?]? = nil,
         isMultipart: Bool = false,
+        isFireBase: Bool = false,
         completion: @escaping (Result<Response<T>, Error>) -> Void
     ) {
         log.debug("calling api \(url)")
@@ -72,9 +74,13 @@ class NetworkService: NetworkServiceProtocol {
             }
         }
         
-        if let token = UserDefaults.standard.string(forKey: UserDefaultsKey.token.key) {
-            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        if isFireBase {
+            request.setValue("key=\(Apis.SERVER_KEY)", forHTTPHeaderField: "Authorization")
+        } else {
+            if let token = UserDefaults.standard.string(forKey: UserDefaultsKey.token.key) {
+                request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
+            }
         }
         
         URLSession.shared.dataTask(with: request) { data, response, error in
@@ -163,9 +169,10 @@ extension NetworkServiceProtocol {
         queryParams: [String: String]? = nil,
         httpBody: [String: Any?]? = nil,
         isMultipart: Bool = false,
+        isFireBase: Bool = false,
         completion: @escaping (Result<Response<T>, Error>) -> Void
     ) {
-        request(url: url, method: method, queryParams: queryParams, httpBody: httpBody, isMultipart: isMultipart, completion: completion)
+        request(url: url, method: method, queryParams: queryParams, httpBody: httpBody, isMultipart: isMultipart, isFireBase: isFireBase, completion: completion)
     }
 }
 

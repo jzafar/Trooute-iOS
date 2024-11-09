@@ -59,6 +59,9 @@ struct SettingsView: View {
             }
         }
         .onAppear {
+            viewModel.onAppear()
+        }.onChange(of: viewModel.isNotificationOn) { _ in
+            viewModel.onChangeOfNotification()
         }
         .listStyle(InsetGroupedListStyle())
         .fullScreenCover(isPresented: $viewModel.editCarInfo, onDismiss: {
@@ -228,7 +231,7 @@ struct SettingsView: View {
             ListRowText(text: "Logout")
             Spacer()
         }.onTapGesture {
-            userModel.clearUserFromStorage()
+            viewModel.logoutPressed()
         }
     }
 }

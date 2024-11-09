@@ -24,6 +24,7 @@ struct CreateTripView: View {
             }
             Section {
                 PrimaryGreenButton(title: "Post trip") {
+                    hideKeyboard()
                     viewModel.postTrip()
                 }.listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets())

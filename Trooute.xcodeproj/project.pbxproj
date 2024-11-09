@@ -156,6 +156,9 @@
 		CE727A8F2CD40BC700D27044 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE727A8E2CD40BC500D27044 /* Message.swift */; };
 		CE727A912CD40C4000D27044 /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE727A902CD40C3D00D27044 /* Inbox.swift */; };
 		CE727A962CD5060D00D27044 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE727A952CD5060D00D27044 /* MessageView.swift */; };
+		CE7B20D72CDF3E0A005EE285 /* NotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B20D62CDF3DFF005EE285 /* NotificationRequest.swift */; };
+		CE843B102CDE9DB400C249C5 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = CE843B0F2CDE9DB400C249C5 /* FirebaseMessaging */; };
+		CE843B122CDEA18200C249C5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE843B112CDEA18200C249C5 /* FirebaseAnalytics */; };
 		CEA18AC02CBBB6820096545F /* BasicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18ABF2CBBB6750096545F /* BasicResponse.swift */; };
 		CEA18AC42CBBCDB10096545F /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18AC32CBBCDAC0096545F /* MainTabViewModel.swift */; };
 		CEA18AC62CBBCDEA0096545F /* MainTabViewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18AC52CBBCDDE0096545F /* MainTabViewRepository.swift */; };
@@ -377,6 +380,7 @@
 		CE727A8E2CD40BC500D27044 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CE727A902CD40C3D00D27044 /* Inbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inbox.swift; sourceTree = "<group>"; };
 		CE727A952CD5060D00D27044 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		CE7B20D62CDF3DFF005EE285 /* NotificationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRequest.swift; sourceTree = "<group>"; };
 		CEA18ABF2CBBB6750096545F /* BasicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicResponse.swift; sourceTree = "<group>"; };
 		CEA18AC32CBBCDAC0096545F /* MainTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
 		CEA18AC52CBBCDDE0096545F /* MainTabViewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewRepository.swift; sourceTree = "<group>"; };
@@ -440,6 +444,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE843B122CDEA18200C249C5 /* FirebaseAnalytics in Frameworks */,
+				CE843B102CDE9DB400C249C5 /* FirebaseMessaging in Frameworks */,
 				CE4E3E172CA5E728005C3CEE /* SDWebImageSwiftUI in Frameworks */,
 				CE5227CD2CBAAD84005C1175 /* SwiftLoader in Frameworks */,
 				CE5227D02CBABA6B005C1175 /* FirebaseCore in Frameworks */,
@@ -1076,6 +1082,7 @@
 		CEEEA28D2CBA95D1006B8ECE /* RequestResponseObjects */ = {
 			isa = PBXGroup;
 			children = (
+				CE7B20D62CDF3DFF005EE285 /* NotificationRequest.swift */,
 				CEA627762CDA8B0800DEC5A1 /* ReviewObject.swift */,
 				CEF49B142CD963600098E425 /* Post Review Request */,
 				CE727A832CD3924600D27044 /* Pickup Status Request */,
@@ -1470,6 +1477,7 @@
 				CEA18AC42CBBCDB10096545F /* MainTabViewModel.swift in Sources */,
 				CE4E3DFD2CA5B184005C3CEE /* LuggageRestrictions.swift in Sources */,
 				CE5227E42CBAE2E7005C1175 /* VerificationViewModel.swift in Sources */,
+				CE7B20D72CDF3E0A005EE285 /* NotificationRequest.swift in Sources */,
 				CE5150502C9FE01300B10107 /* UpdatePasswordViewModel.swift in Sources */,
 				CEDED15E2CD12C7B00ABD671 /* PickupPassengersViewModel.swift in Sources */,
 				CE5701452C9E16DD003BD7CA /* ResetPasswordView.swift in Sources */,
@@ -1735,7 +1743,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trooute/Preview Content\"";
-				DEVELOPMENT_TEAM = 8TWYF4C7ML;
+				DEVELOPMENT_TEAM = MPGZ44D94P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Trooute/Info.plist;
@@ -1745,8 +1753,8 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Trooute wants to access photo libray for pictures.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1754,7 +1762,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.travel.trooute;
+				PRODUCT_BUNDLE_IDENTIFIER = com.travel.trooutee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1771,7 +1779,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trooute/Preview Content\"";
-				DEVELOPMENT_TEAM = 8TWYF4C7ML;
+				DEVELOPMENT_TEAM = MPGZ44D94P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Trooute/Info.plist;
@@ -1781,8 +1789,8 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Trooute wants to access photo libray for pictures.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1790,7 +1798,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.travel.trooute;
+				PRODUCT_BUNDLE_IDENTIFIER = com.travel.trooutee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1966,6 +1974,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE5227CE2CBABA6B005C1175 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		CE843B0F2CDE9DB400C249C5 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE5227CE2CBABA6B005C1175 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		CE843B112CDEA18200C249C5 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE5227CE2CBABA6B005C1175 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 		CEEEA2972CBA9BE3006B8ECE /* BRYXBanner */ = {
 			isa = XCSwiftPackageProductDependency;

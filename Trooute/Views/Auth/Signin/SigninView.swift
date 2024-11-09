@@ -107,9 +107,11 @@ struct SigninView: View {
     @ViewBuilder
     func signInButton() -> some View {
         PrimaryGreenButton(title: "Sign in") {
+            hideKeyboard()
             viewModel.loginButtonPress()
         }
         .padding(.horizontal, 30)
+        
     }
     
     @ViewBuilder

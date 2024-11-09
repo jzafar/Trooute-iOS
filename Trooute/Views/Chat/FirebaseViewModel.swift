@@ -16,7 +16,7 @@ class FirebaseViewModel: ObservableObject {
     @Published var inbox: [Inbox] = []
     @Published var messages: [Message] = []
     var listener: ListenerRegistration?
-    
+    private let notification = Notifications()
 //    init() {
 //        if let userId = userModel.user?.id {
 //            getAllInbox(userId: userId)
@@ -277,7 +277,17 @@ class FirebaseViewModel: ObservableObject {
             if let err = error {
                 BannerHelper.displayBanner(.error, message: err.localizedDescription)
             } else {
-                self?.newMessage = ""
+                
+                self?.notification.sendNotification(title: messageReceiverInfo.name, body: self?.newMessage.trim() ?? "", toId: "\(Apis.TOPIC)\(Apis.TROOUTE_TOPIC)\(messageReceiverInfo.id)", data: NotificationRequest.Data(dl: "chat")) { result in
+                    switch result {
+                    case .success(let success):
+                        log.info("sendMessage notification send")
+                    case .failure(let failure):
+                        log.error("sendMessage notification send error  \(failure.localizedDescription)")
+                    }
+                    self?.newMessage = ""
+                }
+                
             }
         }
     }
