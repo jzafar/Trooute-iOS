@@ -36,6 +36,9 @@ struct BookingsView: View {
                             .listRowBackground(Color.clear)
                     }
                 }.listStyle(GroupedListStyle())
+                    .refreshable {
+                        viewModel.getBookings()
+                    }
             }
             
         }

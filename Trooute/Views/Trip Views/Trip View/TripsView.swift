@@ -9,7 +9,7 @@ import SDWebImageSwiftUI
 import SwiftUI
 
 struct TripsView: View {
-    @ObservedObject var viewModel = TripsViewModel()
+    @StateObject var viewModel = TripsViewModel()
     @ObservedObject var userModel: UserUtils = UserUtils.shared
     var body: some View {
         List {

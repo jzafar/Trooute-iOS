@@ -50,6 +50,7 @@ class TripsViewModel: NSObject, ObservableObject {
         flexibleDays = 1
         isFlexibleDate = false
         self.checkLocationAuthorization()
+        
         self.fetchTrips()
     }
     
@@ -57,12 +58,12 @@ class TripsViewModel: NSObject, ObservableObject {
         if userModel.driverMode == true {
             let request = GetTripsRequest(departureDate: Date().shotFormate())
             self.repository.getDriverTrips(request: request) { [weak self] result in
+                guard let self = self else {return}
                 switch result {
                 case .success(let response):
                     if response.data.success,
                        let trips = response.data.data {
-                        self?.nearByTrips = []
-                        self?.driverTrips = trips.reversed()
+                        self.driverTrips = trips.reversed()
                     }
                         
                 case .failure(let error):
@@ -75,15 +76,13 @@ class TripsViewModel: NSObject, ObservableObject {
             let request = GetTripsRequest(fromLatitude: locationManager.location?.coordinate.latitude, fromLongitude: locationManager.location?.coordinate.longitude, currentDate: Date().shotFormate())
                 
                 self.repository.getTrips(request: request) { [weak self] result in
+                    guard let self = self else {return}
                     switch result {
                     case .success(let response):
                         if response.data.success,
                            let trips = response.data.data {
-                            self?.nearByTrips = trips.reversed()
-                            self?.driverTrips = []
-                            
+                            self.nearByTrips = trips.reversed()
                         }
-                            
                     case .failure(let error):
                         log.error("failed to get me \(error.localizedDescription)")
                     }

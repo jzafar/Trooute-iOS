@@ -32,7 +32,7 @@ class TripDetailsViewModel: ObservableObject {
     var bookingId: String? = nil
     var alertTitle = ""
     var alertMessage = ""
-    private let repositiry = TripDetailsRepository()
+    private let repository = TripDetailsRepository()
     private let notification = Notifications()
     init(tripId: String) {
         self.tripId = tripId
@@ -40,7 +40,7 @@ class TripDetailsViewModel: ObservableObject {
 
     func onApplear() {
         SwiftLoader.show(title: "Loading...",animated: true)
-        repositiry.getTripDetails(tripId: tripId) { [weak self] result in
+        repository.getTripDetails(tripId: tripId) { [weak self] result in
             SwiftLoader.hide()
             switch result {
             case .success(let response):
@@ -182,7 +182,7 @@ class TripDetailsViewModel: ObservableObject {
     
     private func updateTripStatus(status: TripStatus, completion: @escaping (Bool) -> Void) {
         SwiftLoader.show(animated: true)
-        repositiry.updateTripStatus(tripId: self.tripId, status: status) { [weak self] result in
+        repository.updateTripStatus(tripId: self.tripId, status: status) { [weak self] result in
             SwiftLoader.hide()
             switch result {
             case .success(let response):
@@ -252,4 +252,30 @@ class TripDetailsViewModel: ObservableObject {
                 completion(allSucceeded)
             }
     }
+    
+    func addToWishList() {
+        SwiftLoader.show(animated: true)
+        repository.addToWishList(tripId: tripId) { [weak self] result in
+            SwiftLoader.hide()
+            switch result {
+            case .success(let response):
+                if response.data.success,
+                   let user = response.data.data {
+                    self?.updateBookMark(wishList: user.wishlist)
+                } else {
+                    BannerHelper.displayBanner(.error, message:  response.data.message)
+                }
+            case .failure(let error):
+                BannerHelper.displayBanner(.error, message:  error.localizedDescription)
+            }
+        }
+    }
+    
+    func updateBookMark(wishList: [String]?) {
+        self.userModel.user?.wishlist = wishList
+        if let isAddedInWishList = trip?.isAddedInWishList {
+            trip?.isAddedInWishList = !isAddedInWishList
+        }
+    }
+
 }

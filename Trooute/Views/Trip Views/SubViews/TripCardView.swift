@@ -75,17 +75,13 @@ struct TripCardView: View {
                 .padding(.vertical, 8)
                 .background(Color.blue.opacity(0.1))
                 .cornerRadius(15)
-//            Button(action: {
-////                viewModel.addToWishList()
-//            }) {
                 Image("ic_heart")
                     .resizable()
                     .frame(width: 25, height: 25)
-                    .foregroundColor(viewModel.trip.isAddedInWishList ?? false ? .red : .black)
+                    .foregroundColor((viewModel.trip.isAddedInWishList ?? false) ? .red : .black)
                     .onTapGesture {
                         viewModel.addToWishList()
                     }
-//            }
         }.padding(.horizontal)
             .padding(.top)
     }
@@ -104,7 +100,7 @@ struct TripCardView: View {
             .padding(.horizontal)
     }
 }
-#Preview {
-    let tripResponse = MockDate.getTripsResponse()!
-    TripCardView(viewModel: TripCardViewModel(trip: tripResponse.data!.first!, bookingSeats: 2, showPersonText: true))
-}
+//#Preview {
+//    let tripResponse = MockDate.getTripsResponse()!
+//    TripCardView(viewModel: TripCardViewModel(trip: tripResponse.data!.first!, bookingSeats: 2, showPersonText: true))
+//}

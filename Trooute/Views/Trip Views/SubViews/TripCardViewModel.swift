@@ -12,7 +12,7 @@ import SwiftLoader
 class TripCardViewModel: ObservableObject {
     @AppStorage(UserDefaultsKey.user.key) var user: User?
     @Published var trip: TripsData
-    @Published var bookMarked = false
+//    @Published var bookMarked = false
     @Published var showPersonText: Bool
     var bookingSeats: Int?
     private let repository = TripCardRepository()
@@ -22,6 +22,12 @@ class TripCardViewModel: ObservableObject {
         self.showPersonText = showPersonText
     }
     
+    func updateBookMark(wishList: [String]?) {
+        self.user?.wishlist = wishList
+        if let isAddedInWishList = trip.isAddedInWishList {
+            trip.isAddedInWishList = !isAddedInWishList
+        }
+    }
     
     func addToWishList() {
         SwiftLoader.show(animated: true)
@@ -31,7 +37,7 @@ class TripCardViewModel: ObservableObject {
             case .success(let response):
                 if response.data.success,
                    let user = response.data.data {
-                    self?.user = user
+                    self?.updateBookMark(wishList: user.wishlist)
                 } else {
                     BannerHelper.displayBanner(.error, message:  response.data.message)
                 }

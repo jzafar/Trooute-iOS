@@ -30,7 +30,7 @@ public struct User: Codable, UserProfile, Identifiable, Hashable {
     let passwordChangedAt: String?
     let stripeConnectedAccountId: String?
     let stripeToken: String?
-    let wishlist: [String]?
+    var wishlist: [String]?
     enum CodingKeys: String, CodingKey {
         case carDetails
         case id = "_id"

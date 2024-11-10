@@ -154,7 +154,7 @@ struct TripDetailsView: View {
         VStack {
             HStack {
                 Button(action: {
-//                    viewModel.addToWishList()
+                    viewModel.addToWishList()
                 }) {
                     Image("ic_heart")
                         .resizable()
