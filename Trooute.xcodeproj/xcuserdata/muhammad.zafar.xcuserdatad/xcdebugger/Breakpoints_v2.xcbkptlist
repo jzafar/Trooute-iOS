@@ -50,36 +50,6 @@
             endingLineNumber = "26"
             landmarkName = "postReview(request:completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8A40E930-5490-4835-9863-9CA62F6E1483 - f5d72ca7649361c2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Trooute.ReviewRepository.postReview(request: Trooute.PostReviewRequest, completion: (Swift.Result&lt;Trooute.Response&lt;Trooute.BasicResponse&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/Views/Review/View%20Reviews/ReviewRepository.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26">
-               </Location>
-               <Location
-                  uuid = "8A40E930-5490-4835-9863-9CA62F6E1483 - f5d72ca7649361c2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Trooute.ReviewRepository.postReview(request: Trooute.PostReviewRequest, completion: (Swift.Result&lt;Trooute.Response&lt;Trooute.BasicResponse&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/Views/Review/View%20Reviews/ReviewRepository.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -96,36 +66,6 @@
             endingLineNumber = "31"
             landmarkName = "body"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "37988D38-47EC-404C-B96B-CE4084906AA4 - 203a623120e01d02"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Divider, SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(Trooute.TextViewLableText, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0)&gt;&gt;, Swift.Optional&lt;SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0&gt;)&gt;, SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0&gt;)&gt;, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;, SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0&gt;, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0&gt;)&gt;, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;&gt;)&gt;&gt;&gt;, &lt;&lt;opaque return type of Trooute.WriteReviewView.carRatingView() -&gt; some&gt;&gt;.0&gt;&gt;)&gt; in Trooute.WriteReviewView.body.getter : some"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/Views/Review/Post%20Reviews/WriteReviewView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31">
-               </Location>
-               <Location
-                  uuid = "37988D38-47EC-404C-B96B-CE4084906AA4 - 203a623120e01d02"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Divider, SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(Trooute.TextViewLableText, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0)&gt;&gt;, Swift.Optional&lt;SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0&gt;)&gt;, SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0&gt;)&gt;, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;, SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0&gt;, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0&gt;)&gt;, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;&gt;)&gt;&gt;&gt;, &lt;&lt;opaque return type of Trooute.WriteReviewView.carRatingView() -&gt; some&gt;&gt;.0&gt;&gt;)&gt; in Trooute.WriteReviewView.body.getter : some"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/Views/Review/Post%20Reviews/WriteReviewView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -142,36 +82,6 @@
             endingLineNumber = "31"
             landmarkName = "body"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "C73A16C1-F7E3-42D8-9B55-F2875AD0947A - 203a623120e01d02"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Divider, SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(Trooute.TextViewLableText, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0)&gt;&gt;, Swift.Optional&lt;SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0&gt;)&gt;, SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0&gt;)&gt;, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;, SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0&gt;, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0&gt;)&gt;, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;&gt;)&gt;&gt;&gt;, &lt;&lt;opaque return type of Trooute.WriteReviewView.carRatingView() -&gt; some&gt;&gt;.0&gt;&gt;)&gt; in Trooute.WriteReviewView.body.getter : some"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/Views/Review/Post%20Reviews/WriteReviewView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31">
-               </Location>
-               <Location
-                  uuid = "C73A16C1-F7E3-42D8-9B55-F2875AD0947A - 203a623120e01d02"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Divider, SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(Trooute.TextViewLableText, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0)&gt;&gt;, Swift.Optional&lt;SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0&gt;)&gt;, SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0&gt;)&gt;, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;, SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0&gt;, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of Trooute.WriteReviewView.showReview(review: Trooute.Review, name: Swift.Optional&lt;Swift.String&gt;, forDriver: Swift.Bool) -&gt; some&gt;&gt;.0&gt;)&gt;, &lt;&lt;opaque return type of Trooute.WriteReviewView.writeReviewView(expText: Swift.String) -&gt; some&gt;&gt;.0&gt;&gt;)&gt;&gt;&gt;, &lt;&lt;opaque return type of Trooute.WriteReviewView.carRatingView() -&gt; some&gt;&gt;.0&gt;&gt;)&gt; in Trooute.WriteReviewView.body.getter : some"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/Views/Review/Post%20Reviews/WriteReviewView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -188,36 +98,6 @@
             endingLineNumber = "68"
             landmarkName = "userNotificationCenter(_:willPresent:withCompletionHandler:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "199BBAB2-2B54-49D7-8EEE-F3DD65A5965B - 80a565a459326e4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Trooute.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/TroouteApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68">
-               </Location>
-               <Location
-                  uuid = "199BBAB2-2B54-49D7-8EEE-F3DD65A5965B - 80a565a459326e4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Trooute.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, willPresent: __C.UNNotification, withCompletionHandler: (__C.UNNotificationPresentationOptions) -&gt; ()) -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/TroouteApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -234,36 +114,6 @@
             endingLineNumber = "78"
             landmarkName = "application(_:didRegisterForRemoteNotificationsWithDeviceToken:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A6744DBA-DAC3-4E7B-8EE7-29D3EB015294 - a73354caaa67ae62"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Trooute.AppDelegate.application(_: __C.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken: Foundation.Data) -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/TroouteApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78">
-               </Location>
-               <Location
-                  uuid = "A6744DBA-DAC3-4E7B-8EE7-29D3EB015294 - a73354caaa67ae62"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Trooute.AppDelegate.application(_: __C.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken: Foundation.Data) -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/TroouteApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -280,36 +130,6 @@
             endingLineNumber = "93"
             landmarkName = "userNotificationCenter(_:didReceive:withCompletionHandler:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8E69573F-91B1-40BE-BAF9-754BB3674057 - 329b173ab8ece4bd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Trooute.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, didReceive: __C.UNNotificationResponse, withCompletionHandler: () -&gt; ()) -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/TroouteApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93">
-               </Location>
-               <Location
-                  uuid = "8E69573F-91B1-40BE-BAF9-754BB3674057 - 329b173ab8ece4bd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Trooute.AppDelegate.userNotificationCenter(_: __C.UNUserNotificationCenter, didReceive: __C.UNNotificationResponse, withCompletionHandler: () -&gt; ()) -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/TroouteApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -326,36 +146,6 @@
             endingLineNumber = "27"
             landmarkName = "getMe()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0B958C5C-E07D-4AB1-907B-72E08A0D9331 - 29465c41a12fec95"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Trooute.Response&lt;Trooute.SigninResponse&gt;, Swift.Error&gt;) -&gt; () in Trooute.MainTabViewModel.getMe() -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/Views/TabBarView/MainTabViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27">
-               </Location>
-               <Location
-                  uuid = "0B958C5C-E07D-4AB1-907B-72E08A0D9331 - 29465c41a12fec95"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Trooute.Response&lt;Trooute.SigninResponse&gt;, Swift.Error&gt;) -&gt; () in Trooute.MainTabViewModel.getMe() -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/Views/TabBarView/MainTabViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -372,36 +162,6 @@
             endingLineNumber = "84"
             landmarkName = "application(_:didFailToRegisterForRemoteNotificationsWithError:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D7A91EC2-EF61-411F-8631-FBD344033808 - 66fd9e20838c2a51"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Trooute.AppDelegate.application(_: __C.UIApplication, didFailToRegisterForRemoteNotificationsWithError: Swift.Error) -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/TroouteApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84">
-               </Location>
-               <Location
-                  uuid = "D7A91EC2-EF61-411F-8631-FBD344033808 - 66fd9e20838c2a51"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Trooute.AppDelegate.application(_: __C.UIApplication, didFailToRegisterForRemoteNotificationsWithError: Swift.Error) -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/TroouteApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -418,184 +178,6 @@
             endingLineNumber = "43"
             landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E3A7F41D-6A55-498B-B6DB-9A6E4A27216C - 3f1fa3030b80fd4d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Trooute.AppDelegate.application(_: __C.UIApplication, didReceiveRemoteNotification: Swift.Dictionary&lt;Swift.AnyHashable, Any&gt;, fetchCompletionHandler: (__C.UIBackgroundFetchResult) -&gt; ()) -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/TroouteApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43">
-               </Location>
-               <Location
-                  uuid = "E3A7F41D-6A55-498B-B6DB-9A6E4A27216C - 3f1fa3030b80fd4d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Trooute.AppDelegate.application(_: __C.UIApplication, didReceiveRemoteNotification: Swift.Dictionary&lt;Swift.AnyHashable, Any&gt;, fetchCompletionHandler: (__C.UIBackgroundFetchResult) -&gt; ()) -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/TroouteApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43">
-               </Location>
-               <Location
-                  uuid = "E3A7F41D-6A55-498B-B6DB-9A6E4A27216C - 3f1fa3030b80fd4d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Trooute.AppDelegate.application(_: __C.UIApplication, didReceiveRemoteNotification: Swift.Dictionary&lt;Swift.AnyHashable, Any&gt;, fetchCompletionHandler: (__C.UIBackgroundFetchResult) -&gt; ()) -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/TroouteApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43">
-               </Location>
-               <Location
-                  uuid = "E3A7F41D-6A55-498B-B6DB-9A6E4A27216C - 3f1fa3030b80fd4d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Trooute.AppDelegate.application(_: __C.UIApplication, didReceiveRemoteNotification: Swift.Dictionary&lt;Swift.AnyHashable, Any&gt;, fetchCompletionHandler: (__C.UIBackgroundFetchResult) -&gt; ()) -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/TroouteApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "63D5F2C6-883C-47A8-82F7-E2D52D5754C8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Trooute/Views/Booking Views/Book Now View/ProceedViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "bookNoewPressed()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "63D5F2C6-883C-47A8-82F7-E2D52D5754C8 - 8f402964f9568ea9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Trooute.Response&lt;Trooute.CreateBookingResponse&gt;, Swift.Error&gt;) -&gt; () in Trooute.ProceedViewModel.bookNoewPressed() -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/Views/Booking%20Views/Book%20Now%20View/ProceedViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39">
-               </Location>
-               <Location
-                  uuid = "63D5F2C6-883C-47A8-82F7-E2D52D5754C8 - e4c7b61e40b06f13"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Trooute.Response&lt;Swift.Bool&gt;, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;Trooute.Response&lt;Trooute.CreateBookingResponse&gt;, Swift.Error&gt;) -&gt; () in Trooute.ProceedViewModel.bookNoewPressed() -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/Views/Booking%20Views/Book%20Now%20View/ProceedViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39">
-               </Location>
-               <Location
-                  uuid = "63D5F2C6-883C-47A8-82F7-E2D52D5754C8 - 8f402964f9568ea9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Trooute.Response&lt;Trooute.CreateBookingResponse&gt;, Swift.Error&gt;) -&gt; () in Trooute.ProceedViewModel.bookNoewPressed() -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/Views/Booking%20Views/Book%20Now%20View/ProceedViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39">
-               </Location>
-               <Location
-                  uuid = "63D5F2C6-883C-47A8-82F7-E2D52D5754C8 - e4c7b61e40b06f13"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Trooute.Response&lt;Swift.Bool&gt;, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;Trooute.Response&lt;Trooute.CreateBookingResponse&gt;, Swift.Error&gt;) -&gt; () in Trooute.ProceedViewModel.bookNoewPressed() -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/Views/Booking%20Views/Book%20Now%20View/ProceedViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "66CED642-7120-4DE2-81FE-F3C476F632D2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Trooute/Views/Booking Views/Book Now View/ProceedViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "bookNoewPressed()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "66CED642-7120-4DE2-81FE-F3C476F632D2 - 8f402964f9568fef"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Trooute.Response&lt;Trooute.CreateBookingResponse&gt;, Swift.Error&gt;) -&gt; () in Trooute.ProceedViewModel.bookNoewPressed() -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/Views/Booking%20Views/Book%20Now%20View/ProceedViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33">
-               </Location>
-               <Location
-                  uuid = "66CED642-7120-4DE2-81FE-F3C476F632D2 - 8f402964f9568fef"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Trooute.Response&lt;Trooute.CreateBookingResponse&gt;, Swift.Error&gt;) -&gt; () in Trooute.ProceedViewModel.bookNoewPressed() -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/Views/Booking%20Views/Book%20Now%20View/ProceedViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -67,7 +67,13 @@ class SettingsViewModel: ObservableObject {
     }
 
     func logoutPressed() {
-        self.notificationTopic(subscribed: false, logout: true)
+        SwiftLoader.show(title: "Logout...", animated: true)
+        self.repository.signout(request: SignoutRequest(deviceId: Utils.getToken() ?? "")) { [weak self] result in
+            
+            guard let self = self else {return}
+            self.notificationTopic(subscribed: false, logout: true)
+        }
+        
     }
     
     private func notificationTopic(subscribed: Bool, logout: Bool = false) {
@@ -78,15 +84,12 @@ class SettingsViewModel: ObservableObject {
                     log.info("subscribeTopic to \(userId) error \(String(describing: error?.localizedDescription))")
                 }
             } else {
-                if logout {
-                    SwiftLoader.show(title: "Logout...", animated: true)
-                }
                 notifications.unsubscribeTopic(topic: Apis.TROOUTE_TOPIC + userId) { error in
-                    SwiftLoader.hide()
                     log.info("unsubscribeTopic to \(userId) error \(String(describing: error?.localizedDescription))")
                     if logout {
                         UserUtils.shared.clearUserFromStorage()
                     }
+                    SwiftLoader.hide()
                 }
             }
         }

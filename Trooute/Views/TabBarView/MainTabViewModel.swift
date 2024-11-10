@@ -30,7 +30,7 @@ class MainTabViewModel: ObservableObject {
     }
 
     func updateToken() {
-        if let fcm = Messaging.messaging().fcmToken {
+        if let fcm = Utils.getToken() {
             repositiry.updateDeviceId(request: UpdateDeviceIDRequest(deviceId: fcm)) { result in
                 switch result {
                 case let .success(success):

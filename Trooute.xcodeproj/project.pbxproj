@@ -157,6 +157,7 @@
 		CE727A912CD40C4000D27044 /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE727A902CD40C3D00D27044 /* Inbox.swift */; };
 		CE727A962CD5060D00D27044 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE727A952CD5060D00D27044 /* MessageView.swift */; };
 		CE7B20D72CDF3E0A005EE285 /* NotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B20D62CDF3DFF005EE285 /* NotificationRequest.swift */; };
+		CE7B20D92CE0A030005EE285 /* SignoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B20D82CE0A02D005EE285 /* SignoutRequest.swift */; };
 		CE843B102CDE9DB400C249C5 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = CE843B0F2CDE9DB400C249C5 /* FirebaseMessaging */; };
 		CE843B122CDEA18200C249C5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE843B112CDEA18200C249C5 /* FirebaseAnalytics */; };
 		CEA18AC02CBBB6820096545F /* BasicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA18ABF2CBBB6750096545F /* BasicResponse.swift */; };
@@ -381,6 +382,7 @@
 		CE727A902CD40C3D00D27044 /* Inbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inbox.swift; sourceTree = "<group>"; };
 		CE727A952CD5060D00D27044 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		CE7B20D62CDF3DFF005EE285 /* NotificationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRequest.swift; sourceTree = "<group>"; };
+		CE7B20D82CE0A02D005EE285 /* SignoutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignoutRequest.swift; sourceTree = "<group>"; };
 		CEA18ABF2CBBB6750096545F /* BasicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicResponse.swift; sourceTree = "<group>"; };
 		CEA18AC32CBBCDAC0096545F /* MainTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
 		CEA18AC52CBBCDDE0096545F /* MainTabViewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewRepository.swift; sourceTree = "<group>"; };
@@ -1082,6 +1084,7 @@
 		CEEEA28D2CBA95D1006B8ECE /* RequestResponseObjects */ = {
 			isa = PBXGroup;
 			children = (
+				CE7B20D82CE0A02D005EE285 /* SignoutRequest.swift */,
 				CE7B20D62CDF3DFF005EE285 /* NotificationRequest.swift */,
 				CEA627762CDA8B0800DEC5A1 /* ReviewObject.swift */,
 				CEF49B142CD963600098E425 /* Post Review Request */,
@@ -1535,6 +1538,7 @@
 				CEA18AE22CBD831E0096545F /* GetTripsRequest.swift in Sources */,
 				CE727A8F2CD40BC700D27044 /* Message.swift in Sources */,
 				CE631B5D2CC389B800976FAD /* SettingsRepository.swift in Sources */,
+				CE7B20D92CE0A030005EE285 /* SignoutRequest.swift in Sources */,
 				CE5150392C9F25B400B10107 /* BookingsView.swift in Sources */,
 				CE2169EF2CC04044002B9333 /* ProceedRepository.swift in Sources */,
 				CEF49B082CD9332A0098E425 /* WriteReviewViewModel.swift in Sources */,

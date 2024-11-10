@@ -5,6 +5,7 @@
 //  Created by Muhammad Zafar on 2024-09-25.
 //
 import SwiftUI
+import Firebase
 
 struct Utils {
     static func isValidEmail(_ email: String) -> Bool {
@@ -127,5 +128,9 @@ struct Utils {
     
     static func getImageFullUrl(_ photo: String) -> String {
         return "\(Constants.baseImageUrl)/\(photo)"
+    }
+    
+    static func getToken() -> String? {
+        return Messaging.messaging().fcmToken
     }
 }
