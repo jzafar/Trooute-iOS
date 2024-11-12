@@ -135,9 +135,9 @@ class NetworkService: NetworkServiceProtocol {
 
         // Add parameters
         for (key, value) in parameters {
-            body.append("--\(boundary)\r\n")
-            body.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
             if let stringValue = value as? String {
+                body.append("--\(boundary)\r\n")
+                body.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
                 body.append("\(stringValue)\r\n")
             } else if let imageData = value as? Data {
                 body.append("--\(boundary)\r\n")

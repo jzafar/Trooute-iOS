@@ -14,6 +14,7 @@ class SettingsViewModel: ObservableObject {
     @AppStorage(UserDefaultsKey.isNotificationEnabled.key) var isNotificationOn: Bool = false
     @Published var isDriverModeOn = true
     @Published var editCarInfo = false
+    @Published var userModel: UserUtils = UserUtils.shared
     var isUserInteractionWithSwitch: Bool = true
     private let repository = SettingsRepository()
 
@@ -23,15 +24,15 @@ class SettingsViewModel: ObservableObject {
     }
 
     func onAppear() {
-        Task {
-            await askForNotificationPermissions()
-            if isNotificationOn {
-                let permission = await getNotificationPermission()
-                if !permission {
-                    BannerHelper.displayBanner(.info, message: "You have enabled notifications but notifications are off from settings. Please go to application settings and enable notifications")
-                }
-            }
-        }
+//        Task {
+//            await askForNotificationPermissions()
+//            if isNotificationOn {
+//                let permission = await getNotificationPermission()
+//                if !permission {
+//                    BannerHelper.displayBanner(.info, message: "You have enabled notifications but notifications are off from settings. Please go to application settings and enable notifications")
+//                }
+//            }
+//        }
     }
 
     func onChangeOfNotification() {
@@ -43,6 +44,21 @@ class SettingsViewModel: ObservableObject {
         isDriverModeOn = UserUtils.shared.driverMode
     }
 
+    func getMe() {
+        self.repository.getMe { [weak self] result in
+            guard let self = self else {return}
+            switch result {
+            case .success(let response):
+                if response.data.success,
+                let user = response.data.data {
+                    self.userModel.user = user
+                }
+            case .failure(let failure):
+                log.error("get me \(failure.localizedDescription)")
+            }
+        }
+    }
+    
     func toggleDriverMode(userIntrection: Bool) {
         if userIntrection {
             isUserInteractionWithSwitch = false
@@ -100,7 +116,7 @@ class SettingsViewModel: ObservableObject {
     }
 
     func actionSheet() {
-        let data = "Hey! I want to invite you to try Trooute App. Get where you’re going with affordable, convenient rides. You can download App from this link: https://play.google.com/store/apps/details?id=com.travel.trooute"
+        let data = "Hey! I want to invite you to try Trooute App. Get where you’re going with affordable, convenient rides. You can download App from this link: https://apps.apple.com/us/app/trooute/id6737987619"
         let av = UIActivityViewController(activityItems: [data], applicationActivities: nil)
         Utils.getRootViewController()?.present(av, animated: true, completion: nil)
     }

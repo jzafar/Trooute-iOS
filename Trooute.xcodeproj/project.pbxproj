@@ -206,6 +206,7 @@
 		CEF49B102CD944AE0098E425 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF49B0B2CD944AE0098E425 /* Buildable.swift */; };
 		CEF49B112CD944AE0098E425 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF49B0C2CD944AE0098E425 /* Star.swift */; };
 		CEF49B162CD963A50098E425 /* PostReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF49B152CD963970098E425 /* PostReviewRequest.swift */; };
+		CEF777B22CE398F8006868EB /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CEF777B12CE398F8006868EB /* FirebaseCrashlytics */; };
 		CEF80EDF2CC9701100AA478D /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80EDE2CC9701100AA478D /* ReviewView.swift */; };
 		CEF80EE12CC9707F00AA478D /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80EE02CC9707400AA478D /* ReviewViewModel.swift */; };
 		CEF80EE32CC970F400AA478D /* ReviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80EE22CC970E400AA478D /* ReviewRepository.swift */; };
@@ -451,6 +452,7 @@
 				CE4E3E172CA5E728005C3CEE /* SDWebImageSwiftUI in Frameworks */,
 				CE5227CD2CBAAD84005C1175 /* SwiftLoader in Frameworks */,
 				CE5227D02CBABA6B005C1175 /* FirebaseCore in Frameworks */,
+				CEF777B22CE398F8006868EB /* FirebaseCrashlytics in Frameworks */,
 				CE727A8A2CD3F14C00D27044 /* FirebaseFirestore in Frameworks */,
 				CEEEA2982CBA9BE3006B8ECE /* BRYXBanner in Frameworks */,
 			);
@@ -1262,6 +1264,7 @@
 				CED05EFA2C95AF6F00E51158 /* Sources */,
 				CED05EFB2C95AF6F00E51158 /* Frameworks */,
 				CED05EFC2C95AF6F00E51158 /* Resources */,
+				CE7B21202CE20D37005EE285 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1386,6 +1389,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CE7B21202CE20D37005EE285 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CED05EFA2C95AF6F00E51158 /* Sources */ = {
@@ -1745,7 +1773,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Trooute/Trooute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Trooute/Preview Content\"";
 				DEVELOPMENT_TEAM = MPGZ44D94P;
 				ENABLE_PREVIEWS = YES;
@@ -1758,7 +1787,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1766,11 +1795,15 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.travel.trooutee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1781,7 +1814,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Trooute/Trooute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Trooute/Preview Content\"";
 				DEVELOPMENT_TEAM = MPGZ44D94P;
 				ENABLE_PREVIEWS = YES;
@@ -1794,7 +1827,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1802,11 +1835,15 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.travel.trooutee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1993,6 +2030,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CEEEA2962CBA9BE3006B8ECE /* XCRemoteSwiftPackageReference "BRYXBanner" */;
 			productName = BRYXBanner;
+		};
+		CEF777B12CE398F8006868EB /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE5227CE2CBABA6B005C1175 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

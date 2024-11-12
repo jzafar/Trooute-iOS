@@ -65,7 +65,7 @@ struct SettingsView: View {
         }
         .listStyle(InsetGroupedListStyle())
         .fullScreenCover(isPresented: $viewModel.editCarInfo, onDismiss: {
-            // Reload
+            viewModel.getMe()
         }, content: {
             BecomeDriverView(viewModel: BecomeDriverViewModel(carDetails: userModel.user?.carDetails))
         })

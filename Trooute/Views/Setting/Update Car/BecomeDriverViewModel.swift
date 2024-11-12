@@ -21,7 +21,7 @@ class BecomeDriverViewModel: ObservableObject {
     @Published var vehicleImage: Image? = nil
     @Published var selectedItem: PhotosPickerItem? = nil
     @Published var selectedDriverLicense: PhotosPickerItem? = nil
-
+    @Published var dismiss = false
     let colors = ["White", "Black", "Gray", "Silver", "Blue", "Red", "Brown", "Green", "Orange", "Beige", "Purple", "Gold", "Yellow"]
     let years = Array(2016 ... 2025).map { "\($0)" }
     var carDetails: CarDetails?
@@ -29,15 +29,20 @@ class BecomeDriverViewModel: ObservableObject {
     init(carDetails: CarDetails?) {
         self.carDetails = carDetails
         if let car = carDetails {
-            vehicleMake = car.make.emptyOrNil
-            vehicleModel = car.model.emptyOrNil
+            vehicleMake = car.make ?? ""
+            vehicleModel = car.model ?? ""
             vehicleYear = "\(car.year ?? 0000)"
-            vehicleColor = car.color.emptyOrNil
+            vehicleColor = car.color ?? ""
             vehicleLicensePlate = car.registrationNumber ?? ""
         }
         Task {
             do {
-                self.vehicleImage = try await Utils.downloadImage(url: carPhoto)
+                if let image =  try await Utils.downloadImage(url: carPhoto) {
+                    DispatchQueue.main.async {
+                        self.vehicleImage = image
+                    }
+                }
+                
             } catch {
                 print("fail to download image \(error.localizedDescription)")
             }
@@ -112,14 +117,13 @@ class BecomeDriverViewModel: ObservableObject {
                                                 color: vehicleLicensePlate.trim(),
                                                 carPhoto: Utils.convertImageToData(vehicleImage),
                                                 driverLicense: Utils.convertImageToData(drivingLicenseImage))
-            SwiftLoader.show(title: "Updating...", animated: true)
-            self.repository.updateCarInfo(request: request) {  result in
+            SwiftLoader.show(title: "Requesting...", animated: true)
+            self.repository.becomeDriver(request: request) {  result in
                 SwiftLoader.hide()
                 switch result {
                 case .success(let response):
-                    if response.data.success,
-                       let car = response.data.data {
-                        UserUtils.shared.updateCarInfo(car: car)
+                    if response.data.success {
+                        self.dismiss = true
                         BannerHelper.displayBanner(.success, message: response.data.message)
                     } else {
                         BannerHelper.displayBanner(.error, message: response.data.message)

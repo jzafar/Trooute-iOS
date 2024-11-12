@@ -9,6 +9,7 @@
 protocol SettingsRepositoryProtocol {
     func switchDriverMode(completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void)
     func signout(request: SignoutRequest ,completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void)
+    func getMe(completion: @escaping (Result<Response<SigninResponse>, Error>) -> Void)
 }
 
 class SettingsRepository: SettingsRepositoryProtocol {
@@ -24,5 +25,9 @@ class SettingsRepository: SettingsRepositoryProtocol {
     
     func signout(request: SignoutRequest ,completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void){
         networkService.request(url: Apis.signout, method: .POST, httpBody: request.toDictionary(), completion: completion)
+    }
+    
+    func getMe(completion: @escaping (Result<Response<SigninResponse>, Error>) -> Void) {
+        self.networkService.request(url: Apis.getMe, method: .GET, completion: completion)
     }
 }

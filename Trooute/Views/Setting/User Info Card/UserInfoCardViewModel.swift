@@ -22,8 +22,16 @@ class UserInfoCardViewModel: ObservableObject {
     }
     
     var photo: String {
-        return "\(Constants.baseImageUrl)/\(user.photo ?? "")"
+        return "\(Constants.baseImageUrl)/\(self.user.photo ?? "")"
     }
+    
+//    func getUrl(url: String?) -> String {
+//        var imageUrl = "\(Constants.baseImageUrl)"
+//        if let photo = url {
+//            imageUrl = "\(Constants.baseImageUrl)/\(photo)"
+//        }
+//        return imageUrl
+//    }
     
     var name: String {
         return self.user.name

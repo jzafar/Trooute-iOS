@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UpdatePasswordView: View {
-    @ObservedObject var viewModel = UpdatePasswordViewModel()
+    @StateObject var viewModel = UpdatePasswordViewModel()
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {

@@ -9,7 +9,7 @@ import Combine
 import SwiftUI
 
 struct UpdateProfileView: View {
-    @ObservedObject var viewModel = UpdateProfileViewModel()
+    @StateObject var viewModel = UpdateProfileViewModel()
     @FocusState var keyIsFocused: Bool
     var body: some View {
         VStack {
@@ -68,6 +68,7 @@ struct UpdateProfileView: View {
     @ViewBuilder
     func signInButton() -> some View {
         PrimaryGreenButton(title: "Update") {
+            hideKeyboard()
             viewModel.updateProfile()
         }
         .padding(.horizontal, 30)

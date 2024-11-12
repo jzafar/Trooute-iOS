@@ -55,6 +55,11 @@ struct BecomeDriverView: View {
                     }.padding()
                 }
             }
+            .onTapGesture {
+                hideKeyboard()
+            }.onChange(of: viewModel.dismiss, perform: { newValue in
+                dismiss()
+            })
             .navigationTitle((userModel.driverStatus != .approved) ? "Become a driver" : "Update car Info")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
