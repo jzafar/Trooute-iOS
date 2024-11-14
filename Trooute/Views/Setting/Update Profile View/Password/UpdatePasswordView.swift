@@ -40,7 +40,7 @@ struct UpdatePasswordView: View {
                 }) {
                     Image(systemName: viewModel.showPassword ? "eye.slash" : "eye")
                         .foregroundColor(.gray)
-                }
+                }.buttonStyle(PlainButtonStyle())
             }
             .padding()
             .background(Color(UIColor.systemGray6))
@@ -64,7 +64,7 @@ struct UpdatePasswordView: View {
                 }) {
                     Image(systemName: viewModel.showPassword ? "eye.slash" : "eye")
                         .foregroundColor(.gray)
-                }
+                }.buttonStyle(PlainButtonStyle())
             }
             .padding()
             .background(Color(UIColor.systemGray6))
@@ -88,7 +88,7 @@ struct UpdatePasswordView: View {
                 }) {
                     Image(systemName: viewModel.showConfirmPassword ? "eye.slash" : "eye")
                         .foregroundColor(.gray)
-                }
+                }.buttonStyle(PlainButtonStyle())
             }
             .padding()
             .background(Color(UIColor.systemGray6))

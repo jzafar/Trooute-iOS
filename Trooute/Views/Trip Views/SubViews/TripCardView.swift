@@ -7,7 +7,7 @@
 
 import SwiftUI
 struct TripCardView: View {
-    @ObservedObject var viewModel: TripCardViewModel
+    @StateObject var viewModel: TripCardViewModel
     @ObservedObject var userModel: UserUtils = UserUtils.shared
     var body: some View {
         VStack (alignment: .leading, spacing: 5){

@@ -80,7 +80,7 @@ struct SigninView: View {
                 }) {
                     Image(systemName: viewModel.isPasswordVisible ? "eye.slash" : "eye")
                         .foregroundColor(Color.gray)
-                }
+                }.buttonStyle(PlainButtonStyle())
                 Spacer()
             }.background(Color(UIColor.systemGray6))
                 .cornerRadius(8)
@@ -98,7 +98,7 @@ struct SigninView: View {
                 Text("Forgot password?")
                     .foregroundColor(Color("TitleColor"))
                     .font(.subheadline)
-            }
+            }.buttonStyle(PlainButtonStyle())
         }
         .padding(.trailing, 30)
         .padding(.top, 5)
@@ -126,7 +126,7 @@ struct SigninView: View {
                 Text("Sign up")
                     .foregroundColor(Color.primaryGreen)
                     .fontWeight(.bold)
-            }
+            }.buttonStyle(PlainButtonStyle())
         }
         .padding(.bottom, 40)
     }

@@ -11,6 +11,7 @@ import Combine
 struct SignUpView: View {
     @ObservedObject var viewModel = SignUpViewModel()
     @Environment(\.dismiss) var dismiss
+    @Environment(\.openURL) var openURL
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -172,7 +173,7 @@ struct SignUpView: View {
                 }) {
                     Image(systemName: viewModel.showPassword ? "eye.slash" : "eye")
                         .foregroundColor(.gray)
-                }
+                }.buttonStyle(PlainButtonStyle())
             }
             .padding()
             .background(Color(UIColor.systemGray6))
@@ -196,7 +197,7 @@ struct SignUpView: View {
                 }) {
                     Image(systemName: viewModel.showConfirmPassword ? "eye.slash" : "eye")
                         .foregroundColor(.gray)
-                }
+                }.buttonStyle(PlainButtonStyle())
             }
             .padding()
             .background(Color(UIColor.systemGray6))
@@ -214,12 +215,12 @@ struct SignUpView: View {
             Text("Agree to")
                 .foregroundColor(.primary)
             Button(action: {
-                // Action to show terms
+                openURL(URL(string: Constants.TERMS_CONDITIONS)!)
             }) {
                 Text("Terms & Conditions")
                     .foregroundColor(.blue)
                     .underline()
-            }
+            }.buttonStyle(PlainButtonStyle())
             Spacer()
         }
         .frame(maxWidth: .infinity)
@@ -245,7 +246,7 @@ struct SignUpView: View {
                 Text("Sign in")
                     .foregroundColor(Color("PrimaryGreen"))
                     .fontWeight(.bold)
-            }
+            }.buttonStyle(PlainButtonStyle())
         }
         .padding(.bottom, 40)
     }

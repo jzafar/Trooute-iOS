@@ -24,7 +24,7 @@ struct CustomCalendarView: View {
                     }) {
                         Image(systemName: "chevron.left")
                             .foregroundColor(.blue)
-                    }
+                    }.buttonStyle(PlainButtonStyle())
                 }
                 
                 Spacer()
@@ -40,7 +40,7 @@ struct CustomCalendarView: View {
                 }) {
                     Image(systemName: "chevron.right")
                         .foregroundColor(.blue)
-                }
+                }.buttonStyle(PlainButtonStyle())
             }
             .padding()
 

@@ -122,7 +122,7 @@ struct MessageView: View {
                 Image(systemName: "paperplane.fill")
                     .foregroundColor(.blue)
                     .padding(8)
-            }
+            }.buttonStyle(PlainButtonStyle())
         }
         .padding(.horizontal)
         .padding(.vertical, 8)

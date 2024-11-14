@@ -136,6 +136,9 @@ struct BookingDetailsView: View {
     func passengerInfoView() -> some View {
         if let user = viewModel.bookingData?.user {
             UserInfoCardView(viewModel: UserInfoCardViewModel(user: user, showUserContact: viewModel.bookingData?.status == .confirmed))
+                .onTapGesture {
+                    viewModel.onTapPassenger(id: user.id)
+                }
         }
     }
 

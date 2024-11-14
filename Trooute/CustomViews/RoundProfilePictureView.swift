@@ -63,6 +63,7 @@ struct RoundProfilePictureView: View {
                         )
                         .foregroundColor(Color(UIColor.systemGray5))
                 }.frame(width: width, height: width)
+                    .buttonStyle(PlainButtonStyle())
             }
         }
         .onTapGesture {

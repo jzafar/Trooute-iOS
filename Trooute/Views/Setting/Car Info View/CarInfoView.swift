@@ -56,7 +56,7 @@ struct CarInfoView: View {
                             Image(systemName: "pencil")
                                 .font(.title).bold()
                                 .foregroundStyle(Color("DarkBlue"))
-                        }
+                        }.buttonStyle(PlainButtonStyle())
                     }
                 }
             }

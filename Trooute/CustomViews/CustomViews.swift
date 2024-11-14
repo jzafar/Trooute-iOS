@@ -71,7 +71,7 @@ struct SecondaryGrayButton: View {
                 .padding()
                 .background(.white)
                 .cornerRadius(8)
-        }
+        }.buttonStyle(PlainButtonStyle())
     }
 }
 
@@ -105,7 +105,7 @@ struct PersonButton: View {
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(.lightBlue)
                 )
-        }
+        }.buttonStyle(PlainButtonStyle())
     }
 }
 
@@ -196,6 +196,6 @@ struct XMarkButton: View {
             Image(systemName: "xmark")
                 .font(.headline)
                 .foregroundStyle(Color.black)
-        }
+        }.buttonStyle(PlainButtonStyle())
     }
 }

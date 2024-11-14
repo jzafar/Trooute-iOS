@@ -273,7 +273,7 @@ class TripDetailsViewModel: ObservableObject {
     }
     
     func updateBookMark(wishList: [String]?) {
-        self.userModel.user?.wishlist = wishList
+//        self.userModel.user?.wishlist = wishList
         if let isAddedInWishList = trip?.isAddedInWishList {
             trip?.isAddedInWishList = !isAddedInWishList
         }

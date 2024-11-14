@@ -25,7 +25,7 @@ struct FAQView: View {
                     }) {
                         Image(systemName: viewModel.expandedCells.contains(index) ? "chevron.up" : "chevron.down")
                             .foregroundColor(.gray)
-                    }
+                    }.buttonStyle(PlainButtonStyle())
                 }
                 .padding()
                 

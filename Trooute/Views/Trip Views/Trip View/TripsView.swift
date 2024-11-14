@@ -23,7 +23,7 @@ struct TripsView: View {
                         Button(action: {
                             path.append(trip.id)
                         }, label: {
-                            TripCardView(viewModel: TripCardViewModel(trip: trip))
+                            DriverTripCell(trip: trip)
                         }).buttonStyle(PlainButtonStyle())
 
                             .listRowSeparator(.hidden)
@@ -306,6 +306,7 @@ struct TripsView: View {
                     viewModel.date = viewModel.date == nil ? Date() : viewModel.date
                     viewModel.isDatePickerPresented = false
                 }.padding(.horizontal)
+                    .buttonStyle(PlainButtonStyle())
             }
             DatePicker(
                 "Select Date",

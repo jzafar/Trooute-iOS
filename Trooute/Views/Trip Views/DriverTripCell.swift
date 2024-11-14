@@ -45,7 +45,6 @@ struct DriverTripCell: View {
     @ViewBuilder
     func tripRouteView(_ fromAddress: String, whereToAddress: String, date: String) -> some View {
         TripRouteView(info: TripRouteModel(fromAddress: fromAddress, whereToAddress: whereToAddress, date: date))
-            .padding(.horizontal)
     }
     
     @ViewBuilder

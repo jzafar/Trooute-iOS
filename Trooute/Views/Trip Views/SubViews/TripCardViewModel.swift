@@ -23,7 +23,7 @@ class TripCardViewModel: ObservableObject {
     }
     
     func updateBookMark(wishList: [String]?) {
-        self.user?.wishlist = wishList
+//        self.user?.wishlist = wishList
         if let isAddedInWishList = trip.isAddedInWishList {
             trip.isAddedInWishList = !isAddedInWishList
         }

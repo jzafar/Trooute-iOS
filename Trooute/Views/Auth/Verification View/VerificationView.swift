@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct VerificationView: View {
-    @ObservedObject var viewModel: VerificationViewModel
+    @StateObject var viewModel: VerificationViewModel
     @Environment(\.dismiss) var dismiss
     @FocusState private var focusedFieldIndex: Int?
     var body: some View {
@@ -32,6 +32,7 @@ struct VerificationView: View {
                             .foregroundColor(viewModel.isResendEnabled ? Color("TitleColor") : .gray)
                     }
                     .disabled(!viewModel.isResendEnabled)
+                    .buttonStyle(PlainButtonStyle())
                 }
                 .padding(.horizontal)
 
