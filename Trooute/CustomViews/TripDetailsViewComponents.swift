@@ -105,20 +105,25 @@ struct TripDetailsViewComponents {
                     Text("Passengers not available")
                         .foregroundColor(.gray)
                 } else {
-                        LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(passengers, id: \.id) { passenger in
-                                WebImage(url: URL(string: getUrl(passenger: passenger)))
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(passengers, id: \.id) { passenger in
+                            WebImage(url: URL(string: getUrl(passenger: passenger))) { image in
+                                image.resizable()
+                            } placeholder: {
+                                Image("profile_place_holder")
                                     .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(Circle())
-                                    .onTapGesture {
-                                        action(passenger.id)
-                                    }
+                            }
+                            .indicator(.activity)
+                            .transition(.fade(duration: 0.5))
+                            .frame(width: 40, height: 40)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.black, lineWidth: 1))
+                            .padding(1)
+                            .onTapGesture {
+                                action(passenger.id)
                             }
                         }
-                    
-                    
+                    }
                 }
             }
             Divider()

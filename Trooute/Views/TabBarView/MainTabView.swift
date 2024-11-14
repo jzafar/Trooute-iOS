@@ -24,7 +24,8 @@ struct MainTabView: View {
                 NavigationStack(path: $path) {
                     TripsView(path: $path)
                 }.tabItem {
-                    Image(systemName: selectedTab == 0 ? "house.fill" : "house")
+                    Label("Home", systemImage: selectedTab == 0 ? "house.fill" : "house")
+//                    Image(systemName: selectedTab == 0 ? "house.fill" : "house")
                         .environment(\.symbolVariants, selectedTab == 0 ? .fill : .none)
                 }
                 .tag(0)
@@ -36,7 +37,8 @@ struct MainTabView: View {
                         }
                         .navigationBarTitle("Inbox")
                 }.tabItem {
-                    Image(systemName: selectedTab == 1 ? "bubble.left.fill" : "bubble.left")
+                    Label("Chat", systemImage: selectedTab == 1 ? "bubble.left.fill" : "bubble.left")
+//                    Image(systemName: selectedTab == 1 ? "bubble.left.fill" : "bubble.left")
                         .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)
                 }
                 .tag(1)
@@ -44,12 +46,10 @@ struct MainTabView: View {
 
                 NavigationStack {
                     BookingsView()
-                        .onAppear {
-                            log.info("selectedTab \(selectedTab)")
-                        }
                         .navigationBarTitle("Bookings")
                 }.tabItem {
-                    Image(systemName: selectedTab == 2 ? "calendar.circle.fill" : "calendar.circle")
+                    Label("Bookings", systemImage: selectedTab == 2 ? "calendar.circle.fill" : "calendar.circle")
+//                    Image(systemName: selectedTab == 2 ? "calendar.circle.fill" : "calendar.circle")
                         .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)
                 }
                 .tag(2)
@@ -59,10 +59,10 @@ struct MainTabView: View {
                         .navigationBarTitle("Settings")
                         .onAppear {
                             viewModel.getMe()
-                            print("selectedTab \(selectedTab)")
                         }
                 }.tabItem {
-                    Image(systemName: selectedTab == 3 ? "gearshape.fill" : "gearshape")
+                    Label("Settings", systemImage: selectedTab == 3 ? "gearshape.fill" : "gearshape")
+//                    Image(systemName: selectedTab == 3 ? "gearshape.fill" : "gearshape")
                         .environment(\.symbolVariants, selectedTab == 3 ? .fill : .none)
                 }
                 .tag(3)
@@ -70,6 +70,7 @@ struct MainTabView: View {
         }
 
         .onAppear {
+            
             let standardAppearance = UITabBarAppearance()
             standardAppearance.backgroundColor = UIColor(Color("TitleColor"))
 
@@ -79,6 +80,13 @@ struct MainTabView: View {
             standardAppearance.inlineLayoutAppearance = itemAppearance
             standardAppearance.stackedLayoutAppearance = itemAppearance
             standardAppearance.compactInlineLayoutAppearance = itemAppearance
+            let selectedAttributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: UIColor.white
+            ]
+            standardAppearance.stackedLayoutAppearance.normal.titleTextAttributes = selectedAttributes
+            standardAppearance.stackedLayoutAppearance.selected.titleTextAttributes = selectedAttributes
+
+
             UITabBar.appearance().standardAppearance = standardAppearance
             UITabBar.appearance().scrollEdgeAppearance = standardAppearance
         }

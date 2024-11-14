@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TripDetailsView: View {
-    @ObservedObject var viewModel: TripDetailsViewModel
+    @StateObject var viewModel: TripDetailsViewModel
     @ObservedObject var userModel = UserUtils.shared
     let screenWidth = UIScreen.main.bounds.width
     var body: some View {
@@ -49,7 +49,8 @@ struct TripDetailsView: View {
                     if userModel.driverMode == false {
                         Section(header: PassengersSectionHeader(seats: "\(viewModel.trip?.availableSeats ?? 0)"), content: {
                             TripDetailsViewComponents.passengersView(passengers: viewModel.trip?.passengers ?? []) {
-                                _ in
+                                passengerId in
+                                viewModel.onTapPassenger(id: passengerId)
                             }
 
                         })
@@ -96,7 +97,11 @@ struct TripDetailsView: View {
         }).navigationDestination(isPresented: $viewModel.showPickUpPassengers, destination: {
             PickupPassengersView(viewModel: PickupPassengersViewModel(tripId: viewModel.tripId))
         })
-        
+        .fullScreenCover(item: $viewModel.passgenerId) {
+            viewModel.passgenerId = nil
+        } content: { id in
+            ReviewView(viewModel: ReviewViewModel(userId: id))
+        }
         .onAppear {
             viewModel.onApplear()
         }

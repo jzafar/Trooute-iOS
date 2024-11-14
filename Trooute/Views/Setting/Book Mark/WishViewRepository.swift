@@ -7,7 +7,7 @@
 
 
 protocol WishViewRepositoryProtocol {
-    func getTrips(completion: @escaping (Result<Response<GetTripsResponse>, Error>) -> Void)
+    func getTrips(completion: @escaping (Result<Response<GetTripListResponse>, Error>) -> Void)
 }
 
 class WishViewRepository: WishViewRepositoryProtocol {
@@ -17,7 +17,7 @@ class WishViewRepository: WishViewRepositoryProtocol {
         self.networkService = networkService
     }
 
-    func getTrips(completion: @escaping (Result<Response<GetTripsResponse>, Error>) -> Void) {
+    func getTrips(completion: @escaping (Result<Response<GetTripListResponse>, Error>) -> Void) {
         networkService.request(url: Apis.getWishList, method: .GET, completion: completion)
     }
 }

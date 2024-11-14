@@ -104,11 +104,6 @@
 		CE51504C2C9FD8A800B10107 /* UpdateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51504B2C9FD8A100B10107 /* UpdateProfileViewModel.swift */; };
 		CE51504E2C9FDC8400B10107 /* UpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51504D2C9FDC8400B10107 /* UpdatePasswordView.swift */; };
 		CE5150502C9FE01300B10107 /* UpdatePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51504F2C9FE00E00B10107 /* UpdatePasswordViewModel.swift */; };
-		CE5150552CA0153300B10107 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150542CA0152B00B10107 /* TabBarView.swift */; };
-		CE5150682CA035A800B10107 /* UITabBarControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150612CA035A800B10107 /* UITabBarControllerRepresentable.swift */; };
-		CE5150692CA035A800B10107 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150652CA035A800B10107 /* CustomTabView.swift */; };
-		CE51506E2CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150662CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift */; };
-		CE51506F2CA035A800B10107 /* KeyboardReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150602CA035A800B10107 /* KeyboardReadable.swift */; };
 		CE5150752CA093CB00B10107 /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150742CA093CB00B10107 /* OnboardView.swift */; };
 		CE5150772CA0AFA600B10107 /* CreateTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150762CA0AFA600B10107 /* CreateTripView.swift */; };
 		CE5150792CA0AFAE00B10107 /* CreateTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5150782CA0AFAB00B10107 /* CreateTripViewModel.swift */; };
@@ -332,11 +327,6 @@
 		CE51504B2C9FD8A100B10107 /* UpdateProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewModel.swift; sourceTree = "<group>"; };
 		CE51504D2C9FDC8400B10107 /* UpdatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordView.swift; sourceTree = "<group>"; };
 		CE51504F2C9FE00E00B10107 /* UpdatePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordViewModel.swift; sourceTree = "<group>"; };
-		CE5150542CA0152B00B10107 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
-		CE5150602CA035A800B10107 /* KeyboardReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardReadable.swift; sourceTree = "<group>"; };
-		CE5150612CA035A800B10107 /* UITabBarControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarControllerRepresentable.swift; sourceTree = "<group>"; };
-		CE5150652CA035A800B10107 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
-		CE5150662CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+TabBarPosition.swift"; sourceTree = "<group>"; };
 		CE5150742CA093CB00B10107 /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
 		CE5150762CA0AFA600B10107 /* CreateTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripView.swift; sourceTree = "<group>"; };
 		CE5150782CA0AFAB00B10107 /* CreateTripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripViewModel.swift; sourceTree = "<group>"; };
@@ -609,18 +599,6 @@
 			path = "App Custom Model";
 			sourceTree = "<group>";
 		};
-		CE5150672CA035A800B10107 /* CustomTabView */ = {
-			isa = PBXGroup;
-			children = (
-				CE5150602CA035A800B10107 /* KeyboardReadable.swift */,
-				CE5150612CA035A800B10107 /* UITabBarControllerRepresentable.swift */,
-				CE5150652CA035A800B10107 /* CustomTabView.swift */,
-				CE5150662CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift */,
-				CE5150542CA0152B00B10107 /* TabBarView.swift */,
-			);
-			path = CustomTabView;
-			sourceTree = "<group>";
-		};
 		CE5227E02CBAE27F005C1175 /* Verification View */ = {
 			isa = PBXGroup;
 			children = (
@@ -735,7 +713,6 @@
 				CE08540B2CB29AE800A3E422 /* PictureView.swift */,
 				CE270B962CB0764E00B9CFDC /* NavigationUtil.swift */,
 				CE1D68132CAB1ACC0070970D /* TripDetailsViewComponents.swift */,
-				CE5150672CA035A800B10107 /* CustomTabView */,
 				CE4E3E8F2CA753B3005C3CEE /* CheckboxStyle.swift */,
 				CE5701492C9E1A4C003BD7CA /* CustomViews.swift */,
 				CE51507C2CA0B25500B10107 /* CustomCalendarView.swift */,
@@ -1491,17 +1468,13 @@
 				CE2169F42CC0427C002B9333 /* CreateBookingResponse.swift in Sources */,
 				CE5227FB2CBB9E9F005C1175 /* ResendOTPRequest.swift in Sources */,
 				CE1D68102CA9C4BA0070970D /* BookingDetailsView.swift in Sources */,
-				CE5150682CA035A800B10107 /* UITabBarControllerRepresentable.swift in Sources */,
 				CE631B6E2CC51A7100976FAD /* DriverSideBookingTripPassengerCellModel.swift in Sources */,
-				CE5150692CA035A800B10107 /* CustomTabView.swift in Sources */,
 				CE631B712CC551CE00976FAD /* Enums.swift in Sources */,
-				CE51506E2CA035A800B10107 /* EnvironmentValues+TabBarPosition.swift in Sources */,
 				CEA18AD92CBC5B470096545F /* UpdateProfileRepository.swift in Sources */,
 				CE08540E2CB29B8000A3E422 /* CameraView.swift in Sources */,
 				CE4E3DFB2CA5A787005C3CEE /* ReviewsStats.swift in Sources */,
 				CE4E3D772CA35794005C3CEE /* FAQViewModel.swift in Sources */,
 				CEEEA28B2CBA8F33006B8ECE /* SigninRepository.swift in Sources */,
-				CE51506F2CA035A800B10107 /* KeyboardReadable.swift in Sources */,
 				CE1D68122CA9C4DA0070970D /* BookingDetailsViewModel.swift in Sources */,
 				CE4E3D752CA356CD005C3CEE /* FAQView.swift in Sources */,
 				CE51504C2C9FD8A800B10107 /* UpdateProfileViewModel.swift in Sources */,
@@ -1581,7 +1554,6 @@
 				CE4E3E122CA5C97F005C3CEE /* MockDate.swift in Sources */,
 				CEAC81682CCEE814002C4676 /* Notifications.swift in Sources */,
 				CE4E3E882CA73656005C3CEE /* DriverCarViewModel.swift in Sources */,
-				CE5150552CA0153300B10107 /* TabBarView.swift in Sources */,
 				CE1D67FE2CA93E760070970D /* GetBookingsResponse.swift in Sources */,
 				CE5150462C9F57D300B10107 /* Color.swift in Sources */,
 				CE5227E92CBAF7B6005C1175 /* SignupResponse.swift in Sources */,

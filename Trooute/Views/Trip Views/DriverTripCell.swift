@@ -18,7 +18,7 @@ struct DriverTripCell: View {
     @ViewBuilder
     func wishCell(wish: TripsData) -> some View {
         VStack(alignment: .leading) {
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading) {
                 VStack(alignment: .trailing) {
                     HStack {
                         availableSeatsView(Int(wish.availableSeats ?? 0))
@@ -110,15 +110,14 @@ struct HorizontalCollectionView: View {
                         .indicator(.activity)
                         .transition(.fade(duration: 0.5))
                         .frame(width: 50, height: 50)
-                        .cornerRadius(25)
-                        .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.black, lineWidth: 1))
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.black, lineWidth: 1))
                         .padding(1)
                        
                     }
-                    .frame(width: 60, height: 60)
                 }
             }
-        }
+        }.frame(height: 50)
     }
 }
 struct ScaleButtonStyle: ButtonStyle {

@@ -100,6 +100,7 @@ struct BookingDetailsView: View {
             .toolbar(.hidden, for: .tabBar)
             .sheet(isPresented: $viewModel.showPaymentsScreen) {
                 viewModel.getBookingDetails()
+                viewModel.passgenerId = nil
             } content: {
                 WebView(webViewModel: viewModel.getWebViewModel())
             }

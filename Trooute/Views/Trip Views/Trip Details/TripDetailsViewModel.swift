@@ -29,6 +29,7 @@ class TripDetailsViewModel: ObservableObject {
     @Published var otherReliventDetails: String = "Not Provided"
     @Published var openDetailsView: Bool = false
     @Published var showPickUpPassengers = false
+    @Published var passgenerId: String?
     var bookingId: String? = nil
     var alertTitle = ""
     var alertMessage = ""
@@ -277,5 +278,8 @@ class TripDetailsViewModel: ObservableObject {
             trip?.isAddedInWishList = !isAddedInWishList
         }
     }
-
+    
+    func onTapPassenger(id: String) {
+        self.passgenerId = id
+    }
 }

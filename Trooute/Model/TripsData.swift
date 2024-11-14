@@ -8,28 +8,28 @@
 import Foundation
 
 struct TripsData: BaseTrip, Codable, Identifiable {
-    let v: Int?
+    var v: Int?
     var id: String
-    let availableSeats: Int?
-    let departureDate: String?
-    let fromAddress: String?
-    let whereToAddress: String?
+    var availableSeats: Int?
+    var departureDate: String?
+    var fromAddress: String?
+    var whereToAddress: String?
     var pricePerPerson: Double?
     var status: TripStatus?
     var isAddedInWishList: Bool? = false
-    let driver: Driver?
-    let fromLocation: Location?
-    let languagePreference: String?
-    let note: String?
+    var driver: Driver?
+    var fromLocation: Location?
+    var languagePreference: String?
+    var note: String?
     var passengers: [Passenger]?
     var smokingPreference: Bool? = false
     var petPreference: Bool? = false
-    let totalAmount: Double?
-    let totalSeats: Int?
-    let whereToLocation: Location?
+    var totalAmount: Double?
+    var totalSeats: Int?
+    var whereToLocation: Location?
     var bookings: [Booking]?
-    let trip: Trip?
-    let luggageRestrictions: [LuggageRestrictions?]?
+    var trip: Trip?
+    var luggageRestrictions: [LuggageRestrictions?]?
     var roundTrip: Bool? = false
     var isDriverForReviews: Bool? = false // specially added for reviews
     enum CodingKeys: String, CodingKey {
