@@ -16,26 +16,26 @@ struct TroouteApp: App {
     @StateObject var user = UserUtils.shared
     @StateObject var fireBase = FirebaseViewModel()
     init() {
-        UITabBar.appearance().backgroundColor = UIColor(Color("TitleColor"))
-        UITabBar.appearance().barTintColor = UIColor(Color("TitleColor"))
-        UITabBar.appearance().unselectedItemTintColor = .white
+//        UITabBar.appearance().backgroundColor = UIColor(Color("TitleColor"))
+//        UITabBar.appearance().barTintColor = UIColor(Color("TitleColor"))
+//        UITabBar.appearance().unselectedItemTintColor = .white
 //        UITabBar.appearance().stackedLayoutAppearance.selected.iconColor = .white
-        
+
 //        let appearance = UITabBarAppearance()
-//                
-//                // Set custom colors for selected and unselected tab items
-//                appearance.stackedLayoutAppearance.selected.iconColor = .white // Selected icon color
-//                appearance.stackedLayoutAppearance.normal.iconColor = .white // Unselected icon color
-//                
-//                // Set the TabBar background color
-//                appearance.backgroundColor = UIColor(Color("TitleColor"))
-//                
-//                // Apply the appearance to UITabBar
-//                UITabBar.appearance().standardAppearance = appearance
-//                UITabBar.appearance().scrollEdgeAppearance = appearance
-
-
+//
+//        // Set custom colors for selected and unselected tab items
+//        appearance.stackedLayoutAppearance.selected.iconColor = .white // Selected icon color
+//        appearance.stackedLayoutAppearance.normal.iconColor = .white // Unselected icon color
+//        appearance.stackedItemWidth = 50
+//
+//        // Set the TabBar background color
+//        appearance.backgroundColor = UIColor(Color("TitleColor"))
+//
+//        // Apply the appearance to UITabBar
+//        UITabBar.appearance().standardAppearance = appearance
+//        UITabBar.appearance().scrollEdgeAppearance = appearance
     }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -57,18 +57,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
         return true
     }
-    
+
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-                         fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-
-          if let messageID = userInfo[gcmMessageIDKey] {
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
-          }
-
-          print(userInfo)
-
-          completionHandler(UIBackgroundFetchResult.newData)
         }
+
+        print(userInfo)
+
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
 }
 
 extension AppDelegate: MessagingDelegate {
@@ -77,45 +76,42 @@ extension AppDelegate: MessagingDelegate {
     }
 }
 
-extension AppDelegate : UNUserNotificationCenterDelegate {
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    // Receive displayed notifications for iOS 10 devices.
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo = notification.request.content.userInfo
 
-  // Receive displayed notifications for iOS 10 devices.
-  func userNotificationCenter(_ center: UNUserNotificationCenter,
-                              willPresent notification: UNNotification,
-    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-    let userInfo = notification.request.content.userInfo
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
 
-    if let messageID = userInfo[gcmMessageIDKey] {
-        print("Message ID: \(messageID)")
+        print(userInfo)
+
+        // Change this to your preferred presentation option
+        completionHandler([[.banner, .badge, .sound]])
     }
-
-    print(userInfo)
-
-    // Change this to your preferred presentation option
-    completionHandler([[.banner, .badge, .sound]])
-  }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().apnsToken = deviceToken
     }
 
-     
-    
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         log.error("didFailToRegisterForRemoteNotificationsWithError \(error.localizedDescription)")
     }
 
-  func userNotificationCenter(_ center: UNUserNotificationCenter,
-                              didReceive response: UNNotificationResponse,
-                              withCompletionHandler completionHandler: @escaping () -> Void) {
-    let userInfo = response.notification.request.content.userInfo
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
 
-    if let messageID = userInfo[gcmMessageIDKey] {
-      print("Message ID from userNotificationCenter didReceive: \(messageID)")
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID from userNotificationCenter didReceive: \(messageID)")
+        }
+
+        print(userInfo)
+
+        completionHandler()
     }
-
-    print(userInfo)
-
-    completionHandler()
-  }
 }

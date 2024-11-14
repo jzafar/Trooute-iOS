@@ -25,6 +25,7 @@ struct MainTabView: View {
                     TripsView(path: $path)
                 }.tabItem {
                     Image(systemName: selectedTab == 0 ? "house.fill" : "house")
+                        .environment(\.symbolVariants, selectedTab == 0 ? .fill : .none)
                 }
                 .tag(0)
 
@@ -36,6 +37,7 @@ struct MainTabView: View {
                         .navigationBarTitle("Inbox")
                 }.tabItem {
                     Image(systemName: selectedTab == 1 ? "bubble.left.fill" : "bubble.left")
+                        .environment(\.symbolVariants, selectedTab == 1 ? .fill : .none)
                 }
                 .tag(1)
                 .badge(fireBaseVM.hasNewMessage ? 1 : 0)
@@ -48,6 +50,7 @@ struct MainTabView: View {
                         .navigationBarTitle("Bookings")
                 }.tabItem {
                     Image(systemName: selectedTab == 2 ? "calendar.circle.fill" : "calendar.circle")
+                        .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)
                 }
                 .tag(2)
 
@@ -60,13 +63,25 @@ struct MainTabView: View {
                         }
                 }.tabItem {
                     Image(systemName: selectedTab == 3 ? "gearshape.fill" : "gearshape")
+                        .environment(\.symbolVariants, selectedTab == 3 ? .fill : .none)
                 }
                 .tag(3)
             }
         }
-//        .toolbarBackground(.indigo, for: .tabBar)
-//            .toolbarBackground(.visible, for: .tabBar)
-//            .toolbarColorScheme(.light, for: .tabBar)
+
+        .onAppear {
+            let standardAppearance = UITabBarAppearance()
+            standardAppearance.backgroundColor = UIColor(Color("TitleColor"))
+
+            let itemAppearance = UITabBarItemAppearance()
+            itemAppearance.normal.iconColor = UIColor(.white)
+            itemAppearance.selected.iconColor = UIColor(.white)
+            standardAppearance.inlineLayoutAppearance = itemAppearance
+            standardAppearance.stackedLayoutAppearance = itemAppearance
+            standardAppearance.compactInlineLayoutAppearance = itemAppearance
+            UITabBar.appearance().standardAppearance = standardAppearance
+            UITabBar.appearance().scrollEdgeAppearance = standardAppearance
+        }
 
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
@@ -77,9 +92,9 @@ struct MainTabView: View {
             if let id = UserUtils.shared.user?.id {
                 fireBaseVM.getAllInbox(userId: id)
             }
-        } .onChange(of: selectedTab) { value in
-            fireBaseVM.seletedTab = value }
-
+        }.onChange(of: selectedTab) { value in
+            fireBaseVM.seletedTab = value
+        }
     }
 }
 
