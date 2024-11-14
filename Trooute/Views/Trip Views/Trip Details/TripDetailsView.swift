@@ -12,67 +12,82 @@ struct TripDetailsView: View {
     @ObservedObject var userModel = UserUtils.shared
     let screenWidth = UIScreen.main.bounds.width
     var body: some View {
-        List {
-            if userModel.driverMode {
-                Section(header: DriverSectionHeader(seats: "\(viewModel.trip?.trip?.availableSeats ?? 0)")) {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 15) {
-                            ForEach(viewModel.trip?.bookings ?? []) { booking in
-                                DriverSideBookingTripPassengerCell(viewModel: viewModel.bookingCardVM(booking: booking))
-                                    .onTapGesture {
-                                        viewModel.bookingId = booking.id
-                                        viewModel.openDetailsView = true
-                                    }
-                                    .frame(width: viewModel.trip?.bookings?.count == 1 ? screenWidth - 50 : screenWidth - 80)
+        VStack {
+            List {
+                if userModel.driverMode {
+                    Section(header: DriverSectionHeader(seats: "\(viewModel.trip?.trip?.availableSeats ?? 0)")) {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 15) {
+                                ForEach(viewModel.trip?.bookings ?? []) { booking in
+                                    DriverSideBookingTripPassengerCell(viewModel: viewModel.bookingCardVM(booking: booking))
+                                        .onTapGesture {
+                                            viewModel.bookingId = booking.id
+                                            viewModel.openDetailsView = true
+                                        }
+                                        .frame(width: viewModel.trip?.bookings?.count == 1 ? screenWidth - 50 : screenWidth - 80)
+                                }
                             }
                         }
-                    }
-                    .listRowBackground(Color.clear)
-                    .padding(0)
+                        .listRowBackground(Color.clear)
+                        .padding(0)
 
-                }.listRowInsets(EdgeInsets())
-            } else {
-                if let driver = viewModel.trip?.driver {
-                    Section {
-                        UserInfoCardView(viewModel: viewModel.getDriverModel(driver: driver))
-                    }
-                }
-                if let carDetails = viewModel.trip?.driver?.carDetails {
-                    Section {
-                        CarInfoView(viewModel: viewModel.getCarDetailsModel(carDetails: carDetails))
-                    }
-                }
-            }
-
-            if let trip = viewModel.trip {
-                if userModel.driverMode == false {
-                    Section(header: PassengersSectionHeader(seats: "\(viewModel.trip?.availableSeats ?? 0)"), content: {
-                        TripDetailsViewComponents.passengersView(passengers: viewModel.trip?.passengers ?? []) {
-                            _ in
+                    }.listRowInsets(EdgeInsets())
+                } else {
+                    if let driver = viewModel.trip?.driver {
+                        Section {
+                            UserInfoCardView(viewModel: viewModel.getDriverModel(driver: driver))
                         }
-
-                    })
+                    }
+                    if let carDetails = viewModel.trip?.driver?.carDetails {
+                        Section {
+                            CarInfoView(viewModel: viewModel.getCarDetailsModel(carDetails: carDetails))
+                        }
+                    }
                 }
-                if let destination = viewModel.getDestinationModel(trip: trip) {
-                    Section(header: TextViewLableText(text: "Destination and schedule", textFont: .headline)) {
-                        DestinationView(destination: destination, price: userModel.driverMode ? trip.trip?.pricePerPerson ?? 0.0 : trip.pricePerPerson ?? 0.0)
+
+                if let trip = viewModel.trip {
+                    if userModel.driverMode == false {
+                        Section(header: PassengersSectionHeader(seats: "\(viewModel.trip?.availableSeats ?? 0)"), content: {
+                            TripDetailsViewComponents.passengersView(passengers: viewModel.trip?.passengers ?? []) {
+                                _ in
+                            }
+
+                        })
+                    }
+                    if let destination = viewModel.getDestinationModel(trip: trip) {
+                        Section(header: TextViewLableText(text: "Destination and schedule", textFont: .headline)) {
+                            DestinationView(destination: destination, price: userModel.driverMode ? trip.trip?.pricePerPerson ?? 0.0 : trip.pricePerPerson ?? 0.0)
+                                .listRowBackground(Color.clear)
+                                .listRowInsets(EdgeInsets())
+                        }
+                    }
+
+                    Section(header: TextViewLableText(text: "Trip Details", textFont: .headline)) {
+                        TripPrefView(handCarryWeight: viewModel.handCarryWeight,
+                                     suitcaseWeight: viewModel.suitcaseWeight,
+                                     smokingPreference: viewModel.smokingPreference,
+                                     petPreference: viewModel.petPreference,
+                                     languagePreference: viewModel.languagePreference,
+                                     otherReliventDetails: viewModel.otherReliventDetails)
                             .listRowBackground(Color.clear)
                             .listRowInsets(EdgeInsets())
                     }
                 }
-
-                Section(header: TextViewLableText(text: "Trip Details", textFont: .headline)) {
-                    TripPrefView(handCarryWeight: viewModel.handCarryWeight,
-                                 suitcaseWeight: viewModel.suitcaseWeight,
-                                 smokingPreference: viewModel.smokingPreference,
-                                 petPreference: viewModel.petPreference,
-                                 languagePreference: viewModel.languagePreference,
-                                 otherReliventDetails: viewModel.otherReliventDetails)
-                        .listRowBackground(Color.clear)
-                        .listRowInsets(EdgeInsets())
+            }
+            .safeAreaInset(edge: .bottom) {
+                if userModel.driverMode {
+                    if let trip = viewModel.trip?.trip {
+                        pickUpPassengers(trip)
+                    }
+                } else {
+                    if let trip = viewModel.trip {
+                        bookNowView(trip)
+                        
+                    }
                 }
             }
         }
+        
         .navigationDestination(isPresented: $viewModel.openDetailsView, destination: {
             if let bookingId = viewModel.bookingId {
                 BookingDetailsView(viewModel: BookingDetailsViewModel(bookingId: bookingId))
@@ -81,22 +96,12 @@ struct TripDetailsView: View {
         }).navigationDestination(isPresented: $viewModel.showPickUpPassengers, destination: {
             PickupPassengersView(viewModel: PickupPassengersViewModel(tripId: viewModel.tripId))
         })
-        .safeAreaInset(edge: .bottom) {
-            if userModel.driverMode {
-                if let trip = viewModel.trip?.trip {
-                    pickUpPassengers(trip)
-                }
-            } else {
-                if let trip = viewModel.trip {
-                    bookNowView(trip)
-                }
-            }
-        }
+        
         .onAppear {
             Tabbar.shared.hide = true
             viewModel.onApplear()
         }
-        .ignoresSafeArea(edges: .bottom)
+        .toolbar(.hidden, for: .tabBar)
         .navigationTitle("Trip Details")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarRole(.editor)
@@ -121,11 +126,11 @@ struct TripDetailsView: View {
                     }
 
                 }.padding(.horizontal)
-                    .background(Color("TitleColor"))
-                    .frame(height: 100)
+                    .padding(.top, 20)
 
-            }.background(Color("TitleColor"))
-                .frame(height: 130)
+            }.background(Color("TitleColor").ignoresSafeArea(edges: .bottom))
+                
+                
             
         } else if trip.status == .SCHEDULED ||  trip.status == .PickupStarted {
             VStack {
@@ -139,12 +144,11 @@ struct TripDetailsView: View {
                     }
 
                 }.padding(.horizontal)
-                    .background(Color("TitleColor"))
-                    .frame(height: 100)
+                    .padding(.top, 20)
+                
 
-            }.background(Color("TitleColor"))
-                .frame(height: 130)
-            
+            }.background(Color("TitleColor").ignoresSafeArea(edges: .bottom))
+                
         }
         
     }
@@ -169,11 +173,9 @@ struct TripDetailsView: View {
                 }
 
             }.padding(.horizontal)
-                .background(Color("TitleColor"))
-                .frame(height: 100)
-
-        }.background(Color("TitleColor"))
-            .frame(height: 130)
+                .padding(.top, 20)
+        }.background(Color("TitleColor").ignoresSafeArea(edges: .bottom))
+            
     }
 }
 

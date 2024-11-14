@@ -5,7 +5,6 @@
 //  Created by Niccolò Fontana on 19/01/23.
 //
 
-#if canImport(UIKit)
 import SwiftUI
 import UIKit
 
@@ -27,11 +26,10 @@ struct UITabBarControllerRepresentable: UIViewControllerRepresentable {
     }
 }
 
-@available(iOS 13.0, *)
-struct TabBarController_Previews: PreviewProvider {
-    static var previews: some View {
-        UITabBarControllerRepresentable(selectedTabIndex: 0, controlledViews: [])
-    }
-}
-#endif
+//@available(iOS 13.0, *)
+//struct TabBarController_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UITabBarControllerRepresentable(selectedTabIndex: 0, controlledViews: [])
+//    }
+//}
 

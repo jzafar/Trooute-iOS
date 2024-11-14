@@ -8,7 +8,7 @@
 import SDWebImageSwiftUI
 import SwiftUI
 struct ReviewView: View {
-    @ObservedObject var viewModel: ReviewViewModel
+    @StateObject var viewModel: ReviewViewModel
     @Environment(\.dismiss) var dismiss
     var body: some View {
         NavigationStack {
@@ -24,7 +24,7 @@ struct ReviewView: View {
                         Spacer()
                     }
                 }.listRowBackground(Color.clear)
-                
+
                 if viewModel.reviews.count == 0 {
                     Section {
                         HStack {
@@ -39,49 +39,54 @@ struct ReviewView: View {
                         ForEach(viewModel.reviews) { review in
                             if let user = review.user {
                                 VStack {
-                                    HStack {
-                                        WebImage(url: URL(string: viewModel.getUrl(url: user.photo)))
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(width: 40, height: 40)
-                                            .clipShape(Circle())
-                                    }
-                                    HStack {
-                                        VStack {
+                                    HStack(alignment: .top) { 
+                                        WebImage(url: URL(string: viewModel.getUrl(url: user.photo))) { image in
+                                            image
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                        } placeholder: {
+                                            Image("profile_place_holder")
+                                                .resizable()
+                                        }
+
+                                        .indicator(.activity)
+                                        .transition(.fade(duration: 0.5))
+                                        .frame(width: 50, height: 50)
+                                        .clipShape(Circle())
+                                        .overlay(Circle().stroke(Color.black, lineWidth: 1))
+                                        .padding(1)
+
+                                        VStack(alignment: .leading) {
                                             TextViewLableText(text: user.name, textFont: .headline)
-                                            
-                                            TextViewLableText(text: user.gender ?? "Not provided", textFont: .body)
+
                                             HStack {
-                                                HStack {
-                                                    Image(systemName: "star.fill")
-                                                        .resizable()
-                                                        .frame(width: 16, height: 16)
-                                                        .foregroundColor(.yellow)
-                                                    if let rating = review.rating {
-                                                        Text(rating.formatted(.number.precision(.fractionLength(1))))
-                                                            .font(.body)
-                                                    } else {
-                                                        Text("Not Provided")
-                                                            .font(.body)
-                                                    }
+                                                Image(systemName: "star.fill")
+                                                    .resizable()
+                                                    .frame(width: 16, height: 16)
+                                                    .foregroundColor(.yellow)
+                                                if let rating = review.rating {
+                                                    Text(rating.formatted(.number.precision(.fractionLength(1))))
+                                                        .font(.body)
+                                                } else {
+                                                    Text("Not Provided")
+                                                        .font(.body)
                                                 }
-                                                
-                                                Text(review.comment ?? "")
-                                                    .font(.body)
-                                                    .multilineTextAlignment(.leading)
+                                                Spacer()
                                             }
+
+                                            Text(review.comment ?? "")
+                                                .font(.body)
+                                                .multilineTextAlignment(.leading)
                                         }
                                     }
-                                    Divider()
-                                        .padding(.horizontal)
                                 }
                             }
                         }
                     }
                 }
             }
-        
-            .onAppear() {
+
+            .onAppear {
                 viewModel.fetchReviews()
             }.navigationTitle("Reviews")
             .navigationBarTitleDisplayMode(.inline)
@@ -91,10 +96,9 @@ struct ReviewView: View {
                 }.padding()
             }
         }
-       
     }
 }
 
-//#Preview {
+// #Preview {
 //    ReviewView(viewModel: ReviewViewModel(userId: "670aaabc5d1878c9830ffdbc"))
-//}
+// }

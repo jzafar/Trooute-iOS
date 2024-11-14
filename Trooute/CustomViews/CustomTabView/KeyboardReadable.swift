@@ -5,7 +5,6 @@
 //  Created by Niccolò Fontana on 19/01/23.
 //
 
-#if canImport(Combine) && canImport(UIKit)
 import Combine
 import UIKit
 
@@ -30,5 +29,4 @@ extension KeyboardReadable {
         .eraseToAnyPublisher()
     }
 }
-#endif
 

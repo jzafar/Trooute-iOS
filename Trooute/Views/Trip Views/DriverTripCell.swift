@@ -9,14 +9,14 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct DriverTripCell: View {
-    var trip: TripInfo
+    var trip: TripsData
     @ObservedObject var userModel: UserUtils = UserUtils.shared
     var body: some View {
         wishCell(wish: trip)
     }
     
     @ViewBuilder
-    func wishCell(wish: TripInfo) -> some View {
+    func wishCell(wish: TripsData) -> some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading, spacing: 10) {
                 VStack(alignment: .trailing) {
@@ -25,8 +25,8 @@ struct DriverTripCell: View {
                     }
                 }
                 passengersView(wish.passengers ?? [])
-                if let fromAddress = wish.from_address,
-                   let whereTo = wish.whereTo_address,
+                if let fromAddress = wish.fromAddress,
+                   let whereTo = wish.whereToAddress,
                    let date = wish.departureDate {
                     tripRouteView(fromAddress, whereToAddress: whereTo, date: date)
                 }
@@ -104,7 +104,8 @@ struct HorizontalCollectionView: View {
                         WebImage(url: URL(string: "\(Constants.baseImageUrl)/\(item.photo ?? "")")) { image in
                             image.resizable()
                         } placeholder: {
-                            Image(systemName: "person.circle")
+                            Image("profile_place_holder")
+                                .resizable()
                         }
                         .indicator(.activity)
                         .transition(.fade(duration: 0.5))

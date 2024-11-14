@@ -207,6 +207,7 @@
 		CEF49B112CD944AE0098E425 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF49B0C2CD944AE0098E425 /* Star.swift */; };
 		CEF49B162CD963A50098E425 /* PostReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF49B152CD963970098E425 /* PostReviewRequest.swift */; };
 		CEF777B22CE398F8006868EB /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CEF777B12CE398F8006868EB /* FirebaseCrashlytics */; };
+		CEF777BE2CE5502E006868EB /* BaseTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF777BD2CE55021006868EB /* BaseTrip.swift */; };
 		CEF80EDF2CC9701100AA478D /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80EDE2CC9701100AA478D /* ReviewView.swift */; };
 		CEF80EE12CC9707F00AA478D /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80EE02CC9707400AA478D /* ReviewViewModel.swift */; };
 		CEF80EE32CC970F400AA478D /* ReviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80EE22CC970E400AA478D /* ReviewRepository.swift */; };
@@ -432,6 +433,7 @@
 		CEF49B0C2CD944AE0098E425 /* Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
 		CEF49B0D2CD944AE0098E425 /* StarRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRateView.swift; sourceTree = "<group>"; };
 		CEF49B152CD963970098E425 /* PostReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReviewRequest.swift; sourceTree = "<group>"; };
+		CEF777BD2CE55021006868EB /* BaseTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTrip.swift; sourceTree = "<group>"; };
 		CEF80EDE2CC9701100AA478D /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		CEF80EE02CC9707400AA478D /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		CEF80EE22CC970E400AA478D /* ReviewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRepository.swift; sourceTree = "<group>"; };
@@ -695,6 +697,7 @@
 		CE5701412C9E0DFD003BD7CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CEF777BD2CE55021006868EB /* BaseTrip.swift */,
 				CE727A8B2CD40B5300D27044 /* Chat Models */,
 				CEF80EE62CC971E100AA478D /* Reviews.swift */,
 				CE631B702CC551C900976FAD /* Enums.swift */,
@@ -1265,6 +1268,7 @@
 				CED05EFB2C95AF6F00E51158 /* Frameworks */,
 				CED05EFC2C95AF6F00E51158 /* Resources */,
 				CE7B21202CE20D37005EE285 /* ShellScript */,
+				CEF777B32CE39FE8006868EB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1413,6 +1417,24 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
+		CEF777B32CE39FE8006868EB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols\" \\\n#-gsp \"${PROJECT_DIR}/Trooute/GoogleService-Info.plist\" -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1423,6 +1445,7 @@
 				CE51504E2C9FDC8400B10107 /* UpdatePasswordView.swift in Sources */,
 				CE5150442C9F512700B10107 /* CarInfoView.swift in Sources */,
 				CEA18ADF2CBD818A0096545F /* TripRepository.swift in Sources */,
+				CEF777BE2CE5502E006868EB /* BaseTrip.swift in Sources */,
 				CEA18AD42CBC4F950096545F /* UserUtils.swift in Sources */,
 				CE4E3D812CA49AC4005C3CEE /* Date.swift in Sources */,
 				CEA18AD22CBC4B0B0096545F /* UpdatePasswordRepository.swift in Sources */,
@@ -1773,7 +1796,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Trooute/Trooute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Trooute/Preview Content\"";
 				DEVELOPMENT_TEAM = MPGZ44D94P;
@@ -1814,7 +1837,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Trooute/Trooute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Trooute/Preview Content\"";
 				DEVELOPMENT_TEAM = MPGZ44D94P;
 				ENABLE_PREVIEWS = YES;

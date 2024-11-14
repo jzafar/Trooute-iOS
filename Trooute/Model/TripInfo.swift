@@ -5,9 +5,9 @@
 //  Created by Muhammad Zafar on 2024-10-01.
 //
 
-struct TripInfo: Codable, Identifiable {
+struct TripInfo: BaseTrip, Codable, Identifiable {
     var v: Int?
-    let id: String
+    var id: String
     var availableSeats: Double?
     var departureDate: String?
     var from_address: String?

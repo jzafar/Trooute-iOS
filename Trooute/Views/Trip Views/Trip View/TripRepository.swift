@@ -7,7 +7,7 @@
 
 protocol TripRepositoryProtocol {
     func getTrips(request: GetTripsRequest, completion: @escaping (Result<Response<GetTripsResponse>, Error>) -> Void)
-    func getDriverTrips(request: GetTripsRequest, completion: @escaping (Result<Response<GetTripListResponse>, Error>) -> Void)
+//    func getDriverTrips(request: GetTripsRequest, completion: @escaping (Result<Response<GetTripListResponse>, Error>) -> Void)
 }
 
 class TripRepository: TripRepositoryProtocol {
@@ -21,7 +21,7 @@ class TripRepository: TripRepositoryProtocol {
         networkService.request(url: Apis.trip, method: .GET, queryParams: request.parameters, completion: completion)
     }
     
-    func getDriverTrips(request: GetTripsRequest, completion: @escaping (Result<Response<GetTripListResponse>, Error>) -> Void) {
-        networkService.request(url: Apis.trip, method: .GET, queryParams: request.parameters, completion: completion)
-    }
+//    func getDriverTrips(request: GetTripsRequest, completion: @escaping (Result<Response<GetTripsResponse>, Error>) -> Void) {
+//        networkService.request(url: Apis.trip, method: .GET, queryParams: request.parameters, completion: completion)
+//    }
 }

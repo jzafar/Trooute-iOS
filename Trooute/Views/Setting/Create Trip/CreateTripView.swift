@@ -11,7 +11,6 @@ struct CreateTripView: View {
     @StateObject var viewModel = CreateTripViewModel()
     @FocusState private var isFocused: Bool
     @Environment(\.dismiss) var dismiss
-    let currencyFormat = NumberFormatter()
     var body: some View {
         List {
             Section(header: TextViewLableText(text: "Destination and Schedule")) {

@@ -16,11 +16,11 @@ struct MainTabView: View {
             Tabbar.shared.selectedTab = selectedtab
         }
     }
-
+    @State var path = NavigationPath()
     var body: some View {
         CustomTabView(tabBarView: tabBarView, tabs: Tab.allCases, selection: selectedTab) {
-            NavigationStack {
-                TripsView()
+            NavigationStack(path: $path) {
+                TripsView(path: $path)
                     .onAppear {
                         Tabbar.shared.hide = false
                     }
@@ -53,7 +53,7 @@ struct MainTabView: View {
             }
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 viewModel.getMe()
                 viewModel.updateToken()
             }

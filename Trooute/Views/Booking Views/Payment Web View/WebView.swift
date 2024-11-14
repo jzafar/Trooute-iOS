@@ -10,7 +10,7 @@ import SwiftUI
 import SwiftLoader
 
 struct WebView: UIViewRepresentable {
-    @ObservedObject var webViewModel: WebViewModel
+    @StateObject var webViewModel: WebViewModel
     @Environment(\.dismiss) var dismiss
         func makeCoordinator() -> WebView.Coordinator {
             Coordinator(self, webViewModel)

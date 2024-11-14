@@ -8,23 +8,19 @@
 import SwiftUI
 
 struct ProceedView: View {
-    @ObservedObject var viewModel: ProceedViewModel
+    @StateObject var viewModel: ProceedViewModel
     var body: some View {
-        VStack {
-            List {
-                Section(header: TextViewLableText(text: "Booking Detail")) {
-                    TripCardView(viewModel: TripCardViewModel(trip: viewModel.trip, bookingSeats: viewModel.numberOfSeats, showPersonText: false)) // user booking
-                }.listRowInsets(EdgeInsets())
-            }.navigationTitle("Confirm Booking")
-                .navigationBarTitleDisplayMode(.inline)
-                .safeAreaInset(edge: .bottom) {
-                    bookNowView()
-                }.navigationDestination(isPresented: $viewModel.showSuccessView) {
-                    BookingConfirmedView(trip: viewModel.trip, numberOfSeats: viewModel.numberOfSeats)
-                }
-        }
-        .toolbarRole(.editor)
-        .ignoresSafeArea(edges: .bottom)
+        List {
+            Section(header: TextViewLableText(text: "Booking Detail")) {
+                TripCardView(viewModel: TripCardViewModel(trip: viewModel.trip, bookingSeats: viewModel.numberOfSeats, showPersonText: false)) // user booking
+            }.listRowInsets(EdgeInsets())
+        }.navigationTitle("Confirm Booking")
+            .navigationBarTitleDisplayMode(.inline)
+            .safeAreaInset(edge: .bottom) {
+                bookNowView()
+            }.navigationDestination(isPresented: $viewModel.showSuccessView) {
+                BookingConfirmedView(trip: viewModel.trip, numberOfSeats: viewModel.numberOfSeats)
+            }.toolbarRole(.editor)
     }
 
     @ViewBuilder
@@ -39,15 +35,13 @@ struct ProceedView: View {
                     viewModel.bookNoewPressed()
                 }.padding(.horizontal)
             }.padding(.horizontal)
-                .background(Color("TitleColor"))
-                .frame(height: 100)
+                .padding(.top, 20)
 
-        }.background(Color("TitleColor"))
-            .frame(height: 130)
+        }.background(Color("TitleColor").ignoresSafeArea(edges: .bottom))
     }
 }
 
 #Preview {
     let data = MockDate.getTripsResponse()?.data?.first
-    ProceedView(viewModel: ProceedViewModel(trip: data!, numberOfSeats: 2, pickupLocation: BookingPickupLocation(address: "", location: [12.12,12.12]), note: ""))
+    ProceedView(viewModel: ProceedViewModel(trip: data!, numberOfSeats: 2, pickupLocation: BookingPickupLocation(address: "", location: [12.12, 12.12]), note: ""))
 }

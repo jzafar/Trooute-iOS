@@ -15,6 +15,8 @@ class SettingsViewModel: ObservableObject {
     @Published var isDriverModeOn = true
     @Published var editCarInfo = false
     @Published var userModel: UserUtils = UserUtils.shared
+    
+
     var isUserInteractionWithSwitch: Bool = true
     private let repository = SettingsRepository()
 
@@ -24,15 +26,15 @@ class SettingsViewModel: ObservableObject {
     }
 
     func onAppear() {
-//        Task {
-//            await askForNotificationPermissions()
-//            if isNotificationOn {
-//                let permission = await getNotificationPermission()
-//                if !permission {
-//                    BannerHelper.displayBanner(.info, message: "You have enabled notifications but notifications are off from settings. Please go to application settings and enable notifications")
-//                }
-//            }
-//        }
+        Task {
+            await askForNotificationPermissions()
+            if isNotificationOn {
+                let permission = await getNotificationPermission()
+                if !permission {
+                    BannerHelper.displayBanner(.info, message: "You have enabled notifications but notifications are off from settings. Please go to application settings and enable notifications")
+                }
+            }
+        }
     }
 
     func onChangeOfNotification() {

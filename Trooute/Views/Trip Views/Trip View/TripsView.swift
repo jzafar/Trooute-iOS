@@ -10,32 +10,24 @@ import SwiftUI
 
 struct TripsView: View {
     @StateObject var viewModel = TripsViewModel()
+    @Binding var path: NavigationPath
     @ObservedObject var userModel: UserUtils = UserUtils.shared
     var body: some View {
         List {
             if userModel.driverMode == true {
-                if viewModel.driverTrips.count == 0 {
-                    HStack {
-                        Spacer()
-                        Text("You don't have any ongoing trip")
-                            .font(.subheadline)
-                            .foregroundStyle(.gray)
-                            .padding(.vertical)
-                        Spacer()
-                    }.listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
+                if viewModel.trips.count == 0 {
+                    noOnGoingTrips()
                 } else {
-                    ForEach(viewModel.driverTrips) { trip in
-                        ZStack {
-                            NavigationLink(destination: TripDetailsView(viewModel: TripDetailsViewModel(tripId: trip.id))) {
-                                EmptyView()
-                            }.opacity(0)
-                            Section {
-                                DriverTripCell(trip: trip)
-                            }.listRowSeparator(.hidden)
-                                .listRowBackground(Color.clear)
-                        }.listRowBackground(Color.clear)
+                    ForEach(viewModel.trips) { trip in
+//                        Section {
+                        Button(action: {
+                            path.append(trip.id)
+                        }, label: {
+                            TripCardView(viewModel: TripCardViewModel(trip: trip))
+                        }).buttonStyle(PlainButtonStyle())
+
                             .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
                     }
                 }
 
@@ -47,24 +39,15 @@ struct TripsView: View {
                 }
 
                 Section(header: Text("Trips around you")) {
-                    if viewModel.nearByTrips.count == 0 {
-                        HStack {
-                            Spacer()
-                            Text("No trip around you")
-                                .font(.subheadline)
-                                .foregroundStyle(.gray)
-                                .padding(.vertical)
-                            Spacer()
-                        }.listRowBackground(Color.clear)
-                            .listRowSeparator(.hidden)
+                    if viewModel.trips.count == 0 {
+                        noTripAroundYou()
                     } else {
-                        ForEach(viewModel.nearByTrips) { trip in
-                            ZStack {
-                                NavigationLink(destination: TripDetailsView(viewModel: TripDetailsViewModel(tripId: trip.id))) { EmptyView() }.opacity(0)
+                        ForEach(viewModel.trips) { trip in
+                            Button(action: {
+                                path.append(trip.id)
+                            }, label: {
                                 TripCardView(viewModel: TripCardViewModel(trip: trip))
-                                    .listRowSeparator(.hidden)
-                                    .listRowBackground(Color.clear)
-                            }.background(.clear)
+                            }).buttonStyle(PlainButtonStyle())
                                 .listRowSeparator(.hidden)
                                 .listRowBackground(Color.clear)
                         }
@@ -76,22 +59,7 @@ struct TripsView: View {
             .navigationBarTitle(userModel.driverMode == true ? "Ongoing Trips" : "")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    HStack {
-                        WebImage(url: URL(string: viewModel.getUserImage(userModel.user?.photo))) { image in
-                            image.resizable()
-                        } placeholder: {
-                            Image(systemName: "person.circle")
-                        }
-
-                        .indicator(.activity)
-                        .transition(.fade(duration: 0.5))
-                        .frame(width: 30, height: 30)
-                        .cornerRadius(15)
-                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
-                        .padding(1)
-
-                        TextViewLableText(text: "\(userModel.user?.name ?? "")", textFont: .title3)
-                    }
+                    naivgationUserImageView()
                 }
             }
             .onAppear {
@@ -109,12 +77,62 @@ struct TripsView: View {
                         viewModel.showErrorAlert()
                     }
                 }
-            }.fullScreenCover(isPresented: $viewModel.showSearchTrips) {
+            }
+            .fullScreenCover(isPresented: $viewModel.showSearchTrips) {
                 viewModel.onAppear()
             } content: {
                 SearchResults(viewModel: SearchResultsViewModel(trips: viewModel.searchTripsResult))
             }
+            .navigationDestination(for: String.self) { tripId in
+                TripDetailsView(viewModel: TripDetailsViewModel(tripId: tripId))
+            }
+    }
 
+    @ViewBuilder
+    func naivgationUserImageView() -> some View {
+        HStack {
+            WebImage(url: URL(string: viewModel.getUserImage(userModel.user?.photo))) { image in
+                image.resizable()
+            } placeholder: {
+                Image("profile_place_holder")
+                    .resizable()
+            }
+
+            .indicator(.activity)
+            .transition(.fade(duration: 0.5))
+            .frame(width: 30, height: 30)
+            .cornerRadius(15)
+            .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
+            .padding(1)
+
+            TextViewLableText(text: "\(userModel.user?.name ?? "")", textFont: .title3)
+        }
+    }
+
+    @ViewBuilder
+    func noOnGoingTrips() -> some View {
+        HStack {
+            Spacer()
+            Text("You don't have any ongoing trip")
+                .font(.subheadline)
+                .foregroundStyle(.gray)
+                .padding(.vertical)
+            Spacer()
+        }.listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
+    }
+
+    @ViewBuilder
+    func noTripAroundYou() -> some View {
+        HStack {
+            Spacer()
+            Text("No trip around you")
+                .font(.subheadline)
+                .foregroundStyle(.gray)
+                .padding(.vertical)
+            Spacer()
+        }.listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
     }
 
     @ViewBuilder
@@ -274,9 +292,9 @@ struct TripsView: View {
             .background(Color(UIColor.systemGray6))
             .cornerRadius(10)
         }.buttonStyle(PlainButtonStyle())
-        .sheet(isPresented: $viewModel.isDatePickerPresented) {
-            showDatePicker()
-        }
+            .sheet(isPresented: $viewModel.isDatePickerPresented) {
+                showDatePicker()
+            }
     }
 
     @ViewBuilder
@@ -347,6 +365,6 @@ struct TripsView: View {
     }
 }
 
-//#Preview {
+// #Preview {
 //    TripsView()
-//}
+// }

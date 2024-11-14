@@ -25,10 +25,12 @@ class TripsViewModel: NSObject, ObservableObject {
     @Published var showFloatingDistanceForTo: Bool = false
     @Published var showSearchTrips: Bool = false
 
-    @Published var driverTrips: [TripInfo] = []
-    @Published var nearByTrips: [TripsData] = []
+    @Published var trips: [TripsData] = []
+    @Published var selectedTrip: TripsData? = nil
+    @Published var showTripDetails: Bool = false
     @Published var fromAddressInfo: SearchedLocation? = nil
     @Published var whereToAddressInfo: SearchedLocation? = nil
+    
     var searchTripsResult: [TripsData] = []
     private var userModel = UserUtils.shared
     private let locationManager = CLLocationManager()
@@ -40,8 +42,7 @@ class TripsViewModel: NSObject, ObservableObject {
     func onAppear() {
         fromAddressInfo = nil
         whereToAddressInfo = nil
-        driverTrips = []
-        nearByTrips = []
+        trips = []
         date = nil
         fromLocation = ""
         toLocation = ""
@@ -57,13 +58,13 @@ class TripsViewModel: NSObject, ObservableObject {
     func fetchTrips() {
         if userModel.driverMode == true {
             let request = GetTripsRequest(departureDate: Date().shotFormate())
-            self.repository.getDriverTrips(request: request) { [weak self] result in
+            self.repository.getTrips(request: request) { [weak self] result in
                 guard let self = self else {return}
                 switch result {
                 case .success(let response):
                     if response.data.success,
                        let trips = response.data.data {
-                        self.driverTrips = trips.reversed()
+                        self.trips = trips.reversed()
                     }
                         
                 case .failure(let error):
@@ -81,7 +82,7 @@ class TripsViewModel: NSObject, ObservableObject {
                     case .success(let response):
                         if response.data.success,
                            let trips = response.data.data {
-                            self.nearByTrips = trips.reversed()
+                            self.trips = trips.reversed()
                         }
                     case .failure(let error):
                         log.error("failed to get me \(error.localizedDescription)")

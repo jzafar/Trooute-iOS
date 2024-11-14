@@ -106,38 +106,21 @@ struct SettingsView: View {
 
     @ViewBuilder
     func settingsSection() -> some View {
-        NavigationLink(destination: UpdateProfileView(), label: {
+        NavigationLink(destination: UpdateProfileView()) {
             HStack {
                 Image("ic_profile")
                     .resizable()
                     .frame(width: 25, height: 25)
                 ListRowText(text: "Profile")
             }
-        })
-        NavigationLink(destination: WishView(), label: {
-            HStack {
-                Image("ic_heart")
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                ListRowText(text: "Bookmark")
-            }
-        })
-        NavigationLink(destination: CreateTripView(), label: {
-            HStack {
-                Image("ic_createtrip")
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                ListRowText(text: "Create a new trip")
-            }
-        })
-        NavigationLink(destination: TripHistoryView(), label: {
-            HStack {
-                Image("ic_triphistory")
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                ListRowText(text: "Trip History")
-            }
-        })
+        }
+
+        wishView()
+
+        createTripView()
+
+        tripHistoryView()
+
         HStack {
             Toggle(isOn: $viewModel.isNotificationOn) {
                 HStack {
@@ -149,44 +132,78 @@ struct SettingsView: View {
             }
         }
 
+        HStack {
+            Image("ic_invite_friend")
+                .resizable()
+                .frame(width: 25, height: 25)
+            ListRowText(text: "Invite a friend")
+            Spacer()
+            Image(systemName: "chevron.right")
+                .font(.system(size: 14, weight: .medium))
+                .foregroundColor(.gray.opacity(0.6))
+        }.onTapGesture {
+            viewModel.actionSheet()
+        }
+    }
+
+    @ViewBuilder
+    func wishView() -> some View {
+        NavigationLink(destination: WishView()) {
             HStack {
-                Image("ic_invite_friend")
+                Image("ic_heart")
                     .resizable()
                     .frame(width: 25, height: 25)
-                ListRowText(text: "Invite a friend")
-                Spacer()
-                Image(systemName: "chevron.right")
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(.gray.opacity(0.6))
-            }.onTapGesture {
-                viewModel.actionSheet()
+                ListRowText(text: "Bookmark")
             }
+        }
     }
-    
+
+    @ViewBuilder
+    func createTripView() -> some View {
+        NavigationLink(destination: CreateTripView()) {
+            HStack {
+                Image("ic_createtrip")
+                    .resizable()
+                    .frame(width: 25, height: 25)
+                ListRowText(text: "Create a new trip")
+            }
+        }
+    }
+
+    @ViewBuilder
+    func tripHistoryView() -> some View {
+        NavigationLink(destination: TripHistoryView()) {
+            HStack {
+                Image("ic_triphistory")
+                    .resizable()
+                    .frame(width: 25, height: 25)
+                ListRowText(text: "Trip History")
+            }
+        }
+    }
+
     @ViewBuilder
     func supportSection() -> some View {
-        NavigationLink(destination: FAQView(), label: {
+        NavigationLink(destination: FAQView()) {
             HStack {
                 Image("ic_faq")
                     .resizable()
                     .frame(width: 25, height: 25)
                 ListRowText(text: "Frequently asked questions")
             }
-        })
-        
-            HStack {
-                Image("ic_feedback")
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                ListRowText(text: "Give us feedback")
-                Spacer()
-                Image(systemName: "chevron.right")
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(.gray.opacity(0.6))
-            }.onTapGesture {
-               
-            }
-        
+        }
+
+        HStack {
+            Image("ic_feedback")
+                .resizable()
+                .frame(width: 25, height: 25)
+            ListRowText(text: "Give us feedback")
+            Spacer()
+            Image(systemName: "chevron.right")
+                .font(.system(size: 14, weight: .medium))
+                .foregroundColor(.gray.opacity(0.6))
+        }.onTapGesture {
+        }
 
         HStack {
             Image("ic_repot")
@@ -204,22 +221,22 @@ struct SettingsView: View {
 
     @ViewBuilder
     func legalSection() -> some View {
-        NavigationLink(destination: WebView(webViewModel: WebViewModel(url: Constants.TERMS_CONDITIONS, adjustFont: true)), label: {
+        NavigationLink(destination: WebView(webViewModel: WebViewModel(url: Constants.TERMS_CONDITIONS, adjustFont: true))) {
             HStack {
                 Image("ic_terms_conditions")
                     .resizable()
                     .frame(width: 25, height: 25)
                 ListRowText(text: "Terms & Conditions")
             }
-        })
-        NavigationLink(destination:  WebView(webViewModel: WebViewModel(url: Constants.TERMS_CONDITIONS, adjustFont: true)), label: {
+        }
+        NavigationLink(destination: WebView(webViewModel: WebViewModel(url: Constants.TERMS_CONDITIONS, adjustFont: true))) {
             HStack {
                 Image("ic_privacy_policy")
                     .resizable()
                     .frame(width: 25, height: 25)
                 ListRowText(text: "Privacy Policy")
             }
-        })
+        }
     }
 
     @ViewBuilder

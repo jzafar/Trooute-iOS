@@ -39,7 +39,6 @@ struct BookTripView: View {
         }
         .navigationTitle("Booking")
         .navigationBarTitleDisplayMode(.inline)
-        .ignoresSafeArea(edges: .bottom)
         .toolbarRole(.editor)
         
     }
@@ -136,11 +135,10 @@ struct BookTripView: View {
                     }
 
             }.padding(.horizontal)
-                .background(Color("TitleColor"))
-                .frame(height: 100)
+                .padding(.top, 20)
 
-        }.background(Color("TitleColor"))
-            .frame(height: 130)
+        }.background(Color("TitleColor").ignoresSafeArea(edges: .bottom))
+            
     }
 }
 

@@ -7,7 +7,7 @@
 import Foundation
 import SwiftLoader
 class WishViewModel: ObservableObject {
-    @Published var wishList: [TripInfo] = []
+    @Published var wishList: [TripsData] = []
     private let repository = WishViewRepository()
     func getWishList() {
         SwiftLoader.show(title: "Loading...", animated: true)
