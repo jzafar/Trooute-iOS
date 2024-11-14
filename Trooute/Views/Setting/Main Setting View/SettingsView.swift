@@ -198,10 +198,7 @@ struct SettingsView: View {
                 .resizable()
                 .frame(width: 25, height: 25)
             ListRowText(text: "Give us feedback")
-            Spacer()
-            Image(systemName: "chevron.right")
-                .font(.system(size: 14, weight: .medium))
-                .foregroundColor(.gray.opacity(0.6))
+            rightArrow()
         }.onTapGesture {
         }
 
@@ -210,10 +207,7 @@ struct SettingsView: View {
                 .resizable()
                 .frame(width: 25, height: 25)
             ListRowText(text: "Report a problem")
-            Spacer()
-            Image(systemName: "chevron.right")
-                .font(.system(size: 14, weight: .medium))
-                .foregroundColor(.gray.opacity(0.6))
+            rightArrow()
         }.onTapGesture {
             viewModel.sendEmail()
         }
@@ -221,24 +215,36 @@ struct SettingsView: View {
 
     @ViewBuilder
     func legalSection() -> some View {
-        NavigationLink(destination: WebView(webViewModel: WebViewModel(url: Constants.TERMS_CONDITIONS, adjustFont: true))) {
+//        NavigationLink(destination: WebView(webViewModel: WebViewModel(url: Constants.TERMS_CONDITIONS, adjustFont: true))) {
             HStack {
                 Image("ic_terms_conditions")
                     .resizable()
                     .frame(width: 25, height: 25)
                 ListRowText(text: "Terms & Conditions")
+                rightArrow()
+            }.onTapGesture {
+                openURL(URL(string: Constants.TERMS_CONDITIONS)!)
             }
-        }
-        NavigationLink(destination: WebView(webViewModel: WebViewModel(url: Constants.TERMS_CONDITIONS, adjustFont: true))) {
+//        }
+//        NavigationLink(destination: WebView(webViewModel: WebViewModel(url: Constants.TERMS_CONDITIONS, adjustFont: true))) {
             HStack {
                 Image("ic_privacy_policy")
                     .resizable()
                     .frame(width: 25, height: 25)
                 ListRowText(text: "Privacy Policy")
+                rightArrow()
+            }.onTapGesture {
+                openURL(URL(string: Constants.TERMS_CONDITIONS)!)
             }
-        }
+//        }
     }
-
+    @ViewBuilder
+    func rightArrow() -> some View {
+        Spacer()
+        Image(systemName: "chevron.right")
+            .font(.system(size: 14, weight: .medium))
+            .foregroundColor(.gray.opacity(0.6))
+    }
     @ViewBuilder
     func logoutSection() -> some View {
         HStack {

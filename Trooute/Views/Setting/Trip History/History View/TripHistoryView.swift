@@ -38,12 +38,12 @@ struct TripHistoryView: View {
             }
         }
         .onAppear {
-            Tabbar.shared.hide = true
             viewModel.onAppear()
         }
         .navigationTitle("Trip History")
             .navigationBarTitleDisplayMode(.inline)
             .toolbarRole(.editor)
+            .toolbar(.hidden, for: .tabBar)
     }
     
     @ViewBuilder

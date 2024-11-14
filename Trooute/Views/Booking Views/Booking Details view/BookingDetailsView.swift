@@ -86,7 +86,6 @@ struct BookingDetailsView: View {
                 }
 
             }.onAppear {
-                Tabbar.shared.hide = true
                 viewModel.getBookingDetails()
             }.onChange(of: viewModel.popView) { newVal in
                 if newVal == true {
@@ -98,6 +97,7 @@ struct BookingDetailsView: View {
         }.navigationTitle("Booking Details")
             .navigationBarTitleDisplayMode(.inline)
             .toolbarRole(.editor)
+            .toolbar(.hidden, for: .tabBar)
             .sheet(isPresented: $viewModel.showPaymentsScreen) {
                 viewModel.getBookingDetails()
             } content: {

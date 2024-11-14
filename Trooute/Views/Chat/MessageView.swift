@@ -23,7 +23,7 @@ struct MessageView: View {
                     messageContent
                 }
             }
-        }
+        }.toolbar(.hidden, for: .tabBar)
     }
 
     var messageContent: some View {
@@ -59,10 +59,8 @@ struct MessageView: View {
                 hideKeyboard()
             }
             .onAppear {
-                Tabbar.shared.hide = true
                 viewModel.getMessages(messageReceiverInfo: messageReceiverInfo)
             }
-            .ignoresSafeArea(edges: .bottom)
             .toolbarRole(.editor)
             .toolbar {
                 ToolbarItem(placement: .principal) {

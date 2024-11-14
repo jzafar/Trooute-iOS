@@ -15,6 +15,27 @@ struct TroouteApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var user = UserUtils.shared
     @StateObject var fireBase = FirebaseViewModel()
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor(Color("TitleColor"))
+        UITabBar.appearance().barTintColor = UIColor(Color("TitleColor"))
+        UITabBar.appearance().unselectedItemTintColor = .white
+//        UITabBar.appearance().stackedLayoutAppearance.selected.iconColor = .white
+        
+//        let appearance = UITabBarAppearance()
+//                
+//                // Set custom colors for selected and unselected tab items
+//                appearance.stackedLayoutAppearance.selected.iconColor = .white // Selected icon color
+//                appearance.stackedLayoutAppearance.normal.iconColor = .white // Unselected icon color
+//                
+//                // Set the TabBar background color
+//                appearance.backgroundColor = UIColor(Color("TitleColor"))
+//                
+//                // Apply the appearance to UITabBar
+//                UITabBar.appearance().standardAppearance = appearance
+//                UITabBar.appearance().scrollEdgeAppearance = appearance
+
+
+    }
     var body: some Scene {
         WindowGroup {
             ContentView()

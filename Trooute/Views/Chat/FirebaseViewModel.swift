@@ -15,13 +15,10 @@ class FirebaseViewModel: ObservableObject {
     // Publishers for inbox and messages
     @Published var inbox: [Inbox] = []
     @Published var messages: [Message] = []
+    @Published var hasNewMessage: Bool = false
     var listener: ListenerRegistration?
     private let notification = Notifications()
-//    init() {
-//        if let userId = userModel.user?.id {
-//            getAllInbox(userId: userId)
-//        }
-//    }
+    var seletedTab = 0
 
     // MARK: - Fetch Inbox
 
@@ -46,10 +43,10 @@ class FirebaseViewModel: ObservableObject {
                 for inbox in self.inbox {
                     if let user = inbox.users?.filter({ $0.id == self.userModel.user?.id }).first,
                         user.seen == false {
-                            if Tabbar.shared.selectedTab != .inbox {
-                                Tabbar.shared.hasNewMessage = true
+                            if self.seletedTab != 1 {
+                                self.hasNewMessage = true
                             } else {
-                                Tabbar.shared.hasNewMessage = false
+                                self.hasNewMessage = false
                             }
                         break
                     }

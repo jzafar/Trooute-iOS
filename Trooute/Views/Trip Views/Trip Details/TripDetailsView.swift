@@ -98,7 +98,6 @@ struct TripDetailsView: View {
         })
         
         .onAppear {
-            Tabbar.shared.hide = true
             viewModel.onApplear()
         }
         .toolbar(.hidden, for: .tabBar)

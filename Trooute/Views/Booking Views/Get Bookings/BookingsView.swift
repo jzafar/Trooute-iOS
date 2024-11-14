@@ -45,6 +45,9 @@ struct BookingsView: View {
         .onAppear {
             viewModel.getBookings()
         }
+        .toolbar {
+            
+        }
     }
 }
 

@@ -50,6 +50,7 @@ struct FAQView: View {
         .navigationTitle("Frequently asked questions")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarRole(.editor)
+        .toolbar(.hidden, for: .tabBar)
     }
 }
 

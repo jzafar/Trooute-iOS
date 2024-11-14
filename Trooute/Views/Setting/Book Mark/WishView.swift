@@ -25,8 +25,8 @@ struct WishView: View {
                 
             }
         }.listStyle(GroupedListStyle())
+            .toolbar(.hidden, for: .tabBar)
         .onAppear {
-            Tabbar.shared.hide = true
             viewModel.getWishList()
         }.navigationTitle("Bookmark")
             .navigationBarTitleDisplayMode(.inline)

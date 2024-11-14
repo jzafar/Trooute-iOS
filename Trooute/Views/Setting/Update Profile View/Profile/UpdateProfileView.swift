@@ -23,12 +23,13 @@ struct UpdateProfileView: View {
             scendoryGrayButton()
             Spacer()
         }.onAppear {
-            Tabbar.shared.hide = true
+            
             viewModel.loadData()
         }
         .navigationTitle("Update Profile")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarRole(.editor)
+        .toolbar(.hidden, for: .tabBar)
         .navigationDestination(isPresented: $viewModel.updatePassword) {
             UpdatePasswordView()
         }

@@ -30,11 +30,10 @@ struct CreateTripView: View {
             }
 
         }.navigationTitle("Set up your Trip")
+            .toolbar(.hidden, for: .tabBar)
             .navigationBarTitleDisplayMode(.inline)
             .toolbarRole(.editor)
-            .onAppear {
-                Tabbar.shared.hide = true
-            }
+            
             .onChange(of: viewModel.fromAddressInfo) { fromInfo in
                 if fromInfo == nil {
                     viewModel.showErrorAlert()
