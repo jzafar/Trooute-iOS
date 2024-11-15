@@ -23,18 +23,18 @@ class UpdatePasswordViewModel: ObservableObject {
     
     func updatePasswordPressed() {
         if currentPassword.count == 0 {
-            BannerHelper.displayBanner(.error, message: "Password can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Password can't be blank"))
         } else if (password.count == 0) {
-            BannerHelper.displayBanner(.error, message: "Retype your password. It can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Retype your password. It can't be blank"))
         }
         else if (confirmPassword.count == 0) {
-            BannerHelper.displayBanner(.error, message: "Retype your password. It can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Retype your password. It can't be blank"))
         } else if Utils.matchPassword(confirmPassword, password) {
-            BannerHelper.displayBanner(.error, message: "Passwords did not matched")
+            BannerHelper.displayBanner(.error, message: String(localized:"Passwords did not matched"))
         } else if (confirmPassword.count < 8) {
-            BannerHelper.displayBanner(.error, message: "Password needs to consist of at least 8 characters")
+            BannerHelper.displayBanner(.error, message: String(localized:"Password needs to consist of at least 8 characters"))
         } else {
-            SwiftLoader.show(title: "Updating...", animated: true)
+            SwiftLoader.show(title: String(localized:"Updating..."), animated: true)
             repository.updatePassword(request: UpdatePasswordRequest(password: password, passwordConfirm: confirmPassword, passwordCurrent: currentPassword)) { result in
                 SwiftLoader.hide()
                     switch result {
@@ -44,7 +44,7 @@ class UpdatePasswordViewModel: ObservableObject {
                            let token = response.data.token {
                             self.token = token
                             self.user = user
-                            BannerHelper.displayBanner(.success, message: "Password Updated successfully")
+                            BannerHelper.displayBanner(.success, message: String(localized:"Password Updated successfully"))
                         } else {
                             BannerHelper.displayBanner(.error, message:  response.data.message)
                         }

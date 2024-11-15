@@ -25,7 +25,7 @@ class WebViewModel: ObservableObject {
     
     
     func paymentSuccess(url: String) {
-        SwiftLoader.show(title: "Loading...", animated: true)
+        SwiftLoader.show(title: String(localized:"Loading..."), animated: true)
         repo.paymentSuccess(url: url) { [weak self] result in
             SwiftLoader.hide()
             guard let self = self else {return}
@@ -35,12 +35,12 @@ class WebViewModel: ObservableObject {
                     BannerHelper.displayBanner(.success, message: resposne.data.message)
                     if let user = UserUtils.shared.user,
                        let makePaymentUserId = self.makePaymentUserId {
-                        let body = "Get ready for an amazing journey, Payment received for your trip from \(user.name)"
+                        let body = String(localized:"Get ready for an amazing journey, Payment received for your trip from \(user.name)")
                         let toId = "\(Apis.TOPIC)\(Apis.TROOUTE_TOPIC)\(makePaymentUserId)"
-                        self.notification.sendNotification(title: "Booking payment", body: body, toId: toId) { result1 in
+                        self.notification.sendNotification(title: String(localized:"Booking payment"), body: body, toId: toId) { result1 in
                             switch result1 {
                             case .success(let success):
-                                log.info("make payment notification send")
+                                log.info("make payment notification send \(success)")
                             case .failure(let failure1):
                                 log.error("make payment notification faile \(failure1.localizedDescription)")
                             }

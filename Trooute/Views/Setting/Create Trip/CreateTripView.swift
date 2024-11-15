@@ -13,23 +13,24 @@ struct CreateTripView: View {
     @Environment(\.dismiss) var dismiss
     var body: some View {
         List {
-            Section(header: TextViewLableText(text: "Destination and Schedule")) {
+            Section(header: TextViewLableText(text: String(localized:"Destination and schedule"))) {
                 destinationAndSchedule()
                     .listRowBackground(Color.white)
             }
-            Section(header: TextViewLableText(text: "Trip Details")) {
+            Section(header: TextViewLableText(text: String(localized:"Trip Details"))) {
                 tripsDetailsView()
                     .listRowBackground(Color.white)
             }
             Section {
-                PrimaryGreenButton(title: "Post trip") {
+                PrimaryGreenButton(title: String(localized:"Post trip")) {
                     hideKeyboard()
                     viewModel.postTrip()
                 }.listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets())
             }
 
-        }.navigationTitle("Set up your Trip")
+        }
+        .navigationTitle("Set up your Trip")
             .toolbar(.hidden, for: .tabBar)
             .navigationBarTitleDisplayMode(.inline)
             .toolbarRole(.editor)
@@ -47,6 +48,8 @@ struct CreateTripView: View {
                 if newVal {
                     dismiss()
                 }
+            }.onTapGesture {
+                hideKeyboard()
             }
     }
 
@@ -62,7 +65,7 @@ struct CreateTripView: View {
     @ViewBuilder
     func setPriceView() -> some View {
         HStack {
-            TextViewLableText(text: "Set a price for the trip", textFont: .headline)
+            TextViewLableText(text: String(localized:"Set a price for the trip"), textFont: .headline)
             Text("(Per person)")
                 .foregroundColor(.gray)
             Spacer()
@@ -82,17 +85,17 @@ struct CreateTripView: View {
     func setRestrictions() -> some View {
         VStack(spacing: 20) {
             HStack {
-                TextViewLableText(text: "Restrictions on luggage type and weight", textFont: .headline)
+                TextViewLableText(text: String(localized:"Restrictions on luggage type and weight"), textFont: .headline)
                 Spacer()
             }
             HStack {
-                TextViewLableText(text: "Please provide luggage size or weight restrictions for passengers.", textFont: .subheadline)
+                TextViewLableText(text: String(localized:"Please provide luggage size or weight restrictions for passengers."), textFont: .subheadline)
                     .foregroundColor(.gray)
                 Spacer()
             }
 
             HStack {
-                TextViewLableText(text: "Hand carry", textFont: .headline)
+                TextViewLableText(text: String(localized:"Hand carry"), textFont: .headline)
                     .foregroundColor(.gray)
                 Spacer()
                 TextField("weight (kg)", text: $viewModel.handCarryWeight)
@@ -112,7 +115,7 @@ struct CreateTripView: View {
             }
 
             HStack {
-                TextViewLableText(text: "SuitCase", textFont: .headline)
+                TextViewLableText(text: String(localized:"SuitCase"), textFont: .headline)
                     .foregroundColor(.gray)
                 Spacer()
                 TextField("weight (kg)", text: $viewModel.suitcaseWeight)
@@ -151,7 +154,7 @@ struct CreateTripView: View {
             }
 
             HStack {
-                TextViewLableText(text: "Other relevent details", textFont: .headline)
+                TextViewLableText(text: String(localized:"Other relevent details"), textFont: .headline)
                 Text("(Optional)")
                     .foregroundColor(.gray)
                 Spacer()
@@ -195,7 +198,7 @@ struct CreateTripView: View {
     func seatAvailableView() -> some View {
         VStack {
             HStack {
-                TextViewLableText(text: "Seats available for passengers", textFont: .headline)
+                TextViewLableText(text: String(localized:"Seats available for passengers"), textFont: .headline)
                 Spacer()
             }
             HStack {
@@ -243,7 +246,7 @@ struct CreateTripView: View {
 
             // Date Picker Section
             VStack(alignment: .leading, spacing: 10) {
-                TextViewLableText(text: "Choose the date of the trip", textFont: .headline)
+                TextViewLableText(text: String(localized:"Choose the date of the trip"), textFont: .headline)
                 // Custom Calendar View
                 CustomCalendarView(selectedDate: $viewModel.selectedDate)
             }
@@ -274,7 +277,7 @@ struct CreateTripView: View {
     func fromWhereToView() -> some View {
         VStack(alignment: .leading, spacing: 10) {
             VStack(alignment: .leading, spacing: 4) {
-                TextViewLableText(text: "From", textFont: .headline)
+                TextViewLableText(text: String(localized:"From"), textFont: .headline)
                 TextField("Enter starting location", text: $viewModel.fromLocation)
                     .googlePlacesAutocomplete($viewModel.fromLocation, placeInfo: $viewModel.fromAddressInfo)
                     .padding()
@@ -283,7 +286,7 @@ struct CreateTripView: View {
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                TextViewLableText(text: "Where to", textFont: .headline)
+                TextViewLableText(text: String(localized:"Where to"), textFont: .headline)
                 TextField("Enter destination location", text: $viewModel.toLocation)
                     .googlePlacesAutocomplete($viewModel.toLocation, placeInfo: $viewModel.whereToAddressInfo)
                     .padding()
@@ -297,7 +300,7 @@ struct CreateTripView: View {
     func timePickerView() -> some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                TextViewLableText(text: "Specify the departure time", textFont: .headline)
+                TextViewLableText(text: String(localized:"Specify the departure time"), textFont: .headline)
                 Spacer()
             }
 

@@ -18,12 +18,12 @@ class HistoryDetailsViewModel: ObservableObject {
         }
     }
 
-    @Published var handCarryWeight = "Not Provided"
-    @Published var suitcaseWeight = "Not Provided"
-    @Published var smokingPreference: String = "NO"
-    @Published var petPreference: String = "NO"
-    @Published var languagePreference: String = "Not Provided"
-    @Published var otherReliventDetails: String = "Not Provided"
+    @Published var handCarryWeight = String(localized:"Not Provided")
+    @Published var suitcaseWeight = String(localized:"Not Provided")
+    @Published var smokingPreference: String = String(localized:"No")
+    @Published var petPreference: String = String(localized:"No")
+    @Published var languagePreference: String = String(localized:"Not Provided")
+    @Published var otherReliventDetails: String = String(localized:"Not Provided")
     private var userModel = UserUtils.shared
     private let repository = TripHistoryRepository()
     var tripId: String
@@ -32,7 +32,7 @@ class HistoryDetailsViewModel: ObservableObject {
     }
 
     func onAppear() {
-        SwiftLoader.show(title: "Loading...", animated: true)
+        SwiftLoader.show(title: String(localized:"Loading..."), animated: true)
         self.tripsData = nil
         repository.getTripDetails(tripId: tripId) { [weak self] result in
             SwiftLoader.hide()
@@ -143,33 +143,33 @@ class HistoryDetailsViewModel: ObservableObject {
 
     private func updateSmokingPreference() {
         if userModel.driverMode {
-            smokingPreference = tripsData?.trip?.smokingPreference ?? false ? "Yes" : "No"
+            smokingPreference = tripsData?.trip?.smokingPreference ?? false ? String(localized:"Yes") : String(localized:"No")
         } else {
-            smokingPreference = tripsData?.smokingPreference ?? false ? "Yes" : "No"
+            smokingPreference = tripsData?.smokingPreference ?? false ? String(localized:"Yes") : String(localized:"No")
         }
     }
 
     private func updatePetPreference() {
         if userModel.driverMode {
-            petPreference = tripsData?.trip?.petPreference ?? false ? "Yes" : "No"
+            petPreference = tripsData?.trip?.petPreference ?? false ? String(localized:"Yes") : String(localized:"No")
         } else {
-            petPreference = tripsData?.petPreference ?? false ? "Yes" : "No"
+            petPreference = tripsData?.petPreference ?? false ? String(localized:"Yes") : String(localized:"No")
         }
     }
 
     private func updateLanguagePreference() {
         if userModel.driverMode {
-            languagePreference = tripsData?.trip?.languagePreference ?? "Not Provided"
+            languagePreference = tripsData?.trip?.languagePreference ?? String(localized:"Not Provided")
         } else {
-            languagePreference = tripsData?.languagePreference ?? "Not Provided"
+            languagePreference = tripsData?.languagePreference ?? String(localized:"Not Provided")
         }
     }
 
     private func updateOtherReliventDetails() {
         if userModel.driverMode {
-            otherReliventDetails = tripsData?.trip?.note.emptyOrNil ?? "Not Provided"
+            otherReliventDetails = tripsData?.trip?.note.emptyOrNil ?? String(localized:"Not Provided")
         } else {
-            otherReliventDetails = tripsData?.note.emptyOrNil ?? "Not Provided"
+            otherReliventDetails = tripsData?.note.emptyOrNil ?? String(localized:"Not Provided")
         }
     }
 }

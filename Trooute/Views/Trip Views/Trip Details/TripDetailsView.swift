@@ -15,7 +15,7 @@ struct TripDetailsView: View {
         VStack {
             List {
                 if userModel.driverMode {
-                    Section(header: DriverSectionHeader(seats: "\(viewModel.trip?.trip?.availableSeats ?? 0)")) {
+                    Section(header: DriverSectionHeader(seats: viewModel.trip?.trip?.availableSeats ?? 0)) {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 15) {
                                 ForEach(viewModel.trip?.bookings ?? []) { booking in
@@ -47,7 +47,7 @@ struct TripDetailsView: View {
 
                 if let trip = viewModel.trip {
                     if userModel.driverMode == false {
-                        Section(header: PassengersSectionHeader(seats: "\(viewModel.trip?.availableSeats ?? 0)"), content: {
+                        Section(header: PassengersSectionHeader(seats: viewModel.trip?.availableSeats ?? 0), content: {
                             TripDetailsViewComponents.passengersView(passengers: viewModel.trip?.passengers ?? []) {
                                 passengerId in
                                 viewModel.onTapPassenger(id: passengerId)
@@ -56,14 +56,14 @@ struct TripDetailsView: View {
                         })
                     }
                     if let destination = viewModel.getDestinationModel(trip: trip) {
-                        Section(header: TextViewLableText(text: "Destination and schedule", textFont: .headline)) {
+                        Section(header: TextViewLableText(text: String(localized:"Destination and schedule"), textFont: .headline)) {
                             DestinationView(destination: destination, price: userModel.driverMode ? trip.trip?.pricePerPerson ?? 0.0 : trip.pricePerPerson ?? 0.0)
                                 .listRowBackground(Color.clear)
                                 .listRowInsets(EdgeInsets())
                         }
                     }
 
-                    Section(header: TextViewLableText(text: "Trip Details", textFont: .headline)) {
+                    Section(header: TextViewLableText(text: String(localized:"Trip Details"), textFont: .headline)) {
                         TripPrefView(handCarryWeight: viewModel.handCarryWeight,
                                      suitcaseWeight: viewModel.suitcaseWeight,
                                      smokingPreference: viewModel.smokingPreference,
@@ -125,7 +125,7 @@ struct TripDetailsView: View {
         if trip.status == .IN_PROGRESS {
             VStack {
                 HStack {
-                    PrimaryGreenButton(title: "End Trip") {
+                    PrimaryGreenButton(title: String(localized:"End Trip")) {
                         viewModel.endTrip()
                     }
 
@@ -139,11 +139,11 @@ struct TripDetailsView: View {
         } else if trip.status == .SCHEDULED ||  trip.status == .PickupStarted {
             VStack {
                 HStack {
-                    WhiteBorderButton(title: "Cancel") {
+                    WhiteBorderButton(title: String(localized:"Cancel")) {
                         viewModel.showAlert = true
                     }
 
-                    PrimaryGreenButton(title: "Pickup Passengers") {
+                    PrimaryGreenButton(title: String(localized:"Pickup Passengers")) {
                         viewModel.pickUpPassengersPressed()
                     }
 
@@ -172,7 +172,7 @@ struct TripDetailsView: View {
                 }
 
                 NavigationLink(destination: BookTripView(viewModel: BookTripViewModel(trip: trip))) {
-                    PrimaryGreenText(title: "Book now")
+                    PrimaryGreenText(title: String(localized:"Book now"))
                         .padding(.horizontal)
                 }
 
@@ -190,7 +190,7 @@ struct TripDetailsView: View {
 
 struct PassengersSectionHeader: View {
     let title: String = "Passengers"
-    let seats: String
+    let seats: Int
 
     var body: some View {
         HStack {
@@ -208,8 +208,8 @@ struct PassengersSectionHeader: View {
 }
 
 struct DriverSectionHeader: View {
-    let title: String = "Passengers"
-    let seats: String
+    let title: String = String(localized:"Passengers")
+    let seats: Int
 
     var body: some View {
         HStack {

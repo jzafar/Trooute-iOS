@@ -20,7 +20,7 @@ struct ReviewView: View {
                 }
                 Section {
                     HStack {
-                        TextViewLableText(text: "Reviews")
+                        TextViewLableText(text: String(localized:"Reviews"))
                         Spacer()
                     }
                 }.listRowBackground(Color.clear)
@@ -68,7 +68,7 @@ struct ReviewView: View {
                                                     Text(rating.formatted(.number.precision(.fractionLength(1))))
                                                         .font(.body)
                                                 } else {
-                                                    Text("Not Provided")
+                                                    Text("Not provided")
                                                         .font(.body)
                                                 }
                                                 Spacer()

@@ -92,23 +92,6 @@ struct SecondaryBookingButton: View {
     }
 }
 
-struct PersonButton: View {
-    let text: String
-    var action: () -> Void
-    var body: some View {
-        Button(action: action) {
-            Text(text)
-                .font(.largeTitle)
-                .foregroundColor(Color("TitleColor"))
-                .frame(width: 40, height: 50)
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(.lightBlue)
-                )
-        }.buttonStyle(PlainButtonStyle())
-    }
-}
-
 struct TextViewLableText: View {
     var text: String
     var textFont: Font = .headline

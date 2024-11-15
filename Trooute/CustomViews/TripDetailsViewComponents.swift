@@ -77,7 +77,7 @@ struct PickupLocationView: View {
                 Spacer()
             }
             HStack {
-                TextViewLableText(text: pickupLication.address ?? "Not provided", textFont: .body)
+                TextViewLableText(text: pickupLication.address ?? String(localized:"Not provided"), textFont: .body)
             }
             VStack(alignment: .leading) {
                 Text("Other relevent details about trip")

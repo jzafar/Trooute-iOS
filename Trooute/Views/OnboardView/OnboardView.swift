@@ -9,16 +9,16 @@ import SwiftUI
 
 struct OnboardView: View {
     @State private var currentPage = 0
-    
+
     @State private var signIn = false
     @State private var signup = false
     private let totalPages = 4
-    
+
     var body: some View {
         VStack {
             // Title and Description for each page
             TabView(selection: $currentPage) {
-                ForEach(0..<totalPages, id: \.self) { index in
+                ForEach(0 ..< totalPages, id: \.self) { index in
                     VStack(alignment: .leading) {
                         Spacer()
                         Text(pageTitle(for: currentPage))
@@ -65,7 +65,7 @@ struct OnboardView: View {
                 switch currentPage {
                 case 0:
                     firstPageView()
-                case 1,2:
+                case 1, 2:
                     secondPageView()
                 case 3:
                     lastPageView()
@@ -81,7 +81,7 @@ struct OnboardView: View {
 
     @ViewBuilder
     func firstPageView() -> some View {
-        PrimaryGreenButton(title: "Next") {
+        PrimaryGreenButton(title: String(localized: "Next")) {
             if currentPage < totalPages - 1 {
                 currentPage += 1
             }
@@ -91,13 +91,13 @@ struct OnboardView: View {
 
     @ViewBuilder
     func secondPageView() -> some View {
-        SecondaryGrayButton(title: "Previous") {
+        SecondaryGrayButton(title: String(localized: "Previous")) {
             if currentPage > 0 {
                 currentPage -= 1
             }
         }.frame(width: 150)
-        
-        PrimaryGreenButton(title: "Next") {
+
+        PrimaryGreenButton(title: String(localized: "Next")) {
             if currentPage < totalPages - 1 {
                 currentPage += 1
             }
@@ -106,11 +106,11 @@ struct OnboardView: View {
 
     @ViewBuilder
     func lastPageView() -> some View {
-        PrimaryGreenButton(title: "Let's go") {
+        PrimaryGreenButton(title: String(localized:"Let's go")) {
             UserDefaults.standard.set(true, forKey: "isFirstLaunch")
             signIn = true
         }.frame(width: 150)
-        
+
 //        PrimaryGreenButton(title: "Sign up") {
 //            UserDefaults.standard.set(true, forKey: "isFirstLaunch")
 //            signup = true
@@ -120,13 +120,13 @@ struct OnboardView: View {
     private func pageTitle(for index: Int) -> String {
         switch index {
         case 0:
-            return "Welcome to \nTrooute!"
+            return String(localized:"Welcome to \nTrooute!")
         case 1:
-            return "Find Travel Partners"
+            return String(localized:"Find Travel Partners")
         case 2:
-            return "Hassle-Free Bookings"
+            return String(localized:"Hassle-Free Bookings")
         case 3:
-            return "Connect and Go"
+            return String(localized:"Connect and Go")
         default:
             return ""
         }
@@ -135,13 +135,13 @@ struct OnboardView: View {
     private func pageDescription(for index: Int) -> String {
         switch index {
         case 0:
-            return "Join travelers, share experiences. Your journey, their company."
+            return String(localized: "Join travelers, share experiences. Your journey, their company.")
         case 1:
-            return "Match with travelers, journey together. Connect, travel, bond."
+            return String(localized: "Match with travelers, journey together. Connect, travel, bond.")
         case 2:
-            return "Book rides seamlessly, travel hassle-free. Your seat, a tap away."
+            return String(localized: "Book rides seamlessly, travel hassle-free. Your seat, a tap away.")
         case 3:
-            return "Chat, plan, explore as companions. New friendships, shared roads."
+            return String(localized: "Chat, plan, explore as companions. New friendships, shared roads.")
         default:
             return ""
         }

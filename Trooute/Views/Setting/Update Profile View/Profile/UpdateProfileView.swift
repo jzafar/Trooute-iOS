@@ -38,7 +38,7 @@ struct UpdateProfileView: View {
     @ViewBuilder
     func fullName() -> some View {
         VStack(alignment: .leading) {
-            TextViewLableText(text: "Full name")
+            TextViewLableText(text: String(localized:"Full name"))
             TextField("E.g. John Smith", text: $viewModel.fullName)
                 .textFieldStyle(AppTextFieldStyle())
         }
@@ -48,7 +48,7 @@ struct UpdateProfileView: View {
     @ViewBuilder
     func emaiView() -> some View {
         VStack(alignment: .leading) {
-            TextViewLableText(text: "Email")
+            TextViewLableText(text: String(localized:"Email address"))
             TextField("E.g. John Smith", text: $viewModel.email)
                 .textFieldStyle(AppTextFieldStyle())
                 .disabled(true)
@@ -59,8 +59,8 @@ struct UpdateProfileView: View {
     @ViewBuilder
     func phoneNumber() -> some View {
         VStack(alignment: .leading) {
-            TextViewLableText(text: "Phone Number")
-            TextField("+46XXXXXXXXX", text: $viewModel.phoneNumber)
+            TextViewLableText(text: String(localized:"Phone number"))
+            TextField("+49XXXXXXXXX", text: $viewModel.phoneNumber)
                 .textFieldStyle(AppTextFieldStyle())
         }
         .padding(.horizontal, 30)
@@ -68,7 +68,7 @@ struct UpdateProfileView: View {
 
     @ViewBuilder
     func signInButton() -> some View {
-        PrimaryGreenButton(title: "Update") {
+        PrimaryGreenButton(title: String(localized:"Update")) {
             hideKeyboard()
             viewModel.updateProfile()
         }
@@ -77,7 +77,7 @@ struct UpdateProfileView: View {
 
     @ViewBuilder
     func scendoryGrayButton() -> some View {
-        SecondaryGrayButton(title: "Update Password") {
+        SecondaryGrayButton(title: String(localized:"Update password")) {
             viewModel.updatePassword = true
         }
         .padding(.horizontal, 30)

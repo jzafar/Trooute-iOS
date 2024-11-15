@@ -14,13 +14,13 @@ class ResetPasswordViewModel: ObservableObject {
     private let repository = ResetPasswordRepository()
     func resetPassword() {
         if email.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 {
-            BannerHelper.displayBanner(.error, message: "Email can\'t be blank.")
+            BannerHelper.displayBanner(.error, message: String(localized:"Email can't be blank."))
             return
         } else if !Utils.isValidEmail(email) {
-            BannerHelper.displayBanner(.error, message: "Email is not valid")
+            BannerHelper.displayBanner(.error, message: String(localized:"Email is not valid"))
             return
         } else {
-            SwiftLoader.show(title: "Requesting...", animated: true)
+            SwiftLoader.show(title: String(localized:"Requesting..."), animated: true)
             repository.resetPassword(request: ResetPasswordRequest(email: email)) { [weak self] result in
                 SwiftLoader.hide()
                 switch result {

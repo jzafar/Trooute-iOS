@@ -40,34 +40,34 @@ class CreateTripViewModel: ObservableObject {
         }
     
     func showErrorAlert() {
-        BannerHelper.displayBanner(.error, message: "App could not get coordinates of this location. Please choose some other location or try again")
+        BannerHelper.displayBanner(.error, message: String(localized:"App could not get coordinates of this location. Please choose some other location or try again"))
     }
     
     func postTrip() {
-        guard let date = getDate() else {
-            BannerHelper.displayBanner(.info, message: "Please select a valid date")
+        guard let _ = getDate() else {
+            BannerHelper.displayBanner(.info, message: String(localized:"Please select a valid date"))
             return
         }
         print(pricePerPerson)
         guard let fromAddressInfo = self.fromAddressInfo,
               let fromTitle = fromAddressInfo.title else {
-            BannerHelper.displayBanner(.info, message: "Start location field can't be blank")
+            BannerHelper.displayBanner(.info, message: String(localized:"Start location field can't be blank"))
             return
         }
         
         guard let whereToAddressInfo = self.whereToAddressInfo,
               let whereTitle = whereToAddressInfo.title else {
-            BannerHelper.displayBanner(.info, message: "Destination location field can't be blank")
+            BannerHelper.displayBanner(.info, message: String(localized:"Destination location field can't be blank"))
             return
         }
         
         if pricePerPerson == 0 {
-            BannerHelper.displayBanner(.info, message: "Price field can't be blank")
+            BannerHelper.displayBanner(.info, message: String(localized:"Price field can't be blank"))
         } else if seatsAvailable >= 10 {
-            BannerHelper.displayBanner(.info, message: "Maximum number of passengers allowed are 10")
+            BannerHelper.displayBanner(.info, message: String(localized:"Maximum number of passengers allowed are 10"))
         } else {
             guard let date = getDate() else {
-                BannerHelper.displayBanner(.info, message: "Please select a valid date")
+                BannerHelper.displayBanner(.info, message: String(localized:"Please select a valid date"))
                 return
             }
             let from = fromTitle + " \(fromAddressInfo.subtitle ?? "")"
@@ -76,7 +76,7 @@ class CreateTripViewModel: ObservableObject {
             let suitCase = LuggageRestrictions(type: .suitCase, weight: suitcaseWeight.count > 0 ? Int(suitcaseWeight) : nil)
             let price: Double = Double(pricePerPerson)/100.0
             let request = CreateTripRequest(departureDate: date, from_address: from, from_location: [fromAddressInfo.coordinate.longitude, fromAddressInfo.coordinate.latitude], pricePerPerson: price, smokingPreference: isSmokingAllowed, petPreference: arePetsAllowed, roundTrip: false, status: "", totalSeats: seatsAvailable, whereTo_address: whereTo, whereTo_location: [whereToAddressInfo.coordinate.longitude, whereToAddressInfo.coordinate.latitude], languagePreference: languagePreference, luggageRestrictions: [handCarry, suitCase], note: otherReleventDetails)
-            SwiftLoader.show(title: "Creating trip...", animated: true)
+            SwiftLoader.show(title: String(localized:"Creating trip..."), animated: true)
             repository.createTrip(request: request) { [weak self] result in
                 SwiftLoader.hide()
                 switch result {

@@ -22,7 +22,7 @@ class BecomeDriverViewModel: ObservableObject {
     @Published var selectedItem: PhotosPickerItem? = nil
     @Published var selectedDriverLicense: PhotosPickerItem? = nil
     @Published var dismiss = false
-    let colors = ["White", "Black", "Gray", "Silver", "Blue", "Red", "Brown", "Green", "Orange", "Beige", "Purple", "Gold", "Yellow"]
+    let colors = [String(localized:"White"), String(localized:"Black"), String(localized:"Gray"), String(localized:"Silver"), String(localized:"Blue"), String(localized:"Red"), String(localized:"Brown"), String(localized:"Green"), String(localized:"Orange"), String(localized:"Beige"), String(localized:"Purple"), String(localized:"Gold"), String(localized:"Yellow")]
     let years = Array(2016 ... 2025).map { "\($0)" }
     var carDetails: CarDetails?
     private let repository = DriverRepository()
@@ -55,17 +55,17 @@ class BecomeDriverViewModel: ObservableObject {
     
     func updateCarInfo() {
         if vehicleMake.trim().count == 0 {
-            BannerHelper.displayBanner(.error, message: "Make" + " " + "field can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Make") + " " + String(localized:"field can't be blank"))
         } else if (vehicleModel.trim().count == 0) {
-            BannerHelper.displayBanner(.error, message: "Model" + " " + "field can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Model") + " " + String(localized:"field can't be blank"))
         } else if (vehicleColor.trim().count == 0) {
-            BannerHelper.displayBanner(.error, message: "Color" + " " + "field can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Color") + " " + String(localized:"field can't be blank"))
         } else if (vehicleYear.trim().count == 0) {
-            BannerHelper.displayBanner(.error, message: "Yesr" + " " + "field can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Year") + " " + String(localized:"field can't be blank"))
         } else if (vehicleLicensePlate.trim().count == 0) {
-            BannerHelper.displayBanner(.error, message: "Vehicel license plate" + " " + "field can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Vehicle license plate") + " " + String(localized:"field can't be blank"))
         } else if (Utils.convertImageToData(vehicleImage) == nil) {
-            BannerHelper.displayBanner(.error, message: "Vehicel image" + " " + "field can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Vehicle image") + " " + String(localized:"field can't be blank"))
         } else {
             
             let request = UpdateCarInfoRequests(make: vehicleMake.trim(),
@@ -74,7 +74,7 @@ class BecomeDriverViewModel: ObservableObject {
                                                 year: vehicleYear.trim(),
                                                 color: vehicleColor.trim(),
                                                 carPhoto: (Utils.convertImageToData(vehicleImage))!)
-            SwiftLoader.show(title: "Updating...", animated: true)
+            SwiftLoader.show(title: String(localized:"Updating..."), animated: true)
             self.repository.updateCarInfo(request: request) {  result in
                 SwiftLoader.hide()
                 switch result {
@@ -95,19 +95,19 @@ class BecomeDriverViewModel: ObservableObject {
     
     func becomeADriver() {
         if vehicleMake.trim().count == 0 {
-            BannerHelper.displayBanner(.error, message: "Make" + " " + "field can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Make") + " " + String(localized:"field can't be blank"))
         } else if (vehicleModel.trim().count == 0) {
-            BannerHelper.displayBanner(.error, message: "Model" + " " + "field can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Model") + " " + String(localized:"field can't be blank"))
         } else if (vehicleColor.trim().count == 0) {
-            BannerHelper.displayBanner(.error, message: "Color" + " " + "field can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Color") + " " + String(localized:"field can't be blank"))
         } else if (vehicleYear.trim().count == 0) {
-            BannerHelper.displayBanner(.error, message: "Yesr" + " " + "field can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Year") + " " + String(localized:"field can't be blank"))
         } else if (vehicleLicensePlate.trim().count == 0) {
-            BannerHelper.displayBanner(.error, message: "Vehicel license plate" + " " + "field can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Vehicle license plate") + " " + String(localized:"field can't be blank"))
         } else if (Utils.convertImageToData(vehicleImage) == nil) {
-            BannerHelper.displayBanner(.error, message: "Vehicel" + " " + "image is required")
+            BannerHelper.displayBanner(.error, message: String(localized:"Vehicle image") + " " + String(localized:"field can't be blank"))
         } else if (Utils.convertImageToData(drivingLicenseImage) == nil) {
-            BannerHelper.displayBanner(.error, message: "License" + " " + "image is required")
+            BannerHelper.displayBanner(.error, message:  String(localized:"License") + " " + String(localized:"field can't be blank"))
         } else {
             
             let request = UpdateCarInfoRequests(make: vehicleMake.trim(),
@@ -117,7 +117,7 @@ class BecomeDriverViewModel: ObservableObject {
                                                 color: vehicleLicensePlate.trim(),
                                                 carPhoto: Utils.convertImageToData(vehicleImage),
                                                 driverLicense: Utils.convertImageToData(drivingLicenseImage))
-            SwiftLoader.show(title: "Requesting...", animated: true)
+            SwiftLoader.show(title: String(localized:"Requesting..."), animated: true)
             self.repository.becomeDriver(request: request) {  result in
                 SwiftLoader.hide()
                 switch result {

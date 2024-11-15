@@ -19,7 +19,7 @@ struct HistoryDetailsView: View {
                             .listRowInsets(EdgeInsets())
                     }
 
-                    Section(header: TextViewLableText(text: "Passengers", textFont: .headline)) {
+                    Section(header: TextViewLableText(text: String(localized:"Passengers"), textFont: .headline)) {
                         ForEach(viewModel.tripsData?.bookings ?? []) { booking in
                             DriverSideBookingTripPassengerCell(viewModel: viewModel.bookingCardVM(booking: booking))
                                 .listRowBackground(Color.clear)
@@ -58,7 +58,7 @@ struct HistoryDetailsView: View {
 
     @ViewBuilder
     func destinationView(destination: TripRouteModel) -> some View {
-        Section(header: TextViewLableText(text: "Destination and schedule", textFont: .headline)) {
+        Section(header: TextViewLableText(text: String(localized:"Destination and schedule"), textFont: .headline)) {
             DestinationView(destination: destination, price: userModel.driverMode ? viewModel.tripsData?.trip?.pricePerPerson ?? 0.0 : viewModel.tripsData?.pricePerPerson ?? 0.0)
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())
@@ -67,7 +67,7 @@ struct HistoryDetailsView: View {
 
     @ViewBuilder
     func tripDetailsView() -> some View {
-        Section(header: TextViewLableText(text: "Trip Details", textFont: .headline)) {
+        Section(header: TextViewLableText(text: String(localized:"Trip Details"), textFont: .headline)) {
             TripPrefView(handCarryWeight: viewModel.handCarryWeight,
                          suitcaseWeight: viewModel.suitcaseWeight,
                          smokingPreference: viewModel.smokingPreference,

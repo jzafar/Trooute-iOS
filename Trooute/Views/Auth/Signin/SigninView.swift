@@ -51,7 +51,7 @@ struct SigninView: View {
     @ViewBuilder
     func emailView() -> some View {
         VStack(alignment: .leading, spacing: 5) {
-            TextViewLableText(text: "Email address")
+            TextViewLableText(text: String(localized:"Email address"))
 
             TextField("Your email address here", text: $viewModel.email)
                 .textFieldStyle(AppTextFieldStyle())
@@ -64,7 +64,7 @@ struct SigninView: View {
     @ViewBuilder
     func passwordView() -> some View {
         VStack(alignment: .leading, spacing: 5) {
-            TextViewLableText(text: "Password")
+            TextViewLableText(text: String(localized:"Password"))
 
             HStack {
                 if viewModel.isPasswordVisible {
@@ -106,7 +106,7 @@ struct SigninView: View {
     
     @ViewBuilder
     func signInButton() -> some View {
-        PrimaryGreenButton(title: "Sign in") {
+        PrimaryGreenButton(title: String(localized:"Sign in")) {
             hideKeyboard()
             viewModel.loginButtonPress()
         }

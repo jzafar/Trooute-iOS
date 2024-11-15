@@ -18,7 +18,7 @@ struct BookingDetailsView: View {
                     viewModel.bookingData?.trip.status == .PickupStarted &&
                     viewModel.bookingData?.status == .confirmed,
                     let booking = viewModel.currentBooking {
-                    Section (header: TextViewLableText(text: "Pickup Status")) {
+                    Section (header: TextViewLableText(text: String(localized:"Pickup Status"))) {
                         pickupStatusView(booking)
                             .listRowBackground(Color.white)
                             .listRowInsets(EdgeInsets())
@@ -26,20 +26,20 @@ struct BookingDetailsView: View {
                     
                 }
                 if let _ = viewModel.bookingData {
-                    Section(header: TextViewLableText(text: "Booking Detail")) {
+                    Section(header: TextViewLableText(text: String(localized:"Booking Detail"))) {
                         bookingStatusView()
                             .listRowBackground(Color.white)
                             .listRowInsets(EdgeInsets())
                     }
 
                     if driverMode {
-                        Section(header: TextViewLableText(text: "Passengers Details")) {
+                        Section(header: TextViewLableText(text: String(localized:"Passengers Details"))) {
                             passengerInfoView()
                                 .listRowBackground(Color.white)
                         }
 
                     } else {
-                        Section(header: TextViewLableText(text: "Driver Details")) {
+                        Section(header: TextViewLableText(text: String(localized:"Driver Details"))) {
                             driverDetails()
                                 .listRowBackground(Color.white)
                         }
@@ -49,14 +49,14 @@ struct BookingDetailsView: View {
                                 .listRowBackground(Color.white)
                         }
 
-                        Section(header: PassengersSectionHeader(seats: viewModel.availableSeats), content: {
+                        Section(header: PassengersSectionHeader(seats: Int(viewModel.availableSeats) ?? 0), content: {
                             TripDetailsViewComponents.passengersView(passengers: viewModel.bookingData?.trip.passengers ?? []) { passengerId in
                                 viewModel.onTapPassenger(id: passengerId)
                             }
                         })
 
                         if let des = viewModel.getDestinationModel() {
-                            Section(header: TextViewLableText(text: "Destination and schedule", textFont: .headline))
+                            Section(header: TextViewLableText(text: String(localized:"Destination and schedule"), textFont: .headline))
                                 {
                                     DestinationView(destination: des, price: viewModel.bookingData?.trip.pricePerPerson ?? 0.0)
                                         .listRowBackground(Color.clear)
@@ -64,7 +64,7 @@ struct BookingDetailsView: View {
                                 }
                         }
 
-                        Section(header: TextViewLableText(text: "Trip Details")) {
+                        Section(header: TextViewLableText(text: String(localized:"Trip Details"))) {
                             TripPrefView(handCarryWeight: viewModel.handCarryWeight,
                                          suitcaseWeight: viewModel.suitcaseWeight,
                                          smokingPreference: viewModel.smokingPreference,
@@ -78,7 +78,7 @@ struct BookingDetailsView: View {
                 }
 
                 if let pickupLocation = viewModel.bookingData?.pickupLocation {
-                    Section(header: TextViewLableText(text: "Pickup location")) {
+                    Section(header: TextViewLableText(text: String(localized:"Pickup location"))) {
                         PickupLocationView(pickupLication: pickupLocation, otherReleventDetails: viewModel.bookingData?.note)
                             .listRowBackground(Color.clear)
                             .listRowInsets(EdgeInsets())
@@ -202,12 +202,12 @@ struct BookingDetailsView: View {
                passengerStatus == .DriverPickedup  {
             } else {
                 HStack {
-                    SecondaryBookingButton(title: "Not showed up") {
+                    SecondaryBookingButton(title: String(localized:"Not Showed up")) {
                         viewModel.updatePickUpStatus(status: .DriverNotShowedup)
                     }
 
                     Spacer()
-                    PrimaryGreenButton(title: "Marked as Pickup") {
+                    PrimaryGreenButton(title: String(localized:"Marked as Pickup")) {
                         viewModel.updatePickUpStatus(status: .DriverPickedup)
                     }
                 }
@@ -245,19 +245,19 @@ struct BookingDetailsView: View {
             HStack {
                 if driverMode {
                     if viewModel.bookingData?.status == .waiting {
-                        SecondaryBookingButton(title: "Cancel booking") {
+                        SecondaryBookingButton(title: String(localized:"Cancel booking")) {
                             viewModel.cancelBooking()
                         }
 
                         Spacer()
-                        PrimaryGreenButton(title: "Accept") {
+                        PrimaryGreenButton(title: String(localized:"Accept")) {
                             viewModel.acceptBooking()
                         }
 
                     } else if viewModel.bookingData?.status == .approved ||
                         viewModel.bookingData?.status == .confirmed {
                         Spacer()
-                        SecondaryBookingButton(title: "Cancel booking") {
+                        SecondaryBookingButton(title: String(localized:"Cancel booking")) {
                             viewModel.cancelBooking()
                         }
                     }
@@ -267,17 +267,17 @@ struct BookingDetailsView: View {
                         if viewModel.bookingData?.trip.status == .PickupStarted {
                         } else {
                             Spacer()
-                            SecondaryBookingButton(title: "Cancel booking") {
+                            SecondaryBookingButton(title: String(localized:"Cancel booking")) {
                                 viewModel.cancelBooking()
                             }
                         }
 
                     } else if viewModel.bookingData?.status == .approved {
-                        SecondaryBookingButton(title: "Cancel booking") {
+                        SecondaryBookingButton(title: String(localized:"Cancel booking")) {
                             viewModel.cancelBooking()
                         }
                         Spacer()
-                        PrimaryGreenButton(title: "Make Payment") {
+                        PrimaryGreenButton(title: String(localized:"Make Payment")) {
                             viewModel.makePayments()
                         }
                     }

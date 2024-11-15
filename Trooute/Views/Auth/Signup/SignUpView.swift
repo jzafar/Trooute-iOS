@@ -96,7 +96,7 @@ struct SignUpView: View {
     @ViewBuilder
     func fullName() -> some View {
         VStack(alignment: .leading) {
-            TextViewLableText(text: "Full name")
+            TextViewLableText(text: String(localized:"Full name"))
             TextField("E.g. John Smith", text: $viewModel.fullName)
                 .textFieldStyle(AppTextFieldStyle())
         }
@@ -106,7 +106,7 @@ struct SignUpView: View {
     @ViewBuilder
     func emailView() -> some View {
         VStack(alignment: .leading) {
-            TextViewLableText(text: "Email address")
+            TextViewLableText(text: String(localized:"Email address"))
             TextField("Your email address here", text: $viewModel.email)
                 .textFieldStyle(AppTextFieldStyle())
                 .keyboardType(.emailAddress)
@@ -119,10 +119,10 @@ struct SignUpView: View {
     func genderView() -> some View {
         HStack {
             VStack(alignment: .leading) {
-                TextViewLableText(text: "Gender")
+                TextViewLableText(text: String(localized:"Gender"))
                 HStack {
-                    RadioButtonField(label: "Male", isSelected: $viewModel.gender, value: "Male")
-                    RadioButtonField(label: "Female", isSelected: $viewModel.gender, value: "Female")
+                    RadioButtonField(label: String(localized:"Male"), isSelected: $viewModel.gender, value: "Male")
+                    RadioButtonField(label: String(localized:"Female"), isSelected: $viewModel.gender, value: "Female")
                 }
             }
             Spacer()
@@ -133,7 +133,7 @@ struct SignUpView: View {
     @ViewBuilder
     func phoneNumberView() -> some View {
         VStack(alignment: .leading) {
-            TextViewLableText(text: "Phone number")
+            TextViewLableText(text: String(localized:"Phone number"))
             HStack {
                 Button {
                     viewModel.presentSheet = true
@@ -161,7 +161,7 @@ struct SignUpView: View {
     @ViewBuilder
     func passwordView() -> some View {
         VStack(alignment: .leading) {
-            TextViewLableText(text: "Password")
+            TextViewLableText(text: String(localized:"Password"))
             HStack {
                 if viewModel.showPassword {
                     TextField("Your password here", text: $viewModel.password)
@@ -185,7 +185,7 @@ struct SignUpView: View {
     @ViewBuilder
     func confirmPasswordView() -> some View {
         VStack(alignment: .leading) {
-            TextViewLableText(text: "Retype your password")
+            TextViewLableText(text: String(localized:"Retype your password"))
             HStack {
                 if viewModel.showConfirmPassword {
                     TextField("Retype your password here", text: $viewModel.confirmPassword)
@@ -229,7 +229,7 @@ struct SignUpView: View {
     
     @ViewBuilder
     func signUpButtonView() -> some View {
-        PrimaryGreenButton(title: "Sign up") {
+        PrimaryGreenButton(title: String(localized:"Sign up")) {
             viewModel.signupButtonPressed()
         }.padding(.horizontal, 30)
     }

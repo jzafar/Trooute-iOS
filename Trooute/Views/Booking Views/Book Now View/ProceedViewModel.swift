@@ -36,7 +36,7 @@ class ProceedViewModel: ObservableObject {
                 if response.data.success {
                     if let user = UserUtils.shared.user,
                        let driverID = self.trip.trip?.driver?.id {
-                        self.notification.sendNotification(title: "Trip Booked", body: "Great news, Your trip is booked by \(user.name)", toId: "\(Apis.TOPIC)\(Apis.TROOUTE_TOPIC)\(driverID)") { result1 in
+                        self.notification.sendNotification(title: String(localized:"Trip Booked"), body: "Great news, Your trip is booked by \(user.name)", toId: "\(Apis.TOPIC)\(Apis.TROOUTE_TOPIC)\(driverID)") { result1 in
                             switch result1 {
                             case .success(let success):
                                 log.info("createBooking send notification successfully \(success) toid = \(Apis.TOPIC)\(Apis.TROOUTE_TOPIC)\(driverID)")

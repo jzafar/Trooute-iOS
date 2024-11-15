@@ -16,7 +16,7 @@ class ReviewViewModel: ObservableObject {
     }
     
     func fetchReviews() {
-        SwiftLoader.show(title: "Loading...", animated: true)
+        SwiftLoader.show(title: String(localized:"Loading..."), animated: true)
         repository.getReviews(id: self.userId) { [weak self] result in
             SwiftLoader.hide()
             switch result {

@@ -11,7 +11,7 @@ struct ProceedView: View {
     @StateObject var viewModel: ProceedViewModel
     var body: some View {
         List {
-            Section(header: TextViewLableText(text: "Booking Detail")) {
+            Section(header: TextViewLableText(text: String(localized:"Booking Detail"))) {
                 TripCardView(viewModel: TripCardViewModel(trip: viewModel.trip, bookingSeats: viewModel.numberOfSeats, showPersonText: false)) // user booking
             }.listRowInsets(EdgeInsets())
         }.navigationTitle("Confirm Booking")
@@ -31,7 +31,7 @@ struct ProceedView: View {
                     .font(.title3).bold()
                     .foregroundColor(.white)
                     .padding(.horizontal)
-                PrimaryGreenButton(title: "Book now") {
+                PrimaryGreenButton(title: String(localized:"Book now")) {
                     viewModel.bookNoewPressed()
                 }.padding(.horizontal)
             }.padding(.horizontal)

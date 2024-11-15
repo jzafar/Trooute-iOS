@@ -48,10 +48,10 @@ class VerificationViewModel: ObservableObject {
 
     func submitBtnPressed() {
         if !isCodeComplete {
-            BannerHelper.displayBanner(.error, message: "Code field can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Code field can't be blank"))
             return
         } else {
-            SwiftLoader.show(title: "verifying...", animated: true)
+            SwiftLoader.show(title: String(localized:"verifying..."), animated: true)
             repository.verifyOTP(otp: OTPVerificationRequest(OTP: completeCode)) { [weak self] result in
                 SwiftLoader.hide()
                 switch result {
@@ -71,7 +71,7 @@ class VerificationViewModel: ObservableObject {
     }
 
     func resendOTP() {
-        SwiftLoader.show(title: "Resending...", animated: true)
+        SwiftLoader.show(title: String(localized:"Resending..."), animated: true)
         repository.resendOTP(resendOtp: ResendOTPRequest(email: email)) { [weak self] result in
             SwiftLoader.hide()
             switch result {

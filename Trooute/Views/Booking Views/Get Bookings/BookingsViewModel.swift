@@ -15,7 +15,7 @@ class BookingsViewModel: ObservableObject {
     
     
     func getBookings() {
-        SwiftLoader.show(title: "Loading...", animated: true)
+        SwiftLoader.show(title: String(localized:"Loading..."), animated: true)
         repository.getBookings { [weak self] result in
             SwiftLoader.hide()
             switch result {

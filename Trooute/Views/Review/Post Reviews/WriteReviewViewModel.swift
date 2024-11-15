@@ -38,7 +38,7 @@ class WriteReviewViewModel: ObservableObject {
     
     func submitReview() {
         if rating == 0.0 {
-            BannerHelper.displayBanner(.error, message: "Please give some rating")
+            BannerHelper.displayBanner(.error, message: String(localized:"Please give some rating"))
             return
         }
         var targetType: TargetType = .User
@@ -58,7 +58,7 @@ class WriteReviewViewModel: ObservableObject {
             targetId = tripData?.driver?.id ?? ""
         }
         let request = PostReviewRequest(trip: tripId, targetId: targetId, targetType: targetType, comment: self.reviewText.trim(), rating: self.rating)
-        SwiftLoader.show(title: "Posting...", animated: true)
+        SwiftLoader.show(title: String(localized:"Posting..."), animated: true)
         self.repositiry.postReview(request: request) { result in
             SwiftLoader.hide()
             switch result {

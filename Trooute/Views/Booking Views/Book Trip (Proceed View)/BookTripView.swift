@@ -16,12 +16,12 @@ struct BookTripView: View {
                     TripCardView(viewModel: TripCardViewModel(trip: viewModel.trip, showPersonText: true)) // user side = true
                 }.listRowInsets(EdgeInsets())
 
-                Section(header: TextViewLableText(text: "Pickup location")) {
+                Section(header: TextViewLableText(text: String(localized:"Pickup location"))) {
                     pieckupLocationView()
                         .listRowBackground(Color.white)
                 }
 
-                Section(header: TextViewLableText(text: "Passengers")) {
+                Section(header: TextViewLableText(text: String(localized:"Passengers"))) {
                     passengersView()
                         .listRowBackground(Color.white)
                 }
@@ -46,7 +46,7 @@ struct BookTripView: View {
     @ViewBuilder
     func pieckupLocationView() -> some View {
         VStack(alignment: .leading, spacing: 10) {
-            TextViewLableText(text: "Pickup location", textFont: .subheadline)
+            TextViewLableText(text: String(localized:"Pickup location"), textFont: .subheadline)
             TextField("Enter Pickup location", text: $viewModel.pickupLocation)
                 .googlePlacesAutocomplete($viewModel.pickupLocation, placeInfo: $viewModel.pickUpAddressInfo)
                 .padding()
@@ -54,7 +54,7 @@ struct BookTripView: View {
                 .cornerRadius(8)
                 .font(.callout)
                 
-            TextViewLableText(text: "Other relevent details about trip", textFont: .subheadline)
+            TextViewLableText(text: String(localized:"Other relevent details about trip"), textFont: .subheadline)
             ZStack {
                 TextEditor(text: $viewModel.otherReleventDetails)
                     .padding(5)
@@ -83,7 +83,7 @@ struct BookTripView: View {
     @ViewBuilder
     func passengersView() -> some View {
         HStack {
-            TextViewLableText(text: "Persons", textFont: .headline)
+            TextViewLableText(text: String(localized:"Persons"), textFont: .headline)
                 .bold()
             Spacer()
             HStack {
@@ -125,7 +125,7 @@ struct BookTripView: View {
                     .font(.title3).bold()
                     .foregroundColor(.white)
                     .padding(.horizontal)
-                PrimaryGreenButton(title: "Proceed") {
+                PrimaryGreenButton(title: String(localized:"Proceed")) {
                     viewModel.proceedButtonPressed()
                 }.padding(.horizontal)
                     .navigationDestination(isPresented: $viewModel.shouldNavigate) {

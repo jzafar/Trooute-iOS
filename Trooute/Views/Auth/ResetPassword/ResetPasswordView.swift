@@ -60,7 +60,7 @@ struct ResetPasswordView: View {
     @ViewBuilder
     func emailView() -> some View {
         VStack(alignment: .leading, spacing: 5) {
-            TextViewLableText(text: "Email address")
+            TextViewLableText(text: String(localized:"Email address"))
 
             TextField("Your email address here", text: $viewModel.email)
                 .padding()
@@ -74,7 +74,7 @@ struct ResetPasswordView: View {
     
     @ViewBuilder
     func sendLinkButton() -> some View {
-        PrimaryGreenButton(title: "Send link") {
+        PrimaryGreenButton(title: String(localized:"Send link")) {
             viewModel.resetPassword()
         }
         .padding(.horizontal, 30)

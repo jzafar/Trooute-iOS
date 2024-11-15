@@ -36,7 +36,7 @@ struct VerificationView: View {
                 }
                 .padding(.horizontal)
 
-                PrimaryGreenButton(title: "Confirm") {
+                PrimaryGreenButton(title: String(localized:"Confirm")) {
                     viewModel.submitBtnPressed()
                 }
 

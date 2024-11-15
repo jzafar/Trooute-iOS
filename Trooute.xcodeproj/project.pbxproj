@@ -203,6 +203,7 @@
 		CEF49B162CD963A50098E425 /* PostReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF49B152CD963970098E425 /* PostReviewRequest.swift */; };
 		CEF777B22CE398F8006868EB /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CEF777B12CE398F8006868EB /* FirebaseCrashlytics */; };
 		CEF777BE2CE5502E006868EB /* BaseTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF777BD2CE55021006868EB /* BaseTrip.swift */; };
+		CEF777C92CE74670006868EB /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CEF777C82CE74670006868EB /* Localizable.xcstrings */; };
 		CEF80EDF2CC9701100AA478D /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80EDE2CC9701100AA478D /* ReviewView.swift */; };
 		CEF80EE12CC9707F00AA478D /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80EE02CC9707400AA478D /* ReviewViewModel.swift */; };
 		CEF80EE32CC970F400AA478D /* ReviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF80EE22CC970E400AA478D /* ReviewRepository.swift */; };
@@ -424,6 +425,7 @@
 		CEF49B0D2CD944AE0098E425 /* StarRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRateView.swift; sourceTree = "<group>"; };
 		CEF49B152CD963970098E425 /* PostReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReviewRequest.swift; sourceTree = "<group>"; };
 		CEF777BD2CE55021006868EB /* BaseTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTrip.swift; sourceTree = "<group>"; };
+		CEF777C82CE74670006868EB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		CEF80EDE2CC9701100AA478D /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		CEF80EE02CC9707400AA478D /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		CEF80EE22CC970E400AA478D /* ReviewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRepository.swift; sourceTree = "<group>"; };
@@ -1014,6 +1016,7 @@
 				CED05F072C95AF7100E51158 /* Preview Content */,
 				CE5701392C9E0BCA003BD7CA /* LaunchScreen.storyboard */,
 				CEFD59D02CBDB6B700E4A50B /* Location.gpx */,
+				CEF777C82CE74670006868EB /* Localizable.xcstrings */,
 			);
 			path = Trooute;
 			sourceTree = "<group>";
@@ -1322,6 +1325,8 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				ru,
 			);
 			mainGroup = CED05EF52C95AF6F00E51158;
 			packageReferences = (
@@ -1351,6 +1356,7 @@
 				CE0854242CB31E1C00A3E422 /* GoogleService-Info.plist in Resources */,
 				CED05F062C95AF7100E51158 /* Assets.xcassets in Resources */,
 				CEFD59D12CBDB6B700E4A50B /* Location.gpx in Resources */,
+				CEF777C92CE74670006868EB /* Localizable.xcstrings in Resources */,
 				CE5701712C9E8BD4003BD7CA /* CountryNumbers.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1701,6 +1707,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1757,6 +1764,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1768,7 +1776,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Trooute/Trooute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Trooute/Preview Content\"";
 				DEVELOPMENT_TEAM = MPGZ44D94P;
@@ -1809,7 +1817,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Trooute/Trooute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Trooute/Preview Content\"";
 				DEVELOPMENT_TEAM = MPGZ44D94P;
 				ENABLE_PREVIEWS = YES;

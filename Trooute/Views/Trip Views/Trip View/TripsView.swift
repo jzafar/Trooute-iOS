@@ -126,7 +126,7 @@ struct TripsView: View {
     func noTripAroundYou() -> some View {
         HStack {
             Spacer()
-            Text("No trip around you")
+            Text("No trip available around you")
                 .font(.subheadline)
                 .foregroundStyle(.gray)
                 .padding(.vertical)
@@ -174,7 +174,7 @@ struct TripsView: View {
         VStack(alignment: .leading, spacing: 10) {
             // "From" TextField
             VStack(alignment: .leading, spacing: 4) {
-                TextViewLableText(text: "From", textFont: .headline)
+                TextViewLableText(text: String(localized:"From"), textFont: .headline)
                 TextField("Enter starting location", text: $viewModel.fromLocation)
                     .googlePlacesAutocomplete($viewModel.fromLocation, placeInfo: $viewModel.fromAddressInfo)
                     .padding()
@@ -183,7 +183,7 @@ struct TripsView: View {
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                TextViewLableText(text: "Distance within (Km)", textFont: .subheadline)
+                TextViewLableText(text: String(localized:"Distance within (Km)"), textFont: .subheadline)
                 ZStack {
                     // Floating Distance for 'From' Slider
                     if viewModel.showFloatingDistanceForFrom {
@@ -218,7 +218,7 @@ struct TripsView: View {
             }
             // "Where to" TextField
             VStack(alignment: .leading, spacing: 4) {
-                TextViewLableText(text: "Where to", textFont: .headline)
+                TextViewLableText(text: String(localized:"Where to"), textFont: .headline)
                 TextField("Enter destination location", text: $viewModel.toLocation)
                     .googlePlacesAutocomplete($viewModel.toLocation, placeInfo: $viewModel.whereToAddressInfo)
                     .padding()
@@ -228,7 +228,7 @@ struct TripsView: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 // Distance Slider (To)
-                TextViewLableText(text: "Distance within (Km)", textFont: .subheadline)
+                TextViewLableText(text: String(localized:"Distance within (Km)"), textFont: .subheadline)
 
                 ZStack {
                     // Floating Distance for 'To' Slider
@@ -275,7 +275,7 @@ struct TripsView: View {
     @ViewBuilder
     func chooseTripDate() -> some View {
         // Date section
-        TextViewLableText(text: "Choose the date of the trip", textFont: .headline)
+        TextViewLableText(text: String(localized:"Choose the date of the trip"), textFont: .headline)
         Button(action: {
             viewModel.isDatePickerPresented.toggle()
         }) {
@@ -309,7 +309,7 @@ struct TripsView: View {
                     .buttonStyle(PlainButtonStyle())
             }
             DatePicker(
-                "Select Date",
+                "Choose Date",
                 selection: Binding(
                     get: { viewModel.date ?? Date() },
                     set: { newDate in
@@ -360,7 +360,7 @@ struct TripsView: View {
 
     @ViewBuilder
     func seekOutTripsButton() -> some View {
-        PrimaryGreenButton(title: "Seek Out Trips") {
+        PrimaryGreenButton(title: String(localized:"Seek Out Trips")) {
             viewModel.seekOutTrip()
         }.padding(.vertical)
     }

@@ -52,7 +52,7 @@ extension WebView {
 
         func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
             webViewModel.isLoading = true
-            SwiftLoader.show(title: "Loading...", animated: true)
+            SwiftLoader.show(title: String(localized:"Loading..."), animated: true)
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {

@@ -39,17 +39,17 @@ struct SettingsView: View {
                 driverModeView()
             }
 
-            Section(header: TextViewLableText(text: "Settings")) {
+            Section(header: TextViewLableText(text: String(localized:"Settings"))) {
                 settingsSection()
             }.listRowSeparator(.hidden)
 
             // Section 5: Support
-            Section(header: TextViewLableText(text: "Support")) {
+            Section(header: TextViewLableText(text: String(localized:"Support"))) {
                 supportSection()
             }.listRowSeparator(.hidden)
 
             // Section 6: Legal
-            Section(header: TextViewLableText(text: "Legal")) {
+            Section(header: TextViewLableText(text: String(localized:"Legal"))) {
                 legalSection()
             }.listRowSeparator(.hidden)
 
@@ -79,7 +79,7 @@ struct SettingsView: View {
                     Image("ic_become_driver")
                         .resizable()
                         .frame(width: 25, height: 25)
-                    ListRowText(text: "Driver Mode")
+                    ListRowText(text: String(localized:"Driver Mode"))
                 }
             }.onChange(of: viewModel.isDriverModeOn) { _ in
                 viewModel.toggleDriverMode(userIntrection: viewModel.isUserInteractionWithSwitch)
@@ -90,13 +90,13 @@ struct SettingsView: View {
                     .resizable()
                     .frame(width: 25, height: 25)
                 if userModel.driverStatus == .pending {
-                    let str = "Driver Mode (Request Pending)"
+                    let str = String(localized:"Driver Mode (Request Pending)")
                     ListRowText(text: str)
                 } else if userModel.driverStatus == .rejected {
-                    let str = "Driver Mode (Request Rejected)"
+                    let str = String(localized:"Driver Mode (Request Rejected)")
                     ListRowText(text: str)
                 } else {
-                    ListRowText(text: "Become a Driver")
+                    ListRowText(text: String(localized:"Become a Driver"))
                 }
             }.onTapGesture {
                 viewModel.editCarInfo = true
@@ -111,7 +111,7 @@ struct SettingsView: View {
                 Image("ic_profile")
                     .resizable()
                     .frame(width: 25, height: 25)
-                ListRowText(text: "Profile")
+                ListRowText(text: String(localized:"Profile"))
             }
         }
 
@@ -127,7 +127,7 @@ struct SettingsView: View {
                     Image("ic_noti")
                         .resizable()
                         .frame(width: 25, height: 25)
-                    ListRowText(text: "Notifications")
+                    ListRowText(text: String(localized:"Notifications"))
                 }
             }
         }
@@ -136,7 +136,7 @@ struct SettingsView: View {
             Image("ic_invite_friend")
                 .resizable()
                 .frame(width: 25, height: 25)
-            ListRowText(text: "Invite a friend")
+            ListRowText(text: String(localized:"Invite a friend"))
             Spacer()
             Image(systemName: "chevron.right")
                 .font(.system(size: 14, weight: .medium))
@@ -153,7 +153,7 @@ struct SettingsView: View {
                 Image("ic_heart")
                     .resizable()
                     .frame(width: 25, height: 25)
-                ListRowText(text: "Bookmark")
+                ListRowText(text: String(localized:"Bookmark"))
             }
         }
     }
@@ -165,7 +165,7 @@ struct SettingsView: View {
                 Image("ic_createtrip")
                     .resizable()
                     .frame(width: 25, height: 25)
-                ListRowText(text: "Create a new trip")
+                ListRowText(text: String(localized:"Create a new trip"))
             }
         }
     }
@@ -177,7 +177,7 @@ struct SettingsView: View {
                 Image("ic_triphistory")
                     .resizable()
                     .frame(width: 25, height: 25)
-                ListRowText(text: "Trip History")
+                ListRowText(text: String(localized:"Trip History"))
             }
         }
     }
@@ -189,7 +189,7 @@ struct SettingsView: View {
                 Image("ic_faq")
                     .resizable()
                     .frame(width: 25, height: 25)
-                ListRowText(text: "Frequently asked questions")
+                ListRowText(text: String(localized:"Frequently asked questions"))
             }
         }
 
@@ -197,7 +197,7 @@ struct SettingsView: View {
             Image("ic_feedback")
                 .resizable()
                 .frame(width: 25, height: 25)
-            ListRowText(text: "Give us feedback")
+            ListRowText(text: String(localized:"Give us feedback"))
             rightArrow()
         }.onTapGesture {
         }
@@ -206,7 +206,7 @@ struct SettingsView: View {
             Image("ic_repot")
                 .resizable()
                 .frame(width: 25, height: 25)
-            ListRowText(text: "Report a problem")
+            ListRowText(text: String(localized:"Report a problem"))
             rightArrow()
         }.onTapGesture {
             viewModel.sendEmail()
@@ -220,7 +220,7 @@ struct SettingsView: View {
                 Image("ic_terms_conditions")
                     .resizable()
                     .frame(width: 25, height: 25)
-                ListRowText(text: "Terms & Conditions")
+                ListRowText(text: String(localized:"Terms & Conditions"))
                 rightArrow()
             }.onTapGesture {
                 openURL(URL(string: Constants.TERMS_CONDITIONS)!)
@@ -231,7 +231,7 @@ struct SettingsView: View {
                 Image("ic_privacy_policy")
                     .resizable()
                     .frame(width: 25, height: 25)
-                ListRowText(text: "Privacy Policy")
+                ListRowText(text: String(localized:"Privacy Policy"))
                 rightArrow()
             }.onTapGesture {
                 openURL(URL(string: Constants.TERMS_CONDITIONS)!)
@@ -251,7 +251,7 @@ struct SettingsView: View {
             Image("ic_logout")
                 .resizable()
                 .frame(width: 25, height: 25)
-            ListRowText(text: "Logout")
+            ListRowText(text: String(localized:"Logout"))
             Spacer()
         }.onTapGesture {
             viewModel.logoutPressed()

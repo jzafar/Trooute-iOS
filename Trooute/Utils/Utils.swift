@@ -25,26 +25,26 @@ struct Utils {
         switch status {
         case .waiting:
             image = Image("ic_status_waiting")
-            string = isDriverApproved ? "Waiting for approval" : "Waiting"
+            string = isDriverApproved ? String(localized:"Waiting for approval") : String(localized:"Waiting")
         case .canceled:
             image = Image("ic_status_cancelled")
-            string = "Canceled"
+            string = String(localized:"Canceled")
         case .approved:
             image = Image("ic_approved_check")
             if isDriverApproved {
-                string = "Waiting for payment"
+                string = String(localized:"Waiting for payment")
             } else {
-                string = "Approved"
+                string = String(localized:"Approved")
             }
         case .confirmed:
             image = Image("ic_confirm_check")
-            string = "Confirmed"
+            string = String(localized:"Confirmed")
         case .completed:
             image = Image("ic_confirm_check")
-            string = "Completed"
+            string = String(localized:"Completed")
         case .none:
             image = Image("ic_status_cancelled")
-            string = "Unknown"
+            string = String(localized:"Unknown")
         }
         return (image, string)
     }
@@ -57,42 +57,42 @@ struct Utils {
             
         case .NotSetYet:
             image = Image("ic_status_waiting")
-            statusString = "Waiting To Be Picked up"
-            statusDetails = "When you notify passenger to get ready we'll send a notification to passenger to get ready for pickup"
+            statusString = String(localized:"Waiting To Be Picked up")
+            statusDetails = String(localized:"When you notify passenger to get ready we'll send a notification to passenger to get ready for pickup")
         case .DriverPickedup:
             image = Image("ic_confirm_check")
-            statusString = "Picked up"
-            statusDetails = "Trooute wishes you safe journey."
+            statusString = String(localized:"Picked up")
+            statusDetails = String(localized:"Trooute wishes you safe journey.")
         case .DriverNotShowedup:
             image = Image("ic_status_cancelled")
-            statusString = "Not Showed up"
-            statusDetails = isDriver ? "The passenger has marked that you didn’t show up. Please pick up the passenger." : "You have marked as driver not showed up. You can contact support from settings page."
+            statusString = String(localized:"Not Showed up")
+            statusDetails = isDriver ? String(localized:"The passenger has marked that you didn’t show up. Please pick up the passenger.") : String(localized:"You have marked as driver not showed up. You can contact support from settings page.")
             
         case .PickupStarted:
             image = Image("ic_status_waiting")
-            statusString = "Pickup started"
-            statusDetails = "Driver has started to pick up passengers."
+            statusString = String(localized:"Pickup started")
+            statusDetails = String(localized:"Driver has started to pick up passengers.")
             
         case .PassengerNotified:
             image = Image("ic_status_waiting")
-            statusString = "Get ready"
-            statusDetails = "Driver is coming to you to pick you up."
+            statusString = String(localized:"Get ready")
+            statusDetails = String(localized:"Driver is coming to you to pick you up.")
             
         case .PassengerPickedup:
             image = Image("ic_status_waiting")
-            statusString = "Picked up"
-            statusDetails = "Driver marked you as a picked up. if it's correct please mark yourself as picked up."
+            statusString = String(localized:"Picked up")
+            statusDetails = String(localized:"Driver marked you as a picked up. if it's correct please mark yourself as picked up.")
             
         case .PassengerNotShowedup:
             image = Image("ic_status_waiting")
-            statusString = "Not Showed up"
-            statusDetails = "Driver marked you as not showed up. If it's not true you can contact support from settings page."
+            statusString = String(localized:"Not Showed up")
+            statusDetails = String(localized:"Driver marked you as not showed up. If it's not true you can contact support from settings page.")
             
             
         default:
             image = Image("ic_status_cancelled")
-            statusString = "Unknown"
-            statusDetails = "Unknown"
+            statusString = String(localized:"Unknown")
+            statusDetails = String(localized:"Unknown")
         }
         
         return (image, statusString, statusDetails)

@@ -97,7 +97,7 @@ class TripsViewModel: NSObject, ObservableObject {
     }
 
     func showErrorAlert() {
-        BannerHelper.displayBanner(.error, message: "App could not get coordinates of this location. Please choose some other location or try again")
+        BannerHelper.displayBanner(.error, message: String(localized:"App could not get coordinates of this location. Please choose some other location or try again"))
     }
 
     func checkLocationAuthorization() {
@@ -127,12 +127,12 @@ class TripsViewModel: NSObject, ObservableObject {
     
     func seekOutTrip() {
         guard let fromAddressInfo = fromAddressInfo else {
-            BannerHelper.displayBanner(.info, message: "From location field can't be blank")
+            BannerHelper.displayBanner(.info, message: String(localized:"From location field can't be blank"))
             return
         }
         
         guard let whereToAddressInfo = whereToAddressInfo else {
-            BannerHelper.displayBanner(.info, message: "Where to location field can't be blank")
+            BannerHelper.displayBanner(.info, message: String(localized:"Where to location field can't be blank"))
             return
         }
         
@@ -144,7 +144,7 @@ class TripsViewModel: NSObject, ObservableObject {
                                       flexibleDays: isFlexibleDate ? flexibleDays : nil,
                                       toRange: Int(distanceTo),
                                       fromRange: Int(distanceFrom))
-        SwiftLoader.show(title: "Searching...", animated: true)
+        SwiftLoader.show(title: String(localized:"Searching..."), animated: true)
         repository.getTrips(request: request) { [weak self] result in
             SwiftLoader.hide()
             switch result {
@@ -152,7 +152,7 @@ class TripsViewModel: NSObject, ObservableObject {
                 if resposne.data.success {
                     if let trips = resposne.data.data {
                         if trips.count == 0 {
-                            BannerHelper.displayBanner(.info, message: "No trip found")
+                            BannerHelper.displayBanner(.info, message: String(localized:"No trip found"))
                         } else {
                             self?.searchTripsResult = trips
                             self?.showSearchTrips = true

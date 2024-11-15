@@ -53,38 +53,38 @@ class SignUpViewModel: ObservableObject {
     
     func signupButtonPressed() {
         if agreeToTerms == false {
-            BannerHelper.displayBanner(.info, message: "Please accept terms and conditions")
+            BannerHelper.displayBanner(.info, message: String(localized:"Please accept terms and conditions"))
             return
         } else if email.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 {
-            BannerHelper.displayBanner(.error, message: "Email can\'t be blank.")
+            BannerHelper.displayBanner(.error, message: String(localized:"Email can't be blank."))
             return
         } else if password.count == 0 {
-            BannerHelper.displayBanner(.error, message: "Password can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Password can't be blank"))
             return
         } else if confirmPassword.count == 0 {
-            BannerHelper.displayBanner(.error, message: "Retype your password. It can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Retype your password. It can't be blank"))
             return
         } else if fullName.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 {
-            BannerHelper.displayBanner(.error, message: "Full Name feild can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Full Name feild can't be blank"))
             return
         } else if mobPhoneNumber.count == 0 {
-            BannerHelper.displayBanner(.error, message: "Phone number is not correct")
+            BannerHelper.displayBanner(.error, message: String(localized:"Phone number is not correct"))
             return
         } else if Utils.matchPassword(password, confirmPassword) {
-            BannerHelper.displayBanner(.error, message: "Passwords did not matched")
+            BannerHelper.displayBanner(.error, message: String(localized:"Passwords did not matched"))
             return
         } else if !Utils.isValidEmail(email) {
-            BannerHelper.displayBanner(.error, message: "Email is not valid")
+            BannerHelper.displayBanner(.error, message: String(localized:"Email is not valid"))
             return
         } else if gender.count == 0 {
-            BannerHelper.displayBanner(.error, message: "Please select gender")
+            BannerHelper.displayBanner(.error, message: String(localized:"Please select gender"))
             return
         } else if password.count < 8 {
-            BannerHelper.displayBanner(.error, message: "Password needs to consist of at least 8 characters")
+            BannerHelper.displayBanner(.error, message: String(localized:"Password needs to consist of at least 8 characters"))
             return
         } else {
             let signupRequest = SignupRequest(name: fullName, email: email, password: password, phoneNumber: mobPhoneNumber, gender: gender, photo: Utils.convertImageToData(self.photo))
-            SwiftLoader.show(title: "Signing up...", animated: true)
+            SwiftLoader.show(title: String(localized:"Signing up..."), animated: true)
             repository.signup(signinRequest: signupRequest) { [weak self] result in
                 SwiftLoader.hide()
                 switch result {

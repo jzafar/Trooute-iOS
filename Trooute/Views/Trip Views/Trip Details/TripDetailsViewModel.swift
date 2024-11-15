@@ -21,12 +21,12 @@ class TripDetailsViewModel: ObservableObject {
             updateOtherReliventDetails()
         }
     }
-    @Published var handCarryWeight = "Not Provided"
-    @Published var suitcaseWeight = "Not Provided"
-    @Published var smokingPreference: String = "NO"
-    @Published var petPreference: String = "NO"
-    @Published var languagePreference: String = "Not Provided"
-    @Published var otherReliventDetails: String = "Not Provided"
+    @Published var handCarryWeight = String(localized:"Not Provided")
+    @Published var suitcaseWeight = String(localized:"Not Provided")
+    @Published var smokingPreference: String = String(localized:"No")
+    @Published var petPreference: String = String(localized:"No")
+    @Published var languagePreference: String = String(localized:"Not Provided")
+    @Published var otherReliventDetails: String = String(localized:"Not Provided")
     @Published var openDetailsView: Bool = false
     @Published var showPickUpPassengers = false
     @Published var passgenerId: String?
@@ -40,7 +40,7 @@ class TripDetailsViewModel: ObservableObject {
     }
 
     func onApplear() {
-        SwiftLoader.show(title: "Loading...",animated: true)
+        SwiftLoader.show(title: String(localized:"Loading..."),animated: true)
         repository.getTripDetails(tripId: tripId) { [weak self] result in
             SwiftLoader.hide()
             switch result {
@@ -87,36 +87,36 @@ class TripDetailsViewModel: ObservableObject {
 
     private func updateSmokingPreference() {
         if userModel.driverMode {
-            smokingPreference = trip?.trip?.smokingPreference ?? false ? "Yes" : "No"
+            smokingPreference = trip?.trip?.smokingPreference ?? false ? String(localized:"Yes") : String(localized:"No")
         } else {
-            smokingPreference = trip?.smokingPreference ?? false ? "Yes" : "No"
+            smokingPreference = trip?.smokingPreference ?? false ? String(localized:"Yes") : String(localized:"No")
         }
         
     }
     
     private func updatePetPreference() {
         if userModel.driverMode {
-            petPreference = trip?.trip?.petPreference ?? false ? "Yes" : "No"
+            petPreference = trip?.trip?.petPreference ?? false ? String(localized:"Yes") : String(localized:"No")
         } else {
-            petPreference = trip?.petPreference ?? false ? "Yes" : "No"
+            petPreference = trip?.petPreference ?? false ? String(localized:"Yes") : String(localized:"No")
         }
         
     }
 
     private func updateLanguagePreference() {
         if userModel.driverMode {
-            languagePreference =  trip?.trip?.languagePreference ?? "Not Provided"
+            languagePreference =  trip?.trip?.languagePreference ?? String(localized:"Not Provided")
         } else {
-            languagePreference =  trip?.languagePreference ?? "Not Provided"
+            languagePreference =  trip?.languagePreference ?? String(localized:"Not Provided")
         }
         
     }
 
     private func updateOtherReliventDetails() {
         if userModel.driverMode {
-            otherReliventDetails = trip?.trip?.note.emptyOrNil ?? "Not Provided"
+            otherReliventDetails = trip?.trip?.note.emptyOrNil ?? String(localized:"Not Provided")
         } else {
-            otherReliventDetails = trip?.note.emptyOrNil ?? "Not Provided"
+            otherReliventDetails = trip?.note.emptyOrNil ?? String(localized:"Not Provided")
         }
         
     }
@@ -164,7 +164,7 @@ class TripDetailsViewModel: ObservableObject {
     func endTrip() {
         updateTripStatus(status: .COMPLETED) { success in
             if success {
-                self.sendNotification(title: "Trip completed", body: "Congratulations! Your trip has successfully come to a memorable end by ", toId: self.trip?.bookings) { _ in
+                self.sendNotification(title: String(localized:"Trip completed"), body: String(localized:"Congratulations! Your trip has successfully come to a memorable end by "), toId: self.trip?.bookings) { _ in
                     NavigationUtil.popToRootView(animated: true)
                 }
             }
@@ -174,7 +174,7 @@ class TripDetailsViewModel: ObservableObject {
     func cancelTrip() {
         updateTripStatus(status: .CANCELED) { success in
             if success {
-                self.sendNotification(title: "Booking cancelled", body: "Sorry, Your trip is cancelled by ", toId: self.trip?.bookings) { _ in
+                self.sendNotification(title: String(localized:"Booking canceled"), body: String(localized:"Sorry, Your trip is canceled by "), toId: self.trip?.bookings) { _ in
                     NavigationUtil.popToRootView(animated: true)
                 }
             }
@@ -203,17 +203,17 @@ class TripDetailsViewModel: ObservableObject {
     
     private func showErroBanner(key: String, defaultMessage: String , defaultType: BannerType) {
         if (key == "remaining_time_more_than_12h") {
-            BannerHelper.displayBanner(.info, message: "You can start picking up passengers 12 hours before the trip start time.")
+            BannerHelper.displayBanner(.info, message: String(localized:"You can start picking up passengers 12 hours before the trip start time."))
         } else if (key == "invalid_status") {
-            BannerHelper.displayBanner(.info, message: "Invalid trip status.")
+            BannerHelper.displayBanner(.info, message: String(localized:"Invalid trip status."))
         } else if (key == "trip_status_INPROGRESS") {
-            BannerHelper.displayBanner(.info, message: "Update trip status to In Progress")
+            BannerHelper.displayBanner(.info, message: String(localized:"Update trip status to In Progress"))
         } else if (key == "trip_status_Canceled") {
-            BannerHelper.displayBanner(.info, message: "Update trip status to canceled")
+            BannerHelper.displayBanner(.info, message: String(localized:"Update trip status to canceled"))
         } else if (key == "trip_status_PickupStarted") {
             //Don't show banner
         } else if (key == "trip_status_Completed") {
-            BannerHelper.displayBanner(.success, message: "Update trip status to completed, you can see this trip in your Trip History")
+            BannerHelper.displayBanner(.success, message: String(localized:"Update trip status to completed, you can see this trip in your Trip History"))
         }
         else {
             BannerHelper.displayBanner(.error, message: defaultMessage)

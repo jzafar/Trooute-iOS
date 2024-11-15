@@ -46,7 +46,7 @@ struct BecomeDriverView: View {
                     .padding()
                 }
                 .safeAreaInset(edge: .bottom) {
-                    PrimaryGreenButton(title: (userModel.driverStatus != .approved) ? "Submit Request" : "Update") {
+                    PrimaryGreenButton(title: (userModel.driverStatus != .approved) ? String(localized:"Submit Request") : String(localized:"Update")) {
                         if userModel.driverStatus == .approved {
                             viewModel.updateCarInfo()
                         } else {

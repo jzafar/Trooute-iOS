@@ -10,7 +10,7 @@ class WishViewModel: ObservableObject {
     @Published var wishList: [TripsData] = []
     private let repository = WishViewRepository()
     func getWishList() {
-        SwiftLoader.show(title: "Loading...", animated: true)
+        SwiftLoader.show(title: String(localized:"Loading..."), animated: true)
         repository.getTrips { [weak self] result in
             SwiftLoader.hide()
             guard let self = self else {return}

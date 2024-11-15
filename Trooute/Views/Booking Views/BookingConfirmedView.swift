@@ -43,7 +43,7 @@ struct BookingConfirmedView: View {
             .padding(.bottom, 16)
             
             .safeAreaInset(edge: .bottom) {
-                PrimaryGreenButton(title: "Back to home") {
+                PrimaryGreenButton(title: String(localized:"Back to home")) {
                     NavigationUtil.popToRootView()
                 }.padding(.horizontal)
                     .padding(.top, 5)

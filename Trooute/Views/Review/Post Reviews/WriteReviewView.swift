@@ -14,7 +14,7 @@ struct WriteReviewView: View {
         VStack(alignment: .leading) {
             Divider()
             HStack {
-                TextViewLableText(text: viewModel.isCarReview ? "Rating" : "Reviews")
+                TextViewLableText(text: viewModel.isCarReview ? String(localized:"Rating") : String(localized:"Reviews"))
                 Spacer()
                 Image(systemName: viewModel.isfullView ? "chevron.up" : "chevron.down")
                     .resizable()
@@ -152,7 +152,7 @@ struct WriteReviewView: View {
 
     @ViewBuilder
     func submitButton() -> some View {
-        PrimaryGreenButton(title: "Submit") {
+        PrimaryGreenButton(title: String(localized:"Submit")) {
             hideKeyboard()
             viewModel.submitReview()
         }.padding(.vertical, 5)

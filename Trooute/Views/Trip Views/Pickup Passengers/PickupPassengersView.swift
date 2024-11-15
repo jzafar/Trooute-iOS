@@ -38,7 +38,7 @@ struct PickupPassengersView: View {
         if viewModel.tripData?.status == .PickupStarted {
             VStack {
                 HStack {
-                    PrimaryGreenButton(title: "Start Trip") {
+                    PrimaryGreenButton(title: String(localized:"Start Trip")) {
                         viewModel.startTrip()
                     }
 
@@ -49,7 +49,7 @@ struct PickupPassengersView: View {
         } else if viewModel.tripData?.status == .IN_PROGRESS {
             VStack {
                 HStack {
-                    PrimaryGreenButton(title: "End Trip") {
+                    PrimaryGreenButton(title: String(localized:"End Trip")) {
                         viewModel.endTrip()
                     }
 
@@ -74,17 +74,17 @@ struct PickupPassengersView: View {
             if booking.pickupStatus?.passengerStatus != .DriverPickedup {
                 VStack {
                     HStack {
-                        SecondaryBookingButton(title: "Not Showed up") {
+                        SecondaryBookingButton(title: String(localized:"Not Showed up")) {
                             viewModel.updatePickupStatus(booking: booking, status: .PassengerNotShowedup)
                         }
 
                         Spacer()
-                        PrimaryGreenButton(title: "Marked as Pickup") {
+                        PrimaryGreenButton(title: String(localized:"Marked as Pickup")) {
                             viewModel.updatePickupStatus(booking: booking, status: .PassengerPickedup)
                         }
                     }
 
-                    PrimaryGreenButton(title: "Notify passenger to get ready") {
+                    PrimaryGreenButton(title: String(localized:"Notify passenger to get ready")) {
                         viewModel.updatePickupStatus(booking: booking, status: .PassengerNotified)
                     }
                 }
@@ -100,7 +100,7 @@ struct PickupPassengersView: View {
                 Image("ic_location_where_to")
                     .resizable()
                     .frame(width: 15, height: 20)
-                TextViewLableText(text: "Pickup location")
+                TextViewLableText(text: String(localized:"Pickup location"))
                 Spacer()
             }
 

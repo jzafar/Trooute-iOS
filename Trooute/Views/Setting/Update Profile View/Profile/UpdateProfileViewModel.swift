@@ -17,11 +17,11 @@ class UpdateProfileViewModel: ObservableObject {
     @AppStorage(UserDefaultsKey.user.key) var user: User?
     func updateProfile() {
         if fullName.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 {
-           BannerHelper.displayBanner(.error, message: "Full Name feild can\'t be blank")
+            BannerHelper.displayBanner(.error, message: String(localized:"Full Name feild can't be blank"))
        } else if phoneNumber.count == 0 {
-           BannerHelper.displayBanner(.error, message: "Phone number is not correct")
+           BannerHelper.displayBanner(.error, message: String(localized:"Phone number is not correct"))
        } else {
-           SwiftLoader.show(title: "Updating...", animated: true)
+           SwiftLoader.show(title: String(localized:"Updating..."), animated: true)
            repository.updateMe(request: UpdateProfileRequest(name: fullName, phoneNumber: phoneNumber, photo: Utils.convertImageToData(self.useImage))) { [weak self] result in
                SwiftLoader.hide()
                switch result {
@@ -30,7 +30,7 @@ class UpdateProfileViewModel: ObservableObject {
                       let user = response.data.data {
                        self?.user = user
                        self?.useImage = nil
-                       BannerHelper.displayBanner(.success, message: "Profile updated")
+                       BannerHelper.displayBanner(.success, message: String(localized:"Profile updated"))
                    } else {
                        BannerHelper.displayBanner(.error, message:  response.data.message)
                    }

@@ -50,7 +50,7 @@ struct TripHistoryView: View {
     func histroyCell(trip: TripsData) -> some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading, spacing: 10) {
-                TextViewLableText(text: "Trip # \(trip.id.firstTenCharacters())")
+                TextViewLableText(text: String(localized:"Trip # \(trip.id.firstTenCharacters())"))
                     .padding(.horizontal)
                     .padding(.top)
                 Text(trip.departureDate?.fullFormate() ?? "")

@@ -20,14 +20,14 @@ class SigninViewModel: ObservableObject {
     
     func loginButtonPress() {
         if email.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 {
-            BannerHelper.displayBanner(.error, message: "Email field can't be empty.")
+            BannerHelper.displayBanner(.error, message: String(localized:"Email field can't be empty."))
             return
         } else if password.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 {
-            BannerHelper.displayBanner(.error, message: "Password field can't be empty.")
+            BannerHelper.displayBanner(.error, message: String(localized:"Password field can't be empty."))
             return
         } else {
             let loginRequest = SigninRequest(email: email, password: password)
-            SwiftLoader.show(title: "Signin...", animated: true)
+            SwiftLoader.show(title: String(localized:"Signin..."), animated: true)
             repository.signin(signinRequest: loginRequest) { [weak self] result in
                 SwiftLoader.hide()
                 guard let self = self else {return}

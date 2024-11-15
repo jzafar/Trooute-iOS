@@ -28,7 +28,7 @@ class BookTripViewModel: ObservableObject {
         if totalPerson < trip.availableSeats ?? 0 {
             totalPerson += 1
         } else {
-            BannerHelper.displayBanner(.info, message: "No more seats are available")
+            BannerHelper.displayBanner(.info, message: String(localized:"No more seats are available"))
         }
         
         self.updatePrice()
@@ -36,9 +36,9 @@ class BookTripViewModel: ObservableObject {
     
     func proceedButtonPressed() {
         if pickUpAddressInfo == nil {
-            BannerHelper.displayBanner(.info, message: "Pickup location field can't be blank")
+            BannerHelper.displayBanner(.info, message: String(localized:"Pickup location field can't be blank"))
         } else if(otherReleventDetails.trimmingCharacters(in: .whitespacesAndNewlines).count == 0) {
-            BannerHelper.displayBanner(.info, message: "Other relevant details field can't be blank")
+            BannerHelper.displayBanner(.info, message: String(localized:"Other relevant details field can't be blank"))
         } else {
             self.shouldNavigate = true
         }
@@ -46,7 +46,7 @@ class BookTripViewModel: ObservableObject {
     
     func showErrorAlert() {
         pickupLocation = ""
-        BannerHelper.displayBanner(.error, message: "App could not get coordinates of this location. Please choose some other location or try again")
+        BannerHelper.displayBanner(.error, message: String(localized:"App could not get coordinates of this location. Please choose some other location or try again"))
     }
     
     var proceedViewModel: ProceedViewModel? {

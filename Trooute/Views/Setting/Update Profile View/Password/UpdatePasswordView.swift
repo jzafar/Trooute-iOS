@@ -52,7 +52,7 @@ struct UpdatePasswordView: View {
     @ViewBuilder
     func passwordView() -> some View {
         VStack(alignment: .leading) {
-            TextViewLableText(text: "Password")
+            TextViewLableText(text: String(localized:"Password"))
             HStack {
                 if viewModel.showPassword {
                     TextField("Your password here", text: $viewModel.password)
@@ -76,7 +76,7 @@ struct UpdatePasswordView: View {
     @ViewBuilder
     func confirmPasswordView() -> some View {
         VStack(alignment: .leading) {
-            TextViewLableText(text: "Retype your password")
+            TextViewLableText(text: String(localized:"Retype your password"))
             HStack {
                 if viewModel.showConfirmPassword {
                     TextField("Retype your password here", text: $viewModel.confirmPassword)
@@ -99,7 +99,7 @@ struct UpdatePasswordView: View {
     
     @ViewBuilder
     func updateButton()-> some View {
-        PrimaryGreenButton(title: "Update") {
+        PrimaryGreenButton(title: String(localized:"Update")) {
             viewModel.updatePasswordPressed()
         }
         .padding(.horizontal, 30)

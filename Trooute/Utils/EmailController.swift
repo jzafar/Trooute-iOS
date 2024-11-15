@@ -14,7 +14,7 @@ class EmailController: NSObject, MFMailComposeViewControllerDelegate {
     
     func sendEmail(subject:String, body:String, to:String){
         if !MFMailComposeViewController.canSendMail() {
-            BannerHelper.displayBanner(.info, message: "Your email is not configured. Please configuere your email to report an issue.")
+            BannerHelper.displayBanner(.info, message: String(localized:"Your email is not configured. Please configuere your email to report an issue."))
             return
         }
         // Create the email composer

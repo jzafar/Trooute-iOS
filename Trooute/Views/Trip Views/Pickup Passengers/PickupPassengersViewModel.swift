@@ -16,7 +16,7 @@ class PickupPassengersViewModel: ObservableObject {
     @Published var tripData: TripsData? = nil
     init(tripId: String) {
         self.tripId = tripId
-        SwiftLoader.show(title: "Loading...", animated: true)
+        SwiftLoader.show(title: String(localized:"Loading..."), animated: true)
         getPickupStatus()
     }
 
@@ -54,14 +54,14 @@ class PickupPassengersViewModel: ObservableObject {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
-                BannerHelper.displayBanner(.info, message: "Please install apple maps app")
+                BannerHelper.displayBanner(.info, message: String(localized:"Please install apple maps app"))
             }
         }
     }
 
     func updatePickupStatus(booking: Booking, status: PickUpPassengersStatus) {
         if let pickupId = booking.pickupStatus?.id {
-            SwiftLoader.show(title: "Updating...", animated: true)
+            SwiftLoader.show(title: String(localized:"Updating..."), animated: true)
             let requst = UpdatePickupStatusRequest(tripId: tripId, bookingId: booking.id, pickupStatus: status.rawValue, pickupId: pickupId)
             repositiry.updatePickupStatus(request: requst) { [weak self] result in
                 SwiftLoader.hide()
@@ -69,7 +69,7 @@ class PickupPassengersViewModel: ObservableObject {
                 case let .success(response):
                     if response.data.success {
                         self?.getPickupStatus()
-                        BannerHelper.displayBanner(.success, message: "Status updated successfully")
+                        BannerHelper.displayBanner(.success, message: String(localized:"Status updated successfully"))
                     } else {
                         BannerHelper.displayBanner(.error, message: response.data.message)
                     }
@@ -90,9 +90,9 @@ class PickupPassengersViewModel: ObservableObject {
                 }
             }
             if !allMarkedAsPickedUp {
-                BannerHelper.displayBanner(.error, message: "You can't start trip until all passengers are marked as picked up.\nIf a passenger is not showed up you need to mark as Not Showed Up")
+                BannerHelper.displayBanner(.error, message: String(localized:"You can't start trip until all passengers are marked as picked up.\nIf a passenger is not showed up you need to mark as Not Showed Up"))
             } else {
-                SwiftLoader.show(title: "Updating...", animated: true)
+                SwiftLoader.show(title: String(localized:"Updating..."), animated: true)
                 self.repositiry.updateTripStatus(tripId: self.tripId, status: .IN_PROGRESS) { [weak self] result in
                     SwiftLoader.hide()
                     switch result {
@@ -111,7 +111,7 @@ class PickupPassengersViewModel: ObservableObject {
     }
     
     func endTrip() {
-        SwiftLoader.show(title: "Updating...", animated: true)
+        SwiftLoader.show(title: String(localized:"Updating..."), animated: true)
         self.repositiry.updateTripStatus(tripId: self.tripId, status: .COMPLETED) { [weak self] result in
             SwiftLoader.hide()
             switch result {

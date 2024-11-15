@@ -31,7 +31,7 @@ class SettingsViewModel: ObservableObject {
             if isNotificationOn {
                 let permission = await getNotificationPermission()
                 if !permission {
-                    BannerHelper.displayBanner(.info, message: "You have enabled notifications but notifications are off from settings. Please go to application settings and enable notifications")
+                    BannerHelper.displayBanner(.info, message: String(localized:"You have enabled notifications but notifications are off from settings. Please go to application settings and enable notifications"))
                 }
             }
         }
@@ -85,7 +85,7 @@ class SettingsViewModel: ObservableObject {
     }
 
     func logoutPressed() {
-        SwiftLoader.show(title: "Logout...", animated: true)
+        SwiftLoader.show(title: String(localized:"Logout..."), animated: true)
         self.repository.signout(request: SignoutRequest(deviceId: Utils.getToken() ?? "")) { [weak self] result in
             
             guard let self = self else {return}
@@ -118,7 +118,7 @@ class SettingsViewModel: ObservableObject {
     }
 
     func actionSheet() {
-        let data = "Hey! I want to invite you to try Trooute App. Get where you’re going with affordable, convenient rides. You can download App from this link: https://apps.apple.com/us/app/trooute/id6737987619"
+        let data = String(localized:"Hey! I want to invite you to try Trooute App. Get where you’re going with affordable, convenient rides. You can download App from this link: https://apps.apple.com/us/app/trooute/id6737987619")
         let av = UIActivityViewController(activityItems: [data], applicationActivities: nil)
         Utils.getRootViewController()?.present(av, animated: true, completion: nil)
     }

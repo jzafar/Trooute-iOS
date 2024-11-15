@@ -16,7 +16,7 @@ class BookingDetailsViewModel: ObservableObject {
             self.setDepartureDate()
             self.handCarryWeight = self.getHandCarryWeight()
             self.suitcaseWeight = self.getSuitcaseWeight()
-            self.bookingID = "Booking # \(self.bookingId.firstTenCharacters())"
+            self.bookingID = String(localized:"Booking # \(self.bookingId.firstTenCharacters())")
             self.finalPrice = self.getFinalPrice()
         }
     }
@@ -25,8 +25,8 @@ class BookingDetailsViewModel: ObservableObject {
     @Published var availableSeats = ""
     @Published var bookingID: String? = ""
     @Published var showPaymentsScreen = false
-    @Published var suitcaseWeight = "Not Provided"
-    @Published var handCarryWeight = "Not Provided"
+    @Published var suitcaseWeight = String(localized:"Not provided")
+    @Published var handCarryWeight = String(localized:"Not provided")
     @Published var popView = false
     @Published var passgenerId: String?
     @Published var finalPrice: Double = 0.0
@@ -42,7 +42,7 @@ class BookingDetailsViewModel: ObservableObject {
     }
     
     func getBookingDetails() {
-        SwiftLoader.show(title: "Loading...", animated: true)
+        SwiftLoader.show(title: String(localized:"Loading..."), animated: true)
         repository.getBookingDetails(bookingId: self.bookingId) { [weak self] result in
             SwiftLoader.hide()
             switch result {
@@ -124,19 +124,19 @@ class BookingDetailsViewModel: ObservableObject {
     }
     
     var smokingPreference: String {
-        return bookingData?.trip.smokingPreference ?? false ? "Yes" : "No"
+        return bookingData?.trip.smokingPreference ?? false ? String(localized:"Yes") : String(localized:"No")
     }
     
     var petPreference: String {
-        return bookingData?.trip.petPreference ?? false ? "Yes" : "No"
+        return bookingData?.trip.petPreference ?? false ? String(localized:"Yes") : String(localized:"No")
     }
     
     var languagePreference: String {
-        return bookingData?.trip.languagePreference ?? "Not Provided"
+        return bookingData?.trip.languagePreference ?? String(localized:"Not Provided")
     }
     
     var otherReliventDetails: String {
-        return bookingData?.trip.note.emptyOrNil ?? "Not Provided"
+        return bookingData?.trip.note.emptyOrNil ?? String(localized:"Not Provided")
     }
     
     func getDestinationModel() -> TripRouteModel? {
@@ -152,30 +152,30 @@ class BookingDetailsViewModel: ObservableObject {
         var str = ""
         if isDriver {
             if status == .waiting {
-                str = "Passenger is waiting for your respnse."
+                str = String(localized:"Passenger is waiting for your response.")
             } else if status == .approved {
-                str = "We are waiting for payments."
+                str = String(localized:"We are waiting for payments.")
             } else if status == .confirmed {
-                str = "This booking is now confirmed! Anticipate the upcomming trip day."
+                str = String(localized:"This booking is now confirmed! Anticipate the upcomming trip day.")
             } else if status == .canceled {
-                str = "Booking canceled. We're Sorry for the Inconvenience."
+                str = String(localized:"Booking canceled. We're Sorry for the Inconvenience.")
             }
         } else {
             if status == .waiting {
-                str = "We’ll notify you as soon as your booking is confirmed."
+                str = String(localized:"We’ll notify you as soon as your booking is confirmed.")
             } else if status == .approved {
-                str = "Your booking is approved! Please proceed with payment to confirm."
+                str = String(localized:"Your booking is approved! Please proceed with payment to confirm.")
             } else if status == .confirmed {
-                str = "Your booking is now confirmed! Anticipate the upcoming trip day."
+                str = String(localized:"Your booking is now confirmed! Anticipate the upcoming trip day.")
             } else if status == .canceled {
-                str = "Booking canceled. We're Sorry for the Inconvenience."
+                str = String(localized:"Booking canceled. We're Sorry for the Inconvenience.")
             }
         }
         return str
     }
     
     func makePayments() {
-        SwiftLoader.show(title:"Loading...",animated: true)
+        SwiftLoader.show(title: String(localized:"Loading..."),animated: true)
         repository.confirmBooking(bookingId: self.bookingId) { [weak self] result in
             SwiftLoader.hide()
             switch result {
@@ -211,7 +211,7 @@ class BookingDetailsViewModel: ObservableObject {
                         toId = self.bookingData?.trip.driver?.id
                     }
                     if let id = toId {
-                        self.sendNotification(title: "Booking cancelled", body: "Sorry, Your trip is cancelled by ", toId: id) {
+                        self.sendNotification(title: String(localized:"Booking canceled"), body: String(localized:"Sorry, Your trip is canceled by "), toId: id) {
                             self.popView = true
                         }
                         
@@ -233,7 +233,7 @@ class BookingDetailsViewModel: ObservableObject {
     
     func acceptBooking() {
         if bookingData?.trip.driver?.stripeConnectedAccountId == nil {
-            BannerHelper.displayBanner(.error, message: "You can't accept this booking. You must have to connect your stripe account to accept this booking. When we have approved you as a driver, we send you an email to connect your stripe account.")
+            BannerHelper.displayBanner(.error, message: String(localized:"You can't accept this booking. You must have to connect your stripe account to accept this booking. When we have approved you as a driver, we send you an email to connect your stripe account."))
             return
         }
         SwiftLoader.show(animated: true)
@@ -252,7 +252,7 @@ class BookingDetailsViewModel: ObservableObject {
                         toId = self.bookingData?.trip.driver?.id
                     }
                     if let id = toId {
-                        self.sendNotification(title: "Booking accepted", body: "Great news, Your trip is all set and accepted by ", toId: id) {}
+                        self.sendNotification(title: String(localized:"Confirm Booking"), body: String(localized:"Great news, Your trip is all set and accepted by "), toId: id) {}
                     }
                 } else {
                     BannerHelper.displayBanner(.error, message: response.data.message)
@@ -302,13 +302,13 @@ class BookingDetailsViewModel: ObservableObject {
         if let tripId = currentBooking?.trip?.id,
            let pickupStatusId = currentBooking?.pickupStatus?.id {
             let requst = UpdatePickupStatusRequest(tripId: tripId, bookingId: self.bookingId, pickupStatus: status.rawValue, pickupId: pickupStatusId)
-            SwiftLoader.show(title: "Updating...", animated: true)
+            SwiftLoader.show(title: String(localized:"Updating..."), animated: true)
             self.repository.updatePickupStatus(request: requst) { [weak self] result in
                 SwiftLoader.hide()
                 switch result {
                 case .success(let response):
                     if response.data.success {
-                        BannerHelper.displayBanner(.success, message: "Status updated successfully")
+                        BannerHelper.displayBanner(.success, message: String(localized:"Status updated successfully"))
                         self?.getPickUpStatus(tripId: tripId)
                     } else {
                         BannerHelper.displayBanner(.error, message: response.data.message)
@@ -325,7 +325,7 @@ class BookingDetailsViewModel: ObservableObject {
         notification.sendNotification(title: title, body: "\(body) \(user.user?.name ?? "user")", toId: "\(Apis.TOPIC)\(Apis.TROOUTE_TOPIC)\(toId)") { result in
             switch result {
             case .success(let success):
-                log.info("Booking details notification send")
+                log.info("Booking details notification send status \(success)")
             case .failure(let failure):
                 log.info("Booking details notification fails \(failure.localizedDescription)")
             }
