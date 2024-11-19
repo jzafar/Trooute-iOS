@@ -37,4 +37,10 @@ class CarInfoViewModel: ObservableObject {
         }
         return "Not Provided"
     }
+    var color: String {
+        if let color = carDetails.color {
+            return "\(color.lowercased().firstCapitalized)"
+        }
+        return "Not Provided"
+    }
 }

@@ -11,7 +11,7 @@ import SwiftUI
 import SwiftLoader
 
 class TripsViewModel: NSObject, ObservableObject {
-    private static let defaultDistance = 10.0
+    private static let defaultDistance = 30.0
     @Published var fromLocation: String = ""
     @Published var toLocation: String = ""
     @Published var distanceFrom: Double = TripsViewModel.defaultDistance

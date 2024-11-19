@@ -96,6 +96,9 @@ struct WriteReviewView: View {
                 }
             }
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
 
     @ViewBuilder

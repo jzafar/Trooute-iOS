@@ -23,7 +23,7 @@ struct UserInfoCardView: View {
                             .foregroundColor(.green)
                     }
 
-                    Text(viewModel.gender)
+                    Text(LocalizedStringKey(viewModel.gender))
                     HStack {
                         HStack {
                             Image(systemName: "star.fill")

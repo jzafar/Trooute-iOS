@@ -60,7 +60,7 @@ struct DriverCarView: View {
             }
 
             // Gender
-            TextViewLableText(text: viewModel.driver.gender ?? String(localized:"Not provided"), textFont: .body)
+            LocalizedTextViewLableText(text: viewModel.driver.gender ?? String(localized:"Not provided"), textFont: .body)
 
             // Rating and Reviews Section
             HStack {

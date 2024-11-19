@@ -102,6 +102,16 @@ struct TextViewLableText: View {
     }
 }
 
+struct LocalizedTextViewLableText: View {
+    var text: String
+    var textFont: Font = .headline
+    var body: some View {
+        Text(LocalizedStringKey(text))
+            .font(textFont)
+            .foregroundColor(.black)
+    }
+}
+
 struct ListRowText: View {
     var text: String
     var body: some View {

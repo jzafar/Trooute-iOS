@@ -35,6 +35,11 @@ extension String {
     func trim() -> String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
+    
+    var firstCapitalized: String {
+        guard !isEmpty else { return self }
+        return prefix(1).uppercased() + dropFirst()
+    }
 }
 
 extension Optional where Wrapped == String {

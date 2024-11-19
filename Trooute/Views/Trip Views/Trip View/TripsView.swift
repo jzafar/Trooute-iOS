@@ -198,11 +198,11 @@ struct TripsView: View {
                                 .fill(Color.green)
                                 .frame(width: 20, height: 10)
                         }
-                        .offset(x: CGFloat((viewModel.distanceFrom) / 18) * (UIScreen.main.bounds.width * 0.8) - UIScreen.main.bounds.width / 2 + 20, y: -35)
+                        .offset(x: CGFloat((viewModel.distanceFrom) / 70) * (UIScreen.main.bounds.width * 0.65) - UIScreen.main.bounds.width / 2 + 70, y: -35)
                         .animation(.easeInOut, value: viewModel.distanceFrom)
                     }
 
-                    Slider(value: $viewModel.distanceFrom, in: 2 ... 20, step: 1, onEditingChanged: { editing in
+                    Slider(value: $viewModel.distanceFrom, in: 2 ... 70, step: 1, onEditingChanged: { editing in
                         if editing {
                             withAnimation {
                                 viewModel.showFloatingDistanceForFrom = true
@@ -244,11 +244,11 @@ struct TripsView: View {
                                 .fill(Color.green)
                                 .frame(width: 20, height: 10)
                         }
-                        .offset(x: CGFloat((viewModel.distanceTo) / 18) * (UIScreen.main.bounds.width * 0.8) - UIScreen.main.bounds.width / 2 + 20, y: -35)
+                        .offset(x: CGFloat((viewModel.distanceTo) / 70) * (UIScreen.main.bounds.width * 0.65) - UIScreen.main.bounds.width / 2 + 70, y: -35)
                         .animation(.easeInOut, value: viewModel.distanceTo) // Using iOS 15 animation modifier
                     }
 
-                    Slider(value: $viewModel.distanceTo, in: 2 ... 20, step: 1, onEditingChanged: { editing in
+                    Slider(value: $viewModel.distanceTo, in: 2 ... 70, step: 1, onEditingChanged: { editing in
                         if editing {
                             withAnimation {
                                 viewModel.showFloatingDistanceForTo = true
@@ -336,24 +336,25 @@ struct TripsView: View {
             Spacer()
             Image(systemName: "minus.circle")
                 .font(.title)
-                .foregroundStyle(.primaryGreen)
+                .foregroundStyle(viewModel.isFlexibleDate ? .primaryGreen : .primaryGreen.opacity(0.5))
                 .onTapGesture {
                     if viewModel.flexibleDays > 1 {
                         viewModel.flexibleDays -= 1
                     }
-                }
+                }.allowsHitTesting(viewModel.isFlexibleDate ? true : false)
 
             Text("\(viewModel.flexibleDays)")
                 .padding(.horizontal)
                 .font(.title)
                 .padding(.horizontal, -15)
+                .foregroundStyle(viewModel.isFlexibleDate ? Color.black : Color.gray)
 
             Image(systemName: "plus.circle")
                 .font(.title)
-                .foregroundStyle(.primaryGreen)
+                .foregroundStyle(viewModel.isFlexibleDate ? .primaryGreen : .primaryGreen.opacity(0.5))
                 .onTapGesture {
                     viewModel.flexibleDays += 1
-                }
+                }.allowsHitTesting(viewModel.isFlexibleDate ? true : false)
 
         }.padding(.top, 10)
     }

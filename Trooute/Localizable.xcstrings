@@ -1713,6 +1713,29 @@
         }
       }
     },
+    "female" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiblich"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Female"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Женский"
+          }
+        }
+      }
+    },
     "Female" : {
       "localizations" : {
         "de" : {
@@ -1830,7 +1853,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "voller Name"
+            "value" : "vollständiger Name"
           }
         },
         "ru" : {
@@ -1846,7 +1869,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "voller Name feld darf nicht leer sein"
+            "value" : "vollständiger Name feld darf nicht leer sein"
           }
         },
         "ru" : {
@@ -2253,6 +2276,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Оплатить"
+          }
+        }
+      }
+    },
+    "male" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Männlich"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Male"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мужской"
           }
         }
       }
@@ -2838,7 +2884,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Phone number"
+            "value" : "Telefonnummer"
           }
         },
         "ru" : {

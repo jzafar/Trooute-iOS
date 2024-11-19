@@ -81,7 +81,7 @@ struct CarInfoView: View {
                 Circle()
                     .fill(Color.green)
                     .frame(width: 10, height: 10)
-                TextViewLableText(text: viewModel.carDetails.color.emptyOrNil, textFont: .body)
+                LocalizedTextViewLableText(text: viewModel.color, textFont: .body)
                     .padding(.leading, 10)
             }
         }
