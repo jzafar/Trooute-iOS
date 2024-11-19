@@ -17,8 +17,8 @@ struct SignupRequest {
             return [
                 "email": email.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
                 "password": password,
-                "name": name.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
-                "phoneNumber": phoneNumber.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
+                "name": name.trimmingCharacters(in: .whitespacesAndNewlines),
+                "phoneNumber": phoneNumber.trimmingCharacters(in: .whitespacesAndNewlines),
                 "gender": gender,
                 "photo": image,
             ]
@@ -26,8 +26,8 @@ struct SignupRequest {
         return [
             "email": email.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
             "password": password,
-            "name": name.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
-            "phoneNumber": phoneNumber.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
+            "name": name.trimmingCharacters(in: .whitespacesAndNewlines),
+            "phoneNumber": phoneNumber.trimmingCharacters(in: .whitespacesAndNewlines),
             "gender": gender,
         ]
     }

@@ -12,14 +12,14 @@ struct UpdateProfileRequest {
     var parameters: [String: Any] {
         if let image = photo {
             return [
-                "name": name.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
-                "phoneNumber": phoneNumber.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
+                "name": name.trimmingCharacters(in: .whitespacesAndNewlines),
+                "phoneNumber": phoneNumber.trimmingCharacters(in: .whitespacesAndNewlines),
                 "photo": image,
             ]
         }
         return [
-            "name": name.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
-            "phoneNumber": phoneNumber.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
+            "name": name.trimmingCharacters(in: .whitespacesAndNewlines),
+            "phoneNumber": phoneNumber.trimmingCharacters(in: .whitespacesAndNewlines),
         ]
     }
 }

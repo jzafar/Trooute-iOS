@@ -4,8 +4,8 @@
 //
 //  Created by Muhammad Zafar on 2024-09-25.
 //
-import SwiftUI
 import Firebase
+import SwiftUI
 
 struct Utils {
     static func isValidEmail(_ email: String) -> Bool {
@@ -16,7 +16,23 @@ struct Utils {
 
     static func convertImageToData(_ image: Image?) -> Data? {
         guard let uiImage = image?.asUIImage() else { return nil }
-        return uiImage.jpegData(compressionQuality: 0.7)
+        let initialCompressionQuality: CGFloat = 1.0
+        let maxSizeInBytes = 3 * 1024 * 1024 // Max 3 MB
+        var compressionQuality = initialCompressionQuality
+        guard var data = uiImage.jpegData(compressionQuality: compressionQuality) else { return nil }
+        print("Initial size: \(data.count) bytes (\(data.count / 1024) KB)")
+
+        while data.count > Int(maxSizeInBytes) && compressionQuality > 0 {
+            compressionQuality -= 0.1 // Reduce compression quality
+            if compressionQuality < 0 { return nil } // Can't compress further
+            if let compressedData = uiImage.jpegData(compressionQuality: compressionQuality) {
+                data = compressedData
+                print("Compressed to: \(data.count) bytes (\(data.count / 1024) KB) at quality \(compressionQuality)")
+
+            }
+        }
+
+        return data.count <= Int(maxSizeInBytes) ? data : nil
     }
 
     static func checkStatus(isDriverApproved: Bool, status: BookingStatus?) -> (Image, String) {
@@ -25,76 +41,74 @@ struct Utils {
         switch status {
         case .waiting:
             image = Image("ic_status_waiting")
-            string = isDriverApproved ? String(localized:"Waiting for approval") : String(localized:"Waiting")
+            string = isDriverApproved ? String(localized: "Waiting for approval") : String(localized: "Waiting")
         case .canceled:
             image = Image("ic_status_cancelled")
-            string = String(localized:"Canceled")
+            string = String(localized: "Canceled")
         case .approved:
             image = Image("ic_approved_check")
             if isDriverApproved {
-                string = String(localized:"Waiting for payment")
+                string = String(localized: "Waiting for payment")
             } else {
-                string = String(localized:"Approved")
+                string = String(localized: "Approved")
             }
         case .confirmed:
             image = Image("ic_confirm_check")
-            string = String(localized:"Confirmed")
+            string = String(localized: "Confirmed")
         case .completed:
             image = Image("ic_confirm_check")
-            string = String(localized:"Completed")
+            string = String(localized: "Completed")
         case .none:
             image = Image("ic_status_cancelled")
-            string = String(localized:"Unknown")
+            string = String(localized: "Unknown")
         }
         return (image, string)
     }
-    
+
     static func checkPickUpStatus(isDriver: Bool, status: PickUpPassengersStatus?) -> (Image, String, String) {
         var image: Image
         var statusString: String
         var statusDetails: String
         switch status {
-            
         case .NotSetYet:
             image = Image("ic_status_waiting")
-            statusString = String(localized:"Waiting To Be Picked up")
-            statusDetails = String(localized:"When you notify passenger to get ready we'll send a notification to passenger to get ready for pickup")
+            statusString = String(localized: "Waiting To Be Picked up")
+            statusDetails = String(localized: "When you notify passenger to get ready we'll send a notification to passenger to get ready for pickup")
         case .DriverPickedup:
             image = Image("ic_confirm_check")
-            statusString = String(localized:"Picked up")
-            statusDetails = String(localized:"Trooute wishes you safe journey.")
+            statusString = String(localized: "Picked up")
+            statusDetails = String(localized: "Trooute wishes you safe journey.")
         case .DriverNotShowedup:
             image = Image("ic_status_cancelled")
-            statusString = String(localized:"Not Showed up")
-            statusDetails = isDriver ? String(localized:"The passenger has marked that you didn’t show up. Please pick up the passenger.") : String(localized:"You have marked as driver not showed up. You can contact support from settings page.")
-            
+            statusString = String(localized: "Not Showed up")
+            statusDetails = isDriver ? String(localized: "The passenger has marked that you didn’t show up. Please pick up the passenger.") : String(localized: "You have marked as driver not showed up. You can contact support from settings page.")
+
         case .PickupStarted:
             image = Image("ic_status_waiting")
-            statusString = String(localized:"Pickup started")
-            statusDetails = String(localized:"Driver has started to pick up passengers.")
-            
+            statusString = String(localized: "Pickup started")
+            statusDetails = String(localized: "Driver has started to pick up passengers.")
+
         case .PassengerNotified:
             image = Image("ic_status_waiting")
-            statusString = String(localized:"Get ready")
-            statusDetails = String(localized:"Driver is coming to you to pick you up.")
-            
+            statusString = String(localized: "Get ready")
+            statusDetails = String(localized: "Driver is coming to you to pick you up.")
+
         case .PassengerPickedup:
             image = Image("ic_status_waiting")
-            statusString = String(localized:"Picked up")
-            statusDetails = String(localized:"Driver marked you as a picked up. if it's correct please mark yourself as picked up.")
-            
+            statusString = String(localized: "Picked up")
+            statusDetails = String(localized: "Driver marked you as a picked up. if it's correct please mark yourself as picked up.")
+
         case .PassengerNotShowedup:
             image = Image("ic_status_waiting")
-            statusString = String(localized:"Not Showed up")
-            statusDetails = String(localized:"Driver marked you as not showed up. If it's not true you can contact support from settings page.")
-            
-            
+            statusString = String(localized: "Not Showed up")
+            statusDetails = String(localized: "Driver marked you as not showed up. If it's not true you can contact support from settings page.")
+
         default:
             image = Image("ic_status_cancelled")
-            statusString = String(localized:"Unknown")
-            statusDetails = String(localized:"Unknown")
+            statusString = String(localized: "Unknown")
+            statusDetails = String(localized: "Unknown")
         }
-        
+
         return (image, statusString, statusDetails)
     }
 
@@ -109,11 +123,11 @@ struct Utils {
         }
         return nil
     }
-    
+
     static func matchPassword(_ password: String, _ confirmPassword: String) -> Bool {
         return password != confirmPassword
     }
-    
+
     static func getRootViewController() -> UIViewController? {
         guard let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
             return nil
@@ -125,11 +139,11 @@ struct Utils {
 
         return firstWindow.rootViewController
     }
-    
+
     static func getImageFullUrl(_ photo: String) -> String {
         return "\(Constants.baseImageUrl)/\(photo)"
     }
-    
+
     static func getToken() -> String? {
         return Messaging.messaging().fcmToken
     }
