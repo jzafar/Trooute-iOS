@@ -98,6 +98,8 @@ struct SignUpView: View {
         VStack(alignment: .leading) {
             TextViewLableText(text: String(localized:"Full name"))
             TextField("E.g. John Smith", text: $viewModel.fullName)
+                .textInputAutocapitalization(.words)
+                .disableAutocorrection(true)
                 .textFieldStyle(AppTextFieldStyle())
         }
         .padding(.horizontal, 30)
