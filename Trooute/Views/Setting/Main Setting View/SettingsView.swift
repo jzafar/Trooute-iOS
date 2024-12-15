@@ -57,6 +57,17 @@ struct SettingsView: View {
             Section {
                 logoutSection()
             }
+            
+            HStack {
+                Button(action: {
+                    viewModel.isDeleteMe = true
+                }) {
+                    Text("Delete Account")
+                        .font(.footnote)
+                        .foregroundColor(.red)
+                }.buttonStyle(PlainButtonStyle())
+                
+            }
         }
         .onAppear {
             viewModel.onAppear()
@@ -68,7 +79,16 @@ struct SettingsView: View {
             viewModel.getMe()
         }, content: {
             BecomeDriverView(viewModel: BecomeDriverViewModel(carDetails: userModel.user?.carDetails))
-        })
+        }).alert(isPresented: $viewModel.isDeleteMe) {
+            Alert(
+                title: Text("Sorry to hear"),
+                message: Text("Are you sure you want to Delete your account?. If you'll delete your account your all trips history will be deleted too. If you have any question please contact support."),
+                primaryButton: .default(Text("OK"), action: {
+                    viewModel.deleteMe()
+            }),
+            secondaryButton: .cancel(Text("Cancel")))
+        }
+
     }
 
     @ViewBuilder
@@ -200,6 +220,7 @@ struct SettingsView: View {
             ListRowText(text: String(localized:"Give us feedback"))
             rightArrow()
         }.onTapGesture {
+            viewModel.requestAppReview()
         }
 
         HStack {

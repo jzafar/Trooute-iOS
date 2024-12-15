@@ -183,12 +183,13 @@ struct PriceView: View {
 }
 
 struct XMarkButton: View {
+    var color: Color = .black
     var action: () -> Void
     var body: some View {
         Button(action: action) {
             Image(systemName: "xmark")
                 .font(.headline)
-                .foregroundStyle(Color.black)
+                .foregroundStyle(color)
         }.buttonStyle(PlainButtonStyle())
     }
 }

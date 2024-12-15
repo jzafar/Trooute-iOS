@@ -76,7 +76,7 @@ struct PictureView: View {
             }
         ))
         .sheet(isPresented: $isShowingCameraPicker) {
-            CameraView(selectedImage: $image)
+            CameraView(model: CameraViewModel(selectedImage: $image))
         }
     }
     // MARK: - Permission Requests

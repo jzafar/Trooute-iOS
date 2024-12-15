@@ -45,6 +45,13 @@
 		CE2169F22CC04159002B9333 /* CreateBookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2169F12CC04151002B9333 /* CreateBookingRequest.swift */; };
 		CE2169F42CC0427C002B9333 /* CreateBookingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2169F32CC04276002B9333 /* CreateBookingResponse.swift */; };
 		CE2169F62CC0558F002B9333 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2169F52CC0558B002B9333 /* Double.swift */; };
+		CE2196762CEF980100F48701 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2196752CEF97FE00F48701 /* CameraViewModel.swift */; };
+		CE21967D2CEF984800F48701 /* CameraService+Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2196782CEF984800F48701 /* CameraService+Enums.swift */; };
+		CE21967E2CEF984800F48701 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21967A2CEF984800F48701 /* ImageResizer.swift */; };
+		CE21967F2CEF984800F48701 /* PhotoCaptureProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21967B2CEF984800F48701 /* PhotoCaptureProcessor.swift */; };
+		CE2196802CEF984800F48701 /* CameraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2196772CEF984800F48701 /* CameraService.swift */; };
+		CE2196812CEF984800F48701 /* CameraService+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2196792CEF984800F48701 /* CameraService+Extensions.swift */; };
+		CE2196832CEF98E500F48701 /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2196822CEF98E500F48701 /* CameraPreview.swift */; };
 		CE270B952CB069C500B9CFDC /* BookingConfirmedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE270B942CB069C500B9CFDC /* BookingConfirmedView.swift */; };
 		CE270B972CB0765000B9CFDC /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE270B962CB0764E00B9CFDC /* NavigationUtil.swift */; };
 		CE270B992CB07C5600B9CFDC /* BecomeDriverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE270B982CB07C5600B9CFDC /* BecomeDriverView.swift */; };
@@ -270,6 +277,13 @@
 		CE2169F12CC04151002B9333 /* CreateBookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBookingRequest.swift; sourceTree = "<group>"; };
 		CE2169F32CC04276002B9333 /* CreateBookingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBookingResponse.swift; sourceTree = "<group>"; };
 		CE2169F52CC0558B002B9333 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		CE2196752CEF97FE00F48701 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		CE2196772CEF984800F48701 /* CameraService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraService.swift; sourceTree = "<group>"; };
+		CE2196782CEF984800F48701 /* CameraService+Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraService+Enums.swift"; sourceTree = "<group>"; };
+		CE2196792CEF984800F48701 /* CameraService+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraService+Extensions.swift"; sourceTree = "<group>"; };
+		CE21967A2CEF984800F48701 /* ImageResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
+		CE21967B2CEF984800F48701 /* PhotoCaptureProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureProcessor.swift; sourceTree = "<group>"; };
+		CE2196822CEF98E500F48701 /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
 		CE270B942CB069C500B9CFDC /* BookingConfirmedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingConfirmedView.swift; sourceTree = "<group>"; };
 		CE270B962CB0764E00B9CFDC /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 		CE270B982CB07C5600B9CFDC /* BecomeDriverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BecomeDriverView.swift; sourceTree = "<group>"; };
@@ -508,6 +522,29 @@
 			path = "Create Booking";
 			sourceTree = "<group>";
 		};
+		CE2196742CEF97E000F48701 /* Camera View */ = {
+			isa = PBXGroup;
+			children = (
+				CE21967C2CEF984800F48701 /* Service */,
+				CE2196752CEF97FE00F48701 /* CameraViewModel.swift */,
+				CE08540D2CB29B7800A3E422 /* CameraView.swift */,
+			);
+			path = "Camera View";
+			sourceTree = "<group>";
+		};
+		CE21967C2CEF984800F48701 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CE2196822CEF98E500F48701 /* CameraPreview.swift */,
+				CE2196772CEF984800F48701 /* CameraService.swift */,
+				CE2196782CEF984800F48701 /* CameraService+Enums.swift */,
+				CE2196792CEF984800F48701 /* CameraService+Extensions.swift */,
+				CE21967A2CEF984800F48701 /* ImageResizer.swift */,
+				CE21967B2CEF984800F48701 /* PhotoCaptureProcessor.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		CE270B902CB0672900B9CFDC /* Booking Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,6 +688,7 @@
 		CE57013D2C9E0DCB003BD7CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE2196742CEF97E000F48701 /* Camera View */,
 				CEF80EDD2CC96FF100AA478D /* Review */,
 				CE5227FF2CBBABB7005C1175 /* Auth */,
 				CEFD59D92CBEF02F00E4A50B /* Driver And Car View */,
@@ -711,7 +749,6 @@
 				CE0854252CB3AC6900A3E422 /* GoogleAutocompleteView.swift */,
 				CE0854132CB3175C00A3E422 /* BluePriceView.swift */,
 				CE08540F2CB29BD500A3E422 /* CustomDropdownField.swift */,
-				CE08540D2CB29B7800A3E422 /* CameraView.swift */,
 				CE08540B2CB29AE800A3E422 /* PictureView.swift */,
 				CE270B962CB0764E00B9CFDC /* NavigationUtil.swift */,
 				CE1D68132CAB1ACC0070970D /* TripDetailsViewComponents.swift */,
@@ -1454,6 +1491,11 @@
 				CEF49B0F2CD944AE0098E425 /* StarRateView.swift in Sources */,
 				CEF49B102CD944AE0098E425 /* Buildable.swift in Sources */,
 				CEF49B112CD944AE0098E425 /* Star.swift in Sources */,
+				CE21967D2CEF984800F48701 /* CameraService+Enums.swift in Sources */,
+				CE21967E2CEF984800F48701 /* ImageResizer.swift in Sources */,
+				CE21967F2CEF984800F48701 /* PhotoCaptureProcessor.swift in Sources */,
+				CE2196802CEF984800F48701 /* CameraService.swift in Sources */,
+				CE2196812CEF984800F48701 /* CameraService+Extensions.swift in Sources */,
 				CE4E3E192CA5ED1A005C3CEE /* DriverCarView.swift in Sources */,
 				CE5227F92CBB975D005C1175 /* OTPVerificationRequest.swift in Sources */,
 				CE28F12C2CB72325001CF2A1 /* SearchedLocation.swift in Sources */,
@@ -1527,6 +1569,7 @@
 				CEF80EE32CC970F400AA478D /* ReviewRepository.swift in Sources */,
 				CE28F12A2CB71F1F001CF2A1 /* GoogleAutocompleteViewModel.swift in Sources */,
 				CE1430992CC17DCD001C1732 /* GetBookingRepository.swift in Sources */,
+				CE2196832CEF98E500F48701 /* CameraPreview.swift in Sources */,
 				CEA18AD72CBC5AB60096545F /* UpdateProfileRequest.swift in Sources */,
 				CE4E3EA22CA7DE1A005C3CEE /* String.swift in Sources */,
 				CE5227EF2CBAFE0A005C1175 /* SignupRepository.swift in Sources */,
@@ -1570,6 +1613,7 @@
 				CE7B20D92CE0A030005EE285 /* SignoutRequest.swift in Sources */,
 				CE5150392C9F25B400B10107 /* BookingsView.swift in Sources */,
 				CE2169EF2CC04044002B9333 /* ProceedRepository.swift in Sources */,
+				CE2196762CEF980100F48701 /* CameraViewModel.swift in Sources */,
 				CEF49B082CD9332A0098E425 /* WriteReviewViewModel.swift in Sources */,
 				CE5227F12CBB1DA1005C1175 /* Image.swift in Sources */,
 				CEAC81662CCEDBD6002C4676 /* EmailController.swift in Sources */,
@@ -1776,17 +1820,18 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Trooute/Trooute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 10;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Trooute/Preview Content\"";
 				DEVELOPMENT_TEAM = MPGZ44D94P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Trooute/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Trooute wants to access camera to take picture.";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Trooute wants to access camera to take picture for your profile or for your car if you are driver.";
 				INFOPLIST_KEY_NSLocationUsageDescription = "Trooute wants to access your location to show trips around you.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Trooute wants to access your location to show trips around you.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Trooute wants to access photo libray for pictures.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Trooute wants to access photo libray for your profile picture or for you car if you are a driver.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1817,16 +1862,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Trooute/Trooute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Trooute/Preview Content\"";
 				DEVELOPMENT_TEAM = MPGZ44D94P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Trooute/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Trooute wants to access camera to take picture.";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Trooute wants to access camera to take picture for your profile or for your car if you are driver.";
 				INFOPLIST_KEY_NSLocationUsageDescription = "Trooute wants to access your location to show trips around you.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Trooute wants to access your location to show trips around you.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Trooute wants to access photo libray for pictures.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Trooute wants to access photo libray for your profile picture or for you car if you are a driver.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

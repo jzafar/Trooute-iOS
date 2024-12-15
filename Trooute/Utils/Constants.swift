@@ -24,6 +24,7 @@ struct Apis {
     static let forgotPassword =     base + "users/forgotPassword"
     static let updatePassword =     base + "users/updateMyPassword"
     static let getMe =              base + "users/me"
+    static let deletMe =            base + "users/deletMe"
     static let signout =            base + "users/signout"
     static let updateDeviceId =     base + "users/updateDeviceId"
     ///: Driver ENDPOINTS

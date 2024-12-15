@@ -597,6 +597,22 @@
         }
       }
     },
+    "Are you sure you want to Delete your account?. If you'll delete your account your all trips history will be deleted too. If you have any question please contact support." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Wenn Sie Ihr Konto löschen, wird auch Ihre gesamte Reisehistorie gelöscht. Wenn Sie Fragen haben, wenden Sie sich bitte an den Support."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы уверены, что хотите удалить свой аккаунт? Если вы удалите свой аккаунт, вся история ваших поездок также будет удалена. Если у вас есть вопросы, свяжитесь с поддержкой."
+          }
+        }
+      }
+    },
     "Back to home" : {
       "localizations" : {
         "de" : {
@@ -955,22 +971,6 @@
         }
       }
     },
-    "Capture Photo" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Foto aufnehmen"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сделать фото"
-          }
-        }
-      }
-    },
     "Chat" : {
       "localizations" : {
         "de" : {
@@ -1207,6 +1207,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Создание поездки..."
+          }
+        }
+      }
+    },
+    "Delete Account" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konto löschen"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить аккаунт"
           }
         }
       }
@@ -1595,22 +1611,6 @@
         }
       }
     },
-    "Error" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fehler"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ошибка"
-          }
-        }
-      }
-    },
     "Experience with %@" : {
       "localizations" : {
         "de" : {
@@ -1693,22 +1693,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "Failed to capture photo." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Foto konnte nicht aufgenommen werden."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Не удалось сделать снимок."
           }
         }
       }
@@ -3803,6 +3787,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Курение"
+          }
+        }
+      }
+    },
+    "Sorry to hear" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schade zu hören!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жаль слышать!"
           }
         }
       }

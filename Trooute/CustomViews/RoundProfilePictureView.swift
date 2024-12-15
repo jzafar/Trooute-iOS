@@ -103,8 +103,8 @@ struct RoundProfilePictureView: View {
                 }
             }
         ))
-        .sheet(isPresented: $isShowingCameraPicker) {
-            CameraView(selectedImage: $image)
+        .fullScreenCover(isPresented: $isShowingCameraPicker) {
+            CameraView(model: CameraViewModel(selectedImage: $image))
         }
         
     }

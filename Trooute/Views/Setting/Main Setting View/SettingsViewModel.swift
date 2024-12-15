@@ -9,13 +9,14 @@ import Foundation
 import MessageUI
 import SwiftLoader
 import SwiftUI
+import StoreKit
 
 class SettingsViewModel: ObservableObject {
     @AppStorage(UserDefaultsKey.isNotificationEnabled.key) var isNotificationOn: Bool = false
     @Published var isDriverModeOn = true
     @Published var editCarInfo = false
     @Published var userModel: UserUtils = UserUtils.shared
-    
+    @Published var isDeleteMe = false
 
     var isUserInteractionWithSwitch: Bool = true
     private let repository = SettingsRepository()
@@ -83,6 +84,12 @@ class SettingsViewModel: ObservableObject {
             }
         }
     }
+    
+    func requestAppReview() {
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                SKStoreReviewController.requestReview(in: windowScene)
+            }
+        }
 
     func logoutPressed() {
         SwiftLoader.show(title: String(localized:"Logout..."), animated: true)
@@ -92,6 +99,15 @@ class SettingsViewModel: ObservableObject {
             self.notificationTopic(subscribed: false, logout: true)
         }
         
+    }
+    
+    func deleteMe() {
+        SwiftLoader.show(title: String(localized:"Loading..."), animated: true)
+        self.repository.deleteMe(){ [weak self] result in
+            SwiftLoader.hide()
+//            guard let self = self else {return}
+            UserUtils.shared.clearUserFromStorage()
+        }
     }
     
     private func notificationTopic(subscribed: Bool, logout: Bool = false) {

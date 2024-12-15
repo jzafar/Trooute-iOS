@@ -19,7 +19,7 @@ struct SignupRequest {
                 "password": password,
                 "name": name.trimmingCharacters(in: .whitespacesAndNewlines),
                 "phoneNumber": phoneNumber.trimmingCharacters(in: .whitespacesAndNewlines),
-                "gender": gender,
+                "gender": gender.lowercased(),
                 "photo": image,
             ]
         }
@@ -28,7 +28,7 @@ struct SignupRequest {
             "password": password,
             "name": name.trimmingCharacters(in: .whitespacesAndNewlines),
             "phoneNumber": phoneNumber.trimmingCharacters(in: .whitespacesAndNewlines),
-            "gender": gender,
+            "gender": gender.lowercased(),
         ]
     }
 }

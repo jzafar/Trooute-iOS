@@ -10,6 +10,7 @@ protocol SettingsRepositoryProtocol {
     func switchDriverMode(completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void)
     func signout(request: SignoutRequest ,completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void)
     func getMe(completion: @escaping (Result<Response<SigninResponse>, Error>) -> Void)
+    func deleteMe(completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void)
 }
 
 class SettingsRepository: SettingsRepositoryProtocol {
@@ -29,5 +30,9 @@ class SettingsRepository: SettingsRepositoryProtocol {
     
     func getMe(completion: @escaping (Result<Response<SigninResponse>, Error>) -> Void) {
         self.networkService.request(url: Apis.getMe, method: .GET, completion: completion)
+    }
+    
+    func deleteMe(completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void) {
+        self.networkService.request(url: Apis.deletMe, method: .DELETE, completion: completion)
     }
 }
