@@ -20,5 +20,14 @@
 		<key>UIImageRespectsSafeAreaInsets</key>
 		<true/>
 	</dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>nativexo</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

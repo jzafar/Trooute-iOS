@@ -9,6 +9,16 @@ struct Constants {
     static let baseUrl = "https://backened.trooute.com"
     static let baseImageUrl = "\(Constants.baseUrl)/files"
     static let TERMS_CONDITIONS = "https://trooute.com/terms-and-conditions.html"
+    static let callbackURLScheme = "nativexo"
+    //Sandbox
+    static let PAYPAL_CLIENT_ID_SandBox = "AexkYHCVuMrbut4rDSO4NaB32c33O1bgPURERJZFw-kjtsKoZljPolRWDnE082pmNKYKEQKWn5A0o_Je"
+    static let PAYPAL_SECRET_SandBox = "ECeJPJVuHHY0uOuK3aqdccinNCKWJeqRpQhkajjCf5rYA2PknIZrH4Q10rNc5LF3rAgsmh9zKoibbbr6"
+    
+    //Live
+    static let PAYPAL_CLIENT_ID = "AexkYHCVuMrbut4rDSO4NaB32c33O1bgPURERJZFw-kjtsKoZljPolRWDnE082pmNKYKEQKWn5A0o_Je"
+    static let PAYPAL_SECRET = "ECeJPJVuHHY0uOuK3aqdccinNCKWJeqRpQhkajjCf5rYA2PknIZrH4Q10rNc5LF3rAgsmh9zKoibbbr6"
+    static let redirectUri = "nativexo://paypalpay"
+    
 }
 
 struct Apis {
@@ -27,6 +37,7 @@ struct Apis {
     static let deletMe =            base + "users/deletMe"
     static let signout =            base + "users/signout"
     static let updateDeviceId =     base + "users/updateDeviceId"
+    static let updatePayPal =       base + "users/updatePaypalEmail"
     ///: Driver ENDPOINTS
     static let switchDriverMode =   base + "users/driver/switch-to-driver-mode"
     static let becomeADriver =      base + "users/driver/upload-driver-details"

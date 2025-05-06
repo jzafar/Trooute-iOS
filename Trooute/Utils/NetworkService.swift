@@ -105,6 +105,7 @@ class NetworkService: NetworkServiceProtocol {
                     let decodedData = try JSONDecoder().decode(T.self, from: data)
                     let response = Response(data: decodedData, statusCode: statusCode)
                     DispatchQueue.main.async {
+                        //TODO: change response code for server if user's token is expired so we can logout user here
                         completion(.success(response))
                     }
                 } catch let error {

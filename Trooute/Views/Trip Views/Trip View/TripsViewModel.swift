@@ -84,6 +84,9 @@ class TripsViewModel: NSObject, ObservableObject {
                            let trips = response.data.data {
                             self.trips = trips.reversed()
                         }
+                        if response.statusCode == 401 && response.data.message == "Your token has expired! Please log in again." {
+                            userModel.token1 = nil
+                        }
                     case .failure(let error):
                         log.error("failed to get me \(error.localizedDescription)")
                     }

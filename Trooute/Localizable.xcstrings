@@ -501,6 +501,9 @@
         }
       }
     },
+    "Acceptable Payments" : {
+
+    },
     "Agree to" : {
       "localizations" : {
         "de" : {
@@ -1178,6 +1181,15 @@
           }
         }
       }
+    },
+    "Connect Payments Account" : {
+
+    },
+    "Connect Paypal Account" : {
+
+    },
+    "Connect Strip Account" : {
+
     },
     "Create a new trip" : {
       "localizations" : {
@@ -2831,6 +2843,9 @@
         }
       }
     },
+    "Paypal" : {
+
+    },
     "Persons" : {
       "localizations" : {
         "de" : {
@@ -3054,6 +3069,9 @@
           }
         }
       }
+    },
+    "Please choose atleast one accept paymetns ways" : {
+
     },
     "Please enter the verification code sent to your %@ Email address" : {
       "localizations" : {
@@ -3583,6 +3601,9 @@
         }
       }
     },
+    "Select Payment Method" : {
+
+    },
     "Select Photo" : {
       "localizations" : {
         "de" : {
@@ -3886,6 +3907,9 @@
           }
         }
       }
+    },
+    "Stripe Account" : {
+
     },
     "Submit" : {
       "localizations" : {
@@ -4517,6 +4541,9 @@
         }
       }
     },
+    "We have send you email. You can configure your stripe account throught emai." : {
+
+    },
     "We will send a code to your phone to reset your password." : {
       "localizations" : {
         "de" : {
@@ -4693,6 +4720,9 @@
         }
       }
     },
+    "You can connect your payments account." : {
+
+    },
     "You can start picking up passengers 12 hours before the trip start time." : {
       "localizations" : {
         "de" : {
@@ -4708,6 +4738,9 @@
           }
         }
       }
+    },
+    "You can still choose how user can pay you when you create a trip." : {
+
     },
     "You can't accept this booking. You must have to connect your stripe account to accept this booking. When we have approved you as a driver, we send you an email to connect your stripe account." : {
       "localizations" : {
@@ -4836,6 +4869,12 @@
           }
         }
       }
+    },
+    "You need to add your PayPal email under your profile to enable this option." : {
+
+    },
+    "You need to configure your Stripe account to enable this option." : {
+
     },
     "Your booking is approved! Please proceed with payment to confirm." : {
       "localizations" : {

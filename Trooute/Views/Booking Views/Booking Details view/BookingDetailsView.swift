@@ -18,28 +18,27 @@ struct BookingDetailsView: View {
                     viewModel.bookingData?.trip.status == .PickupStarted &&
                     viewModel.bookingData?.status == .confirmed,
                     let booking = viewModel.currentBooking {
-                    Section (header: TextViewLableText(text: String(localized:"Pickup Status"))) {
+                    Section(header: TextViewLableText(text: String(localized: "Pickup Status"))) {
                         pickupStatusView(booking)
                             .listRowBackground(Color.white)
                             .listRowInsets(EdgeInsets())
                     }
-                    
                 }
                 if let _ = viewModel.bookingData {
-                    Section(header: TextViewLableText(text: String(localized:"Booking Detail"))) {
+                    Section(header: TextViewLableText(text: String(localized: "Booking Detail"))) {
                         bookingStatusView()
                             .listRowBackground(Color.white)
                             .listRowInsets(EdgeInsets())
                     }
 
                     if driverMode {
-                        Section(header: TextViewLableText(text: String(localized:"Passengers Details"))) {
+                        Section(header: TextViewLableText(text: String(localized: "Passengers Details"))) {
                             passengerInfoView()
                                 .listRowBackground(Color.white)
                         }
 
                     } else {
-                        Section(header: TextViewLableText(text: String(localized:"Driver Details"))) {
+                        Section(header: TextViewLableText(text: String(localized: "Driver Details"))) {
                             driverDetails()
                                 .listRowBackground(Color.white)
                         }
@@ -56,7 +55,7 @@ struct BookingDetailsView: View {
                         })
 
                         if let des = viewModel.getDestinationModel() {
-                            Section(header: TextViewLableText(text: String(localized:"Destination and schedule"), textFont: .headline))
+                            Section(header: TextViewLableText(text: String(localized: "Destination and schedule"), textFont: .headline))
                                 {
                                     DestinationView(destination: des, price: viewModel.bookingData?.trip.pricePerPerson ?? 0.0)
                                         .listRowBackground(Color.clear)
@@ -64,7 +63,7 @@ struct BookingDetailsView: View {
                                 }
                         }
 
-                        Section(header: TextViewLableText(text: String(localized:"Trip Details"))) {
+                        Section(header: TextViewLableText(text: String(localized: "Trip Details"))) {
                             TripPrefView(handCarryWeight: viewModel.handCarryWeight,
                                          suitcaseWeight: viewModel.suitcaseWeight,
                                          smokingPreference: viewModel.smokingPreference,
@@ -78,7 +77,7 @@ struct BookingDetailsView: View {
                 }
 
                 if let pickupLocation = viewModel.bookingData?.pickupLocation {
-                    Section(header: TextViewLableText(text: String(localized:"Pickup location"))) {
+                    Section(header: TextViewLableText(text: String(localized: "Pickup location"))) {
                         PickupLocationView(pickupLication: pickupLocation, otherReleventDetails: viewModel.bookingData?.note)
                             .listRowBackground(Color.clear)
                             .listRowInsets(EdgeInsets())
@@ -92,6 +91,15 @@ struct BookingDetailsView: View {
                 }
             }.onDisappear {
                 viewModel.stopTimerIfRunning()
+            }.actionSheet(isPresented: $viewModel.showPaymentsActionSheet) {
+                ActionSheet(title: Text("Select Payment Method"),
+                            buttons: PaymentMethod.allCases.map { method in
+                                .default(Text("\(Image(systemName: method.icon)) \(method.rawValue)")) {
+                                    viewModel.selectedPaymentMethod = method
+                                    viewModel.processPayment(with: method)
+                                }
+                            } + [.cancel()]
+                )
             }
 
         }.navigationTitle("Booking Details")
@@ -178,16 +186,16 @@ struct BookingDetailsView: View {
             if let driverStatus = booking.pickupStatus?.driverStatus {
                 let (image, status, details) = Utils.checkPickUpStatus(isDriver: isDriver, status: driverStatus)
                 if let passengerStatus = booking.pickupStatus?.passengerStatus,
-                     passengerStatus == .DriverPickedup || passengerStatus == .DriverNotShowedup {
-                        let (image1, status1, details1) = Utils.checkPickUpStatus(isDriver: isDriver, status: passengerStatus)
-                        HStack {
-                            image1
-                            Text(status1)
-                                .foregroundStyle(.gray)
-                            Spacer()
-                        }
-                        Text(details1)
-                    
+                   passengerStatus == .DriverPickedup || passengerStatus == .DriverNotShowedup {
+                    let (image1, status1, details1) = Utils.checkPickUpStatus(isDriver: isDriver, status: passengerStatus)
+                    HStack {
+                        image1
+                        Text(status1)
+                            .foregroundStyle(.gray)
+                        Spacer()
+                    }
+                    Text(details1)
+
                 } else {
                     HStack {
                         image
@@ -199,22 +207,22 @@ struct BookingDetailsView: View {
                 }
             }
             if let passengerStatus = booking.pickupStatus?.passengerStatus,
-               passengerStatus == .DriverPickedup  {
+               passengerStatus == .DriverPickedup {
             } else {
                 HStack {
-                    SecondaryBookingButton(title: String(localized:"Not Showed up")) {
+                    SecondaryBookingButton(title: String(localized: "Not Showed up")) {
                         viewModel.updatePickUpStatus(status: .DriverNotShowedup)
                     }
 
                     Spacer()
-                    PrimaryGreenButton(title: String(localized:"Marked as Pickup")) {
+                    PrimaryGreenButton(title: String(localized: "Marked as Pickup")) {
                         viewModel.updatePickUpStatus(status: .DriverPickedup)
                     }
                 }
             }
-            
+
         }.padding()
-        .cornerRadius(15)
+            .cornerRadius(15)
     }
 
     @ViewBuilder
@@ -245,19 +253,19 @@ struct BookingDetailsView: View {
             HStack {
                 if driverMode {
                     if viewModel.bookingData?.status == .waiting {
-                        SecondaryBookingButton(title: String(localized:"Cancel booking")) {
+                        SecondaryBookingButton(title: String(localized: "Cancel booking")) {
                             viewModel.cancelBooking()
                         }
 
                         Spacer()
-                        PrimaryGreenButton(title: String(localized:"Accept")) {
+                        PrimaryGreenButton(title: String(localized: "Accept")) {
                             viewModel.acceptBooking()
                         }
 
                     } else if viewModel.bookingData?.status == .approved ||
                         viewModel.bookingData?.status == .confirmed {
                         Spacer()
-                        SecondaryBookingButton(title: String(localized:"Cancel booking")) {
+                        SecondaryBookingButton(title: String(localized: "Cancel booking")) {
                             viewModel.cancelBooking()
                         }
                     }
@@ -267,17 +275,17 @@ struct BookingDetailsView: View {
                         if viewModel.bookingData?.trip.status == .PickupStarted {
                         } else {
                             Spacer()
-                            SecondaryBookingButton(title: String(localized:"Cancel booking")) {
+                            SecondaryBookingButton(title: String(localized: "Cancel booking")) {
                                 viewModel.cancelBooking()
                             }
                         }
 
                     } else if viewModel.bookingData?.status == .approved {
-                        SecondaryBookingButton(title: String(localized:"Cancel booking")) {
+                        SecondaryBookingButton(title: String(localized: "Cancel booking")) {
                             viewModel.cancelBooking()
                         }
                         Spacer()
-                        PrimaryGreenButton(title: String(localized:"Make Payment")) {
+                        PrimaryGreenButton(title: String(localized: "Make Payment")) {
                             viewModel.makePayments()
                         }
                     }

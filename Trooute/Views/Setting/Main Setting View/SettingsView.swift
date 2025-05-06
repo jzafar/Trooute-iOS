@@ -137,8 +137,11 @@ struct SettingsView: View {
 
         wishView()
 
-        createTripView()
-
+        createTripView
+        if userModel.driverStatus == .approved {
+            createConnectAcountView
+        }
+        
         tripHistoryView()
 
         HStack {
@@ -179,13 +182,25 @@ struct SettingsView: View {
     }
 
     @ViewBuilder
-    func createTripView() -> some View {
+    var createTripView: some View {
         NavigationLink(destination: CreateTripView()) {
             HStack {
                 Image("ic_createtrip")
                     .resizable()
                     .frame(width: 25, height: 25)
                 ListRowText(text: String(localized:"Create a new trip"))
+            }
+        }
+    }
+    
+    @ViewBuilder
+    var createConnectAcountView: some View {
+        NavigationLink(destination: ConnectPaymentsAccountView()) {
+            HStack {
+                Image("ic_money")
+                    .resizable()
+                    .frame(width: 25, height: 25)
+                ListRowText(text: String(localized:"Connect Payments Account"))
             }
         }
     }

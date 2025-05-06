@@ -52,3 +52,19 @@ enum PickUpPassengersStatus: String, Codable {
         self = PickUpPassengersStatus(rawValue: rawValue) ?? .NotSetYet
     }
 }
+
+enum PaymentType: String, CaseIterable, Identifiable {
+    case cash
+    case paypal
+    case stripe
+
+    var id: String { rawValue }
+
+    var displayName: String {
+        switch self {
+        case .cash: return "Cash Payments"
+        case .paypal: return "PayPal Payments"
+        case .stripe: return "Stripe Payments"
+        }
+    }
+}

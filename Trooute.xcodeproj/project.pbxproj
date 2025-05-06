@@ -58,6 +58,8 @@
 		CE270B9B2CB0864D00B9CFDC /* BecomeDriverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE270B9A2CB0864900B9CFDC /* BecomeDriverViewModel.swift */; };
 		CE28F12A2CB71F1F001CF2A1 /* GoogleAutocompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28F1292CB71F1B001CF2A1 /* GoogleAutocompleteViewModel.swift */; };
 		CE28F12C2CB72325001CF2A1 /* SearchedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28F12B2CB7231E001CF2A1 /* SearchedLocation.swift */; };
+		CE347DF22DB93F5500826E88 /* PayPalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE347DF12DB93F5300826E88 /* PayPalService.swift */; };
+		CE347DF42DB941A400826E88 /* PayPalCheckout in Frameworks */ = {isa = PBXBuildFile; productRef = CE347DF32DB941A400826E88 /* PayPalCheckout */; };
 		CE36D2612CC82DA8005F3A0C /* WebViewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36D2602CC82DA8005F3A0C /* WebViewRepository.swift */; };
 		CE48A7C02CCC372300E751E2 /* CreateTripRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE48A7BF2CCC371400E751E2 /* CreateTripRepository.swift */; };
 		CE48A7C22CCC3B0100E751E2 /* CreateTripRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE48A7C12CCC3AF500E751E2 /* CreateTripRequest.swift */; };
@@ -192,6 +194,12 @@
 		CEDED15C2CD12C6800ABD671 /* PickupPassengersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDED15B2CD12C6800ABD671 /* PickupPassengersView.swift */; };
 		CEDED15E2CD12C7B00ABD671 /* PickupPassengersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDED15D2CD12C7300ABD671 /* PickupPassengersViewModel.swift */; };
 		CEDED1602CD1486000ABD671 /* PickupPassengersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDED15F2CD1486000ABD671 /* PickupPassengersRepository.swift */; };
+		CEE65EAA2DBE0B6500C53A10 /* ConnectPaymentsAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE65EA92DBE0B6500C53A10 /* ConnectPaymentsAccountView.swift */; };
+		CEE65EAC2DBE0B7300C53A10 /* ConnectPaymentsAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE65EAB2DBE0B6F00C53A10 /* ConnectPaymentsAccountViewModel.swift */; };
+		CEE65EAF2DBE19AE00C53A10 /* PaymentButtons in Frameworks */ = {isa = PBXBuildFile; productRef = CEE65EAE2DBE19AE00C53A10 /* PaymentButtons */; };
+		CEE65EB12DBE60AC00C53A10 /* ConnectAccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE65EB02DBE60A200C53A10 /* ConnectAccountRepository.swift */; };
+		CEE65EB42DBE6E9500C53A10 /* UpdatePaypalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE65EB32DBE6E8400C53A10 /* UpdatePaypalRequest.swift */; };
+		CEE65EB62DBE6E9C00C53A10 /* UpdatePaypalRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE65EB52DBE6E9800C53A10 /* UpdatePaypalRequestResponse.swift */; };
 		CEEEA2892CBA5DE9006B8ECE /* SigninRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEA2882CBA5DDF006B8ECE /* SigninRequest.swift */; };
 		CEEEA28B2CBA8F33006B8ECE /* SigninRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEA28A2CBA8F32006B8ECE /* SigninRepository.swift */; };
 		CEEEA2912CBA960D006B8ECE /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEA2902CBA95FC006B8ECE /* BaseResponse.swift */; };
@@ -290,6 +298,7 @@
 		CE270B9A2CB0864900B9CFDC /* BecomeDriverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BecomeDriverViewModel.swift; sourceTree = "<group>"; };
 		CE28F1292CB71F1B001CF2A1 /* GoogleAutocompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAutocompleteViewModel.swift; sourceTree = "<group>"; };
 		CE28F12B2CB7231E001CF2A1 /* SearchedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedLocation.swift; sourceTree = "<group>"; };
+		CE347DF12DB93F5300826E88 /* PayPalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPalService.swift; sourceTree = "<group>"; };
 		CE36D2602CC82DA8005F3A0C /* WebViewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewRepository.swift; sourceTree = "<group>"; };
 		CE48A7BF2CCC371400E751E2 /* CreateTripRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripRepository.swift; sourceTree = "<group>"; };
 		CE48A7C12CCC3AF500E751E2 /* CreateTripRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripRequest.swift; sourceTree = "<group>"; };
@@ -423,6 +432,11 @@
 		CEDED15B2CD12C6800ABD671 /* PickupPassengersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupPassengersView.swift; sourceTree = "<group>"; };
 		CEDED15D2CD12C7300ABD671 /* PickupPassengersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupPassengersViewModel.swift; sourceTree = "<group>"; };
 		CEDED15F2CD1486000ABD671 /* PickupPassengersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupPassengersRepository.swift; sourceTree = "<group>"; };
+		CEE65EA92DBE0B6500C53A10 /* ConnectPaymentsAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectPaymentsAccountView.swift; sourceTree = "<group>"; };
+		CEE65EAB2DBE0B6F00C53A10 /* ConnectPaymentsAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectPaymentsAccountViewModel.swift; sourceTree = "<group>"; };
+		CEE65EB02DBE60A200C53A10 /* ConnectAccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectAccountRepository.swift; sourceTree = "<group>"; };
+		CEE65EB32DBE6E8400C53A10 /* UpdatePaypalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePaypalRequest.swift; sourceTree = "<group>"; };
+		CEE65EB52DBE6E9800C53A10 /* UpdatePaypalRequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePaypalRequestResponse.swift; sourceTree = "<group>"; };
 		CEEEA2882CBA5DDF006B8ECE /* SigninRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRequest.swift; sourceTree = "<group>"; };
 		CEEEA28A2CBA8F32006B8ECE /* SigninRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRepository.swift; sourceTree = "<group>"; };
 		CEEEA2902CBA95FC006B8ECE /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
@@ -456,10 +470,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE843B122CDEA18200C249C5 /* FirebaseAnalytics in Frameworks */,
+				CEE65EAF2DBE19AE00C53A10 /* PaymentButtons in Frameworks */,
 				CE843B102CDE9DB400C249C5 /* FirebaseMessaging in Frameworks */,
 				CE4E3E172CA5E728005C3CEE /* SDWebImageSwiftUI in Frameworks */,
 				CE5227CD2CBAAD84005C1175 /* SwiftLoader in Frameworks */,
 				CE5227D02CBABA6B005C1175 /* FirebaseCore in Frameworks */,
+				CE347DF42DB941A400826E88 /* PayPalCheckout in Frameworks */,
 				CEF777B22CE398F8006868EB /* FirebaseCrashlytics in Frameworks */,
 				CE727A8A2CD3F14C00D27044 /* FirebaseFirestore in Frameworks */,
 				CEEEA2982CBA9BE3006B8ECE /* BRYXBanner in Frameworks */,
@@ -583,6 +599,7 @@
 		CE270B932CB067C800B9CFDC /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				CEE65EA82DBE0B3000C53A10 /* PaymentsAccount */,
 				CEB43FB72CD75F56002D5CBD /* Trip History */,
 				CE4E3D742CA356CD005C3CEE /* FAQView.swift */,
 				CE0506A82CCE18E600D4AE79 /* Book Mark */,
@@ -609,6 +626,7 @@
 		CE4E3D842CA4A3A1005C3CEE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CE347DF12DB93F5300826E88 /* PayPalService.swift */,
 				CEAC81672CCEE805002C4676 /* Notifications.swift */,
 				CEAC81652CCEDBD3002C4676 /* EmailController.swift */,
 				CEA18AD32CBC4F8F0096545F /* UserUtils.swift */,
@@ -799,6 +817,7 @@
 		CE631B722CC55EAC00976FAD /* User */ = {
 			isa = PBXGroup;
 			children = (
+				CEE65EB22DBE6E7600C53A10 /* UpdatePayPalInfo */,
 				CE631B792CC56D6700976FAD /* Car Info */,
 				CE631B732CC55ECC00976FAD /* UpdateDeviceIDRequest.swift */,
 				CEA18AD52CBC5A940096545F /* Update Profile */,
@@ -1093,6 +1112,25 @@
 			path = "Pickup Passengers";
 			sourceTree = "<group>";
 		};
+		CEE65EA82DBE0B3000C53A10 /* PaymentsAccount */ = {
+			isa = PBXGroup;
+			children = (
+				CEE65EB02DBE60A200C53A10 /* ConnectAccountRepository.swift */,
+				CEE65EA92DBE0B6500C53A10 /* ConnectPaymentsAccountView.swift */,
+				CEE65EAB2DBE0B6F00C53A10 /* ConnectPaymentsAccountViewModel.swift */,
+			);
+			path = PaymentsAccount;
+			sourceTree = "<group>";
+		};
+		CEE65EB22DBE6E7600C53A10 /* UpdatePayPalInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CEE65EB52DBE6E9800C53A10 /* UpdatePaypalRequestResponse.swift */,
+				CEE65EB32DBE6E8400C53A10 /* UpdatePaypalRequest.swift */,
+			);
+			path = UpdatePayPalInfo;
+			sourceTree = "<group>";
+		};
 		CEEEA28C2CBA93D3006B8ECE /* Signin */ = {
 			isa = PBXGroup;
 			children = (
@@ -1371,6 +1409,8 @@
 				CEEEA2962CBA9BE3006B8ECE /* XCRemoteSwiftPackageReference "BRYXBanner" */,
 				CE5227CB2CBAAD84005C1175 /* XCRemoteSwiftPackageReference "SwiftLoader" */,
 				CE5227CE2CBABA6B005C1175 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CE347DF02DB928AB00826E88 /* XCRemoteSwiftPackageReference "paypalcheckout-ios" */,
+				CEE65EAD2DBE19AE00C53A10 /* XCRemoteSwiftPackageReference "paypal-ios" */,
 			);
 			productRefGroup = CED05EFF2C95AF7000E51158 /* Products */;
 			projectDirPath = "";
@@ -1480,11 +1520,13 @@
 				CE48A7C22CCC3B0100E751E2 /* CreateTripRequest.swift in Sources */,
 				CE727A852CD3925900D27044 /* UpdatePickupStatusRequest.swift in Sources */,
 				CE5701402C9E0DF6003BD7CA /* SigninViewModel.swift in Sources */,
+				CEE65EB62DBE6E9C00C53A10 /* UpdatePaypalRequestResponse.swift in Sources */,
 				CEA18ACE2CBC4A260096545F /* UpdatePasswordRequest.swift in Sources */,
 				CE4E3E0C2CA5C533005C3CEE /* SearchResultsViewModel.swift in Sources */,
 				CE4E3EA42CA7E7A9005C3CEE /* UserInfoCardViewModel.swift in Sources */,
 				CE5150372C9F259200B10107 /* InboxView.swift in Sources */,
 				CEDED15C2CD12C6800ABD671 /* PickupPassengersView.swift in Sources */,
+				CEE65EAC2DBE0B7300C53A10 /* ConnectPaymentsAccountViewModel.swift in Sources */,
 				CE270B972CB0765000B9CFDC /* NavigationUtil.swift in Sources */,
 				CEEEA2952CBA982F006B8ECE /* NetworkService.swift in Sources */,
 				CE4E3E902CA753C4005C3CEE /* CheckboxStyle.swift in Sources */,
@@ -1555,6 +1597,7 @@
 				CE7B20D72CDF3E0A005EE285 /* NotificationRequest.swift in Sources */,
 				CE5150502C9FE01300B10107 /* UpdatePasswordViewModel.swift in Sources */,
 				CEDED15E2CD12C7B00ABD671 /* PickupPassengersViewModel.swift in Sources */,
+				CEE65EB12DBE60AC00C53A10 /* ConnectAccountRepository.swift in Sources */,
 				CE5701452C9E16DD003BD7CA /* ResetPasswordView.swift in Sources */,
 				CEF80EDF2CC9701100AA478D /* ReviewView.swift in Sources */,
 				CE4E3E0A2CA5C2D5005C3CEE /* SearchResults.swift in Sources */,
@@ -1614,6 +1657,7 @@
 				CE5150392C9F25B400B10107 /* BookingsView.swift in Sources */,
 				CE2169EF2CC04044002B9333 /* ProceedRepository.swift in Sources */,
 				CE2196762CEF980100F48701 /* CameraViewModel.swift in Sources */,
+				CEE65EAA2DBE0B6500C53A10 /* ConnectPaymentsAccountView.swift in Sources */,
 				CEF49B082CD9332A0098E425 /* WriteReviewViewModel.swift in Sources */,
 				CE5227F12CBB1DA1005C1175 /* Image.swift in Sources */,
 				CEAC81662CCEDBD6002C4676 /* EmailController.swift in Sources */,
@@ -1622,6 +1666,7 @@
 				CE5150402C9F3B2700B10107 /* SettingsViewModel.swift in Sources */,
 				CE1D680A2CA9470D0070970D /* BookingCardView.swift in Sources */,
 				CE4E3E102CA5C5C5005C3CEE /* TripCardViewModel.swift in Sources */,
+				CE347DF22DB93F5500826E88 /* PayPalService.swift in Sources */,
 				CE270B952CB069C500B9CFDC /* BookingConfirmedView.swift in Sources */,
 				CE179D522CAC439400FFC206 /* WishViewModel.swift in Sources */,
 				CE4E3E1B2CA5F6B8005C3CEE /* TripRouteView.swift in Sources */,
@@ -1635,6 +1680,7 @@
 				CE5227F62CBB9228005C1175 /* VerificationRepository.swift in Sources */,
 				CE5227E22CBAE2A5005C1175 /* VerificationView.swift in Sources */,
 				CE4E3EA02CA76BDE005C3CEE /* TripDetailsViewModel.swift in Sources */,
+				CEE65EB42DBE6E9500C53A10 /* UpdatePaypalRequest.swift in Sources */,
 				CE0506AA2CCE193900D4AE79 /* WishViewRepository.swift in Sources */,
 				CE5701752C9E8FC0003BD7CA /* CountryCode.swift in Sources */,
 				CE727A872CD3EF5400D27044 /* FirebaseViewModel.swift in Sources */,
@@ -2010,6 +2056,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CE347DF02DB928AB00826E88 /* XCRemoteSwiftPackageReference "paypalcheckout-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/paypal/paypalcheckout-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.0;
+			};
+		};
 		CE4E3E152CA5E728005C3CEE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -2030,8 +2084,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 11.12.0;
+			};
+		};
+		CEE65EAD2DBE19AE00C53A10 /* XCRemoteSwiftPackageReference "paypal-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/paypal/paypal-ios/";
+			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 11.3.0;
+				minimumVersion = 2.0.0;
 			};
 		};
 		CEEEA2962CBA9BE3006B8ECE /* XCRemoteSwiftPackageReference "BRYXBanner" */ = {
@@ -2045,6 +2107,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE347DF32DB941A400826E88 /* PayPalCheckout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE347DF02DB928AB00826E88 /* XCRemoteSwiftPackageReference "paypalcheckout-ios" */;
+			productName = PayPalCheckout;
+		};
 		CE4E3E162CA5E728005C3CEE /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE4E3E152CA5E728005C3CEE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
@@ -2074,6 +2141,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE5227CE2CBABA6B005C1175 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
+		};
+		CEE65EAE2DBE19AE00C53A10 /* PaymentButtons */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEE65EAD2DBE19AE00C53A10 /* XCRemoteSwiftPackageReference "paypal-ios" */;
+			productName = PaymentButtons;
 		};
 		CEEEA2972CBA9BE3006B8ECE /* BRYXBanner */ = {
 			isa = XCSwiftPackageProductDependency;

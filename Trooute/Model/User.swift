@@ -30,11 +30,12 @@ public struct User: Codable, UserProfile, Identifiable, Hashable {
     let passwordChangedAt: String?
     let stripeConnectedAccountId: String?
     let stripeToken: String?
+    let paypal: String?
     var wishlist: [String]?
     enum CodingKeys: String, CodingKey {
         case carDetails
         case id = "_id"
-        case name, email, role, photo, driverMode, isApprovedDriver, phoneNumber, isEmailVerified, status, createdAt, updatedAt, rating, wishlist
+        case name, email, role, photo, driverMode, isApprovedDriver, phoneNumber, isEmailVerified, status, createdAt, updatedAt, rating, paypal, wishlist
         case v = "__v"
         case emailverifyOTP, passwordChangedAt, stripeConnectedAccountId, stripeToken, gender, reviewsStats, totlaReview
     }
@@ -63,6 +64,7 @@ public struct User: Codable, UserProfile, Identifiable, Hashable {
         passwordChangedAt = try? values.decodeIfPresent(String.self, forKey: .passwordChangedAt)
         stripeConnectedAccountId = try? values.decodeIfPresent(String.self, forKey: .stripeConnectedAccountId)
         stripeToken = try? values.decodeIfPresent(String.self, forKey: .stripeToken)
+        paypal = try? values.decodeIfPresent(String.self, forKey: .paypal)
         wishlist = try? values.decodeIfPresent([String].self, forKey: .wishlist)
     }
 }
@@ -110,5 +112,6 @@ public struct User: Codable, UserProfile, Identifiable, Hashable {
         try? container.encodeIfPresent(passwordChangedAt, forKey: .passwordChangedAt)
         try? container.encodeIfPresent(stripeConnectedAccountId, forKey: .stripeConnectedAccountId)
         try? container.encodeIfPresent(stripeToken, forKey: .stripeToken)
+        try? container.encodeIfPresent(paypal, forKey: .paypal)
     }
  }

@@ -21,6 +21,12 @@ struct CreateTripView: View {
                 tripsDetailsView()
                     .listRowBackground(Color.white)
             }
+            
+            Section(header: TextViewLableText(text: String(localized:"Acceptable Payments"))){
+                choosePaymentsWay()
+                    .listRowBackground(Color.white)
+            }
+            
             Section {
                 PrimaryGreenButton(title: String(localized:"Post trip")) {
                     hideKeyboard()
@@ -53,6 +59,34 @@ struct CreateTripView: View {
             }
     }
 
+    @ViewBuilder
+    func choosePaymentsWay() -> some View {
+        VStack(spacing: 16) {
+            ForEach(PaymentType.allCases) { type in
+                let option = viewModel.paymentOptions[type] ?? PaymentOption(type: type, isOn: false, isEnabled: false)
+
+                        HStack {
+                            Text(type.displayName)
+                            Spacer()
+                            Image(systemName: option.isOn ? "checkmark.square.fill" : "square")
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(option.isEnabled ? Color("PrimaryGreen") : Color("PrimaryGreen").opacity(0.5))
+                        }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            if option.isEnabled {
+                                withAnimation {
+                                    viewModel.paymentOptions[type]?.isOn.toggle()
+                                }
+                            } else {
+                                viewModel.message(type: type) // Show alert
+                            }
+                        }
+                    }
+        }
+    }
+    
     @ViewBuilder
     func tripsDetailsView() -> some View {
         VStack(spacing: 20) {
