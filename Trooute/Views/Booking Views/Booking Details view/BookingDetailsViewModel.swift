@@ -8,7 +8,6 @@
 import Foundation
 import SwiftLoader
 import SwiftUI
-import PayPalCheckout
 
 class BookingDetailsViewModel: ObservableObject {
     private var bookingId: String
@@ -34,7 +33,7 @@ class BookingDetailsViewModel: ObservableObject {
     @Published var finalPrice: Double = 0.0
     @Published var currentBooking: Booking? = nil
     @Published var showPaymentsActionSheet = false
-    @Published var selectedPaymentMethod: PaymentMethod?
+    @Published var selectedPaymentMethod: PaymentType?
     let user = UserUtils.shared
     private let repository = BookingDetailsRepository()
     private let notification = Notifications()
@@ -160,6 +159,8 @@ class BookingDetailsViewModel: ObservableObject {
                 str = String(localized: "This booking is now confirmed! Anticipate the upcomming trip day.")
             } else if status == .canceled {
                 str = String(localized: "Booking canceled. We're Sorry for the Inconvenience.")
+            } else if status == .pendingDriverPayment {
+                str = String(localized: "We are waiting for Platform Fee. Passenger wants to pay with cash.")
             }
         } else {
             if status == .waiting {
@@ -170,77 +171,42 @@ class BookingDetailsViewModel: ObservableObject {
                 str = String(localized: "Your booking is now confirmed! Anticipate the upcoming trip day.")
             } else if status == .canceled {
                 str = String(localized: "Booking canceled. We're Sorry for the Inconvenience.")
+            } else if status == .pendingDriverPayment {
+                str = String(localized: "We are waiting for driver confirmation.")
             }
         }
         return str
     }
 
-    func makePayments() {
-        showPaymentsActionSheet.toggle()
-        /*
-         SwiftLoader.show(title: String(localized:"Loading..."),animated: true)
-         repository.confirmBooking(bookingId: self.bookingId) { [weak self] result in
-             SwiftLoader.hide()
-             switch result {
-             case .success(let response):
-                 if response.data.success,
-                    let url = response.data.url {
-                     self?.paymentUrl = url
-                     self?.showPaymentsScreen = true
-                     print(url)
-                 } else {
-                     BannerHelper.displayBanner(.error, message: response.data.message)
-                 }
-             case .failure(let failure):
-                 BannerHelper.displayBanner(.error, message: failure.localizedDescription)
-             }
-         }
-          */
-    }
-
-    func processPayment(with method: PaymentMethod) {
-        print("Processing payment with: \(method.rawValue)")
-        // Add your payment processing logic here
-        switch method {
-        case .cash:
-            // Handle cash payment
-            break
-        case .paypal:
-            startPayPalPayment()
-            break
-        case .card:
-            // Handle card payment
-            break
+    func makePayments(isDriver: Bool) {
+        if isDriver {
+            processPayment(with: .cash)
+        } else {
+            showPaymentsActionSheet.toggle()
         }
+        
     }
 
-    
-    func startPayPalPayment() {
-        let currency: CurrencyCode = .eur
-        let amount = "10"
-        Checkout.start(
-            createOrder: { createOrderAction in
-                let amount = PurchaseUnit.Amount(currencyCode: currency, value: amount)
-                let purchaseUnit = PurchaseUnit(amount: amount)
-                let order = OrderRequest(intent: .capture, purchaseUnits: [purchaseUnit])
-                createOrderAction.create(order: order)
-            },
-            onApprove: { approval in
-                approval.actions.capture { response, error in
-                    if let orderID = response?.data.id {
-                        print("paymetns success order id \(orderID)")
-                    } else if let error = error {
-                        print("paypal paymetns error \(error)")
-                    }
+    func processPayment(with method: PaymentType) {
+        print("Processing payment with: \(method.rawValue)")
+        SwiftLoader.show(title: String(localized:"Loading..."),animated: true)
+        repository
+            .confirmBooking(bookingId: self.bookingId, request: ConfirmBookingsRequest(paymentMethod: method.rawValue)) { [weak self] result in
+                SwiftLoader.hide()
+                switch result {
+                    case .success(let response):
+                        if response.data.success,
+                           let url = response.data.url {
+                            self?.paymentUrl = url
+                            self?.showPaymentsScreen = true
+                            print(url)
+                        } else {
+                            BannerHelper.displayBanner(.error, message: response.data.message)
+                        }
+                    case .failure(let failure):
+                        BannerHelper.displayBanner(.error, message: failure.localizedDescription)
                 }
-            },
-            onCancel: {
-                print("user cancel paymetns")
-            },
-            onError: { error in
-                print("paypal paymetns error \(error)")
             }
-        )
     }
     
     func cancelBooking() {
@@ -280,10 +246,11 @@ class BookingDetailsViewModel: ObservableObject {
     }
 
     func acceptBooking() {
-        if bookingData?.trip.driver?.stripeConnectedAccountId == nil {
-            BannerHelper.displayBanner(.error, message: String(localized: "You can't accept this booking. You must have to connect your stripe account to accept this booking. When we have approved you as a driver, we send you an email to connect your stripe account."))
-            return
-        }
+        /*
+         if bookingData?.trip.driver?.stripeConnectedAccountId == nil {
+             BannerHelper.displayBanner(.error, message: String(localized: "You can't accept this booking. You must have to connect your stripe account to accept this booking. When we have approved you as a driver, we send you an email to connect your stripe account."))
+             return
+         }*/
         SwiftLoader.show(animated: true)
         repository.approveBooking(bookingId: bookingId) { [weak self] result in
             SwiftLoader.hide()
@@ -376,20 +343,6 @@ class BookingDetailsViewModel: ObservableObject {
                 log.info("Booking details notification fails \(failure.localizedDescription)")
             }
             completion()
-        }
-    }
-}
-
-enum PaymentMethod: String, CaseIterable {
-    case cash = "Pay with Cash"
-    case paypal = "Pay with PayPal"
-    case card = "Card Payment"
-
-    var icon: String {
-        switch self {
-        case .cash: return "banknote"
-        case .paypal: return "p.circle"
-        case .card: return "creditcard"
         }
     }
 }

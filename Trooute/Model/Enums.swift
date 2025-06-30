@@ -47,24 +47,40 @@ enum PickUpPassengersStatus: String, Codable {
     case NotSetYet
     case DriverPickedup
     case DriverNotShowedup
-    
+
     init(from rawValue: String) {
         self = PickUpPassengersStatus(rawValue: rawValue) ?? .NotSetYet
     }
 }
 
-enum PaymentType: String, CaseIterable, Identifiable {
+enum PaymentType: String, CaseIterable, Identifiable, Codable {
     case cash
     case paypal
     case stripe
 
     var id: String { rawValue }
 
-    var displayName: String {
+    var localizedDdriverString: String {
         switch self {
-        case .cash: return "Cash Payments"
-        case .paypal: return "PayPal Payments"
-        case .stripe: return "Stripe Payments"
+        case .cash: return String(localized: "Cash Payments")
+        case .paypal: return String(localized: "PayPal Payments")
+        case .stripe: return String(localized: "Stripe Payments")
+        }
+    }
+    
+    var localizedPassengersString: String {
+        switch self {
+            case .cash: return String(localized: "Pay with Cash")
+            case .paypal: return String(localized: "Pay with PayPal (Paypal fee may apply)")
+            case .stripe: return String(localized: "Card Payment")
+        }
+    }
+    
+    var icon: String {
+        switch self {
+            case .cash: return "banknote"
+            case .paypal: return "p.circle"
+            case .stripe: return "creditcard"
         }
     }
 }

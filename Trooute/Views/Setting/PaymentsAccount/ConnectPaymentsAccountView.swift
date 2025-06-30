@@ -5,11 +5,10 @@
 //  Created by Muhammad Zafar on 2025-04-27.
 //
 
-import PaymentButtons
 import SwiftUI
 
 struct ConnectPaymentsAccountView: View {
-    private let viewModel = ConnectPaymentsAccountViewModel()
+    @StateObject var viewModel = ConnectPaymentsAccountViewModel()
     var body: some View {
         NavigationStack {
             List {
@@ -22,7 +21,7 @@ struct ConnectPaymentsAccountView: View {
                         }
                     } else {
                         Button("Connect Paypal Account") {
-                            viewModel.connectPayPal()
+                            viewModel.loginWithPayPal()
                         }
                     }
 
@@ -53,7 +52,7 @@ struct ConnectPaymentsAccountView: View {
     var greenCircle: some View {
         Circle()
             .fill(Color.green)
-            .frame(width: 30, height: 30)
+            .frame(width: 15, height: 15)
             .overlay(
                 Circle()
                     .stroke(Color.white, lineWidth: 2)

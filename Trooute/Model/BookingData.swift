@@ -40,4 +40,5 @@ enum BookingStatus: String, Codable, Hashable {
     case approved = "Approved"
     case confirmed = "Confirmed"
     case completed = "Completed"
+    case pendingDriverPayment = "PendingDriverPayment"
 }

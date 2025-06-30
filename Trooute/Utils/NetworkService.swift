@@ -98,14 +98,17 @@ class NetworkService: NetworkServiceProtocol {
 
             if let httpResponse = response as? HTTPURLResponse {
                 let statusCode = httpResponse.statusCode
-
+               
                 do {
                     let str = String(decoding: data, as: UTF8.self)
                     log.debug(str)
                     let decodedData = try JSONDecoder().decode(T.self, from: data)
                     let response = Response(data: decodedData, statusCode: statusCode)
                     DispatchQueue.main.async {
-                        //TODO: change response code for server if user's token is expired so we can logout user here
+                        if statusCode == 410 {
+                            UserUtils.shared.token1 = nil
+                            BannerHelper.displayBanner(.info, message: String(localized:"Your token has expired! Please log in again."))
+                        }
                         completion(.success(response))
                     }
                 } catch let error {

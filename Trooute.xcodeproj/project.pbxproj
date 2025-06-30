@@ -59,7 +59,6 @@
 		CE28F12A2CB71F1F001CF2A1 /* GoogleAutocompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28F1292CB71F1B001CF2A1 /* GoogleAutocompleteViewModel.swift */; };
 		CE28F12C2CB72325001CF2A1 /* SearchedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28F12B2CB7231E001CF2A1 /* SearchedLocation.swift */; };
 		CE347DF22DB93F5500826E88 /* PayPalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE347DF12DB93F5300826E88 /* PayPalService.swift */; };
-		CE347DF42DB941A400826E88 /* PayPalCheckout in Frameworks */ = {isa = PBXBuildFile; productRef = CE347DF32DB941A400826E88 /* PayPalCheckout */; };
 		CE36D2612CC82DA8005F3A0C /* WebViewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36D2602CC82DA8005F3A0C /* WebViewRepository.swift */; };
 		CE48A7C02CCC372300E751E2 /* CreateTripRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE48A7BF2CCC371400E751E2 /* CreateTripRepository.swift */; };
 		CE48A7C22CCC3B0100E751E2 /* CreateTripRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE48A7C12CCC3AF500E751E2 /* CreateTripRequest.swift */; };
@@ -179,6 +178,7 @@
 		CEA627772CDA8B1000DEC5A1 /* ReviewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA627762CDA8B0800DEC5A1 /* ReviewObject.swift */; };
 		CEAC81662CCEDBD6002C4676 /* EmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAC81652CCEDBD3002C4676 /* EmailController.swift */; };
 		CEAC81682CCEE814002C4676 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAC81672CCEE805002C4676 /* Notifications.swift */; };
+		CEB19FB22DD7D0450063625A /* PayPalAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB19FB12DD7D0440063625A /* PayPalAuthManager.swift */; };
 		CEB43FBB2CD75F8F002D5CBD /* TripHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB43FBA2CD75F8F002D5CBD /* TripHistoryView.swift */; };
 		CEB43FBD2CD75FBC002D5CBD /* TripHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB43FBC2CD75FB9002D5CBD /* TripHistoryViewModel.swift */; };
 		CEB43FBF2CD76057002D5CBD /* TripHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB43FBE2CD76044002D5CBD /* TripHistoryRepository.swift */; };
@@ -196,7 +196,6 @@
 		CEDED1602CD1486000ABD671 /* PickupPassengersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDED15F2CD1486000ABD671 /* PickupPassengersRepository.swift */; };
 		CEE65EAA2DBE0B6500C53A10 /* ConnectPaymentsAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE65EA92DBE0B6500C53A10 /* ConnectPaymentsAccountView.swift */; };
 		CEE65EAC2DBE0B7300C53A10 /* ConnectPaymentsAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE65EAB2DBE0B6F00C53A10 /* ConnectPaymentsAccountViewModel.swift */; };
-		CEE65EAF2DBE19AE00C53A10 /* PaymentButtons in Frameworks */ = {isa = PBXBuildFile; productRef = CEE65EAE2DBE19AE00C53A10 /* PaymentButtons */; };
 		CEE65EB12DBE60AC00C53A10 /* ConnectAccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE65EB02DBE60A200C53A10 /* ConnectAccountRepository.swift */; };
 		CEE65EB42DBE6E9500C53A10 /* UpdatePaypalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE65EB32DBE6E8400C53A10 /* UpdatePaypalRequest.swift */; };
 		CEE65EB62DBE6E9C00C53A10 /* UpdatePaypalRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE65EB52DBE6E9800C53A10 /* UpdatePaypalRequestResponse.swift */; };
@@ -414,6 +413,7 @@
 		CEA627762CDA8B0800DEC5A1 /* ReviewObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewObject.swift; sourceTree = "<group>"; };
 		CEAC81652CCEDBD3002C4676 /* EmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailController.swift; sourceTree = "<group>"; };
 		CEAC81672CCEE805002C4676 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		CEB19FB12DD7D0440063625A /* PayPalAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPalAuthManager.swift; sourceTree = "<group>"; };
 		CEB43FBA2CD75F8F002D5CBD /* TripHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHistoryView.swift; sourceTree = "<group>"; };
 		CEB43FBC2CD75FB9002D5CBD /* TripHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHistoryViewModel.swift; sourceTree = "<group>"; };
 		CEB43FBE2CD76044002D5CBD /* TripHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHistoryRepository.swift; sourceTree = "<group>"; };
@@ -470,12 +470,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE843B122CDEA18200C249C5 /* FirebaseAnalytics in Frameworks */,
-				CEE65EAF2DBE19AE00C53A10 /* PaymentButtons in Frameworks */,
 				CE843B102CDE9DB400C249C5 /* FirebaseMessaging in Frameworks */,
 				CE4E3E172CA5E728005C3CEE /* SDWebImageSwiftUI in Frameworks */,
 				CE5227CD2CBAAD84005C1175 /* SwiftLoader in Frameworks */,
 				CE5227D02CBABA6B005C1175 /* FirebaseCore in Frameworks */,
-				CE347DF42DB941A400826E88 /* PayPalCheckout in Frameworks */,
 				CEF777B22CE398F8006868EB /* FirebaseCrashlytics in Frameworks */,
 				CE727A8A2CD3F14C00D27044 /* FirebaseFirestore in Frameworks */,
 				CEEEA2982CBA9BE3006B8ECE /* BRYXBanner in Frameworks */,
@@ -1115,6 +1113,7 @@
 		CEE65EA82DBE0B3000C53A10 /* PaymentsAccount */ = {
 			isa = PBXGroup;
 			children = (
+				CEB19FB12DD7D0440063625A /* PayPalAuthManager.swift */,
 				CEE65EB02DBE60A200C53A10 /* ConnectAccountRepository.swift */,
 				CEE65EA92DBE0B6500C53A10 /* ConnectPaymentsAccountView.swift */,
 				CEE65EAB2DBE0B6F00C53A10 /* ConnectPaymentsAccountViewModel.swift */,
@@ -1409,8 +1408,6 @@
 				CEEEA2962CBA9BE3006B8ECE /* XCRemoteSwiftPackageReference "BRYXBanner" */,
 				CE5227CB2CBAAD84005C1175 /* XCRemoteSwiftPackageReference "SwiftLoader" */,
 				CE5227CE2CBABA6B005C1175 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				CE347DF02DB928AB00826E88 /* XCRemoteSwiftPackageReference "paypalcheckout-ios" */,
-				CEE65EAD2DBE19AE00C53A10 /* XCRemoteSwiftPackageReference "paypal-ios" */,
 			);
 			productRefGroup = CED05EFF2C95AF7000E51158 /* Products */;
 			projectDirPath = "";
@@ -1624,6 +1621,7 @@
 				CE4E3DF32CA5A54A005C3CEE /* TripsData.swift in Sources */,
 				CE5150352C9F258100B10107 /* SettingsView.swift in Sources */,
 				CEA18AC82CBBE8340096545F /* StorageCodable.swift in Sources */,
+				CEB19FB22DD7D0450063625A /* PayPalAuthManager.swift in Sources */,
 				CEFD59D52CBED54C00E4A50B /* TripDetailsRepository.swift in Sources */,
 				CE4E3DF52CA5A6C1005C3CEE /* Trip.swift in Sources */,
 				CE270B9B2CB0864D00B9CFDC /* BecomeDriverViewModel.swift in Sources */,
@@ -1866,7 +1864,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Trooute/Trooute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Trooute/Preview Content\"";
 				DEVELOPMENT_TEAM = MPGZ44D94P;
@@ -1888,7 +1886,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.travel.trooutee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1908,7 +1906,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Trooute/Trooute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trooute/Preview Content\"";
 				DEVELOPMENT_TEAM = MPGZ44D94P;
 				ENABLE_PREVIEWS = YES;
@@ -1929,7 +1927,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.travel.trooutee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2056,14 +2054,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CE347DF02DB928AB00826E88 /* XCRemoteSwiftPackageReference "paypalcheckout-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/paypal/paypalcheckout-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.3.0;
-			};
-		};
 		CE4E3E152CA5E728005C3CEE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -2088,14 +2078,6 @@
 				minimumVersion = 11.12.0;
 			};
 		};
-		CEE65EAD2DBE19AE00C53A10 /* XCRemoteSwiftPackageReference "paypal-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/paypal/paypal-ios/";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		CEEEA2962CBA9BE3006B8ECE /* XCRemoteSwiftPackageReference "BRYXBanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bryx-inc/BRYXBanner.git";
@@ -2107,11 +2089,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CE347DF32DB941A400826E88 /* PayPalCheckout */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE347DF02DB928AB00826E88 /* XCRemoteSwiftPackageReference "paypalcheckout-ios" */;
-			productName = PayPalCheckout;
-		};
 		CE4E3E162CA5E728005C3CEE /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE4E3E152CA5E728005C3CEE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
@@ -2141,11 +2118,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE5227CE2CBABA6B005C1175 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
-		};
-		CEE65EAE2DBE19AE00C53A10 /* PaymentButtons */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CEE65EAD2DBE19AE00C53A10 /* XCRemoteSwiftPackageReference "paypal-ios" */;
-			productName = PaymentButtons;
 		};
 		CEEEA2972CBA9BE3006B8ECE /* BRYXBanner */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -28,7 +28,6 @@ struct Utils {
             if let compressedData = uiImage.jpegData(compressionQuality: compressionQuality) {
                 data = compressedData
                 print("Compressed to: \(data.count) bytes (\(data.count / 1024) KB) at quality \(compressionQuality)")
-
             }
         }
 
@@ -51,6 +50,13 @@ struct Utils {
                 string = String(localized: "Waiting for payment")
             } else {
                 string = String(localized: "Approved")
+            }
+        case .pendingDriverPayment:
+            image = Image("ic_approved_check")
+            if isDriverApproved {
+                string = String(localized: "Waiting for your payment")
+            } else {
+                string = String(localized: "Waiting for driver's confirmation")
             }
         case .confirmed:
             image = Image("ic_confirm_check")

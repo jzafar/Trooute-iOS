@@ -32,10 +32,12 @@ struct WebView: UIViewRepresentable {
         }
 
         func updateUIView(_ uiView: WKWebView, context: Context) {
-            if webViewModel.shouldGoBack {
-                uiView.goBack()
-                webViewModel.shouldGoBack = false
-                dismiss()
+            DispatchQueue.main.async {
+                if webViewModel.shouldGoBack {
+                    uiView.goBack()
+                    webViewModel.shouldGoBack = false
+                    dismiss()
+                }
             }
         }
 }
@@ -44,7 +46,7 @@ extension WebView {
     class Coordinator: NSObject, WKNavigationDelegate {
         @ObservedObject private var webViewModel: WebViewModel
         private let parent: WebView
-
+        private var isPaymentProcessing = false
         init(_ parent: WebView, _ webViewModel: WebViewModel) {
             self.parent = parent
             self.webViewModel = webViewModel
@@ -75,10 +77,18 @@ extension WebView {
                 // Check if the URL contains "payment-success"
                 if let url = url, url.contains("payment-success") {
                     let modifiedUrl = url.replacingOccurrences(of: "http://localhost:4000", with: "")
-                    webViewModel.paymentSuccess(url: modifiedUrl)
+//                    if !isPaymentProcessing {
+//                        isPaymentProcessing = true
+//                        webViewModel.paymentSuccess(url: modifiedUrl)
+//                    }
+                    webViewModel.shouldGoBack = true
+                    
+                } else if let url = url, url.contains("paypal-success") {
+                    //webViewModel.paymentSuccess(url: url)
+                    webViewModel.shouldGoBack = true
                 }
 
-                if let url = url, url.contains("payment-failed") {
+            if let url = url, url.contains("payment-failed") || url.contains("paypal-cancel") {
                     webViewModel.shouldGoBack = true
                 }
 

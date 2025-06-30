@@ -26,7 +26,7 @@ class CreateTripViewModel: ObservableObject {
     @Published var fromAddressInfo: SearchedLocation? = nil
     @Published var whereToAddressInfo: SearchedLocation? = nil
     @Published var dissMissView = false
-
+    private let userModel: UserUtils = UserUtils.shared
     private let repository = CreateTripRepository()
     var currencyFormatter: NumberFormatter {
         let fmt = NumberFormatter()
@@ -39,29 +39,26 @@ class CreateTripViewModel: ObservableObject {
         return fmt
     }
 
-    @Published var paymentOptions: [PaymentType: PaymentOption] = [
-        .cash: PaymentOption(type: .cash, isOn: false, isEnabled: true),
-        .paypal: PaymentOption(type: .paypal, isOn: false, isEnabled: false),
-        .stripe: PaymentOption(type: .stripe, isOn: false, isEnabled: false),
-    ]
-
-    // Example: call this when you know PayPal/Stripe is set up
-    func enablePaypal(_ enabled: Bool) {
-        paymentOptions[.paypal]?.isEnabled = enabled
+    @Published var paymentOptions: [PaymentOption] = []
+    private var hasAtLeastOnePaymentEnabled: Bool {
+        paymentOptions.contains { $0.isOn }
     }
-
-    func enableStripe(_ enabled: Bool) {
-        paymentOptions[.stripe]?.isEnabled = enabled
-    }
-
-    var selectedPaymentTypes: [PaymentType] {
-        paymentOptions.filter { $0.value.isOn }.map { $0.key }
+    init () {
+        paymentOptions = PaymentType.allCases.map { type in
+            PaymentOption(
+                type: type,
+                isOn: false,
+                isEnabled: type == .cash ||
+                (type == .paypal && userModel.user?.payPalEmail != nil) ||
+                (type == .stripe && userModel.user?.stripeConnectedAccountId != nil)
+            )
+        }
     }
 
     func message(type: PaymentType) {
         switch type {
         case .paypal:
-            return BannerHelper.displayBanner(.error, message: String(localized: "You need to add your PayPal email under your profile to enable this option."))
+            return BannerHelper.displayBanner(.error, message: String(localized: "You need to connect your PayPal account from settings to enable this option."))
         case .stripe:
             return BannerHelper.displayBanner(.error, message: String(localized: "You need to configure your Stripe account to enable this option."))
         default: break
@@ -77,7 +74,6 @@ class CreateTripViewModel: ObservableObject {
             BannerHelper.displayBanner(.info, message: String(localized: "Please select a valid date"))
             return
         }
-        print(pricePerPerson)
         guard let fromAddressInfo = fromAddressInfo,
               let fromTitle = fromAddressInfo.title else {
             BannerHelper.displayBanner(.info, message: String(localized: "Start location field can't be blank"))
@@ -90,8 +86,8 @@ class CreateTripViewModel: ObservableObject {
             return
         }
 
-        guard selectedPaymentTypes.count == 0 else {
-            BannerHelper.displayBanner(.info, message: String(localized: "Please choose atleast one accept paymetns ways"))
+        if !hasAtLeastOnePaymentEnabled {
+            BannerHelper.displayBanner(.info, message: String(localized: "Please choose atleast one accept payment way"))
             return
         }
 
@@ -109,7 +105,32 @@ class CreateTripViewModel: ObservableObject {
             let handCarry = LuggageRestrictions(type: .handCarry, weight: handCarryWeight.count > 0 ? Int(handCarryWeight) : nil)
             let suitCase = LuggageRestrictions(type: .suitCase, weight: suitcaseWeight.count > 0 ? Int(suitcaseWeight) : nil)
             let price: Double = Double(pricePerPerson) / 100.0
-            let request = CreateTripRequest(departureDate: date, from_address: from, from_location: [fromAddressInfo.coordinate.longitude, fromAddressInfo.coordinate.latitude], pricePerPerson: price, smokingPreference: isSmokingAllowed, petPreference: arePetsAllowed, roundTrip: false, status: "", totalSeats: seatsAvailable, whereTo_address: whereTo, whereTo_location: [whereToAddressInfo.coordinate.longitude, whereToAddressInfo.coordinate.latitude], languagePreference: languagePreference, luggageRestrictions: [handCarry, suitCase], note: otherReleventDetails)
+            let selectedPaymentTypes = paymentOptions
+                .filter { $0.isOn }  // Get only selected options
+                .map { $0.type }     // Extract just the PaymentType
+            let request = CreateTripRequest(
+                departureDate: date,
+                from_address: from,
+                from_location: [
+                    fromAddressInfo.coordinate.longitude,
+                    fromAddressInfo.coordinate.latitude
+                ],
+                pricePerPerson: price,
+                smokingPreference: isSmokingAllowed,
+                petPreference: arePetsAllowed,
+                roundTrip: false,
+                status: "",
+                totalSeats: seatsAvailable,
+                whereTo_address: whereTo,
+                whereTo_location: [
+                    whereToAddressInfo.coordinate.longitude,
+                    whereToAddressInfo.coordinate.latitude
+                ],
+                languagePreference: languagePreference,
+                luggageRestrictions: [handCarry, suitCase],
+                note: otherReleventDetails,
+                paymentTypes: selectedPaymentTypes
+            )
             SwiftLoader.show(title: String(localized: "Creating trip..."), animated: true)
             repository.createTrip(request: request) { [weak self] result in
                 SwiftLoader.hide()
@@ -149,8 +170,10 @@ class CreateTripViewModel: ObservableObject {
     }
 }
 
-struct PaymentOption {
+struct PaymentOption: Identifiable {
     let type: PaymentType
     var isOn: Bool
     var isEnabled: Bool
+    var id: PaymentType { type }
 }
+

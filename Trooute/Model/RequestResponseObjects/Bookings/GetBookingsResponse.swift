@@ -10,3 +10,7 @@ struct GetBookingsResponse: Codable {
     let message: String
     let success: Bool
 }
+
+struct ConfirmBookingsRequest: Codable {
+    let paymentMethod: String
+}

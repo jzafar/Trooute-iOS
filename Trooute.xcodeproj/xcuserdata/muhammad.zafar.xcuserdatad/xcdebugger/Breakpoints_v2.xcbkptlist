@@ -7,61 +7,45 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "37EE2CC1-4CB5-4BC8-9ED4-B6C683170BF2"
+            uuid = "FF3DE93C-8AEC-47C0-89F7-911E5BBA7DB0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Trooute/Views/Setting/Create Trip/CreateTripViewModel.swift"
+            filePath = "Trooute/Views/Booking Views/Payment Web View/WebViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "postTrip()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "24DCFAFE-B58A-4E2A-AE97-9EDE2F4C2720"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Trooute/Views/Setting/PaymentsAccount/ConnectAccountRepository.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "fetchUserInfo(accessToken:)"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "paymentSuccess(url:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "24DCFAFE-B58A-4E2A-AE97-9EDE2F4C2720 - 241f90a8f7096541"
+                  uuid = "FF3DE93C-8AEC-47C0-89F7-911E5BBA7DB0 - 4f76cec82b9a331d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Trooute.ConnectAccountRepository.fetchUserInfo(accessToken: Swift.String) -&gt; ()"
+                  symbolName = "Trooute.WebViewModel.paymentSuccess(url: Swift.String) -&gt; ()"
                   moduleName = "Trooute.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/Views/Setting/PaymentsAccount/ConnectAccountRepository.swift"
+                  urlString = "file:///Volumes/iWork/Learning/Trooute/Trooute-iOS/Trooute/Views/Booking%20Views/Payment%20Web%20View/WebViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "162"
-                  endingLineNumber = "162">
+                  startingLineNumber = "48"
+                  endingLineNumber = "48">
                </Location>
                <Location
-                  uuid = "24DCFAFE-B58A-4E2A-AE97-9EDE2F4C2720 - 241f90a8f7096541"
+                  uuid = "FF3DE93C-8AEC-47C0-89F7-911E5BBA7DB0 - 558fb0ead87a21d7"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Trooute.ConnectAccountRepository.fetchUserInfo(accessToken: Swift.String) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Result&lt;Trooute.Response&lt;Trooute.BasicResponse&gt;, Swift.Error&gt;) -&gt; () in Trooute.WebViewModel.paymentSuccess(url: Swift.String) -&gt; ()"
                   moduleName = "Trooute.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Personal/Trooute/Trooute-iOS/Trooute/Trooute/Views/Setting/PaymentsAccount/ConnectAccountRepository.swift"
+                  urlString = "file:///Volumes/iWork/Learning/Trooute/Trooute-iOS/Trooute/Views/Booking%20Views/Payment%20Web%20View/WebViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "162"
-                  endingLineNumber = "162">
+                  startingLineNumber = "48"
+                  endingLineNumber = "48">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -69,32 +53,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A45A5346-B727-49FA-B954-DB325BD2D2DF"
+            uuid = "D9E77412-62CF-447C-B164-3628B6F29E61"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Trooute/Views/Setting/PaymentsAccount/ConnectAccountRepository.swift"
+            filePath = "Trooute/Views/Setting/PaymentsAccount/ConnectPaymentsAccountViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "fetchUserInfo(accessToken:)"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "updatePaypalOnServer(code:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0A58D783-3A00-4FC5-AC20-C8E59B8130D2"
+            uuid = "01FA63C8-88A7-4E44-9353-61CA2F0F1A13"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Trooute/Views/Setting/PaymentsAccount/ConnectAccountRepository.swift"
+            filePath = "Trooute/Views/Setting/PaymentsAccount/ConnectPaymentsAccountViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "fetchUserInfo(accessToken:)"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "loginWithPayPal()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9117725A-15C1-4091-A308-4517913B1D71"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Trooute/Views/Setting/PaymentsAccount/PayPalAuthManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "login(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

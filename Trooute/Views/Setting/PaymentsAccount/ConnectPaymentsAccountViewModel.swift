@@ -13,7 +13,7 @@ class ConnectPaymentsAccountViewModel: ObservableObject {
     private let repository = ConnectAccountRepository()
     var paypalEmail: String?
     init() {
-        if (userModel.user?.paypal) != nil {
+        if (userModel.user?.payPalEmail) != nil {
             isPayPalConnected = true
         }
         
@@ -23,41 +23,58 @@ class ConnectPaymentsAccountViewModel: ObservableObject {
     }
     
     func connectStripeAccount() {
-        BannerHelper.displayBanner(.info, message: String(localized: "We have send you email. You can configure your stripe account throught emai."))
-    }
-    
-    func connectPayPal() {
-        repository.connectPaypal {  [weak self] result in
+        SwiftLoader.show(title: "connecting...", animated: true)
+        repository.connectStripeAccount { result in
             SwiftLoader.hide()
             switch result {
-            case let .success(response):
-                if response.data.success {
-                    if let payPal = response.data.data {
-                        self?.updatePaypalOnServer(payPal: payPal)
+                case let .success(response):
+                    if response.data.success,
+                       let user = response.data.data {
+                        UserUtils.shared.saveUserToStorage(user: user)
+                        BannerHelper.displayBanner(.info, message: String(localized: "We have sent you an email. You can configure your Stripe account through the email."))
+                    } else {
+                        BannerHelper.displayBanner(.error, message: response.data.message)
                     }
                     
-                } else {
-                    BannerHelper.displayBanner(.error, message: response.data.message)
-                }
-            case let .failure(failure):
-                BannerHelper.displayBanner(.error, message: failure.localizedDescription)
-            }            
+                case let .failure(error):
+                    log.error("failed to get me \(error.localizedDescription)")
+                    BannerHelper.displayBanner(.error, message: error.localizedDescription)
+            }
+        }
+       
+    }
+    
+    func loginWithPayPal() {
+        PayPalAuthManager().login { code in
+            guard let code = code else {
+                BannerHelper.displayBanner(.error, message: String(localized: "Something went wrong. Please try again."))
+                return
+            }
+            self.updatePaypalOnServer(code: code)
+
         }
     }
     
-    private func updatePaypalOnServer(payPal: PayPalLoginData) {
+    private func updatePaypalOnServer(code: String) {
         SwiftLoader.show(title: "updating...", animated: true)
-        repository.updatePaypalToServer(request: UpdatePaypalRequest(payPalEmail: payPal.email)) { result in
+        repository.updatePaypalToServer(request: UpdatePaypalRequest(code: code)) { result in
             SwiftLoader.hide()
             switch result {
             case let .success(response):
                 if response.data.success,
                    let user = response.data.data {
                     UserUtils.shared.saveUserToStorage(user: user)
+                    DispatchQueue.main.async {
+                        self.isPayPalConnected = true
+                    }
+                    BannerHelper.displayBanner(.success, message: response.data.message)
+                } else {
+                    BannerHelper.displayBanner(.error, message: response.data.message)
                 }
 
             case let .failure(error):
                 log.error("failed to get me \(error.localizedDescription)")
+                    BannerHelper.displayBanner(.error, message: error.localizedDescription)
             }
            
         }

@@ -19,6 +19,7 @@ class TripDetailsViewModel: ObservableObject {
             updatePetPreference()
             updateLanguagePreference()
             updateOtherReliventDetails()
+            updateAcceptAblePayments()
         }
     }
     @Published var handCarryWeight = String(localized:"Not Provided")
@@ -30,6 +31,7 @@ class TripDetailsViewModel: ObservableObject {
     @Published var openDetailsView: Bool = false
     @Published var showPickUpPassengers = false
     @Published var passgenerId: String?
+    @Published var acceptAblePayments: String = String(localized:"Cash Payments")
     var bookingId: String? = nil
     var alertTitle = ""
     var alertMessage = ""
@@ -119,6 +121,19 @@ class TripDetailsViewModel: ObservableObject {
             otherReliventDetails = trip?.note.emptyOrNil ?? String(localized:"Not Provided")
         }
         
+    }
+    
+    private func updateAcceptAblePayments() {
+        if userModel.driverMode {
+            acceptAblePayments = trip?.trip?.paymentTypes?
+                .map { $0.rawValue }
+                .joined(separator: ", ") ?? String(localized:"Cash Payments")
+        } else {
+            acceptAblePayments = trip?.paymentTypes?
+                .map { $0.rawValue }
+                .joined(separator: ", ") ?? String(localized:"Cash Payments")
+        }
+       
     }
 
     func getDriverModel(driver: Driver) -> UserInfoCardViewModel {

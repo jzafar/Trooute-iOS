@@ -78,3 +78,5 @@ struct PickupStatus: Codable, Hashable {
         case trip
     }
 }
+
+

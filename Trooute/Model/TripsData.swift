@@ -32,6 +32,7 @@ struct TripsData: BaseTrip, Codable, Identifiable {
     var luggageRestrictions: [LuggageRestrictions?]?
     var roundTrip: Bool? = false
     var isDriverForReviews: Bool? = false // specially added for reviews
+    var paymentTypes: [PaymentType]?
     enum CodingKeys: String, CodingKey {
         case v = "__v"
         case id = "_id"
@@ -56,5 +57,6 @@ struct TripsData: BaseTrip, Codable, Identifiable {
         case trip
         case luggageRestrictions
         case roundTrip
+        case paymentTypes
     }
 }

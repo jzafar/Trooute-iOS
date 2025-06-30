@@ -91,17 +91,24 @@ struct BookingDetailsView: View {
                 }
             }.onDisappear {
                 viewModel.stopTimerIfRunning()
-            }.actionSheet(isPresented: $viewModel.showPaymentsActionSheet) {
-                ActionSheet(title: Text("Select Payment Method"),
-                            buttons: PaymentMethod.allCases.map { method in
-                                .default(Text("\(Image(systemName: method.icon)) \(method.rawValue)")) {
-                                    viewModel.selectedPaymentMethod = method
-                                    viewModel.processPayment(with: method)
-                                }
-                            } + [.cancel()]
-                )
+            }.confirmationDialog("Select Payment Method", isPresented: $viewModel.showPaymentsActionSheet) {
+                let allowedMethods = PaymentType.allCases.filter { method in
+                    viewModel.bookingData?.trip.paymentTypes?
+                        .contains(
+                            PaymentType(rawValue: method.rawValue) ?? .cash
+                        ) ?? false
+                }
+                ForEach(allowedMethods, id: \.self) { method in
+                    Button {
+                        viewModel.selectedPaymentMethod = method
+                        viewModel.processPayment(with: method)
+                    } label: {
+                        Label(method.localizedPassengersString, systemImage: method.icon)
+                    }
+                }
+                
+                Button("Cancel", role: .cancel) {}
             }
-
         }.navigationTitle("Booking Details")
             .navigationBarTitleDisplayMode(.inline)
             .toolbarRole(.editor)
@@ -268,6 +275,14 @@ struct BookingDetailsView: View {
                         SecondaryBookingButton(title: String(localized: "Cancel booking")) {
                             viewModel.cancelBooking()
                         }
+                    } else if viewModel.bookingData?.status == .pendingDriverPayment {
+                        SecondaryBookingButton(title: String(localized: "Cancel booking")) {
+                            viewModel.cancelBooking()
+                        }
+                        Spacer()
+                        PrimaryGreenButton(title: String(localized: "Make Payment")) {
+                            viewModel.makePayments(isDriver: true)
+                        }
                     }
                 } else {
                     if viewModel.bookingData?.status == .waiting ||
@@ -286,7 +301,11 @@ struct BookingDetailsView: View {
                         }
                         Spacer()
                         PrimaryGreenButton(title: String(localized: "Make Payment")) {
-                            viewModel.makePayments()
+                            viewModel.makePayments(isDriver: false)
+                        }
+                    } else if viewModel.bookingData?.status == .pendingDriverPayment {
+                        SecondaryBookingButton(title: String(localized: "Cancel booking")) {
+                            viewModel.cancelBooking()
                         }
                     }
                 }

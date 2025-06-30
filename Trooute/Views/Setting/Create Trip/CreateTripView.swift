@@ -28,11 +28,15 @@ struct CreateTripView: View {
             }
             
             Section {
-                PrimaryGreenButton(title: String(localized:"Post trip")) {
-                    hideKeyboard()
-                    viewModel.postTrip()
-                }.listRowBackground(Color.clear)
-                    .listRowInsets(EdgeInsets())
+                HStack {
+                    PrimaryGreenButton(title: String(localized:"Post trip")) {
+                        hideKeyboard()
+                        viewModel.postTrip()
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
+                .listRowBackground(Color.clear)
+                .listRowInsets(EdgeInsets())
             }
 
         }
@@ -62,28 +66,25 @@ struct CreateTripView: View {
     @ViewBuilder
     func choosePaymentsWay() -> some View {
         VStack(spacing: 16) {
-            ForEach(PaymentType.allCases) { type in
-                let option = viewModel.paymentOptions[type] ?? PaymentOption(type: type, isOn: false, isEnabled: false)
-
-                        HStack {
-                            Text(type.displayName)
-                            Spacer()
-                            Image(systemName: option.isOn ? "checkmark.square.fill" : "square")
-                                .resizable()
-                                .frame(width: 24, height: 24)
-                                .foregroundColor(option.isEnabled ? Color("PrimaryGreen") : Color("PrimaryGreen").opacity(0.5))
-                        }
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            if option.isEnabled {
-                                withAnimation {
-                                    viewModel.paymentOptions[type]?.isOn.toggle()
-                                }
-                            } else {
-                                viewModel.message(type: type) // Show alert
-                            }
-                        }
+            ForEach($viewModel.paymentOptions) { $option in
+                ZStack(alignment: .leading) {
+                    Toggle(isOn: $option.isOn) {
+                        Text(option.type.localizedDdriverString)
                     }
+                    .disabled(!option.isEnabled)
+                    .opacity(option.isEnabled ? 1 : 0.8)
+                    
+                    if !option.isEnabled {
+                        Color.clear
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                viewModel.message(type:option.type)
+                            }
+                    }
+                }
+                .contentShape(Rectangle())
+                .frame(height: 44)
+            }
         }
     }
     
@@ -247,6 +248,8 @@ struct CreateTripView: View {
                         .frame(width: 44, height: 44) // Explicit frame to avoid hit area issues
                 }
                 .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to avoid unwanted padding
+                .contentShape(Rectangle())
+                .background(Color.red.opacity(0))
                 Spacer()
                 TextViewLableText(text: "\(viewModel.seatsAvailable)")
                     .font(.title2)
@@ -261,8 +264,12 @@ struct CreateTripView: View {
                         .frame(width: 44, height: 44) // Explicit frame to avoid hit area issues
                 }
                 .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to avoid unwanted padding
+                .contentShape(Rectangle())
+                .background(Color.red.opacity(0))
             }
             .padding(.horizontal, 10)
+            .background(Color.white)
+            .contentShape(Rectangle())
         }
     }
 
@@ -283,6 +290,7 @@ struct CreateTripView: View {
                 TextViewLableText(text: String(localized:"Choose the date of the trip"), textFont: .headline)
                 // Custom Calendar View
                 CustomCalendarView(selectedDate: $viewModel.selectedDate)
+                    .background(Color.white)
             }
 
             // Time Picker Section

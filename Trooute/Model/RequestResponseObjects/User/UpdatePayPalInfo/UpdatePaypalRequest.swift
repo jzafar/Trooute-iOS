@@ -6,11 +6,6 @@
 //
 
 import Foundation
-struct UpdatePaypalRequest {
-    let payPalEmail: String
-    var parameters: [String: String] {
-        return [
-            "payPalEmail": payPalEmail
-        ]
-    }
+struct UpdatePaypalRequest: Codable{
+    let code: String
 }

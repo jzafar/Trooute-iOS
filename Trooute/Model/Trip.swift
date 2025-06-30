@@ -30,7 +30,7 @@ struct Trip: Codable, Hashable {
     var totalSeats: Int?
     var isAddedInWishList: Bool? = false
     var totalAmount: Double? = 0.0
-    
+    var paymentTypes: [PaymentType]?
     enum CodingKeys: String, CodingKey {
         case v = "__v"
         case id = "_id"
@@ -51,6 +51,7 @@ struct Trip: Codable, Hashable {
         case from_location, whereTo_location
         case isAddedInWishList
         case totalAmount
+        case paymentTypes
     }
 }
 

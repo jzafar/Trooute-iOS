@@ -9,7 +9,7 @@ protocol BookingDetailsRepositoryProtocol {
     func getBookingDetails(bookingId: String, completion: @escaping (Result<Response<GetBookingDetailsResponse>, Error>) -> Void)
     func cancelBooking(bookingId: String, completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void)
     func approveBooking(bookingId: String, completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void)
-    func confirmBooking(bookingId: String, completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void)
+    func confirmBooking(bookingId: String, request: ConfirmBookingsRequest, completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void)
 }
 
 class BookingDetailsRepository: BookingDetailsRepositoryProtocol, PickupPassengersProtocol {
@@ -34,9 +34,9 @@ class BookingDetailsRepository: BookingDetailsRepositoryProtocol, PickupPassenge
         networkService.request(url: url, method: .POST, completion: completion)
     }
     
-    func confirmBooking(bookingId: String, completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void) {
+    func confirmBooking(bookingId: String, request: ConfirmBookingsRequest, completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void) {
         let url = Apis.booking + "/\(bookingId)/confirm"
-        networkService.request(url: url, method: .POST, completion: completion)
+        networkService.request(url: url, method: .POST, httpBody: request.toDictionary(), completion: completion)
     }
     
     func updateTripStatus(tripId: String, status: TripStatus, completion: @escaping (Result<Response<BasicResponse>, Error>) -> Void) {

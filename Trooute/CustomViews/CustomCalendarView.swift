@@ -73,7 +73,7 @@ struct CustomCalendarView: View {
                 }
             }
             .padding(.top, 10)
-        }
+        }.background(Color.white)
     }
     
     private func updateCurrentMonth(plus: Bool) {

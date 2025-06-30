@@ -502,7 +502,20 @@
       }
     },
     "Acceptable Payments" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akzeptierte Zahlungsmethoden"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Принимаемые способы оплаты"
+          }
+        }
+      }
     },
     "Agree to" : {
       "localizations" : {
@@ -974,6 +987,38 @@
         }
       }
     },
+    "Card Payment" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kartenzahlung"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оплата картой"
+          }
+        }
+      }
+    },
+    "Cash Payments" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barzahlungen"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оплата наличными"
+          }
+        }
+      }
+    },
     "Chat" : {
       "localizations" : {
         "de" : {
@@ -1183,13 +1228,52 @@
       }
     },
     "Connect Payments Account" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zahlungskonto verbinden"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подключить платежный аккаунт"
+          }
+        }
+      }
     },
     "Connect Paypal Account" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PayPal-Konto verbinden"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подключить аккаунт PayPal"
+          }
+        }
+      }
     },
     "Connect Strip Account" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stripe-Konto verbinden"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подключить аккаунт Stripe"
+          }
+        }
+      }
     },
     "Create a new trip" : {
       "localizations" : {
@@ -2843,8 +2927,69 @@
         }
       }
     },
+    "Pay with Cash" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bar bezahlen"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оплатить наличными"
+          }
+        }
+      }
+    },
+    "Pay with PayPal (Paypal fee may apply)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mit PayPal bezahlen (PayPal-Gebühr kann anfallen)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оплатить через PayPal (может взиматься комиссия PayPal)"
+          }
+        }
+      }
+    },
     "Paypal" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paypal"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paypal"
+          }
+        }
+      }
+    },
+    "PayPal Payments" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PayPal-Zahlungen"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Платежи PayPal"
+          }
+        }
+      }
     },
     "Persons" : {
       "localizations" : {
@@ -3070,8 +3215,21 @@
         }
       }
     },
-    "Please choose atleast one accept paymetns ways" : {
-
+    "Please choose atleast one accept payment way" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte wählen Sie mindestens eine Zahlungsmethode aus."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожалуйста, выберите как минимум один способ оплаты."
+          }
+        }
+      }
     },
     "Please enter the verification code sent to your %@ Email address" : {
       "localizations" : {
@@ -3602,7 +3760,20 @@
       }
     },
     "Select Payment Method" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zahlungsmethode auswählen"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите способ оплаты"
+          }
+        }
+      }
     },
     "Select Photo" : {
       "localizations" : {
@@ -3812,6 +3983,22 @@
         }
       }
     },
+    "Something went wrong. Please try again." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Что-то пошло не так. Пожалуйста, попробуйте еще раз."
+          }
+        }
+      }
+    },
     "Sorry to hear" : {
       "localizations" : {
         "de" : {
@@ -3909,7 +4096,36 @@
       }
     },
     "Stripe Account" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stripe-Konto"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аккаунт Stripe"
+          }
+        }
+      }
+    },
+    "Stripe Payments" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stripe-Zahlungen"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Платежи Stripe"
+          }
+        }
+      }
     },
     "Submit" : {
       "localizations" : {
@@ -4493,6 +4709,22 @@
         }
       }
     },
+    "Waiting for driver's confirmation" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warten auf die Bestätigung des Fahrers"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ожидаем подтверждения водителя"
+          }
+        }
+      }
+    },
     "Waiting for payment" : {
       "localizations" : {
         "de" : {
@@ -4505,6 +4737,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ожидание оплаты"
+          }
+        }
+      }
+    },
+    "Waiting for your payment" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warten auf Ihre Zahlung"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ожидаем вашу оплату"
           }
         }
       }
@@ -4525,6 +4773,22 @@
         }
       }
     },
+    "We are waiting for driver confirmation." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wir warten auf die Bestätigung des Fahrers."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мы ожидаем подтверждение водителя."
+          }
+        }
+      }
+    },
     "We are waiting for payments." : {
       "localizations" : {
         "de" : {
@@ -4541,8 +4805,37 @@
         }
       }
     },
-    "We have send you email. You can configure your stripe account throught emai." : {
-
+    "We are waiting for Platform Fee. Passenger wants to pay with cash." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wir warten auf die Plattformgebühr. Der Fahrgast möchte bar bezahlen."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мы ожидаем платформенный сбор. Пассажир хочет оплатить наличными."
+          }
+        }
+      }
+    },
+    "We have sent you an email. You can configure your Stripe account through the email." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wir haben dir eine E-Mail gesendet. Du kannst dein Stripe-Konto über die E-Mail konfigurieren."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мы отправили вам письмо. Вы можете настроить свой аккаунт Stripe через это письмо."
+          }
+        }
+      }
     },
     "We will send a code to your phone to reset your password." : {
       "localizations" : {
@@ -4721,7 +5014,20 @@
       }
     },
     "You can connect your payments account." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie können Ihr Zahlungskonto verbinden."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы можете подключить свой платёжный аккаунт."
+          }
+        }
+      }
     },
     "You can start picking up passengers 12 hours before the trip start time." : {
       "localizations" : {
@@ -4740,20 +5046,17 @@
       }
     },
     "You can still choose how user can pay you when you create a trip." : {
-
-    },
-    "You can't accept this booking. You must have to connect your stripe account to accept this booking. When we have approved you as a driver, we send you an email to connect your stripe account." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sie können diese Buchung nicht akzeptieren. Sie müssen Ihr Stripe-Konto verbinden, um diese Buchung zu akzeptieren. Wenn wir Sie als Fahrer akzeptieren, haben wir Ihnen eine E-Mail geschickt, um Ihr Stripe-Konto zu verbinden."
+            "value" : "Sie können weiterhin auswählen, wie Nutzer Sie bezahlen können, wenn Sie eine Fahrt erstellen."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Вы не можете принять это бронирование. Чтобы принять это бронирование, вам необходимо подключить свою учетную запись Stripe. Когда мы примем вас в качестве водителя, мы отправим вам электронное письмо для подключения вашей учетной записи Stripe"
+            "value" : "Вы всё равно сможете выбрать, как пользователь может заплатить вам при создании поездки."
           }
         }
       }
@@ -4870,11 +5173,37 @@
         }
       }
     },
-    "You need to add your PayPal email under your profile to enable this option." : {
-
-    },
     "You need to configure your Stripe account to enable this option." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie müssen Ihr Stripe-Konto konfigurieren, um diese Option zu aktivieren."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вам нужно настроить свой аккаунт Stripe, чтобы включить эту опцию."
+          }
+        }
+      }
+    },
+    "You need to connect your PayPal account from settings to enable this option." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie müssen Ihr PayPal-Konto in den Einstellungen verbinden, um diese Option zu aktivieren."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вам нужно подключить свой аккаунт PayPal в настройках, чтобы включить эту опцию."
+          }
+        }
+      }
     },
     "Your booking is approved! Please proceed with payment to confirm." : {
       "localizations" : {
@@ -4968,6 +5297,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ваш пароль здесь"
+          }
+        }
+      }
+    },
+    "Your token has expired! Please log in again." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Token ist abgelaufen! Bitte melde dich erneut an."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Срок действия вашего токена истёк! Пожалуйста, войдите в систему снова."
           }
         }
       }

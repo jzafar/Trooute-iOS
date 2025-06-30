@@ -73,6 +73,11 @@ struct TripDetailsView: View {
                             .listRowBackground(Color.clear)
                             .listRowInsets(EdgeInsets())
                     }
+                    if userModel.driverMode {
+                        Section(header: TextViewLableText(text: String(localized:"Acceptable Payments"), textFont: .headline)) {
+                            Text(viewModel.acceptAblePayments)
+                        }
+                    }
                 }
             }
             .safeAreaInset(edge: .bottom) {

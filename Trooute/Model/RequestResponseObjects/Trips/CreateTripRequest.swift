@@ -20,6 +20,7 @@ struct CreateTripRequest: Codable {
     let languagePreference: String?
     let luggageRestrictions: [LuggageRestrictions]
     let note: String?
+    let paymentTypes: [PaymentType]
     var parameters: [String: Any] {
         var params: [String: Any] = [:]
         if let languagePreference = languagePreference {
@@ -41,6 +42,7 @@ struct CreateTripRequest: Codable {
         params["totalSeats"] = totalSeats
         params["whereTo_address"] = whereTo_address
         params["whereTo_location"] = whereTo_location
+        params["paymentTypes"] = paymentTypes.map { $0.rawValue }
         return params
     }
 }
