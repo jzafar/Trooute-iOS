@@ -14,6 +14,7 @@ class BookTripViewModel: ObservableObject {
     @Published var totalPrice: Double = 0.0
     @Published var pickUpAddressInfo: SearchedLocation? = nil
     @Published var shouldNavigate = false
+    @Published var proceedViewModel: ProceedViewModel? = nil
     var trip: TripsData
     init(trip: TripsData) {
         self.trip = trip
@@ -40,6 +41,17 @@ class BookTripViewModel: ObservableObject {
         } else if(otherReleventDetails.trimmingCharacters(in: .whitespacesAndNewlines).count == 0) {
             BannerHelper.displayBanner(.info, message: String(localized:"Other relevant details field can't be blank"))
         } else {
+            
+            if let pickUpAddressInfo = pickUpAddressInfo {
+                let address =  (pickUpAddressInfo.title ?? "") + " " + (pickUpAddressInfo.subtitle ?? "")
+                let  pickupLocation = BookingPickupLocation(address:address, location: [pickUpAddressInfo.coordinate.latitude.rounded(toPlaces: 4), pickUpAddressInfo.coordinate.longitude.rounded(toPlaces: 4)])
+                self.proceedViewModel = ProceedViewModel(
+                    trip: trip,
+                    numberOfSeats: totalPerson,
+                    pickupLocation: pickupLocation,
+                    note: otherReleventDetails
+                )
+            }
             self.shouldNavigate = true
         }
     }
@@ -47,15 +59,5 @@ class BookTripViewModel: ObservableObject {
     func showErrorAlert() {
         pickupLocation = ""
         BannerHelper.displayBanner(.error, message: String(localized:"App could not get coordinates of this location. Please choose some other location or try again"))
-    }
-    
-    var proceedViewModel: ProceedViewModel? {
-        if let pickUpAddressInfo = pickUpAddressInfo {
-            let address =  (pickUpAddressInfo.title ?? "") + " " + (pickUpAddressInfo.subtitle ?? "")
-            let  pickupLocation = BookingPickupLocation(address:address, location: [pickUpAddressInfo.coordinate.latitude.rounded(toPlaces: 4), pickUpAddressInfo.coordinate.longitude.rounded(toPlaces: 4)])
-            return ProceedViewModel(trip: trip, numberOfSeats: totalPerson, pickupLocation: pickupLocation, note: otherReleventDetails)
-        }
-       
-        return nil
     }
 }

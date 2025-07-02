@@ -167,7 +167,7 @@ struct PriceView: View {
     let showPersonText: Bool
     var body: some View {
         HStack {
-            Text("€\(String(format: "%.1f", price + Double(bookingSeats ?? 0)))")
+            Text("€\(String(format: "%.2f", price + Double(bookingSeats ?? 0)))")
                 .font(.title3).bold()
                 .foregroundColor(.white)
             if showPersonText {

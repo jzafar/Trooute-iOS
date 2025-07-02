@@ -7,52 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FF3DE93C-8AEC-47C0-89F7-911E5BBA7DB0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Trooute/Views/Booking Views/Payment Web View/WebViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "paymentSuccess(url:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "FF3DE93C-8AEC-47C0-89F7-911E5BBA7DB0 - 4f76cec82b9a331d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Trooute.WebViewModel.paymentSuccess(url: Swift.String) -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Learning/Trooute/Trooute-iOS/Trooute/Views/Booking%20Views/Payment%20Web%20View/WebViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48">
-               </Location>
-               <Location
-                  uuid = "FF3DE93C-8AEC-47C0-89F7-911E5BBA7DB0 - 558fb0ead87a21d7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Trooute.Response&lt;Trooute.BasicResponse&gt;, Swift.Error&gt;) -&gt; () in Trooute.WebViewModel.paymentSuccess(url: Swift.String) -&gt; ()"
-                  moduleName = "Trooute.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/iWork/Learning/Trooute/Trooute-iOS/Trooute/Views/Booking%20Views/Payment%20Web%20View/WebViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "D9E77412-62CF-447C-B164-3628B6F29E61"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -96,6 +50,82 @@
             endingLineNumber = "38"
             landmarkName = "login(completion:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D5BE24E6-87D7-4903-91C0-6403EAA9AD58"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Trooute/Views/Booking Views/Book Now View/ProceedViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "bookNoewPressed()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7C361B8A-691F-4FF2-A133-A1CD5FEB685C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Trooute/Views/Booking Views/Payment Web View/WebViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "paymentSuccess(url:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7C361B8A-691F-4FF2-A133-A1CD5FEB685C - 558fb0ead87a208d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Trooute.Response&lt;Trooute.BasicResponse&gt;, Swift.Error&gt;) -&gt; () in Trooute.WebViewModel.paymentSuccess(url: Swift.String) -&gt; ()"
+                  moduleName = "Trooute.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/iWork/Learning/Trooute/Trooute-iOS/Trooute/Views/Booking%20Views/Payment%20Web%20View/WebViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38">
+               </Location>
+               <Location
+                  uuid = "7C361B8A-691F-4FF2-A133-A1CD5FEB685C - 558fb0ead87a208d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Trooute.Response&lt;Trooute.BasicResponse&gt;, Swift.Error&gt;) -&gt; () in Trooute.WebViewModel.paymentSuccess(url: Swift.String) -&gt; ()"
+                  moduleName = "Trooute.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/iWork/Learning/Trooute/Trooute-iOS/Trooute/Views/Booking%20Views/Payment%20Web%20View/WebViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38">
+               </Location>
+               <Location
+                  uuid = "7C361B8A-691F-4FF2-A133-A1CD5FEB685C - 558fb0ead87a208d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Trooute.Response&lt;Trooute.BasicResponse&gt;, Swift.Error&gt;) -&gt; () in Trooute.WebViewModel.paymentSuccess(url: Swift.String) -&gt; ()"
+                  moduleName = "Trooute.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/iWork/Learning/Trooute/Trooute-iOS/Trooute/Views/Booking%20Views/Payment%20Web%20View/WebViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

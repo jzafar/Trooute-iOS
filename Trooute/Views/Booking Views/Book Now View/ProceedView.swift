@@ -41,7 +41,7 @@ struct ProceedView: View {
     }
 }
 
-#Preview {
-    let data = MockDate.getTripsResponse()?.data?.first
-    ProceedView(viewModel: ProceedViewModel(trip: data!, numberOfSeats: 2, pickupLocation: BookingPickupLocation(address: "", location: [12.12, 12.12]), note: ""))
-}
+//#Preview {
+//    let data = MockDate.getTripsResponse()?.data?.first
+//    ProceedView(viewModel: ProceedViewModel(trip: data!, numberOfSeats: 2, pickupLocation: BookingPickupLocation(address: "", location: [12.12, 12.12]), note: ""))
+//}

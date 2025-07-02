@@ -5,41 +5,41 @@
 //  Created by Muhammad Zafar on 2024-10-01.
 //
 
+import SwiftLoader
 import SwiftUI
 @preconcurrency import WebKit
-import SwiftLoader
 
 struct WebView: UIViewRepresentable {
     @StateObject var webViewModel: WebViewModel
     @Environment(\.dismiss) var dismiss
-        func makeCoordinator() -> WebView.Coordinator {
-            Coordinator(self, webViewModel)
+    func makeCoordinator() -> WebView.Coordinator {
+        Coordinator(self, webViewModel)
+    }
+
+    func makeUIView(context: Context) -> WKWebView {
+        guard let url = URL(string: webViewModel.url) else {
+            return WKWebView()
         }
 
-        func makeUIView(context: Context) -> WKWebView {
-            guard let url = URL(string: self.webViewModel.url) else {
-                return WKWebView()
-            }
-
-            let request = URLRequest(url: url)
-            let webView = WKWebView()
-            webView.navigationDelegate = context.coordinator
-            webView.load(request)
-            if webViewModel.adjustFont {
-                webView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: -10)
-            }
-            return webView
+        let request = URLRequest(url: url)
+        let webView = WKWebView()
+        webView.navigationDelegate = context.coordinator
+        webView.load(request)
+        if webViewModel.adjustFont {
+            webView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: -10)
         }
+        return webView
+    }
 
-        func updateUIView(_ uiView: WKWebView, context: Context) {
-            DispatchQueue.main.async {
-                if webViewModel.shouldGoBack {
-                    uiView.goBack()
-                    webViewModel.shouldGoBack = false
-                    dismiss()
-                }
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        DispatchQueue.main.async {
+            if webViewModel.shouldGoBack {
+                uiView.goBack()
+                webViewModel.shouldGoBack = false
+                dismiss()
             }
         }
+    }
 }
 
 extension WebView {
@@ -54,7 +54,7 @@ extension WebView {
 
         func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
             webViewModel.isLoading = true
-            SwiftLoader.show(title: String(localized:"Loading..."), animated: true)
+            SwiftLoader.show(title: String(localized: "Loading..."), animated: true)
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
@@ -63,37 +63,34 @@ extension WebView {
             webViewModel.canGoBack = webView.canGoBack
             SwiftLoader.hide()
             if webViewModel.adjustFont {
-                let js = "document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust='200%'"//dual size
-                    webView.evaluateJavaScript(js, completionHandler: nil)
+                let js = "document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust='200%'" // dual size
+                webView.evaluateJavaScript(js, completionHandler: nil)
             }
-            
         }
-        
+
         func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+            let url = navigationAction.request.url?.absoluteString
+            print("onLoadResource: url -> \(url ?? "")")
 
-                let url = navigationAction.request.url?.absoluteString
-                print("onLoadResource: url -> \(url ?? "")")
-
-                // Check if the URL contains "payment-success"
-                if let url = url, url.contains("payment-success") {
-                    let modifiedUrl = url.replacingOccurrences(of: "http://localhost:4000", with: "")
-//                    if !isPaymentProcessing {
-//                        isPaymentProcessing = true
-//                        webViewModel.paymentSuccess(url: modifiedUrl)
-//                    }
-                    webViewModel.shouldGoBack = true
-                    
-                } else if let url = url, url.contains("paypal-success") {
-                    //webViewModel.paymentSuccess(url: url)
-                    webViewModel.shouldGoBack = true
-                }
+            // Check if the URL contains "payment-success"
+            if let url = url, url.contains("payment-success") {
+//                    let modifiedUrl = url.replacingOccurrences(of: "http://localhost:4000", with: "")
+                webViewModel.paymentSuccess(url: url)
+                decisionHandler(.cancel)
+                return
+            } else if let url = url, url.contains("paypal-success") {
+                webViewModel.paymentSuccess(url: url)
+                decisionHandler(.cancel)
+                return
+            }
 
             if let url = url, url.contains("payment-failed") || url.contains("paypal-cancel") {
-                    webViewModel.shouldGoBack = true
-                }
-
-                decisionHandler(.allow)
+                webViewModel.paymentFail()
+                webViewModel.shouldGoBack = true
             }
+            
+            decisionHandler(.allow)
+        }
 
         func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
             webViewModel.isLoading = false

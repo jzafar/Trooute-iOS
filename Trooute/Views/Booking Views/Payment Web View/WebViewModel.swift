@@ -17,35 +17,21 @@ class WebViewModel: ObservableObject {
     let repo = WebViewRepository()
     private let notification = Notifications()
     let makePaymentUserId: String?
-    private var isPaymentPrpcessing: Bool = false
-    private var handledPaymentURLs: Set<String> = []
-    private let lock = NSLock()
+    let user = UserUtils.shared
     init(url: String, adjustFont: Bool = false, makePaymentUserId: String? = nil) {
         self.url = url
         self.adjustFont = adjustFont
         self.makePaymentUserId = makePaymentUserId
-        self.isPaymentPrpcessing = false
     }
     
     
     func paymentSuccess(url: String) {
-        lock.lock()
-        defer { lock.unlock() }
-        
-        guard let cleanURL = normalizeURL(url) else {
-            print("🚫 Unable to normalize URL: \(url)")
-            return
-        }
-        
-        if handledPaymentURLs.contains(cleanURL) || isPaymentPrpcessing {
-            print("⛔️ Payment URL already processed or in progress: \(cleanURL)")
-            return
-        }
-        
+        var finalUrl: String = ""
         SwiftLoader.show(title: String(localized:"Loading..."), animated: true)
-        handledPaymentURLs.insert(url)
-        isPaymentPrpcessing = true
-        repo.paymentSuccess(url: url) { [weak self] result in
+        if let userID = user.user?.id {
+            finalUrl = "\(url)&userId=\(userID)"
+        }
+        repo.paymentSuccess(url: finalUrl) { [weak self] result in
             SwiftLoader.hide()
             guard let self = self else {return}
             switch result {
@@ -68,11 +54,17 @@ class WebViewModel: ObservableObject {
                     } else {
                         self.shouldGoBack = true
                     }
+                } else {
+                    BannerHelper.displayBanner(.error, message: resposne.data.message)
                 }
             case .failure(let failure):
                 BannerHelper.displayBanner(.error, message: failure.localizedDescription)
             }
         }
+    }
+    
+    func paymentFail() {
+        BannerHelper.displayBanner(.error, message: "Payments failed")
     }
     
     private func normalizeURL(_ urlString: String) -> String? {

@@ -47,7 +47,7 @@ struct PriceView1: View {
                         .padding(.vertical, 4)
                 }
                 HStack {
-                    Text("€\(String(format: "%.1f", finalPrice))")
+                    Text("€\(String(format: "%.2f", finalPrice))")
                         .font(.title3).bold()
                         .foregroundColor(.white)
                     if showPersonText {
@@ -59,7 +59,7 @@ struct PriceView1: View {
                     }
                     Spacer()
                     if showTotal {
-                        Text("€\(String(format: "%.1f", totalPrice))")
+                        Text("€\(String(format: "%.2f", totalPrice))")
                             .font(.title3).bold()
                             .foregroundColor(.white)
                         Text("Total")
@@ -74,7 +74,7 @@ struct PriceView1: View {
         }.background(Color("TitleColor"))
     }
     func bookPrice(_ price: Double?) -> String {
-        return "€\(String(format: "%.1f", price ?? 0.0))"
+        return "€\(String(format: "%.2f", price ?? 0.0))"
     }
 }
 #Preview {
