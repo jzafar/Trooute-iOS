@@ -299,7 +299,7 @@ struct TripsView: View {
 
     @ViewBuilder
     func showDatePicker() -> some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 0) {
             HStack {
                 Spacer()
                 Button("Done") {

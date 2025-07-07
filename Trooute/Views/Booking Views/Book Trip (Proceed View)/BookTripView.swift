@@ -16,15 +16,16 @@ struct BookTripView: View {
                     TripCardView(viewModel: TripCardViewModel(trip: viewModel.trip, showPersonText: true)) // user side = true
                 }.listRowInsets(EdgeInsets())
 
-                Section(header: TextViewLableText(text: String(localized:"Pickup location"))) {
-                    pieckupLocationView()
-                        .listRowBackground(Color.white)
-                }
-
                 Section(header: TextViewLableText(text: String(localized:"Passengers"))) {
                     passengersView()
                         .listRowBackground(Color.white)
                 }
+                
+                Section(header: TextViewLableText(text: String(localized:"Pickup location"))) {
+                    pieckupLocationView()
+                        .listRowBackground(Color.white)
+                }
+                
             }.background(.clear)
                 .safeAreaInset(edge: .bottom) {
                     proceedView()

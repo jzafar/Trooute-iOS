@@ -15,8 +15,8 @@ struct Constants {
     static let PAYPAL_SECRET_SandBox = "ECeJPJVuHHY0uOuK3aqdccinNCKWJeqRpQhkajjCf5rYA2PknIZrH4Q10rNc5LF3rAgsmh9zKoibbbr6"
     
     //Live
-    static let PAYPAL_CLIENT_ID = "AexkYHCVuMrbut4rDSO4NaB32c33O1bgPURERJZFw-kjtsKoZljPolRWDnE082pmNKYKEQKWn5A0o_Je"
-    static let PAYPAL_SECRET = "ECeJPJVuHHY0uOuK3aqdccinNCKWJeqRpQhkajjCf5rYA2PknIZrH4Q10rNc5LF3rAgsmh9zKoibbbr6"
+    static let PAYPAL_CLIENT_ID = "ASKA9o51juQ2VwZaLObaDLnm4HZcAIOk321qeuVGdu2-F-OtDrQHM35W3cbzkRTdqktAOLE-HB53BQ9p"
+    static let PAYPAL_SECRET = "EPM02FeF4dCh1z73EzIsfizrJUoeVhU2SSRzfzFhra5pHbpbrEM4nk2PVmUhfC9d0WxHKTDxAMh3K9GQ"
     static let payPalredirectUri = "com.travel.trooutee://paypal"
     
 }

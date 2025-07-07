@@ -152,6 +152,7 @@
 		CE631B782CC56CB400976FAD /* DriverRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE631B772CC56CA300976FAD /* DriverRepository.swift */; };
 		CE631B7B2CC56D8600976FAD /* UpdateCarInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE631B7A2CC56D7B00976FAD /* UpdateCarInfoResponse.swift */; };
 		CE631B7D2CC56D8E00976FAD /* UpdateCarInfoRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE631B7C2CC56D8A00976FAD /* UpdateCarInfoRequests.swift */; };
+		CE67F4312E1BA08C00ECC421 /* SwiftUICalendar in Frameworks */ = {isa = PBXBuildFile; productRef = CE67F4302E1BA08C00ECC421 /* SwiftUICalendar */; };
 		CE727A852CD3925900D27044 /* UpdatePickupStatusRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE727A842CD3925700D27044 /* UpdatePickupStatusRequest.swift */; };
 		CE727A872CD3EF5400D27044 /* FirebaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE727A862CD3EF4A00D27044 /* FirebaseViewModel.swift */; };
 		CE727A8A2CD3F14C00D27044 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CE727A892CD3F14C00D27044 /* FirebaseFirestore */; };
@@ -469,6 +470,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE67F4312E1BA08C00ECC421 /* SwiftUICalendar in Frameworks */,
 				CE843B122CDEA18200C249C5 /* FirebaseAnalytics in Frameworks */,
 				CE843B102CDE9DB400C249C5 /* FirebaseMessaging in Frameworks */,
 				CE4E3E172CA5E728005C3CEE /* SDWebImageSwiftUI in Frameworks */,
@@ -1408,6 +1410,7 @@
 				CEEEA2962CBA9BE3006B8ECE /* XCRemoteSwiftPackageReference "BRYXBanner" */,
 				CE5227CB2CBAAD84005C1175 /* XCRemoteSwiftPackageReference "SwiftLoader" */,
 				CE5227CE2CBABA6B005C1175 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CE67F42F2E1BA08C00ECC421 /* XCRemoteSwiftPackageReference "SwiftUICalendar" */,
 			);
 			productRefGroup = CED05EFF2C95AF7000E51158 /* Products */;
 			projectDirPath = "";
@@ -1864,7 +1867,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Trooute/Trooute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Trooute/Preview Content\"";
 				DEVELOPMENT_TEAM = MPGZ44D94P;
@@ -1906,7 +1909,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Trooute/Trooute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Trooute/Preview Content\"";
 				DEVELOPMENT_TEAM = MPGZ44D94P;
 				ENABLE_PREVIEWS = YES;
@@ -2078,6 +2081,14 @@
 				minimumVersion = 11.12.0;
 			};
 		};
+		CE67F42F2E1BA08C00ECC421 /* XCRemoteSwiftPackageReference "SwiftUICalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/GGJJack/SwiftUICalendar";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.1.14;
+			};
+		};
 		CEEEA2962CBA9BE3006B8ECE /* XCRemoteSwiftPackageReference "BRYXBanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bryx-inc/BRYXBanner.git";
@@ -2103,6 +2114,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE5227CE2CBABA6B005C1175 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCore;
+		};
+		CE67F4302E1BA08C00ECC421 /* SwiftUICalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE67F42F2E1BA08C00ECC421 /* XCRemoteSwiftPackageReference "SwiftUICalendar" */;
+			productName = SwiftUICalendar;
 		};
 		CE727A892CD3F14C00D27044 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;

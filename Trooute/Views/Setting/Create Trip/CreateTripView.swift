@@ -32,7 +32,7 @@ struct CreateTripView: View {
                     PrimaryGreenButton(title: String(localized:"Post trip")) {
                         hideKeyboard()
                         viewModel.postTrip()
-                    }
+                    }.zIndex(1)
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .listRowBackground(Color.clear)
@@ -232,44 +232,17 @@ struct CreateTripView: View {
     @ViewBuilder
     func seatAvailableView() -> some View {
         VStack {
-            HStack {
+            VStack(alignment: .leading, spacing: 10) {
                 TextViewLableText(text: String(localized:"Seats available for passengers"), textFont: .headline)
-                Spacer()
-            }
-            HStack {
-                Button(action: {
-                    if viewModel.seatsAvailable > 1 {
-                        viewModel.seatsAvailable -= 1
-                    }
-                }) {
-                    Image(systemName: "minus.circle.fill")
-                        .foregroundColor(.blue)
-                        .font(.largeTitle)
-                        .frame(width: 44, height: 44) // Explicit frame to avoid hit area issues
+                
+                Stepper(value: $viewModel.seatsAvailable, in: 1...40) {
+                    Text("\(viewModel.seatsAvailable) Seat\(viewModel.seatsAvailable > 1 ? "s" : "")")
+                        .font(.headline)
                 }
-                .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to avoid unwanted padding
-                .contentShape(Rectangle())
-                .background(Color.red.opacity(0))
-                Spacer()
-                TextViewLableText(text: "\(viewModel.seatsAvailable)")
-                    .font(.title2)
-                    .frame(width: 50, alignment: .center)
-                Spacer()
-                Button(action: {
-                    viewModel.seatsAvailable += 1 // Increment without limit
-                }) {
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundColor(.blue)
-                        .font(.largeTitle)
-                        .frame(width: 44, height: 44) // Explicit frame to avoid hit area issues
-                }
-                .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to avoid unwanted padding
-                .contentShape(Rectangle())
-                .background(Color.red.opacity(0))
+                .padding()
+                .background(Color(.systemGray6))
+                .cornerRadius(8)
             }
-            .padding(.horizontal, 10)
-            .background(Color.white)
-            .contentShape(Rectangle())
         }
     }
 
@@ -291,6 +264,7 @@ struct CreateTripView: View {
                 // Custom Calendar View
                 CustomCalendarView(selectedDate: $viewModel.selectedDate)
                     .background(Color.white)
+                    .zIndex(1)
             }
 
             // Time Picker Section

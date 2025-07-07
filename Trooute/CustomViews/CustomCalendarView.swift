@@ -18,14 +18,17 @@ struct CustomCalendarView: View {
             // Month navigation
             HStack {
                 // Hide left chevron if current month
-                if !isCurrentMonth() {
-                    Button(action: {
-                        updateCurrentMonth(plus: false)
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(.blue)
-                    }.buttonStyle(PlainButtonStyle())
-                }
+                
+                Button(action: {
+                    updateCurrentMonth(plus: false)
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.blue)
+                        .padding(10) // makes the tap target bigger
+                        .contentShape(Rectangle()) // ensures tap works in padded area
+                }.buttonStyle(PlainButtonStyle())
+                .disabled(currentMonth == 0)
+                
                 
                 Spacer()
 
@@ -40,14 +43,16 @@ struct CustomCalendarView: View {
                 }) {
                     Image(systemName: "chevron.right")
                         .foregroundColor(.blue)
+                        .padding(10) // makes the tap target bigger
+                        .contentShape(Rectangle()) // ensures tap works in padded area
                 }.buttonStyle(PlainButtonStyle())
             }
             .padding()
 
             // Weekday headers
             HStack {
-                ForEach(["S", "M", "T", "W", "T", "F", "S"], id: \.self) { day in
-                    Text(day)
+                ForEach(orderedWeekdays, id: \.self) { day in
+                    Text(day.prefix(1)) // Show only first character like "M", "T", etc.
                         .frame(maxWidth: .infinity)
                         .font(.headline)
                         .foregroundColor(.gray)
@@ -75,11 +80,19 @@ struct CustomCalendarView: View {
             .padding(.top, 10)
         }.background(Color.white)
     }
+        // Dynamically ordered weekday symbols
+    let orderedWeekdays: [String] = {
+        var calendar = Calendar.current
+        calendar.locale = Locale.current
+        let symbols = calendar.shortStandaloneWeekdaySymbols
+        let startIndex = calendar.firstWeekday - 1 // firstWeekday is 1-based
+        return Array(symbols[startIndex...] + symbols[..<startIndex])
+    }()
     
     private func updateCurrentMonth(plus: Bool) {
         if plus {
             currentMonth += 1
-        } else {
+        } else if currentMonth > 0 {
             currentMonth -= 1
         }
        
@@ -94,7 +107,19 @@ struct CustomCalendarView: View {
     func generateDaysInMonth() -> [String] {
         let date = Calendar.current.date(byAdding: .month, value: currentMonth, to: Date())!
         let range = Calendar.current.range(of: .day, in: .month, for: date)!
-        return range.map { String($0) }
+        
+        var calendar = Calendar.current
+        calendar.locale = Locale.current
+        
+            // Find what weekday the 1st of the month falls on
+        let firstOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: date))!
+        let weekday = calendar.component(.weekday, from: firstOfMonth)
+        
+            // Shift based on firstWeekday (e.g., Monday = 2 in Gregorian calendar)
+        let shift = (weekday - calendar.firstWeekday + 7) % 7
+        
+        let days = range.map { String($0) }
+        return Array(repeating: "", count: shift) + days
     }
     
     func isToday(_ day: String) -> Bool {

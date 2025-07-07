@@ -13,7 +13,7 @@ struct PrimaryGreenButton: View {
         Button(action: action) {
             Text(title)
                 .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity, minHeight: 44)
                 .font(.headline)
                 .fontWeight(.bold)
                 .padding(.horizontal, 1)
