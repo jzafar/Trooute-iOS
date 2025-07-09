@@ -57,7 +57,10 @@ class TripsViewModel: NSObject, ObservableObject {
     
     func fetchTrips() {
         if userModel.driverMode == true {
-            let request = GetTripsRequest(departureDate: Date().shotFormate())
+            let request = GetTripsRequest(
+                departureDate: Date().shotFormate(),
+                fetchAll: false
+            )
             self.repository.getTrips(request: request) { [weak self] result in
                 guard let self = self else {return}
                 switch result {
@@ -74,7 +77,7 @@ class TripsViewModel: NSObject, ObservableObject {
             
         } else {
 //            let coordinates = locationManager.location?.coordinate
-            let request = GetTripsRequest(fromLatitude: locationManager.location?.coordinate.latitude, fromLongitude: locationManager.location?.coordinate.longitude, currentDate: Date().shotFormate())
+            let request = GetTripsRequest(fromLatitude: locationManager.location?.coordinate.latitude, fromLongitude: locationManager.location?.coordinate.longitude, currentDate: Date().shotFormate(), fetchAll: true)
                 
                 self.repository.getTrips(request: request) { [weak self] result in
                     guard let self = self else {return}
@@ -146,7 +149,7 @@ class TripsViewModel: NSObject, ObservableObject {
                                       currentDate: date != nil ? date?.shotFormate() : Date().shotFormate(),
                                       flexibleDays: isFlexibleDate ? flexibleDays : nil,
                                       toRange: Int(distanceTo),
-                                      fromRange: Int(distanceFrom))
+                                      fromRange: Int(distanceFrom), fetchAll: false)
         SwiftLoader.show(title: String(localized:"Searching..."), animated: true)
         repository.getTrips(request: request) { [weak self] result in
             SwiftLoader.hide()

@@ -24,7 +24,12 @@ struct BecomeDriverView: View {
                         HStack(spacing: 16) {
                             VStack(alignment: .leading, spacing: 16) {
                                 CustomTextField(title: "Make", placeholder: "Honda", text: $viewModel.vehicleMake)
-                                CustomDropdownField(title: "Year", placeholder: "Select Year", options: viewModel.years, selectedValue: $viewModel.vehicleYear)
+                                CustomDropdownField(
+                                    title: "Year",
+                                    placeholder: "Select Year",
+                                    options: viewModel.generateYears(),
+                                    selectedValue: $viewModel.vehicleYear
+                                )
                             }
 
                             VStack(alignment: .leading, spacing: 16) {

@@ -15,6 +15,7 @@ struct GetTripsRequest {
     var toRange: Int?
     var fromRange: Int?
     var departureDate: String?
+    var fetchAll: Bool
     var parameters: [String: String] {
         var params: [String: String] = [:]
         
@@ -45,6 +46,8 @@ struct GetTripsRequest {
         if let fromRange = fromRange {
             params["fromRange"] = "\(fromRange)"
         }
+        
+        params["fetchAll"] = "\(fetchAll)"
         
         return params
     }

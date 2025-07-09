@@ -61,6 +61,15 @@ struct CreateTripView: View {
             }.onTapGesture {
                 hideKeyboard()
             }
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                        isFocused = false
+                        hideKeyboard()
+                    }
+                }
+            }
     }
 
     @ViewBuilder
@@ -204,7 +213,6 @@ struct CreateTripView: View {
                     .frame(height: 120)
                     .submitLabel(.done)
                     .focused($isFocused)
-
                     .onChange(of: viewModel.otherReleventDetails) { _ in
                         if viewModel.otherReleventDetails.last?.isNewline == .some(true) {
                             viewModel.otherReleventDetails.removeLast()

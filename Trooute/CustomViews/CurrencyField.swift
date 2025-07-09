@@ -81,6 +81,7 @@ struct CurrencyInputField: UIViewRepresentable {
             action: #selector(Coordinator.editingChanged(textField:)),
             for: .editingChanged
         )
+        textField.addDoneButtonToKeyboard()
 
         // Set initial textfield text
         context.coordinator.updateText(value, textField: textField)
@@ -174,5 +175,28 @@ struct CurrencyInputField: UIViewRepresentable {
             // Update new value
             setValue(addValue, textField: textField)
         }
+    }
+}
+extension UITextField {
+    func addDoneButtonToKeyboard() {
+            // Create a toolbar
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+            // Create a flexible space item (pushes the Done button to the right)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+            // Create the Done button
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.doneButtonTapped))
+        
+            // Add items to the toolbar
+        toolbar.setItems([flexibleSpace, doneButton], animated: false)
+        
+            // Assign the toolbar as the input accessory view
+        self.inputAccessoryView = toolbar
+    }
+    
+    @objc func doneButtonTapped() {
+        self.resignFirstResponder()
     }
 }

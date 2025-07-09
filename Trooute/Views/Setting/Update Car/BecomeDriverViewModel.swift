@@ -23,7 +23,6 @@ class BecomeDriverViewModel: ObservableObject {
     @Published var selectedDriverLicense: PhotosPickerItem? = nil
     @Published var dismiss = false
     let colors = [String(localized:"White"), String(localized:"Black"), String(localized:"Gray"), String(localized:"Silver"), String(localized:"Blue"), String(localized:"Red"), String(localized:"Brown"), String(localized:"Green"), String(localized:"Orange"), String(localized:"Beige"), String(localized:"Purple"), String(localized:"Gold"), String(localized:"Yellow")]
-    let years = Array(2016 ... 2025).map { "\($0)" }
     var carDetails: CarDetails?
     private let repository = DriverRepository()
     init(carDetails: CarDetails?) {
@@ -49,6 +48,11 @@ class BecomeDriverViewModel: ObservableObject {
         }
     }
 
+    func generateYears(from startYear: Int = 2016, to endYear: Int = Calendar.current.component(.year, from: Date())) -> [String] {
+        return Array(startYear...endYear).reversed().map { String($0) }
+    }
+    
+    
     var carPhoto: String {
         return "\(Constants.baseImageUrl)/\(carDetails?.photo ?? "")"
     }
